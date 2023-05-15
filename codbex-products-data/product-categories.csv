@@ -1,0 +1,17 @@
+PRODUCTCATEGORY_ID,PRODUCTCATEGORY_NAME,PRODUCTCATEGORY_PATH
+1,Apparel,/Apparel
+2,Arts,/Arts
+3,Business,/Business
+4,Electronics,/Electronics
+5,Food,/Food
+6,Furniture,/Furniture
+7,Hardware,/Hardware
+8,Health,/Health
+9,Home,/Home
+10,Media,/Media
+11,Office,/Office
+12,Software,/Software
+13,Sport,/Sport
+14,Tools,/Tools
+15,Toys,/Toys
+16,Vehicles,/Vehicles

@@ -4,5 +4,13 @@
         "type": "git",
         "branch": "main",
         "url": "https://github.com/codbex/codbex-products.git"
-    }
+    },
+    "dependencies": [
+        {
+            "guid": "codbex-uom",
+            "type": "git",
+            "url": "https://github.com/codbex/codbex-uom.git",
+            "branch": "main"
+        }
+    ]
 }
