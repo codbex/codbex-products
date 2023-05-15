@@ -1,0 +1,8 @@
+{
+    "guid": "codbex-products",
+    "repository": {
+        "type": "git",
+        "branch": "main",
+        "url": "https://github.com/codbex/codbex-products.git"
+    }
+}
