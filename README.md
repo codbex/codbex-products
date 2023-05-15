@@ -22,12 +22,12 @@ Products Management Application
 
 #### Build
 
-	docker build -t products-uoms:1.0.0 .
+	docker build -t codbex-products:1.0.0 .
 
 #### Run
 
-	docker run --name products-uoms -d -p 8080:8080 products-uoms:1.0.0
+	docker run --name codbex-products -d -p 8080:8080 codbex-products:1.0.0
 
 #### Clean
 
-	docker rm products-uoms
+	docker rm codbex-products
