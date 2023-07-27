@@ -23,11 +23,11 @@ rs.service()
 				http.sendInternalServerError(error.message);
 			}
         })
-	.resource("count/{${masterEntityId}}")
+	.resource("count/{ProductId}")
 		.get(function(ctx, request) {
-			let ${masterEntityId} = parseInt(ctx.pathParameters.${masterEntityId});
-			${masterEntityId} = isNaN(${masterEntityId}) ? ctx.pathParameters.${masterEntityId} : ${masterEntityId};
-			http.sendResponseOk("" + dao.count(${masterEntityId}));
+			let ProductId = parseInt(ctx.pathParameters.ProductId);
+			ProductId = isNaN(ProductId) ? ctx.pathParameters.ProductId : ProductId;
+			http.sendResponseOk("" + dao.count(ProductId));
 		})
 		.catch(function(ctx, error) {
             if (error.name === "ForbiddenError") {

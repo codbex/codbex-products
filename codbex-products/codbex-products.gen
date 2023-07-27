@@ -525,11 +525,12 @@
           "dataUnique": false,
           "isCalculatedProperty": false,
           "name": "ProductId",
+          "relationshipCardinality": "1_n",
           "relationshipName": "ProductDetails_Product",
           "relationshipType": "COMPOSITION",
           "widgetDropDownKey": "Id",
           "widgetDropDownValue": "Name",
-          "widgetIsMajor": true,
+          "widgetIsMajor": false,
           "widgetLength": "20",
           "widgetType": "DROPDOWN",
           "relationshipEntityName": "Product",
@@ -560,6 +561,8 @@
         "Id"
       ],
       "primaryKeysString": "Id",
+      "masterEntity": "Product",
+      "masterEntityId": "ProductId",
       "hasDropdowns": true
     },
     {
