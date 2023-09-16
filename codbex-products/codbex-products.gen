@@ -7,6 +7,7 @@
   "projectName": "codbex-products",
   "workspaceName": "workspace",
   "filePath": "codbex-products.model",
+  "templateId": "template-application-angular/template/template.js",
   "perspectives": {
     "settings": {
       "views": [
@@ -260,7 +261,7 @@
           "dataType": "INTEGER",
           "dataUnique": false,
           "isCalculatedProperty": false,
-          "name": "ProductTypeId",
+          "name": "ProductType",
           "widgetDropDownKey": "Id",
           "widgetDropDownValue": "Name",
           "widgetIsMajor": true,
@@ -270,7 +271,7 @@
           "relationshipEntityName": "ProductType",
           "relationshipEntityPerspectiveName": "settings",
           "dataNotNull": false,
-          "widgetLabel": "ProductTypeId",
+          "widgetLabel": "ProductType",
           "inputRule": ""
         },
         {
@@ -285,7 +286,7 @@
           "dataType": "INTEGER",
           "dataUnique": false,
           "isCalculatedProperty": false,
-          "name": "ProductCategoryId",
+          "name": "ProductCategory",
           "widgetDropDownKey": "Id",
           "widgetDropDownValue": "Name",
           "widgetIsMajor": true,
@@ -295,7 +296,7 @@
           "relationshipEntityName": "ProductCategory",
           "relationshipEntityPerspectiveName": "settings",
           "dataNotNull": false,
-          "widgetLabel": "ProductCategoryId",
+          "widgetLabel": "ProductCategory",
           "inputRule": ""
         },
         {
@@ -310,7 +311,7 @@
           "dataType": "INTEGER",
           "dataUnique": false,
           "isCalculatedProperty": false,
-          "name": "UoMId",
+          "name": "UoM",
           "widgetDropDownKey": "Id",
           "widgetDropDownValue": "Name",
           "widgetIsMajor": true,
@@ -320,7 +321,7 @@
           "relationshipEntityName": "UoM",
           "relationshipEntityPerspectiveName": "entities",
           "dataNotNull": false,
-          "widgetLabel": "UoMId",
+          "widgetLabel": "UoM",
           "inputRule": ""
         }
       ],
@@ -381,7 +382,7 @@
             "dataType": "INTEGER",
             "dataUnique": false,
             "isCalculatedProperty": false,
-            "name": "ProductTypeId",
+            "name": "ProductType",
             "widgetDropDownKey": "Id",
             "widgetDropDownValue": "Name",
             "widgetIsMajor": true,
@@ -391,7 +392,7 @@
             "relationshipEntityName": "ProductType",
             "relationshipEntityPerspectiveName": "settings",
             "dataNotNull": false,
-            "widgetLabel": "ProductTypeId",
+            "widgetLabel": "ProductType",
             "inputRule": ""
           },
           {
@@ -406,7 +407,7 @@
             "dataType": "INTEGER",
             "dataUnique": false,
             "isCalculatedProperty": false,
-            "name": "ProductCategoryId",
+            "name": "ProductCategory",
             "widgetDropDownKey": "Id",
             "widgetDropDownValue": "Name",
             "widgetIsMajor": true,
@@ -416,7 +417,7 @@
             "relationshipEntityName": "ProductCategory",
             "relationshipEntityPerspectiveName": "settings",
             "dataNotNull": false,
-            "widgetLabel": "ProductCategoryId",
+            "widgetLabel": "ProductCategory",
             "inputRule": ""
           },
           {
@@ -431,7 +432,7 @@
             "dataType": "INTEGER",
             "dataUnique": false,
             "isCalculatedProperty": false,
-            "name": "UoMId",
+            "name": "UoM",
             "widgetDropDownKey": "Id",
             "widgetDropDownValue": "Name",
             "widgetIsMajor": true,
@@ -441,7 +442,7 @@
             "relationshipEntityName": "UoM",
             "relationshipEntityPerspectiveName": "entities",
             "dataNotNull": false,
-            "widgetLabel": "UoMId",
+            "widgetLabel": "UoM",
             "inputRule": ""
           }
         ]
@@ -524,7 +525,7 @@
           "dataType": "INTEGER",
           "dataUnique": false,
           "isCalculatedProperty": false,
-          "name": "ProductId",
+          "name": "Product",
           "relationshipCardinality": "1_n",
           "relationshipName": "ProductDetails_Product",
           "relationshipType": "COMPOSITION",
@@ -536,7 +537,7 @@
           "relationshipEntityName": "Product",
           "relationshipEntityPerspectiveName": "products",
           "dataNotNull": false,
-          "widgetLabel": "ProductId",
+          "widgetLabel": "Product",
           "inputRule": ""
         }
       ],
@@ -562,7 +563,7 @@
       ],
       "primaryKeysString": "Id",
       "masterEntity": "Product",
-      "masterEntityId": "ProductId",
+      "masterEntityId": "Product",
       "hasDropdowns": true
     },
     {

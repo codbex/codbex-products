@@ -23,7 +23,7 @@ let dao = daoApi.create({
 			type: "VARCHAR",
 		},
  {
-			name: "ProductId",
+			name: "Product",
 			column: "PRODUCTDETAILS_PRODUCTID",
 			type: "INTEGER",
 		}
@@ -75,8 +75,8 @@ exports.delete = function(id) {
 	});
 };
 
-exports.count = function (ProductId) {
-	let resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_PRODUCTDETAILS" WHERE "PRODUCTDETAILS_PRODUCTID" = ?', [ProductId]);
+exports.count = function (Product) {
+	let resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_PRODUCTDETAILS" WHERE "PRODUCTDETAILS_PRODUCTID" = ?', [Product]);
 	if (resultSet !== null && resultSet[0] !== null) {
 		if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
 			return resultSet[0].COUNT;

@@ -46,15 +46,15 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		//-----------------Events-------------------//
 
 		$scope.loadPage = function (pageNumber) {
-			let ProductId = $scope.selectedMainEntityId;
+			let Product = $scope.selectedMainEntityId;
 			$scope.dataPage = pageNumber;
-			entityApi.count(ProductId).then(function (response) {
+			entityApi.count(Product).then(function (response) {
 				if (response.status != 200) {
 					messageHub.showAlertError("ProductDetails", `Unable to count ProductDetails: '${response.message}'`);
 					return;
 				}
 				$scope.dataCount = response.data;
-				let query = `ProductId=${ProductId}`;
+				let query = `Product=${Product}`;
 				let offset = (pageNumber - 1) * $scope.dataLimit;
 				let limit = $scope.dataLimit;
 				entityApi.filter(query, offset, limit).then(function (response) {
@@ -76,7 +76,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("ProductDetails-details", {
 				action: "select",
 				entity: entity,
-				optionsProductId: $scope.optionsProductId,
+				optionsProduct: $scope.optionsProduct,
 			});
 		};
 
@@ -85,9 +85,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("ProductDetails-details", {
 				action: "create",
 				entity: {},
-				selectedMainEntityKey: "ProductId",
+				selectedMainEntityKey: "Product",
 				selectedMainEntityId: $scope.selectedMainEntityId,
-				optionsProductId: $scope.optionsProductId,
+				optionsProduct: $scope.optionsProduct,
 			}, null, false);
 		};
 
@@ -95,9 +95,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("ProductDetails-details", {
 				action: "update",
 				entity: entity,
-				selectedMainEntityKey: "ProductId",
+				selectedMainEntityKey: "Product",
 				selectedMainEntityId: $scope.selectedMainEntityId,
-				optionsProductId: $scope.optionsProductId,
+				optionsProduct: $scope.optionsProduct,
 			}, null, false);
 		};
 
@@ -131,20 +131,20 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		};
 
 		//----------------Dropdowns-----------------//
-		$scope.optionsProductId = [];
+		$scope.optionsProduct = [];
 
 		$http.get("/services/js/codbex-products/gen/api/products/Product.js").then(function (response) {
-			$scope.optionsProductId = response.data.map(e => {
+			$scope.optionsProduct = response.data.map(e => {
 				return {
 					value: e.Id,
 					text: e.Name
 				}
 			});
 		});
-		$scope.optionsProductIdValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsProductId.length; i++) {
-				if ($scope.optionsProductId[i].value === optionKey) {
-					return $scope.optionsProductId[i].text;
+		$scope.optionsProductValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsProduct.length; i++) {
+				if ($scope.optionsProduct[i].value === optionKey) {
+					return $scope.optionsProduct[i].text;
 				}
 			}
 			return null;

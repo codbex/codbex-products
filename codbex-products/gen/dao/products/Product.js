@@ -18,17 +18,17 @@ let dao = daoApi.create({
 			type: "VARCHAR",
 		},
  {
-			name: "ProductTypeId",
+			name: "ProductType",
 			column: "PRODUCT_PRODUCTTYPEID",
 			type: "INTEGER",
 		},
  {
-			name: "ProductCategoryId",
+			name: "ProductCategory",
 			column: "PRODUCT_PRODUCTCATEGORYID",
 			type: "INTEGER",
 		},
  {
-			name: "UoMId",
+			name: "UoM",
 			column: "PRODUCT_UOMID",
 			type: "INTEGER",
 		}

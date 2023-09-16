@@ -21,9 +21,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.$apply(function () {
 				$scope.entity = {};
 				$scope.formErrors = {};
-				$scope.optionsProductTypeId = [];
-				$scope.optionsProductCategoryId = [];
-				$scope.optionsUoMId = [];
+				$scope.optionsProductType = [];
+				$scope.optionsProductCategory = [];
+				$scope.optionsUoM = [];
 				$scope.action = 'select';
 			});
 		});
@@ -31,9 +31,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHub.onDidReceiveMessage("entitySelected", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = msg.data.entity;
-				$scope.optionsProductTypeId = msg.data.optionsProductTypeId;
-				$scope.optionsProductCategoryId = msg.data.optionsProductCategoryId;
-				$scope.optionsUoMId = msg.data.optionsUoMId;
+				$scope.optionsProductType = msg.data.optionsProductType;
+				$scope.optionsProductCategory = msg.data.optionsProductCategory;
+				$scope.optionsUoM = msg.data.optionsUoM;
 				$scope.action = 'select';
 			});
 		});
@@ -41,9 +41,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHub.onDidReceiveMessage("createEntity", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = {};
-				$scope.optionsProductTypeId = msg.data.optionsProductTypeId;
-				$scope.optionsProductCategoryId = msg.data.optionsProductCategoryId;
-				$scope.optionsUoMId = msg.data.optionsUoMId;
+				$scope.optionsProductType = msg.data.optionsProductType;
+				$scope.optionsProductCategory = msg.data.optionsProductCategory;
+				$scope.optionsUoM = msg.data.optionsUoM;
 				$scope.action = 'create';
 				// Set Errors for required fields only
 				$scope.formErrors = {
@@ -54,9 +54,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHub.onDidReceiveMessage("updateEntity", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = msg.data.entity;
-				$scope.optionsProductTypeId = msg.data.optionsProductTypeId;
-				$scope.optionsProductCategoryId = msg.data.optionsProductCategoryId;
-				$scope.optionsUoMId = msg.data.optionsUoMId;
+				$scope.optionsProductType = msg.data.optionsProductType;
+				$scope.optionsProductCategory = msg.data.optionsProductCategory;
+				$scope.optionsUoM = msg.data.optionsUoM;
 				$scope.action = 'update';
 			});
 		});

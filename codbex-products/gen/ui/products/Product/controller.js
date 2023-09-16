@@ -73,9 +73,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.postMessage("entitySelected", {
 				entity: entity,
 				selectedMainEntityId: entity.Id,
-				optionsProductTypeId: $scope.optionsProductTypeId,
-				optionsProductCategoryId: $scope.optionsProductCategoryId,
-				optionsUoMId: $scope.optionsUoMId,
+				optionsProductType: $scope.optionsProductType,
+				optionsProductCategory: $scope.optionsProductCategory,
+				optionsUoM: $scope.optionsUoM,
 			});
 		};
 
@@ -85,9 +85,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 			messageHub.postMessage("createEntity", {
 				entity: {},
-				optionsProductTypeId: $scope.optionsProductTypeId,
-				optionsProductCategoryId: $scope.optionsProductCategoryId,
-				optionsUoMId: $scope.optionsUoMId,
+				optionsProductType: $scope.optionsProductType,
+				optionsProductCategory: $scope.optionsProductCategory,
+				optionsUoM: $scope.optionsUoM,
 			});
 		};
 
@@ -95,9 +95,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.action = "update";
 			messageHub.postMessage("updateEntity", {
 				entity: $scope.selectedEntity,
-				optionsProductTypeId: $scope.optionsProductTypeId,
-				optionsProductCategoryId: $scope.optionsProductCategoryId,
-				optionsUoMId: $scope.optionsUoMId,
+				optionsProductType: $scope.optionsProductType,
+				optionsProductCategory: $scope.optionsProductCategory,
+				optionsUoM: $scope.optionsUoM,
 			});
 		};
 
@@ -132,12 +132,12 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		};
 
 		//----------------Dropdowns-----------------//
-		$scope.optionsProductTypeId = [];
-		$scope.optionsProductCategoryId = [];
-		$scope.optionsUoMId = [];
+		$scope.optionsProductType = [];
+		$scope.optionsProductCategory = [];
+		$scope.optionsUoM = [];
 
 		$http.get("/services/js/codbex-products/gen/api/settings/ProductType.js").then(function (response) {
-			$scope.optionsProductTypeId = response.data.map(e => {
+			$scope.optionsProductType = response.data.map(e => {
 				return {
 					value: e.Id,
 					text: e.Name
@@ -146,7 +146,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		});
 
 		$http.get("/services/js/codbex-products/gen/api/settings/ProductCategory.js").then(function (response) {
-			$scope.optionsProductCategoryId = response.data.map(e => {
+			$scope.optionsProductCategory = response.data.map(e => {
 				return {
 					value: e.Id,
 					text: e.Name
@@ -155,33 +155,33 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		});
 
 		$http.get("/services/js/codbex-products/gen/api/entities/UoM.js").then(function (response) {
-			$scope.optionsUoMId = response.data.map(e => {
+			$scope.optionsUoM = response.data.map(e => {
 				return {
 					value: e.Id,
 					text: e.Name
 				}
 			});
 		});
-		$scope.optionsProductTypeIdValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsProductTypeId.length; i++) {
-				if ($scope.optionsProductTypeId[i].value === optionKey) {
-					return $scope.optionsProductTypeId[i].text;
+		$scope.optionsProductTypeValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsProductType.length; i++) {
+				if ($scope.optionsProductType[i].value === optionKey) {
+					return $scope.optionsProductType[i].text;
 				}
 			}
 			return null;
 		};
-		$scope.optionsProductCategoryIdValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsProductCategoryId.length; i++) {
-				if ($scope.optionsProductCategoryId[i].value === optionKey) {
-					return $scope.optionsProductCategoryId[i].text;
+		$scope.optionsProductCategoryValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsProductCategory.length; i++) {
+				if ($scope.optionsProductCategory[i].value === optionKey) {
+					return $scope.optionsProductCategory[i].text;
 				}
 			}
 			return null;
 		};
-		$scope.optionsUoMIdValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsUoMId.length; i++) {
-				if ($scope.optionsUoMId[i].value === optionKey) {
-					return $scope.optionsUoMId[i].text;
+		$scope.optionsUoMValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsUoM.length; i++) {
+				if ($scope.optionsUoM[i].value === optionKey) {
+					return $scope.optionsUoM[i].text;
 				}
 			}
 			return null;
