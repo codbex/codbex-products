@@ -4,12 +4,12 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "codbex-products-home-launchpad",
-    label: "Home Launchpad",
+    id: "ProductType",
+    label: "ProductType",
     factory: "frame",
     region: "center",
-    link: "/services/web/codbex-products/gen/ui/launchpad/Home/index.html",
-    isLaunchpad: true,
+    link: "/services/web/codbex-products/gen/ui/ProductsSettings/ProductType/index.html",
+    perspectiveName: "ProductsSettings"
 };
 
 if (typeof exports !== 'undefined') {

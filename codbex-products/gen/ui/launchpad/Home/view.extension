@@ -1,1 +1,5 @@
-{"module":"codbex-products/gen/ui/launchpad/Home/view.js","extensionPoint":"codbex-products-view","description":"codbex-products - Application View"}
+{
+    "module": "codbex-products/gen/ui/launchpad/Home/view.js",
+    "extensionPoint": "codbex-products-view",
+    "description": "codbex-products - Application View"
+}

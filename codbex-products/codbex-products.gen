@@ -9,17 +9,17 @@
   "filePath": "codbex-products.model",
   "templateId": "template-application-angular/template/template.js",
   "perspectives": {
-    "settings": {
+    "ProductsSettings": {
       "views": [
         "ProductType",
         "ProductCategory"
       ],
-      "name": "settings",
-      "label": "settings",
-      "order": "999",
+      "name": "ProductsSettings",
+      "label": "ProductsSettings",
+      "order": "951",
       "icon": "/services/web/resources/unicons/wrench.svg"
     },
-    "products": {
+    "Products1": {
       "views": [
         "Product",
         "ProductDetails",
@@ -39,9 +39,9 @@
         "Product-details",
         "Product-details"
       ],
-      "name": "products",
-      "label": "products",
-      "order": "500",
+      "name": "Products1",
+      "label": "Products1",
+      "order": "950",
       "icon": "/services/web/resources/unicons/cube.svg"
     },
     "entities": {
@@ -110,8 +110,8 @@
       "name": "ProductType",
       "navigationPath": "/Home",
       "perspectiveIcon": "/services/web/resources/unicons/wrench.svg",
-      "perspectiveName": "settings",
-      "perspectiveOrder": "999",
+      "perspectiveName": "ProductsSettings",
+      "perspectiveOrder": "951",
       "title": "ProductType",
       "tooltip": "ProductType",
       "type": "PRIMARY",
@@ -197,8 +197,8 @@
       "name": "ProductCategory",
       "navigationPath": "/Home",
       "perspectiveIcon": "/services/web/resources/unicons/wrench.svg",
-      "perspectiveName": "settings",
-      "perspectiveOrder": "999",
+      "perspectiveName": "ProductsSettings",
+      "perspectiveOrder": "951",
       "title": "ProductCategory",
       "tooltip": "ProductCategory",
       "type": "PRIMARY",
@@ -269,7 +269,7 @@
           "widgetType": "DROPDOWN",
           "relationshipName": "Product_ProductType",
           "relationshipEntityName": "ProductType",
-          "relationshipEntityPerspectiveName": "settings",
+          "relationshipEntityPerspectiveName": "ProductsSettings",
           "dataNotNull": false,
           "widgetLabel": "ProductType",
           "inputRule": ""
@@ -294,7 +294,7 @@
           "widgetType": "DROPDOWN",
           "relationshipName": "Product_ProductCategory",
           "relationshipEntityName": "ProductCategory",
-          "relationshipEntityPerspectiveName": "settings",
+          "relationshipEntityPerspectiveName": "ProductsSettings",
           "dataNotNull": false,
           "widgetLabel": "ProductCategory",
           "inputRule": ""
@@ -337,8 +337,8 @@
       "name": "Product",
       "navigationPath": "/Home",
       "perspectiveIcon": "/services/web/resources/unicons/cube.svg",
-      "perspectiveName": "products",
-      "perspectiveOrder": "500",
+      "perspectiveName": "Products1",
+      "perspectiveOrder": "950",
       "title": "Product",
       "tooltip": "Product",
       "type": "PRIMARY",
@@ -390,7 +390,7 @@
             "widgetType": "DROPDOWN",
             "relationshipName": "Product_ProductType",
             "relationshipEntityName": "ProductType",
-            "relationshipEntityPerspectiveName": "settings",
+            "relationshipEntityPerspectiveName": "ProductsSettings",
             "dataNotNull": false,
             "widgetLabel": "ProductType",
             "inputRule": ""
@@ -415,7 +415,7 @@
             "widgetType": "DROPDOWN",
             "relationshipName": "Product_ProductCategory",
             "relationshipEntityName": "ProductCategory",
-            "relationshipEntityPerspectiveName": "settings",
+            "relationshipEntityPerspectiveName": "ProductsSettings",
             "dataNotNull": false,
             "widgetLabel": "ProductCategory",
             "inputRule": ""
@@ -535,7 +535,7 @@
           "widgetLength": "20",
           "widgetType": "DROPDOWN",
           "relationshipEntityName": "Product",
-          "relationshipEntityPerspectiveName": "products",
+          "relationshipEntityPerspectiveName": "Products1",
           "dataNotNull": false,
           "widgetLabel": "Product",
           "inputRule": ""
@@ -553,8 +553,8 @@
       "name": "ProductDetails",
       "navigationPath": "/Home",
       "perspectiveIcon": "/services/web/resources/unicons/cube.svg",
-      "perspectiveName": "products",
-      "perspectiveOrder": "500",
+      "perspectiveName": "Products1",
+      "perspectiveOrder": "950",
       "title": "ProductDetails",
       "tooltip": "ProductDetails",
       "type": "DEPENDENT",
