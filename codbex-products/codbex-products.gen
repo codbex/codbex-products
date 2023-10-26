@@ -9,17 +9,17 @@
   "filePath": "codbex-products.model",
   "templateId": "template-application-angular/template/template.js",
   "perspectives": {
-    "ProductsSettings": {
+    "Settings": {
       "views": [
         "ProductType",
         "ProductCategory"
       ],
-      "name": "ProductsSettings",
-      "label": "ProductsSettings",
+      "name": "Settings",
+      "label": "Settings",
       "order": "951",
       "icon": "/services/web/resources/unicons/wrench.svg"
     },
-    "Products1": {
+    "Products": {
       "views": [
         "Product",
         "ProductDetails",
@@ -39,8 +39,8 @@
         "Product-details",
         "Product-details"
       ],
-      "name": "Products1",
-      "label": "Products1",
+      "name": "Products",
+      "label": "Products",
       "order": "950",
       "icon": "/services/web/resources/unicons/cube.svg"
     },
@@ -110,7 +110,7 @@
       "name": "ProductType",
       "navigationPath": "/Home",
       "perspectiveIcon": "/services/web/resources/unicons/wrench.svg",
-      "perspectiveName": "ProductsSettings",
+      "perspectiveName": "Settings",
       "perspectiveOrder": "951",
       "title": "ProductType",
       "tooltip": "ProductType",
@@ -197,7 +197,7 @@
       "name": "ProductCategory",
       "navigationPath": "/Home",
       "perspectiveIcon": "/services/web/resources/unicons/wrench.svg",
-      "perspectiveName": "ProductsSettings",
+      "perspectiveName": "Settings",
       "perspectiveOrder": "951",
       "title": "ProductCategory",
       "tooltip": "ProductCategory",
@@ -269,7 +269,7 @@
           "widgetType": "DROPDOWN",
           "relationshipName": "Product_ProductType",
           "relationshipEntityName": "ProductType",
-          "relationshipEntityPerspectiveName": "ProductsSettings",
+          "relationshipEntityPerspectiveName": "Settings",
           "dataNotNull": false,
           "widgetLabel": "ProductType",
           "inputRule": ""
@@ -294,7 +294,7 @@
           "widgetType": "DROPDOWN",
           "relationshipName": "Product_ProductCategory",
           "relationshipEntityName": "ProductCategory",
-          "relationshipEntityPerspectiveName": "ProductsSettings",
+          "relationshipEntityPerspectiveName": "Settings",
           "dataNotNull": false,
           "widgetLabel": "ProductCategory",
           "inputRule": ""
@@ -337,7 +337,7 @@
       "name": "Product",
       "navigationPath": "/Home",
       "perspectiveIcon": "/services/web/resources/unicons/cube.svg",
-      "perspectiveName": "Products1",
+      "perspectiveName": "Products",
       "perspectiveOrder": "950",
       "title": "Product",
       "tooltip": "Product",
@@ -390,7 +390,7 @@
             "widgetType": "DROPDOWN",
             "relationshipName": "Product_ProductType",
             "relationshipEntityName": "ProductType",
-            "relationshipEntityPerspectiveName": "ProductsSettings",
+            "relationshipEntityPerspectiveName": "Settings",
             "dataNotNull": false,
             "widgetLabel": "ProductType",
             "inputRule": ""
@@ -415,7 +415,7 @@
             "widgetType": "DROPDOWN",
             "relationshipName": "Product_ProductCategory",
             "relationshipEntityName": "ProductCategory",
-            "relationshipEntityPerspectiveName": "ProductsSettings",
+            "relationshipEntityPerspectiveName": "Settings",
             "dataNotNull": false,
             "widgetLabel": "ProductCategory",
             "inputRule": ""
@@ -535,7 +535,7 @@
           "widgetLength": "20",
           "widgetType": "DROPDOWN",
           "relationshipEntityName": "Product",
-          "relationshipEntityPerspectiveName": "Products1",
+          "relationshipEntityPerspectiveName": "Products",
           "dataNotNull": false,
           "widgetLabel": "Product",
           "inputRule": ""
@@ -553,7 +553,7 @@
       "name": "ProductDetails",
       "navigationPath": "/Home",
       "perspectiveIcon": "/services/web/resources/unicons/cube.svg",
-      "perspectiveName": "Products1",
+      "perspectiveName": "Products",
       "perspectiveOrder": "950",
       "title": "ProductDetails",
       "tooltip": "ProductDetails",

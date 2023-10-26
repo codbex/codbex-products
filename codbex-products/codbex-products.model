@@ -48,7 +48,7 @@
                 "name": "ProductType",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/wrench.svg",
-                "perspectiveName": "ProductsSettings",
+                "perspectiveName": "Settings",
                 "perspectiveOrder": "951",
                 "title": "ProductType",
                 "tooltip": "ProductType",
@@ -118,7 +118,7 @@
                 "name": "ProductCategory",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/wrench.svg",
-                "perspectiveName": "ProductsSettings",
+                "perspectiveName": "Settings",
                 "perspectiveOrder": "951",
                 "title": "ProductCategory",
                 "tooltip": "ProductCategory",
@@ -178,7 +178,7 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "Product_ProductType",
                         "relationshipEntityName": "ProductType",
-                        "relationshipEntityPerspectiveName": "ProductsSettings"
+                        "relationshipEntityPerspectiveName": "Settings"
                     },
                     {
                         "calculatedPropertyExpression": "",
@@ -200,7 +200,7 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "Product_ProductCategory",
                         "relationshipEntityName": "ProductCategory",
-                        "relationshipEntityPerspectiveName": "ProductsSettings"
+                        "relationshipEntityPerspectiveName": "Settings"
                     },
                     {
                         "calculatedPropertyExpression": "",
@@ -237,7 +237,7 @@
                 "name": "Product",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/cube.svg",
-                "perspectiveName": "Products1",
+                "perspectiveName": "Products",
                 "perspectiveOrder": "950",
                 "title": "Product",
                 "tooltip": "Product",
@@ -316,7 +316,7 @@
                         "widgetLength": "20",
                         "widgetType": "DROPDOWN",
                         "relationshipEntityName": "Product",
-                        "relationshipEntityPerspectiveName": "Products1"
+                        "relationshipEntityPerspectiveName": "Products"
                     }
                 ],
                 "caption": "Manage entity ProductDetails",
@@ -331,7 +331,7 @@
                 "name": "ProductDetails",
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/cube.svg",
-                "perspectiveName": "Products1",
+                "perspectiveName": "Products",
                 "perspectiveOrder": "950",
                 "title": "ProductDetails",
                 "tooltip": "ProductDetails",
@@ -472,13 +472,13 @@
         ],
         "perspectives": [
             {
-                "name": "Products1",
+                "name": "Products",
                 "label": "Products",
                 "icon": "/services/web/resources/unicons/cube.svg",
                 "order": "950"
             },
             {
-                "name": "ProductsSettings",
+                "name": "Settings",
                 "label": "Settings",
                 "icon": "/services/web/resources/unicons/wrench.svg",
                 "order": "951"
