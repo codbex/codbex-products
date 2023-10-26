@@ -28,7 +28,7 @@
   </entity>
   <relation name="ProductDetails_Product" type="relation" entity="ProductDetails" relationName="ProductDetails_Product" relationshipEntityPerspectiveName="Products" property="Product" referenced="Product" referencedProperty="Id">
   </relation>
-  <entity name="UoM" dataName="UOM" dataCount="SELECT COUNT(*) AS COUNT FROM &quot;${tablePrefix}_UOM&quot;" dataQuery="" type="PROJECTION" title="UoM" caption="Manage entity UoM" tooltip="UoM" icon="/services/web/resources/unicons/file.svg" menuKey="uom" menuLabel="UoM" menuIndex="100" layoutType="MANAGE" navigationPath="/Home" perspectiveName="entities" perspectiveIcon="/services/web/resources/unicons/copy.svg" perspectiveOrder="100" projectionReferencedModel="/workspace/codbex-uoms/codbex-uoms.model" projectionReferencedEntity="UoM">
+  <entity name="UoM" dataName="UOM" dataCount="SELECT COUNT(*) AS COUNT FROM &quot;${tablePrefix}_UOM&quot;" dataQuery="" type="PROJECTION" title="UoM" caption="Manage entity UoM" tooltip="UoM" icon="/services/web/resources/unicons/file.svg" menuKey="uom" menuLabel="UoM" menuIndex="100" layoutType="MANAGE" navigationPath="/Home" perspectiveName="UnitOfMeasures" perspectiveIcon="/services/web/resources/unicons/copy.svg" perspectiveOrder="100" projectionReferencedModel="/workspace/codbex-uoms/codbex-uoms.model" projectionReferencedEntity="UoM">
     <property name="Id" isCalculatedProperty="false" calculatedPropertyExpression="" dataName="UOM_ID" dataType="INTEGER" dataLength="0" dataNullable="true" dataPrimaryKey="true" dataAutoIncrement="true" dataUnique="false" widgetType="TEXTBOX" widgetLength="20" widgetIsMajor="true"></property>
     <property name="Name" isCalculatedProperty="false" calculatedPropertyExpression="" dataName="UOM_NAME" dataType="VARCHAR" dataLength="255" dataNullable="true" dataPrimaryKey="false" dataAutoIncrement="false" dataUnique="false" widgetType="TEXTBOX" widgetLength="20" widgetIsMajor="true"></property>
     <property name="Unit" isCalculatedProperty="false" calculatedPropertyExpression="" dataName="UOM_UNIT" dataType="VARCHAR" dataLength="20" dataNullable="true" dataPrimaryKey="false" dataAutoIncrement="false" dataUnique="false" widgetType="TEXTBOX" widgetLength="20" widgetIsMajor="true"></property>
@@ -37,7 +37,7 @@
     <property name="Denominator" isCalculatedProperty="false" calculatedPropertyExpression="" dataName="UOM_DENOMINATOR" dataType="INTEGER" dataLength="0" dataNullable="true" dataPrimaryKey="false" dataAutoIncrement="false" dataUnique="false" widgetType="TEXTBOX" widgetLength="20" widgetIsMajor="true"></property>
     <property name="Rounding" isCalculatedProperty="false" calculatedPropertyExpression="" dataName="UOM_ROUNDING" dataType="INTEGER" dataLength="0" dataNullable="true" dataPrimaryKey="false" dataAutoIncrement="false" dataUnique="false" widgetType="TEXTBOX" widgetLength="20" widgetIsMajor="true"></property>
   </entity>
-  <relation name="Product_UoM" type="relation" entity="Product" relationName="Product_UoM" relationshipEntityPerspectiveName="entities" property="UoM" referenced="UoM" referencedProperty="Id">
+  <relation name="Product_UoM" type="relation" entity="Product" relationName="Product_UoM" relationshipEntityPerspectiveName="UnitOfMeasures" property="UoM" referenced="UoM" referencedProperty="Id">
   </relation>
  </entities>
  <perspectives>
