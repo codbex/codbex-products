@@ -3,9 +3,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHubProvider.eventIdPrefix = 'codbex-products.Products.Product';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/js/codbex-products/gen/api/Products/Product.js";
+		entityApiProvider.baseUrl = "/services/ts/codbex-products/gen/api/Products/ProductService.ts";
 	}])
-	.controller('PageController', ['$scope', 'messageHub', 'entityApi', function ($scope, messageHub, entityApi) {
+	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', function ($scope, $http, messageHub, entityApi) {
 
 		$scope.entity = {};
 		$scope.formHeaders = {
@@ -16,14 +16,33 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.formErrors = {};
 		$scope.action = 'select';
 
+		//-----------------Custom Actions-------------------//
+		$http.get("/services/js/resources-core/services/custom-actions.js?extensionPoint=codbex-products-custom-action").then(function (response) {
+			$scope.entityActions = response.data.filter(e => e.perspective === "Products" && e.view === "Product" && e.type === "entity");
+		});
+
+		$scope.triggerEntityAction = function (actionId, selectedEntity) {
+			for (const next of $scope.entityActions) {
+				if (next.id === actionId) {
+					messageHub.showDialogWindow("codbex-products-custom-action", {
+						src: `${next.link}?id=${$scope.entity.Id}`,
+					});
+					break;
+				}
+			}
+		};
+		//-----------------Custom Actions-------------------//
+
 		//-----------------Events-------------------//
 		messageHub.onDidReceiveMessage("clearDetails", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = {};
 				$scope.formErrors = {};
-				$scope.optionsProductType = [];
-				$scope.optionsProductCategory = [];
-				$scope.optionsUoM = [];
+				$scope.optionsType = [];
+				$scope.optionsCategory = [];
+				$scope.optionsBaseUnit = [];
+				$scope.optionsCompany = [];
+				$scope.optionsManufacturer = [];
 				$scope.action = 'select';
 			});
 		});
@@ -31,9 +50,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHub.onDidReceiveMessage("entitySelected", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = msg.data.entity;
-				$scope.optionsProductType = msg.data.optionsProductType;
-				$scope.optionsProductCategory = msg.data.optionsProductCategory;
-				$scope.optionsUoM = msg.data.optionsUoM;
+				$scope.optionsType = msg.data.optionsType;
+				$scope.optionsCategory = msg.data.optionsCategory;
+				$scope.optionsBaseUnit = msg.data.optionsBaseUnit;
+				$scope.optionsCompany = msg.data.optionsCompany;
+				$scope.optionsManufacturer = msg.data.optionsManufacturer;
 				$scope.action = 'select';
 			});
 		});
@@ -41,9 +62,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHub.onDidReceiveMessage("createEntity", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = {};
-				$scope.optionsProductType = msg.data.optionsProductType;
-				$scope.optionsProductCategory = msg.data.optionsProductCategory;
-				$scope.optionsUoM = msg.data.optionsUoM;
+				$scope.optionsType = msg.data.optionsType;
+				$scope.optionsCategory = msg.data.optionsCategory;
+				$scope.optionsBaseUnit = msg.data.optionsBaseUnit;
+				$scope.optionsCompany = msg.data.optionsCompany;
+				$scope.optionsManufacturer = msg.data.optionsManufacturer;
 				$scope.action = 'create';
 				// Set Errors for required fields only
 				$scope.formErrors = {
@@ -54,9 +77,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHub.onDidReceiveMessage("updateEntity", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = msg.data.entity;
-				$scope.optionsProductType = msg.data.optionsProductType;
-				$scope.optionsProductCategory = msg.data.optionsProductCategory;
-				$scope.optionsUoM = msg.data.optionsUoM;
+				$scope.optionsType = msg.data.optionsType;
+				$scope.optionsCategory = msg.data.optionsCategory;
+				$scope.optionsBaseUnit = msg.data.optionsBaseUnit;
+				$scope.optionsCompany = msg.data.optionsCompany;
+				$scope.optionsManufacturer = msg.data.optionsManufacturer;
 				$scope.action = 'update';
 			});
 		});

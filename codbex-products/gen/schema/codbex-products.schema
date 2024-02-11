@@ -67,7 +67,7 @@
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 200,
+                        "length": 500,
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
@@ -79,7 +79,7 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "PRODUCT_PRODUCTTYPEID"
+                        "name": "PRODUCT_TYPE"
                     },
                     {
                         "type": "INTEGER",
@@ -87,7 +87,7 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "PRODUCT_PRODUCTCATEGORYID"
+                        "name": "PRODUCT_CATEGORY"
                     },
                     {
                         "type": "INTEGER",
@@ -95,7 +95,95 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "PRODUCT_UOMID"
+                        "name": "PRODUCT_BASEUNIT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PRODUCT_MODEL"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PRODUCT_COMPANY"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 64,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PRODUCT_SKU"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "PRODUCT_UPC"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "PRODUCT_EAN"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "PRODUCT_JAN"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "PRODUCT_ISBN"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 40,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PRODUCT_MPN"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PRODUCT_MANUFACTURER"
+                    },
+                    {
+                        "type": "DOUBLE",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PRODUCT_WEIGHT"
+                    },
+                    {
+                        "type": "DOUBLE",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PRODUCT_HEIGHT"
+                    },
+                    {
+                        "type": "DOUBLE",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PRODUCT_LENGTH"
                     }
                 ]
             },
@@ -112,6 +200,14 @@
                         "name": "PRODUCTDETAILS_ID"
                     },
                     {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PRODUCTDETAILS_PRODUCTID"
+                    },
+                    {
                         "type": "VARCHAR",
                         "length": 200,
                         "precision": "NaN",
@@ -126,14 +222,6 @@
                         "scale": "NaN",
                         "nullable": true,
                         "name": "PRODUCTDETAILS_VALUE"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "length": 0,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "PRODUCTDETAILS_PRODUCTID"
                     }
                 ]
             },
@@ -188,11 +276,139 @@
                 ]
             },
             {
+                "name": "CODBEX_COMPANY",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "COMPANY_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "COMPANY_NAME"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 50,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "COMPANY_MANAGER"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "COMPANY_EMAIL"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "COMPANY_PHONE"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "COMPANY_ADDRESS"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "COMPANY_POSTCODE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "COMPANY_CITY"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "COMPANY_COUNTRY"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "COMPANY_TIN"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 22,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "COMPANY_IBAN"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_MANUFACTURER",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "ENTITY5_ENTITY5ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "ENTITY5_NAME"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "ENTITY5_CITY"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "ENTITY5_COUNTRY"
+                    }
+                ]
+            },
+            {
                 "name": "Product_ProductType",
                 "type": "foreignKey",
                 "table": "CODBEX_PRODUCT",
                 "constraintName": "Product_ProductType",
-                "columns": "PRODUCT_PRODUCTTYPEID",
+                "columns": "PRODUCT_TYPE",
                 "referencedTable": "CODBEX_PRODUCTTYPE",
                 "referencedColumns": "PRODUCTTYPE_ID"
             },
@@ -201,7 +417,7 @@
                 "type": "foreignKey",
                 "table": "CODBEX_PRODUCT",
                 "constraintName": "Product_ProductCategory",
-                "columns": "PRODUCT_PRODUCTCATEGORYID",
+                "columns": "PRODUCT_CATEGORY",
                 "referencedTable": "CODBEX_PRODUCTCATEGORY",
                 "referencedColumns": "PRODUCTCATEGORY_ID"
             },
@@ -210,19 +426,38 @@
                 "type": "foreignKey",
                 "table": "CODBEX_PRODUCT",
                 "constraintName": "Product_UoM",
-                "columns": "PRODUCT_UOMID",
+                "columns": "PRODUCT_BASEUNIT",
                 "referencedTable": "CODBEX_UOM",
                 "referencedColumns": "UOM_ID"
             },
             {
-                "name": "ProductDetails_Product",
+                "name": "Product_Company",
+                "type": "foreignKey",
+                "table": "CODBEX_PRODUCT",
+                "constraintName": "Product_Company",
+                "columns": "PRODUCT_COMPANY",
+                "referencedTable": "CODBEX_COMPANY",
+                "referencedColumns": "COMPANY_ID"
+            },
+            {
+                "name": "Product_Manufacturer",
+                "type": "foreignKey",
+                "table": "CODBEX_PRODUCT",
+                "constraintName": "Product_Manufacturer",
+                "columns": "PRODUCT_MANUFACTURER",
+                "referencedTable": "CODBEX_MANUFACTURER",
+                "referencedColumns": "ENTITY5_ENTITY5ID"
+            },
+            {
+                "name": "ProductAttribute_Product",
                 "type": "foreignKey",
                 "table": "CODBEX_PRODUCTDETAILS",
-                "constraintName": "ProductDetails_Product",
+                "constraintName": "ProductAttribute_Product",
                 "columns": "PRODUCTDETAILS_PRODUCTID",
                 "referencedTable": "CODBEX_PRODUCT",
                 "referencedColumns": "PRODUCT_ID"
             }
         ]
-    }
+    },
+    "datasource": "DefaultDB"
 }

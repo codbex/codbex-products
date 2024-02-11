@@ -3,7 +3,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHubProvider.eventIdPrefix = 'codbex-products.Products.Product';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/js/codbex-products/gen/api/Products/Product.js";
+		entityApiProvider.baseUrl = "/services/ts/codbex-products/gen/api/Products/ProductService.ts";
 	}])
 	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', function ($scope, $http, messageHub, entityApi) {
 
@@ -12,6 +12,23 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.dataOffset = 0;
 		$scope.dataLimit = 10;
 		$scope.action = "select";
+
+		//-----------------Custom Actions-------------------//
+		$http.get("/services/js/resources-core/services/custom-actions.js?extensionPoint=codbex-products-custom-action").then(function (response) {
+			$scope.pageActions = response.data.filter(e => e.perspective === "Products" && e.view === "Product" && (e.type === "page" || e.type === undefined));
+		});
+
+		$scope.triggerPageAction = function (actionId) {
+			for (const next of $scope.pageActions) {
+				if (next.id === actionId) {
+					messageHub.showDialogWindow("codbex-products-custom-action", {
+						src: next.link,
+					});
+					break;
+				}
+			}
+		};
+		//-----------------Custom Actions-------------------//
 
 		function refreshData() {
 			$scope.dataReset = true;
@@ -73,9 +90,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.postMessage("entitySelected", {
 				entity: entity,
 				selectedMainEntityId: entity.Id,
-				optionsProductType: $scope.optionsProductType,
-				optionsProductCategory: $scope.optionsProductCategory,
-				optionsUoM: $scope.optionsUoM,
+				optionsType: $scope.optionsType,
+				optionsCategory: $scope.optionsCategory,
+				optionsBaseUnit: $scope.optionsBaseUnit,
+				optionsCompany: $scope.optionsCompany,
+				optionsManufacturer: $scope.optionsManufacturer,
 			});
 		};
 
@@ -85,9 +104,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 			messageHub.postMessage("createEntity", {
 				entity: {},
-				optionsProductType: $scope.optionsProductType,
-				optionsProductCategory: $scope.optionsProductCategory,
-				optionsUoM: $scope.optionsUoM,
+				optionsType: $scope.optionsType,
+				optionsCategory: $scope.optionsCategory,
+				optionsBaseUnit: $scope.optionsBaseUnit,
+				optionsCompany: $scope.optionsCompany,
+				optionsManufacturer: $scope.optionsManufacturer,
 			});
 		};
 
@@ -95,9 +116,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.action = "update";
 			messageHub.postMessage("updateEntity", {
 				entity: $scope.selectedEntity,
-				optionsProductType: $scope.optionsProductType,
-				optionsProductCategory: $scope.optionsProductCategory,
-				optionsUoM: $scope.optionsUoM,
+				optionsType: $scope.optionsType,
+				optionsCategory: $scope.optionsCategory,
+				optionsBaseUnit: $scope.optionsBaseUnit,
+				optionsCompany: $scope.optionsCompany,
+				optionsManufacturer: $scope.optionsManufacturer,
 			});
 		};
 
@@ -132,12 +155,14 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		};
 
 		//----------------Dropdowns-----------------//
-		$scope.optionsProductType = [];
-		$scope.optionsProductCategory = [];
-		$scope.optionsUoM = [];
+		$scope.optionsType = [];
+		$scope.optionsCategory = [];
+		$scope.optionsBaseUnit = [];
+		$scope.optionsCompany = [];
+		$scope.optionsManufacturer = [];
 
-		$http.get("/services/js/codbex-products/gen/api/Settings/ProductType.js").then(function (response) {
-			$scope.optionsProductType = response.data.map(e => {
+		$http.get("/services/ts/codbex-products/gen/api/Settings/ProductTypeService.ts").then(function (response) {
+			$scope.optionsType = response.data.map(e => {
 				return {
 					value: e.Id,
 					text: e.Name
@@ -145,8 +170,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/js/codbex-products/gen/api/Settings/ProductCategory.js").then(function (response) {
-			$scope.optionsProductCategory = response.data.map(e => {
+		$http.get("/services/ts/codbex-products/gen/api/Categories/ProductCategoryService.ts").then(function (response) {
+			$scope.optionsCategory = response.data.map(e => {
 				return {
 					value: e.Id,
 					text: e.Name
@@ -154,34 +179,68 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/js/codbex-products/gen/api/entities/UoM.js").then(function (response) {
-			$scope.optionsUoM = response.data.map(e => {
+		$http.get("/services/ts/codbex-products/gen/api/entities/UoMService.ts").then(function (response) {
+			$scope.optionsBaseUnit = response.data.map(e => {
 				return {
 					value: e.Id,
 					text: e.Name
 				}
 			});
 		});
-		$scope.optionsProductTypeValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsProductType.length; i++) {
-				if ($scope.optionsProductType[i].value === optionKey) {
-					return $scope.optionsProductType[i].text;
+
+		$http.get("/services/ts/codbex-products/gen/api/Companies/CompanyService.ts").then(function (response) {
+			$scope.optionsCompany = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
+				}
+			});
+		});
+
+		$http.get("/services/ts/codbex-products/gen/api/Manufacturers/ManufacturerService.ts").then(function (response) {
+			$scope.optionsManufacturer = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
+				}
+			});
+		});
+		$scope.optionsTypeValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsType.length; i++) {
+				if ($scope.optionsType[i].value === optionKey) {
+					return $scope.optionsType[i].text;
 				}
 			}
 			return null;
 		};
-		$scope.optionsProductCategoryValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsProductCategory.length; i++) {
-				if ($scope.optionsProductCategory[i].value === optionKey) {
-					return $scope.optionsProductCategory[i].text;
+		$scope.optionsCategoryValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsCategory.length; i++) {
+				if ($scope.optionsCategory[i].value === optionKey) {
+					return $scope.optionsCategory[i].text;
 				}
 			}
 			return null;
 		};
-		$scope.optionsUoMValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsUoM.length; i++) {
-				if ($scope.optionsUoM[i].value === optionKey) {
-					return $scope.optionsUoM[i].text;
+		$scope.optionsBaseUnitValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsBaseUnit.length; i++) {
+				if ($scope.optionsBaseUnit[i].value === optionKey) {
+					return $scope.optionsBaseUnit[i].text;
+				}
+			}
+			return null;
+		};
+		$scope.optionsCompanyValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsCompany.length; i++) {
+				if ($scope.optionsCompany[i].value === optionKey) {
+					return $scope.optionsCompany[i].text;
+				}
+			}
+			return null;
+		};
+		$scope.optionsManufacturerValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsManufacturer.length; i++) {
+				if ($scope.optionsManufacturer[i].value === optionKey) {
+					return $scope.optionsManufacturer[i].text;
 				}
 			}
 			return null;

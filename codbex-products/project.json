@@ -1,16 +1,19 @@
 {
     "guid": "codbex-products",
-    "repository": {
-        "type": "git",
-        "branch": "main",
-        "url": "https://github.com/codbex/codbex-products.git"
-    },
-    "dependencies": [
+    "actions": [
         {
-            "guid": "codbex-uoms",
-            "type": "git",
-            "url": "https://github.com/codbex/codbex-uoms.git",
-            "branch": "main"
+            "name": "Build TypeScript",
+            "commands": [
+                {
+                    "os": "unix",
+                    "command": "tsc"
+                },
+                {
+                    "os": "windows",
+                    "command": "cmd /c tsc"
+                }
+            ],
+            "registry": "true"
         }
     ]
 }
