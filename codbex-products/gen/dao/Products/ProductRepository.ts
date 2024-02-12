@@ -21,6 +21,7 @@ export interface ProductEntity {
     Weight?: number;
     Height?: number;
     Length?: number;
+    VAT?: number;
 }
 
 export interface ProductCreateEntity {
@@ -40,6 +41,7 @@ export interface ProductCreateEntity {
     readonly Weight?: number;
     readonly Height?: number;
     readonly Length?: number;
+    readonly VAT?: number;
 }
 
 export interface ProductUpdateEntity extends ProductCreateEntity {
@@ -66,6 +68,7 @@ export interface ProductEntityOptions {
             Weight?: number | number[];
             Height?: number | number[];
             Length?: number | number[];
+            VAT?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
@@ -85,6 +88,7 @@ export interface ProductEntityOptions {
             Weight?: number | number[];
             Height?: number | number[];
             Length?: number | number[];
+            VAT?: number | number[];
         };
         contains?: {
             Id?: number;
@@ -104,6 +108,7 @@ export interface ProductEntityOptions {
             Weight?: number;
             Height?: number;
             Length?: number;
+            VAT?: number;
         };
         greaterThan?: {
             Id?: number;
@@ -123,6 +128,7 @@ export interface ProductEntityOptions {
             Weight?: number;
             Height?: number;
             Length?: number;
+            VAT?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
@@ -142,6 +148,7 @@ export interface ProductEntityOptions {
             Weight?: number;
             Height?: number;
             Length?: number;
+            VAT?: number;
         };
         lessThan?: {
             Id?: number;
@@ -161,6 +168,7 @@ export interface ProductEntityOptions {
             Weight?: number;
             Height?: number;
             Length?: number;
+            VAT?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
@@ -180,6 +188,7 @@ export interface ProductEntityOptions {
             Weight?: number;
             Height?: number;
             Length?: number;
+            VAT?: number;
         };
     },
     $select?: (keyof ProductEntity)[],
@@ -290,6 +299,11 @@ export class ProductRepository {
             {
                 name: "Length",
                 column: "PRODUCT_LENGTH",
+                type: "DOUBLE",
+            },
+            {
+                name: "VAT",
+                column: "PRODUCT_VAT",
                 type: "DOUBLE",
             }
         ]

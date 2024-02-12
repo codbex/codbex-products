@@ -52,7 +52,7 @@
                 "perspectiveOrder": "999",
                 "title": "ProductType",
                 "tooltip": "ProductType",
-                "type": "PRIMARY"
+                "type": "SETTING"
             },
             {
                 "properties": [
@@ -122,7 +122,7 @@
                 "perspectiveOrder": "200",
                 "title": "ProductCategory",
                 "tooltip": "ProductCategory",
-                "type": "PRIMARY"
+                "type": "SETTING"
             },
             {
                 "properties": [
@@ -426,6 +426,23 @@
                         "dataUnique": "false",
                         "isCalculatedProperty": "false",
                         "name": "Length",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetType": "NUMBER"
+                    },
+                    {
+                        "calculatedPropertyExpression": "",
+                        "dataAutoIncrement": "false",
+                        "dataLength": "20",
+                        "dataName": "PRODUCT_VAT",
+                        "dataNullable": "true",
+                        "dataPrecision": "NaN",
+                        "dataPrimaryKey": "false",
+                        "dataScale": "NaN",
+                        "dataType": "DOUBLE",
+                        "dataUnique": "false",
+                        "isCalculatedProperty": "false",
+                        "name": "VAT",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
                         "widgetType": "NUMBER"

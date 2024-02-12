@@ -144,7 +144,7 @@
       "perspectiveOrder": "999",
       "title": "ProductType",
       "tooltip": "ProductType",
-      "type": "PRIMARY",
+      "type": "SETTING",
       "primaryKeys": [
         "Id"
       ],
@@ -237,7 +237,7 @@
       "perspectiveOrder": "200",
       "title": "ProductCategory",
       "tooltip": "ProductCategory",
-      "type": "PRIMARY",
+      "type": "SETTING",
       "primaryKeys": [
         "Id"
       ],
@@ -649,6 +649,28 @@
           "dataTypeJava": "double",
           "dataTypeTypescript": "number",
           "inputRule": ""
+        },
+        {
+          "calculatedPropertyExpression": "",
+          "dataAutoIncrement": false,
+          "dataLength": "20",
+          "dataName": "PRODUCT_VAT",
+          "dataNullable": true,
+          "dataPrecision": "NaN",
+          "dataPrimaryKey": false,
+          "dataScale": "NaN",
+          "dataType": "DOUBLE",
+          "dataUnique": false,
+          "isCalculatedProperty": false,
+          "name": "VAT",
+          "widgetIsMajor": true,
+          "widgetLength": "20",
+          "widgetType": "NUMBER",
+          "dataNotNull": false,
+          "widgetLabel": "VAT",
+          "dataTypeJava": "double",
+          "dataTypeTypescript": "number",
+          "inputRule": ""
         }
       ],
       "caption": "Manage entity Product",
@@ -1055,6 +1077,28 @@
             "widgetType": "NUMBER",
             "dataNotNull": false,
             "widgetLabel": "Length",
+            "dataTypeJava": "double",
+            "dataTypeTypescript": "number",
+            "inputRule": ""
+          },
+          {
+            "calculatedPropertyExpression": "",
+            "dataAutoIncrement": false,
+            "dataLength": "20",
+            "dataName": "PRODUCT_VAT",
+            "dataNullable": true,
+            "dataPrecision": "NaN",
+            "dataPrimaryKey": false,
+            "dataScale": "NaN",
+            "dataType": "DOUBLE",
+            "dataUnique": false,
+            "isCalculatedProperty": false,
+            "name": "VAT",
+            "widgetIsMajor": true,
+            "widgetLength": "20",
+            "widgetType": "NUMBER",
+            "dataNotNull": false,
+            "widgetLabel": "VAT",
             "dataTypeJava": "double",
             "dataTypeTypescript": "number",
             "inputRule": ""

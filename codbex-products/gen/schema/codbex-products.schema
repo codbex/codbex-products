@@ -184,6 +184,14 @@
                         "scale": "NaN",
                         "nullable": true,
                         "name": "PRODUCT_LENGTH"
+                    },
+                    {
+                        "type": "DOUBLE",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PRODUCT_VAT"
                     }
                 ]
             },
