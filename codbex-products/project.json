@@ -1,5 +1,25 @@
 {
     "guid": "codbex-products",
+    "dependencies": [
+        {
+            "guid": "codbex-uoms",
+            "type": "git",
+            "url": "https://github.com/codbex/codbex-uoms.git",
+            "branch": "main"
+        },
+        {
+            "guid": "codbex-companies",
+            "type": "git",
+            "url": "https://github.com/codbex/codbex-companies.git",
+            "branch": "main"
+        },
+        {
+            "guid": "codbex-partners",
+            "type": "git",
+            "url": "https://github.com/codbex/codbex-partners.git",
+            "branch": "main"
+        }
+    ],
     "actions": [
         {
             "name": "Build TypeScript",
