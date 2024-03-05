@@ -1,6 +1,9 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
+import { Extensions } from "sdk/extensions"
 import { ManufacturerRepository, ManufacturerEntityOptions } from "../../dao/Manufacturers/ManufacturerRepository";
 import { HttpUtils } from "../utils/HttpUtils";
+
+const validationModules = await Extensions.loadExtensionModules("codbex-products-Manufacturers-Manufacturer", ["validate"]);
 
 @Controller
 class ManufacturerService {
@@ -24,6 +27,7 @@ class ManufacturerService {
     @Post("/")
     public create(entity: any) {
         try {
+            this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
             response.setHeader("Content-Location", "/services/ts/codbex-products/gen/api/Manufacturers/ManufacturerService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
@@ -37,6 +41,24 @@ class ManufacturerService {
     public count() {
         try {
             return this.repository.count();
+        } catch (error: any) {
+            this.handleError(error);
+        }
+    }
+
+    @Post("/count")
+    public countWithFilter(filter: any) {
+        try {
+            return this.repository.count(filter);
+        } catch (error: any) {
+            this.handleError(error);
+        }
+    }
+
+    @Post("/search")
+    public search(filter: any) {
+        try {
+            return this.repository.findAll(filter);
         } catch (error: any) {
             this.handleError(error);
         }
@@ -61,6 +83,7 @@ class ManufacturerService {
     public update(entity: any, ctx: any) {
         try {
             entity.Id = ctx.pathParameters.id;
+            this.validateEntity(entity);
             this.repository.update(entity);
             return entity;
         } catch (error: any) {
@@ -91,6 +114,15 @@ class ManufacturerService {
             HttpUtils.sendResponseBadRequest(error.message);
         } else {
             HttpUtils.sendInternalServerError(error.message);
+        }
+    }
+
+    private validateEntity(entity: any): void {
+        if (entity.Name.length > 100) {
+            throw new ValidationError(`The 'Name' exceeds the maximum length of [100] characters`);
+        }
+        for (const next of validationModules) {
+            next.validate(entity);
         }
     }
 }

@@ -1,6 +1,9 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
+import { Extensions } from "sdk/extensions"
 import { ProductRepository, ProductEntityOptions } from "../../dao/Products/ProductRepository";
 import { HttpUtils } from "../utils/HttpUtils";
+
+const validationModules = await Extensions.loadExtensionModules("codbex-products-Products-Product", ["validate"]);
 
 @Controller
 class ProductService {
@@ -24,6 +27,7 @@ class ProductService {
     @Post("/")
     public create(entity: any) {
         try {
+            this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
             response.setHeader("Content-Location", "/services/ts/codbex-products/gen/api/Products/ProductService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
@@ -37,6 +41,24 @@ class ProductService {
     public count() {
         try {
             return this.repository.count();
+        } catch (error: any) {
+            this.handleError(error);
+        }
+    }
+
+    @Post("/count")
+    public countWithFilter(filter: any) {
+        try {
+            return this.repository.count(filter);
+        } catch (error: any) {
+            this.handleError(error);
+        }
+    }
+
+    @Post("/search")
+    public search(filter: any) {
+        try {
+            return this.repository.findAll(filter);
         } catch (error: any) {
             this.handleError(error);
         }
@@ -61,6 +83,7 @@ class ProductService {
     public update(entity: any, ctx: any) {
         try {
             entity.Id = ctx.pathParameters.id;
+            this.validateEntity(entity);
             this.repository.update(entity);
             return entity;
         } catch (error: any) {
@@ -91,6 +114,36 @@ class ProductService {
             HttpUtils.sendResponseBadRequest(error.message);
         } else {
             HttpUtils.sendInternalServerError(error.message);
+        }
+    }
+
+    private validateEntity(entity: any): void {
+        if (entity.Name?.length > 500) {
+            throw new ValidationError(`The 'Name' exceeds the maximum length of [500] characters`);
+        }
+        if (entity.Model?.length > 200) {
+            throw new ValidationError(`The 'Model' exceeds the maximum length of [200] characters`);
+        }
+        if (entity.SKU?.length > 64) {
+            throw new ValidationError(`The 'SKU' exceeds the maximum length of [64] characters`);
+        }
+        if (entity.UPC?.length > 20) {
+            throw new ValidationError(`The 'UPC' exceeds the maximum length of [20] characters`);
+        }
+        if (entity.EAN?.length > 20) {
+            throw new ValidationError(`The 'EAN' exceeds the maximum length of [20] characters`);
+        }
+        if (entity.JAN?.length > 20) {
+            throw new ValidationError(`The 'JAN' exceeds the maximum length of [20] characters`);
+        }
+        if (entity.ISBN?.length > 20) {
+            throw new ValidationError(`The 'ISBN' exceeds the maximum length of [20] characters`);
+        }
+        if (entity.MPN?.length > 40) {
+            throw new ValidationError(`The 'MPN' exceeds the maximum length of [40] characters`);
+        }
+        for (const next of validationModules) {
+            next.validate(entity);
         }
     }
 }

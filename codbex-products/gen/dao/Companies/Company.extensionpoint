@@ -1,1 +1,4 @@
-{"location":"codbex-products/gen/dao/Companies/Company.extensionpoint","name":"codbex-products/Companies/Company","description":"Extension Point for codbex-products Companies Company"}
+{
+    "name": "codbex-products-Companies-Company",
+    "description": "Extension Point for the codbex-products-Companies-Company entity"
+}

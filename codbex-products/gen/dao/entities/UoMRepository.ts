@@ -229,11 +229,11 @@ export class UoMRepository {
         });
     }
 
-    public count(): number {
-        return this.dao.count();
+    public count(options?: UoMEntityOptions): number {
+        return this.dao.count(options);
     }
 
-    public customDataCount(): number {
+    public customDataCount(options?: UoMEntityOptions): number {
         const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX__UOM"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
@@ -246,7 +246,7 @@ export class UoMRepository {
     }
 
     private async triggerEvent(data: UoMEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-products/entities/UoM", ["trigger"]);
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-products-entities-UoM", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -254,6 +254,6 @@ export class UoMRepository {
                 console.error(error);
             }            
         });
-        producer.queue("codbex-products/entities/UoM").send(JSON.stringify(data));
+        producer.topic("codbex-products/entities/UoM").send(JSON.stringify(data));
     }
 }

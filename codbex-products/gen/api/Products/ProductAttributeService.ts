@@ -1,6 +1,9 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
+import { Extensions } from "sdk/extensions"
 import { ProductAttributeRepository, ProductAttributeEntityOptions } from "../../dao/Products/ProductAttributeRepository";
 import { HttpUtils } from "../utils/HttpUtils";
+
+const validationModules = await Extensions.loadExtensionModules("codbex-products-Products-ProductAttribute", ["validate"]);
 
 @Controller
 class ProductAttributeService {
@@ -10,7 +13,14 @@ class ProductAttributeService {
     @Get("/")
     public getAll(_: any, ctx: any) {
         try {
+            let Product = parseInt(ctx.queryParameters.Product);
+            Product = isNaN(Product) ? ctx.queryParameters.Product : Product;
             const options: ProductAttributeEntityOptions = {
+                $filter: {
+                    equals: {
+                        Product: Product
+                    }
+                },
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
@@ -24,6 +34,7 @@ class ProductAttributeService {
     @Post("/")
     public create(entity: any) {
         try {
+            this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
             response.setHeader("Content-Location", "/services/ts/codbex-products/gen/api/Products/ProductAttributeService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
@@ -33,12 +44,28 @@ class ProductAttributeService {
         }
     }
 
-    @Get("/count/:Product")
-    public count(_: any, ctx: any) {
+    @Get("/count")
+    public count() {
         try {
-            let Product = parseInt(ctx.pathParameters.Product);
-            Product = isNaN(Product) ? ctx.pathParameters.Product : Product;
-            return this.repository.count(Product);
+            return this.repository.count();
+        } catch (error: any) {
+            this.handleError(error);
+        }
+    }
+
+    @Post("/count")
+    public countWithFilter(filter: any) {
+        try {
+            return this.repository.count(filter);
+        } catch (error: any) {
+            this.handleError(error);
+        }
+    }
+
+    @Post("/search")
+    public search(filter: any) {
+        try {
+            return this.repository.findAll(filter);
         } catch (error: any) {
             this.handleError(error);
         }
@@ -63,6 +90,7 @@ class ProductAttributeService {
     public update(entity: any, ctx: any) {
         try {
             entity.Id = ctx.pathParameters.id;
+            this.validateEntity(entity);
             this.repository.update(entity);
             return entity;
         } catch (error: any) {
@@ -93,6 +121,18 @@ class ProductAttributeService {
             HttpUtils.sendResponseBadRequest(error.message);
         } else {
             HttpUtils.sendInternalServerError(error.message);
+        }
+    }
+
+    private validateEntity(entity: any): void {
+        if (entity.Name.length > 200) {
+            throw new ValidationError(`The 'Name' exceeds the maximum length of [200] characters`);
+        }
+        if (entity.Value.length > 2000) {
+            throw new ValidationError(`The 'Value' exceeds the maximum length of [2000] characters`);
+        }
+        for (const next of validationModules) {
+            next.validate(entity);
         }
     }
 }

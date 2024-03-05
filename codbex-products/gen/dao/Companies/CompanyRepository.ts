@@ -285,11 +285,11 @@ export class CompanyRepository {
         });
     }
 
-    public count(): number {
-        return this.dao.count();
+    public count(options?: CompanyEntityOptions): number {
+        return this.dao.count(options);
     }
 
-    public customDataCount(): number {
+    public customDataCount(options?: CompanyEntityOptions): number {
         const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_COMPANY"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
@@ -302,7 +302,7 @@ export class CompanyRepository {
     }
 
     private async triggerEvent(data: CompanyEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-products/Companies/Company", ["trigger"]);
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-products-Companies-Company", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -310,6 +310,6 @@ export class CompanyRepository {
                 console.error(error);
             }            
         });
-        producer.queue("codbex-products/Companies/Company").send(JSON.stringify(data));
+        producer.topic("codbex-products/Companies/Company").send(JSON.stringify(data));
     }
 }

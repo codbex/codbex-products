@@ -173,11 +173,11 @@ export class ProductCategoryRepository {
         });
     }
 
-    public count(): number {
-        return this.dao.count();
+    public count(options?: ProductCategoryEntityOptions): number {
+        return this.dao.count(options);
     }
 
-    public customDataCount(): number {
+    public customDataCount(options?: ProductCategoryEntityOptions): number {
         const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX__PRODUCTCATEGORY"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
@@ -190,7 +190,7 @@ export class ProductCategoryRepository {
     }
 
     private async triggerEvent(data: ProductCategoryEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-products/Categories/ProductCategory", ["trigger"]);
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-products-Categories-ProductCategory", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -198,6 +198,6 @@ export class ProductCategoryRepository {
                 console.error(error);
             }            
         });
-        producer.queue("codbex-products/Categories/ProductCategory").send(JSON.stringify(data));
+        producer.topic("codbex-products/Categories/ProductCategory").send(JSON.stringify(data));
     }
 }

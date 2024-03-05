@@ -1,1 +1,4 @@
-{"location":"codbex-products/gen/dao/Products/ProductAttribute.extensionpoint","name":"codbex-products/Products/ProductAttribute","description":"Extension Point for codbex-products Products ProductAttribute"}
+{
+    "name": "codbex-products-Products-ProductAttribute",
+    "description": "Extension Point for the codbex-products-Products-ProductAttribute entity"
+}

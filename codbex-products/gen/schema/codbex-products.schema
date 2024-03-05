@@ -186,10 +186,10 @@
                         "name": "PRODUCT_LENGTH"
                     },
                     {
-                        "type": "DOUBLE",
+                        "type": "DECIMAL",
                         "length": 20,
-                        "precision": "NaN",
-                        "scale": "NaN",
+                        "precision": "16",
+                        "scale": "2",
                         "nullable": true,
                         "name": "PRODUCT_VAT"
                     }

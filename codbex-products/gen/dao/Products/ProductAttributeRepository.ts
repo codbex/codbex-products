@@ -187,21 +187,11 @@ export class ProductAttributeRepository {
         });
     }
 
-
-
-    public count(Product: number): number {
-        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_PRODUCTDETAILS" WHERE "PRODUCTDETAILS_PRODUCTID" = ?', [Product]);
-        if (resultSet !== null && resultSet[0] !== null) {
-            if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
-                return resultSet[0].COUNT;
-            } else if (resultSet[0].count !== undefined && resultSet[0].count !== null) {
-                return resultSet[0].count;
-            }
-        }
-        return 0;
+    public count(options?: ProductAttributeEntityOptions): number {
+        return this.dao.count(options);
     }
 
-    public customDataCount(): number {
+    public customDataCount(options?: ProductAttributeEntityOptions): number {
         const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX__PRODUCTDETAILS"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
@@ -214,7 +204,7 @@ export class ProductAttributeRepository {
     }
 
     private async triggerEvent(data: ProductAttributeEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-products/Products/ProductAttribute", ["trigger"]);
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-products-Products-ProductAttribute", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -222,6 +212,6 @@ export class ProductAttributeRepository {
                 console.error(error);
             }            
         });
-        producer.queue("codbex-products/Products/ProductAttribute").send(JSON.stringify(data));
+        producer.topic("codbex-products/Products/ProductAttribute").send(JSON.stringify(data));
     }
 }
