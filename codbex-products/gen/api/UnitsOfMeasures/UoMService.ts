@@ -1,9 +1,10 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { UoMRepository, UoMEntityOptions } from "../../dao/entities/UoMRepository";
+import { UoMRepository, UoMEntityOptions } from "../../dao/UnitsOfMeasures/UoMRepository";
+import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-products-entities-UoM", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-products-UnitsOfMeasures-UoM", ["validate"]);
 
 @Controller
 class UoMService {
@@ -29,7 +30,7 @@ class UoMService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-products/gen/api/entities/UoMService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-products/gen/api/UnitsOfMeasures/UoMService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
@@ -70,7 +71,7 @@ class UoMService {
             const id = parseInt(ctx.pathParameters.id);
             const entity = this.repository.findById(id);
             if (entity) {
-                return entity
+                return entity;
             } else {
                 HttpUtils.sendResponseNotFound("UoM not found");
             }
@@ -118,14 +119,15 @@ class UoMService {
     }
 
     private validateEntity(entity: any): void {
-        if (entity.Name.length > 255) {
-            throw new ValidationError(`The 'Name' exceeds the maximum length of [255] characters`);
+        if (entity.Name?.length > 100) {
+            throw new ValidationError(`The 'Name' exceeds the maximum length of [100] characters`);
         }
-        if (entity.Unit.length > 20) {
+        if (entity.Unit?.length > 20) {
             throw new ValidationError(`The 'Unit' exceeds the maximum length of [20] characters`);
         }
         for (const next of validationModules) {
             next.validate(entity);
         }
     }
+
 }

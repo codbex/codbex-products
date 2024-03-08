@@ -70,7 +70,6 @@
                         "length": 500,
                         "precision": "NaN",
                         "scale": "NaN",
-                        "nullable": true,
                         "name": "PRODUCT_NAME"
                     },
                     {
@@ -90,20 +89,20 @@
                         "name": "PRODUCT_CATEGORY"
                     },
                     {
-                        "type": "INTEGER",
-                        "length": 0,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "PRODUCT_BASEUNIT"
-                    },
-                    {
                         "type": "VARCHAR",
                         "length": 200,
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
                         "name": "PRODUCT_MODEL"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PRODUCT_BASEUNIT"
                     },
                     {
                         "type": "INTEGER",
@@ -234,7 +233,7 @@
                 ]
             },
             {
-                "name": "CODBEX_UOM",
+                "name": "CODBEX_MANUFACTURER",
                 "type": "TABLE",
                 "columns": [
                     {
@@ -243,43 +242,31 @@
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
-                        "name": "UOM_ID"
+                        "name": "ENTITY5_ENTITY5ID"
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 255,
+                        "length": 100,
+                        "precision": "NaN",
+                        "scale": "NaN",
                         "nullable": true,
-                        "name": "UOM_NAME"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 20,
-                        "nullable": true,
-                        "name": "UOM_UNIT"
+                        "name": "ENTITY5_NAME"
                     },
                     {
                         "type": "INTEGER",
                         "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
                         "nullable": true,
-                        "name": "UOM_DIMENSION"
+                        "name": "ENTITY5_CITY"
                     },
                     {
                         "type": "INTEGER",
                         "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
                         "nullable": true,
-                        "name": "UOM_NUMERATOR"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "length": 0,
-                        "nullable": true,
-                        "name": "UOM_DENOMINATOR"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "length": 0,
-                        "nullable": true,
-                        "name": "UOM_ROUNDING"
+                        "name": "ENTITY5_COUNTRY"
                     }
                 ]
             },
@@ -338,6 +325,8 @@
                     {
                         "type": "VARCHAR",
                         "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
                         "nullable": true,
                         "name": "COMPANY_POSTCODE"
                     },
@@ -360,6 +349,8 @@
                     {
                         "type": "VARCHAR",
                         "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
                         "nullable": true,
                         "name": "COMPANY_TIN"
                     },
@@ -374,7 +365,7 @@
                 ]
             },
             {
-                "name": "CODBEX_MANUFACTURER",
+                "name": "CODBEX_UOM",
                 "type": "TABLE",
                 "columns": [
                     {
@@ -383,7 +374,7 @@
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
-                        "name": "ENTITY5_ENTITY5ID"
+                        "name": "UOM_ID"
                     },
                     {
                         "type": "VARCHAR",
@@ -391,7 +382,15 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "ENTITY5_NAME"
+                        "name": "UOM_NAME"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "UOM_UNIT"
                     },
                     {
                         "type": "INTEGER",
@@ -399,7 +398,7 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "ENTITY5_CITY"
+                        "name": "UOM_DIMENSION"
                     },
                     {
                         "type": "INTEGER",
@@ -407,7 +406,23 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "ENTITY5_COUNTRY"
+                        "name": "UOM_NUMERATOR"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "UOM_DENOMINATOR"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "UOM_ROUNDING"
                     }
                 ]
             },

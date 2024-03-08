@@ -1,6 +1,7 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
 import { ProductCategoryRepository, ProductCategoryEntityOptions } from "../../dao/Categories/ProductCategoryRepository";
+import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
 const validationModules = await Extensions.loadExtensionModules("codbex-products-Categories-ProductCategory", ["validate"]);
@@ -70,7 +71,7 @@ class ProductCategoryService {
             const id = parseInt(ctx.pathParameters.id);
             const entity = this.repository.findById(id);
             if (entity) {
-                return entity
+                return entity;
             } else {
                 HttpUtils.sendResponseNotFound("ProductCategory not found");
             }
@@ -118,14 +119,15 @@ class ProductCategoryService {
     }
 
     private validateEntity(entity: any): void {
-        if (entity.Name.length > 200) {
+        if (entity.Name?.length > 200) {
             throw new ValidationError(`The 'Name' exceeds the maximum length of [200] characters`);
         }
-        if (entity.Path.length > 2000) {
+        if (entity.Path?.length > 2000) {
             throw new ValidationError(`The 'Path' exceeds the maximum length of [2000] characters`);
         }
         for (const next of validationModules) {
             next.validate(entity);
         }
     }
+
 }

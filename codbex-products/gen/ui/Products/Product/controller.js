@@ -212,7 +212,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/ts/codbex-uoms/gen/api/entities/UoMService.ts").then(function (response) {
+		$http.get("/services/ts/codbex-uoms/gen/api/UnitsOfMeasures/UoMService.ts").then(function (response) {
 			$scope.optionsBaseUnit = response.data.map(e => {
 				return {
 					value: e.Id,

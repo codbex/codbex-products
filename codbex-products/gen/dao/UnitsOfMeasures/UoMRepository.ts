@@ -233,8 +233,8 @@ export class UoMRepository {
         return this.dao.count(options);
     }
 
-    public customDataCount(options?: UoMEntityOptions): number {
-        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX__UOM"');
+    public customDataCount(): number {
+        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_UOM"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
                 return resultSet[0].COUNT;
@@ -246,7 +246,7 @@ export class UoMRepository {
     }
 
     private async triggerEvent(data: UoMEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-products-entities-UoM", ["trigger"]);
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-products-UnitsOfMeasures-UoM", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -254,6 +254,6 @@ export class UoMRepository {
                 console.error(error);
             }            
         });
-        producer.topic("codbex-products/entities/UoM").send(JSON.stringify(data));
+        producer.topic("codbex-products/UnitsOfMeasures/UoM").send(JSON.stringify(data));
     }
 }

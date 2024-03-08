@@ -59,11 +59,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			if (entity.Category) {
 				filter.$filter.equals.Category = entity.Category;
 			}
-			if (entity.BaseUnit) {
-				filter.$filter.equals.BaseUnit = entity.BaseUnit;
-			}
 			if (entity.Model) {
 				filter.$filter.contains.Model = entity.Model;
+			}
+			if (entity.BaseUnit) {
+				filter.$filter.equals.BaseUnit = entity.BaseUnit;
 			}
 			if (entity.Company) {
 				filter.$filter.equals.Company = entity.Company;

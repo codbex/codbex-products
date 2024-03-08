@@ -5,11 +5,11 @@ import { dao as daoApi } from "sdk/db";
 
 export interface ProductEntity {
     readonly Id: number;
-    Name?: string;
+    Name: string;
     Type?: number;
     Category?: number;
-    BaseUnit?: number;
     Model?: string;
+    BaseUnit?: number;
     Company?: number;
     SKU?: string;
     UPC?: string;
@@ -25,11 +25,11 @@ export interface ProductEntity {
 }
 
 export interface ProductCreateEntity {
-    readonly Name?: string;
+    readonly Name: string;
     readonly Type?: number;
     readonly Category?: number;
-    readonly BaseUnit?: number;
     readonly Model?: string;
+    readonly BaseUnit?: number;
     readonly Company?: number;
     readonly SKU?: string;
     readonly UPC?: string;
@@ -55,8 +55,8 @@ export interface ProductEntityOptions {
             Name?: string | string[];
             Type?: number | number[];
             Category?: number | number[];
-            BaseUnit?: number | number[];
             Model?: string | string[];
+            BaseUnit?: number | number[];
             Company?: number | number[];
             SKU?: string | string[];
             UPC?: string | string[];
@@ -75,8 +75,8 @@ export interface ProductEntityOptions {
             Name?: string | string[];
             Type?: number | number[];
             Category?: number | number[];
-            BaseUnit?: number | number[];
             Model?: string | string[];
+            BaseUnit?: number | number[];
             Company?: number | number[];
             SKU?: string | string[];
             UPC?: string | string[];
@@ -95,8 +95,8 @@ export interface ProductEntityOptions {
             Name?: string;
             Type?: number;
             Category?: number;
-            BaseUnit?: number;
             Model?: string;
+            BaseUnit?: number;
             Company?: number;
             SKU?: string;
             UPC?: string;
@@ -115,8 +115,8 @@ export interface ProductEntityOptions {
             Name?: string;
             Type?: number;
             Category?: number;
-            BaseUnit?: number;
             Model?: string;
+            BaseUnit?: number;
             Company?: number;
             SKU?: string;
             UPC?: string;
@@ -135,8 +135,8 @@ export interface ProductEntityOptions {
             Name?: string;
             Type?: number;
             Category?: number;
-            BaseUnit?: number;
             Model?: string;
+            BaseUnit?: number;
             Company?: number;
             SKU?: string;
             UPC?: string;
@@ -155,8 +155,8 @@ export interface ProductEntityOptions {
             Name?: string;
             Type?: number;
             Category?: number;
-            BaseUnit?: number;
             Model?: string;
+            BaseUnit?: number;
             Company?: number;
             SKU?: string;
             UPC?: string;
@@ -175,8 +175,8 @@ export interface ProductEntityOptions {
             Name?: string;
             Type?: number;
             Category?: number;
-            BaseUnit?: number;
             Model?: string;
+            BaseUnit?: number;
             Company?: number;
             SKU?: string;
             UPC?: string;
@@ -225,6 +225,7 @@ export class ProductRepository {
                 name: "Name",
                 column: "PRODUCT_NAME",
                 type: "VARCHAR",
+                required: true
             },
             {
                 name: "Type",
@@ -237,14 +238,14 @@ export class ProductRepository {
                 type: "INTEGER",
             },
             {
-                name: "BaseUnit",
-                column: "PRODUCT_BASEUNIT",
-                type: "INTEGER",
-            },
-            {
                 name: "Model",
                 column: "PRODUCT_MODEL",
                 type: "VARCHAR",
+            },
+            {
+                name: "BaseUnit",
+                column: "PRODUCT_BASEUNIT",
+                type: "INTEGER",
             },
             {
                 name: "Company",
@@ -387,7 +388,7 @@ export class ProductRepository {
         return this.dao.count(options);
     }
 
-    public customDataCount(options?: ProductEntityOptions): number {
+    public customDataCount(): number {
         const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX__PRODUCT"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {

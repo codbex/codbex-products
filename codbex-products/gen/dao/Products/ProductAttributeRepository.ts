@@ -191,7 +191,7 @@ export class ProductAttributeRepository {
         return this.dao.count(options);
     }
 
-    public customDataCount(options?: ProductAttributeEntityOptions): number {
+    public customDataCount(): number {
         const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX__PRODUCTDETAILS"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
