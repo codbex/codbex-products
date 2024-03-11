@@ -409,6 +409,6 @@ export class ProductRepository {
                 console.error(error);
             }            
         });
-        producer.topic("codbex-products/Products/Product").send(JSON.stringify(data));
+        producer.topic("codbex-products-Products-Product").send(JSON.stringify(data));
     }
 }

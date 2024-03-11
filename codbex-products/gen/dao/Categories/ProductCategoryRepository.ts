@@ -198,6 +198,6 @@ export class ProductCategoryRepository {
                 console.error(error);
             }            
         });
-        producer.topic("codbex-products/Categories/ProductCategory").send(JSON.stringify(data));
+        producer.topic("codbex-products-Categories-ProductCategory").send(JSON.stringify(data));
     }
 }

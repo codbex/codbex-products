@@ -184,6 +184,6 @@ export class ProductTypeRepository {
                 console.error(error);
             }            
         });
-        producer.topic("codbex-products/Settings/ProductType").send(JSON.stringify(data));
+        producer.topic("codbex-products-Settings-ProductType").send(JSON.stringify(data));
     }
 }

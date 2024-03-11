@@ -212,6 +212,6 @@ export class ProductAttributeRepository {
                 console.error(error);
             }            
         });
-        producer.topic("codbex-products/Products/ProductAttribute").send(JSON.stringify(data));
+        producer.topic("codbex-products-Products-ProductAttribute").send(JSON.stringify(data));
     }
 }
