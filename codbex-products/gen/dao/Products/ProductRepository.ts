@@ -6,10 +6,12 @@ import { dao as daoApi } from "sdk/db";
 export interface ProductEntity {
     readonly Id: number;
     Name: string;
+    Title: string;
+    Model: string;
+    Batch: string;
     Type?: number;
     Category?: number;
-    Model?: string;
-    BaseUnit?: number;
+    BaseUnit?: string;
     Company?: number;
     SKU?: string;
     UPC?: string;
@@ -25,11 +27,12 @@ export interface ProductEntity {
 }
 
 export interface ProductCreateEntity {
-    readonly Name: string;
+    readonly Title: string;
+    readonly Model: string;
+    readonly Batch: string;
     readonly Type?: number;
     readonly Category?: number;
-    readonly Model?: string;
-    readonly BaseUnit?: number;
+    readonly BaseUnit?: string;
     readonly Company?: number;
     readonly SKU?: string;
     readonly UPC?: string;
@@ -53,10 +56,12 @@ export interface ProductEntityOptions {
         equals?: {
             Id?: number | number[];
             Name?: string | string[];
+            Title?: string | string[];
+            Model?: string | string[];
+            Batch?: string | string[];
             Type?: number | number[];
             Category?: number | number[];
-            Model?: string | string[];
-            BaseUnit?: number | number[];
+            BaseUnit?: string | string[];
             Company?: number | number[];
             SKU?: string | string[];
             UPC?: string | string[];
@@ -73,10 +78,12 @@ export interface ProductEntityOptions {
         notEquals?: {
             Id?: number | number[];
             Name?: string | string[];
+            Title?: string | string[];
+            Model?: string | string[];
+            Batch?: string | string[];
             Type?: number | number[];
             Category?: number | number[];
-            Model?: string | string[];
-            BaseUnit?: number | number[];
+            BaseUnit?: string | string[];
             Company?: number | number[];
             SKU?: string | string[];
             UPC?: string | string[];
@@ -93,10 +100,12 @@ export interface ProductEntityOptions {
         contains?: {
             Id?: number;
             Name?: string;
+            Title?: string;
+            Model?: string;
+            Batch?: string;
             Type?: number;
             Category?: number;
-            Model?: string;
-            BaseUnit?: number;
+            BaseUnit?: string;
             Company?: number;
             SKU?: string;
             UPC?: string;
@@ -113,10 +122,12 @@ export interface ProductEntityOptions {
         greaterThan?: {
             Id?: number;
             Name?: string;
+            Title?: string;
+            Model?: string;
+            Batch?: string;
             Type?: number;
             Category?: number;
-            Model?: string;
-            BaseUnit?: number;
+            BaseUnit?: string;
             Company?: number;
             SKU?: string;
             UPC?: string;
@@ -133,10 +144,12 @@ export interface ProductEntityOptions {
         greaterThanOrEqual?: {
             Id?: number;
             Name?: string;
+            Title?: string;
+            Model?: string;
+            Batch?: string;
             Type?: number;
             Category?: number;
-            Model?: string;
-            BaseUnit?: number;
+            BaseUnit?: string;
             Company?: number;
             SKU?: string;
             UPC?: string;
@@ -153,10 +166,12 @@ export interface ProductEntityOptions {
         lessThan?: {
             Id?: number;
             Name?: string;
+            Title?: string;
+            Model?: string;
+            Batch?: string;
             Type?: number;
             Category?: number;
-            Model?: string;
-            BaseUnit?: number;
+            BaseUnit?: string;
             Company?: number;
             SKU?: string;
             UPC?: string;
@@ -173,10 +188,12 @@ export interface ProductEntityOptions {
         lessThanOrEqual?: {
             Id?: number;
             Name?: string;
+            Title?: string;
+            Model?: string;
+            Batch?: string;
             Type?: number;
             Category?: number;
-            Model?: string;
-            BaseUnit?: number;
+            BaseUnit?: string;
             Company?: number;
             SKU?: string;
             UPC?: string;
@@ -228,6 +245,24 @@ export class ProductRepository {
                 required: true
             },
             {
+                name: "Title",
+                column: "PRODUCT_TITLE",
+                type: "VARCHAR",
+                required: true
+            },
+            {
+                name: "Model",
+                column: "PRODUCT_MODEL",
+                type: "VARCHAR",
+                required: true
+            },
+            {
+                name: "Batch",
+                column: "PRODUCT_BATCH",
+                type: "VARCHAR",
+                required: true
+            },
+            {
                 name: "Type",
                 column: "PRODUCT_TYPE",
                 type: "INTEGER",
@@ -238,14 +273,9 @@ export class ProductRepository {
                 type: "INTEGER",
             },
             {
-                name: "Model",
-                column: "PRODUCT_MODEL",
-                type: "VARCHAR",
-            },
-            {
                 name: "BaseUnit",
                 column: "PRODUCT_BASEUNIT",
-                type: "INTEGER",
+                type: "VARCHAR",
             },
             {
                 name: "Company",
@@ -326,6 +356,8 @@ export class ProductRepository {
     }
 
     public create(entity: ProductCreateEntity): number {
+        // @ts-ignore
+        (entity as ProductEntity).Name = entity["Title"] + "/" + entity["Model"] + "/" + entity["Batch"];
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",

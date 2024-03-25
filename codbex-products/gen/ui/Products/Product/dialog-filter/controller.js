@@ -53,17 +53,23 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			if (entity.Name) {
 				filter.$filter.contains.Name = entity.Name;
 			}
+			if (entity.Title) {
+				filter.$filter.contains.Title = entity.Title;
+			}
+			if (entity.Model) {
+				filter.$filter.contains.Model = entity.Model;
+			}
+			if (entity.Batch) {
+				filter.$filter.contains.Batch = entity.Batch;
+			}
 			if (entity.Type) {
 				filter.$filter.equals.Type = entity.Type;
 			}
 			if (entity.Category) {
 				filter.$filter.equals.Category = entity.Category;
 			}
-			if (entity.Model) {
-				filter.$filter.contains.Model = entity.Model;
-			}
 			if (entity.BaseUnit) {
-				filter.$filter.equals.BaseUnit = entity.BaseUnit;
+				filter.$filter.contains.BaseUnit = entity.BaseUnit;
 			}
 			if (entity.Company) {
 				filter.$filter.equals.Company = entity.Company;

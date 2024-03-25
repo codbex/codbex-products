@@ -119,14 +119,29 @@ class ProductService {
     }
 
     private validateEntity(entity: any): void {
-        if (entity.Name === null || entity.Name === undefined) {
-            throw new ValidationError(`The 'Name' property is required, provide a valid value`);
-        }
         if (entity.Name?.length > 500) {
             throw new ValidationError(`The 'Name' exceeds the maximum length of [500] characters`);
         }
+        if (entity.Title === null || entity.Title === undefined) {
+            throw new ValidationError(`The 'Title' property is required, provide a valid value`);
+        }
+        if (entity.Title?.length > 200) {
+            throw new ValidationError(`The 'Title' exceeds the maximum length of [200] characters`);
+        }
+        if (entity.Model === null || entity.Model === undefined) {
+            throw new ValidationError(`The 'Model' property is required, provide a valid value`);
+        }
         if (entity.Model?.length > 200) {
             throw new ValidationError(`The 'Model' exceeds the maximum length of [200] characters`);
+        }
+        if (entity.Batch === null || entity.Batch === undefined) {
+            throw new ValidationError(`The 'Batch' property is required, provide a valid value`);
+        }
+        if (entity.Batch?.length > 50) {
+            throw new ValidationError(`The 'Batch' exceeds the maximum length of [50] characters`);
+        }
+        if (entity.BaseUnit?.length > 20) {
+            throw new ValidationError(`The 'BaseUnit' exceeds the maximum length of [20] characters`);
         }
         if (entity.SKU?.length > 64) {
             throw new ValidationError(`The 'SKU' exceeds the maximum length of [64] characters`);

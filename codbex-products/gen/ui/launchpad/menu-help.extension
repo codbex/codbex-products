@@ -1,1 +1,5 @@
-{"module":"codbex-products/gen/ui/launchpad/menu-help.js","extensionPoint":"codbex-products-menu","description":"codbex-products - Application Menu"}
+{
+    "module": "codbex-products/gen/ui/launchpad/menu-help.js",
+    "extensionPoint": "codbex-products-menu",
+    "description": "codbex-products - Application Menu"
+}

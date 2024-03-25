@@ -73,6 +73,27 @@
                         "name": "PRODUCT_NAME"
                     },
                     {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "name": "PRODUCT_TITLE"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "name": "PRODUCT_MODEL"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 50,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "name": "PRODUCT_BATCH"
+                    },
+                    {
                         "type": "INTEGER",
                         "length": 0,
                         "precision": "NaN",
@@ -90,15 +111,7 @@
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 200,
-                        "precision": "NaN",
-                        "scale": "NaN",
-                        "nullable": true,
-                        "name": "PRODUCT_MODEL"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "length": 0,
+                        "length": 20,
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
