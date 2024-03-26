@@ -2,6 +2,7 @@ import { query } from "sdk/db";
 import { producer } from "sdk/messaging";
 import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
+import { EntityUtils } from "../utils/EntityUtils";
 
 export interface ProductEntity {
     readonly Id: number;
@@ -24,6 +25,7 @@ export interface ProductEntity {
     Height?: number;
     Length?: number;
     VAT?: number;
+    Enabled?: boolean;
 }
 
 export interface ProductCreateEntity {
@@ -45,6 +47,7 @@ export interface ProductCreateEntity {
     readonly Height?: number;
     readonly Length?: number;
     readonly VAT?: number;
+    readonly Enabled?: boolean;
 }
 
 export interface ProductUpdateEntity extends ProductCreateEntity {
@@ -74,6 +77,7 @@ export interface ProductEntityOptions {
             Height?: number | number[];
             Length?: number | number[];
             VAT?: number | number[];
+            Enabled?: boolean | boolean[];
         };
         notEquals?: {
             Id?: number | number[];
@@ -96,6 +100,7 @@ export interface ProductEntityOptions {
             Height?: number | number[];
             Length?: number | number[];
             VAT?: number | number[];
+            Enabled?: boolean | boolean[];
         };
         contains?: {
             Id?: number;
@@ -118,6 +123,7 @@ export interface ProductEntityOptions {
             Height?: number;
             Length?: number;
             VAT?: number;
+            Enabled?: boolean;
         };
         greaterThan?: {
             Id?: number;
@@ -140,6 +146,7 @@ export interface ProductEntityOptions {
             Height?: number;
             Length?: number;
             VAT?: number;
+            Enabled?: boolean;
         };
         greaterThanOrEqual?: {
             Id?: number;
@@ -162,6 +169,7 @@ export interface ProductEntityOptions {
             Height?: number;
             Length?: number;
             VAT?: number;
+            Enabled?: boolean;
         };
         lessThan?: {
             Id?: number;
@@ -184,6 +192,7 @@ export interface ProductEntityOptions {
             Height?: number;
             Length?: number;
             VAT?: number;
+            Enabled?: boolean;
         };
         lessThanOrEqual?: {
             Id?: number;
@@ -206,6 +215,7 @@ export interface ProductEntityOptions {
             Height?: number;
             Length?: number;
             VAT?: number;
+            Enabled?: boolean;
         };
     },
     $select?: (keyof ProductEntity)[],
@@ -336,6 +346,11 @@ export class ProductRepository {
                 name: "VAT",
                 column: "PRODUCT_VAT",
                 type: "DECIMAL",
+            },
+            {
+                name: "Enabled",
+                column: "PRODUCT_ENABLED",
+                type: "BOOLEAN",
             }
         ]
     };
@@ -347,17 +362,22 @@ export class ProductRepository {
     }
 
     public findAll(options?: ProductEntityOptions): ProductEntity[] {
-        return this.dao.list(options);
+        return this.dao.list(options).map((e: ProductEntity) => {
+            EntityUtils.setBoolean(e, "Enabled");
+            return e;
+        });
     }
 
     public findById(id: number): ProductEntity | undefined {
         const entity = this.dao.find(id);
+        EntityUtils.setBoolean(entity, "Enabled");
         return entity ?? undefined;
     }
 
     public create(entity: ProductCreateEntity): number {
+        EntityUtils.setBoolean(entity, "Enabled");
         // @ts-ignore
-        (entity as ProductEntity).Name = entity["Title"] + "/" + entity["Model"] + "/" + entity["Batch"];
+        (entity as ProductEntity).Name = (entity["Title"] + "/" + entity["Model"] + "/" + entity["Batch"] + "-" + (entity["Enabled"] ? 'enabled' : 'disabled'));;
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
@@ -373,6 +393,9 @@ export class ProductRepository {
     }
 
     public update(entity: ProductUpdateEntity): void {
+        EntityUtils.setBoolean(entity, "Enabled");
+        // @ts-ignore
+        (entity as ProductEntity).Name = (entity["Title"] + "/" + entity["Model"] + "/" + entity["Batch"] + "-" + (entity["Enabled"] ? 'enabled' : 'disabled'));;
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",

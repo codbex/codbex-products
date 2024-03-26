@@ -306,8 +306,8 @@
           "inputRule": ""
         },
         {
-          "calculatedPropertyExpressionCreate": "entity[\"Title\"] + \"/\" + entity[\"Model\"] + \"/\" + entity[\"Batch\"]",
-          "calculatedPropertyExpressionUpdate": "",
+          "calculatedPropertyExpressionCreate": "(entity[\"Title\"] + \"/\" + entity[\"Model\"] + \"/\" + entity[\"Batch\"] + \"-\" + (entity[\"Enabled\"] ? 'enabled' : 'disabled'));",
+          "calculatedPropertyExpressionUpdate": "(entity[\"Title\"] + \"/\" + entity[\"Model\"] + \"/\" + entity[\"Batch\"] + \"-\" + (entity[\"Enabled\"] ? 'enabled' : 'disabled'));",
           "dataAutoIncrement": false,
           "dataLength": "500",
           "dataName": "PRODUCT_NAME",
@@ -837,6 +837,32 @@
           "dataTypeJava": "double",
           "dataTypeTypescript": "number",
           "inputRule": ""
+        },
+        {
+          "calculatedPropertyExpressionCreate": "",
+          "calculatedPropertyExpressionUpdate": "",
+          "dataAutoIncrement": false,
+          "dataLength": "20",
+          "dataName": "PRODUCT_ENABLED",
+          "dataNullable": true,
+          "dataPrecision": "NaN",
+          "dataPrimaryKey": false,
+          "dataScale": "NaN",
+          "dataType": "BOOLEAN",
+          "dataUnique": false,
+          "isCalculatedProperty": false,
+          "isRequiredProperty": false,
+          "name": "Enabled",
+          "widgetIsMajor": true,
+          "widgetLength": "20",
+          "widgetSize": "",
+          "widgetType": "CHECKBOX",
+          "dataNotNull": false,
+          "widgetLabel": "Enabled",
+          "widgetDropdownUrl": "",
+          "dataTypeJava": "boolean",
+          "dataTypeTypescript": "boolean",
+          "inputRule": ""
         }
       ],
       "caption": "Manage entity Product",
@@ -878,8 +904,8 @@
       "primaryKeysString": "Id",
       "masterProperties": {
         "title": {
-          "calculatedPropertyExpressionCreate": "entity[\"Title\"] + \"/\" + entity[\"Model\"] + \"/\" + entity[\"Batch\"]",
-          "calculatedPropertyExpressionUpdate": "",
+          "calculatedPropertyExpressionCreate": "(entity[\"Title\"] + \"/\" + entity[\"Model\"] + \"/\" + entity[\"Batch\"] + \"-\" + (entity[\"Enabled\"] ? 'enabled' : 'disabled'));",
+          "calculatedPropertyExpressionUpdate": "(entity[\"Title\"] + \"/\" + entity[\"Model\"] + \"/\" + entity[\"Batch\"] + \"-\" + (entity[\"Enabled\"] ? 'enabled' : 'disabled'));",
           "dataAutoIncrement": false,
           "dataLength": "500",
           "dataName": "PRODUCT_NAME",
@@ -1409,6 +1435,32 @@
             "widgetDropdownUrl": "",
             "dataTypeJava": "double",
             "dataTypeTypescript": "number",
+            "inputRule": ""
+          },
+          {
+            "calculatedPropertyExpressionCreate": "",
+            "calculatedPropertyExpressionUpdate": "",
+            "dataAutoIncrement": false,
+            "dataLength": "20",
+            "dataName": "PRODUCT_ENABLED",
+            "dataNullable": true,
+            "dataPrecision": "NaN",
+            "dataPrimaryKey": false,
+            "dataScale": "NaN",
+            "dataType": "BOOLEAN",
+            "dataUnique": false,
+            "isCalculatedProperty": false,
+            "isRequiredProperty": false,
+            "name": "Enabled",
+            "widgetIsMajor": true,
+            "widgetLength": "20",
+            "widgetSize": "",
+            "widgetType": "CHECKBOX",
+            "dataNotNull": false,
+            "widgetLabel": "Enabled",
+            "widgetDropdownUrl": "",
+            "dataTypeJava": "boolean",
+            "dataTypeTypescript": "boolean",
             "inputRule": ""
           }
         ]

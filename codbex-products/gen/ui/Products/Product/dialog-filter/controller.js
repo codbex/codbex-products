@@ -107,6 +107,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			if (entity.VAT) {
 				filter.$filter.equals.VAT = entity.VAT;
 			}
+			if (entity.Enabled) {
+				filter.$filter.equals.Enabled = entity.Enabled;
+			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,
 				filter: filter

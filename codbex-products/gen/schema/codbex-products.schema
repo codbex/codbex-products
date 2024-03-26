@@ -204,6 +204,14 @@
                         "scale": "2",
                         "nullable": true,
                         "name": "PRODUCT_VAT"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PRODUCT_ENABLED"
                     }
                 ]
             },
