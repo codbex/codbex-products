@@ -357,7 +357,7 @@ export class ProductRepository {
 
     private readonly dao;
 
-    constructor(dataSource?: string) {
+    constructor(dataSource = "DefaultDB") {
         this.dao = daoApi.create(ProductRepository.DEFINITION, null, dataSource);
     }
 

@@ -1,5 +1,0 @@
-{
-    "module": "codbex-products/gen/ui/custom-action-dialog/view.js",
-    "extensionPoint": "codbex-products-dialog-window",
-    "description": "codbex-products - Custom Action Dialog Window"
-}

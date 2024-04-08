@@ -8,6 +8,7 @@
   "workspaceName": "workspace",
   "filePath": "codbex-products.model",
   "templateId": "template-application-angular/template/template.js",
+  "dataSource": "DefaultDB",
   "perspectives": {
     "Settings": {
       "views": [
@@ -165,6 +166,7 @@
       "title": "ProductType",
       "tooltip": "ProductType",
       "type": "SETTING",
+      "dataSource": "DefaultDB",
       "referencedProjections": [],
       "primaryKeys": [
         "Id"
@@ -273,6 +275,7 @@
       "title": "ProductCategory",
       "tooltip": "ProductCategory",
       "type": "SETTING",
+      "dataSource": "DefaultDB",
       "referencedProjections": [],
       "primaryKeys": [
         "Id"
@@ -884,6 +887,7 @@
       "title": "Product",
       "tooltip": "Product",
       "type": "PRIMARY",
+      "dataSource": "DefaultDB",
       "referencedProjections": [
         {
           "name": "UoM",
@@ -1602,6 +1606,7 @@
       "title": "ProductDetails",
       "tooltip": "ProductDetails",
       "type": "DEPENDENT",
+      "dataSource": "DefaultDB",
       "referencedProjections": [],
       "primaryKeys": [
         "Id"
@@ -1747,6 +1752,7 @@
       "title": "Manufacturer",
       "tooltip": "Manufacturer",
       "type": "PROJECTION",
+      "dataSource": "DefaultDB",
       "referencedProjections": [],
       "primaryKeys": [
         "Id"
@@ -2086,6 +2092,7 @@
       "title": "Company",
       "tooltip": "Company",
       "type": "PROJECTION",
+      "dataSource": "DefaultDB",
       "referencedProjections": [],
       "primaryKeys": [
         "Id"
@@ -2361,6 +2368,7 @@
       "title": "UoM",
       "tooltip": "UoM",
       "type": "PROJECTION",
+      "dataSource": "DefaultDB",
       "referencedProjections": [],
       "primaryKeys": [
         "Id"
