@@ -108,7 +108,6 @@ export class CatalogueRepository {
                 name: "Store",
                 column: "CATALOGUE_STORE",
                 type: "INTEGER",
-                required: true
             },
             {
                 name: "Quantity",
@@ -137,11 +136,11 @@ export class CatalogueRepository {
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
-            table: "CODBEX_CATALOG",
+            table: "CODBEX_CATALOGUE",
             entity: entity,
             key: {
                 name: "Id",
-                column: "CATALOG_ID",
+                column: "CATALOGUE_ID",
                 value: id
             }
         });
@@ -153,12 +152,12 @@ export class CatalogueRepository {
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
-            table: "CODBEX_CATALOG",
+            table: "CODBEX_CATALOGUE",
             entity: entity,
             previousEntity: previousEntity,
             key: {
                 name: "Id",
-                column: "CATALOG_ID",
+                column: "CATALOGUE_ID",
                 value: entity.Id
             }
         });
@@ -184,11 +183,11 @@ export class CatalogueRepository {
         this.dao.remove(id);
         this.triggerEvent({
             operation: "delete",
-            table: "CODBEX_CATALOG",
+            table: "CODBEX_CATALOGUE",
             entity: entity,
             key: {
                 name: "Id",
-                column: "CATALOG_ID",
+                column: "CATALOGUE_ID",
                 value: id
             }
         });
@@ -199,7 +198,7 @@ export class CatalogueRepository {
     }
 
     public customDataCount(): number {
-        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_CATALOG"');
+        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_CATALOGUE"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
                 return resultSet[0].COUNT;
@@ -211,7 +210,7 @@ export class CatalogueRepository {
     }
 
     private async triggerEvent(data: CatalogueEntityEvent | CatalogueUpdateEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-products-entities-Catalog", ["trigger"]);
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-products-entities-Catalogue", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -219,6 +218,6 @@ export class CatalogueRepository {
                 console.error(error);
             }            
         });
-        producer.topic("codbex-products-entities-Catalog").send(JSON.stringify(data));
+        producer.topic("codbex-products-entities-Catalogue").send(JSON.stringify(data));
     }
 }

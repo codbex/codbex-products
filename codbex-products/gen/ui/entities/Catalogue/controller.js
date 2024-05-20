@@ -150,7 +150,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				if (msg.data === "delete-btn-yes") {
 					entityApi.delete(id).then(function (response) {
 						if (response.status != 204) {
-							messageHub.showAlertError("Catalogue", `Unable to delete Catalog: '${response.message}'`);
+							messageHub.showAlertError("Catalogue", `Unable to delete Catalogue: '${response.message}'`);
 							return;
 						}
 						$scope.loadPage($scope.dataPage, $scope.filter);

@@ -1713,14 +1713,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     post:
-      summary: Create Catalog
+      summary: Create Catalogue
       tags:
         - entities
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Catalog'
+              $ref: '#/components/schemas/Catalogue'
         required: true
       responses:
         201:
@@ -1728,7 +1728,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Catalog'
+                $ref: '#/components/schemas/Catalogue'
         400:
           description: Bad Request Error
           content:
@@ -1749,7 +1749,7 @@ paths:
                 $ref: '#/components/schemas/Error'
   /codbex-products/gen/api/entities/CatalogueService.ts/{id}:
     get:
-      summary: Get Catalog by Id
+      summary: Get Catalogue by Id
       parameters:
         - in: path
           name: id
@@ -1767,7 +1767,7 @@ paths:
               schema:
                 type: array
                 items:
-                    $ref: '#/components/schemas/Catalog'
+                    $ref: '#/components/schemas/Catalogue'
         404:
           description: Entity Not Found
           content:
@@ -1787,7 +1787,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     put:
-      summary: Update Catalog by Id
+      summary: Update Catalogue by Id
       parameters:
         - in: path
           name: id
@@ -1801,7 +1801,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Catalog'
+              $ref: '#/components/schemas/Catalogue'
         required: true
       responses:
         200:
@@ -1809,7 +1809,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Catalog'
+                $ref: '#/components/schemas/Catalogue'
         400:
           description: Bad Request Error
           content:
@@ -1835,7 +1835,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     delete:
-      summary: Delete Catalog by Id
+      summary: Delete Catalogue by Id
       parameters:
         - in: path
           name: id
@@ -1868,7 +1868,7 @@ paths:
                 $ref: '#/components/schemas/Error'
   /codbex-products/gen/api/entities/CatalogueService.ts/count:
     get:
-      summary: Count the number of Catalog
+      summary: Count the number of Catalogue
       tags:
         - entities
       responses:
@@ -1892,14 +1892,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     post:
-      summary: Count the number of Catalog by CatalogFilterOptions
+      summary: Count the number of Catalogue by CatalogueFilterOptions
       tags:
         - entities
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CatalogFilterOptions'
+              $ref: '#/components/schemas/CatalogueFilterOptions'
             examples:
               countWithMultipleCriteria:
                 summary: Count with multiple criteria
@@ -1970,14 +1970,14 @@ paths:
                 $ref: '#/components/schemas/Error'
   /codbex-products/gen/api/entities/CatalogueService.ts/search:
     post:
-      summary: Search Catalog by CatalogFilterOptions
+      summary: Search Catalogue by CatalogueFilterOptions
       tags:
         - entities
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CatalogFilterOptions'
+              $ref: '#/components/schemas/CatalogueFilterOptions'
             examples:
               searchWithMultipleCriteria:
                 summary: Search with multiple criteria
@@ -2034,7 +2034,7 @@ paths:
               schema:
                 type: array
                 items:
-                    $ref: '#/components/schemas/Catalog'
+                    $ref: '#/components/schemas/Catalogue'
         403:
           description: Forbidden Error
           content:
@@ -3420,7 +3420,7 @@ components:
         $limit:
           type: integer
           example: 10
-    Catalog:
+    Catalogue:
       type: object
       required:
       properties:
@@ -3436,7 +3436,7 @@ components:
         Quantity:
           type: number
           format: double
-    CatalogFilterOptions:
+    CatalogueFilterOptions:
       type: object
       properties:
         $filter:
