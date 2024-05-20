@@ -236,6 +236,10 @@ interface ProductEntityEvent {
     }
 }
 
+interface ProductUpdateEntityEvent extends ProductEntityEvent {
+    readonly previousEntity: ProductEntity;
+}
+
 export class ProductRepository {
 
     private static readonly DEFINITION = {
@@ -396,11 +400,13 @@ export class ProductRepository {
         EntityUtils.setBoolean(entity, "Enabled");
         // @ts-ignore
         (entity as ProductEntity).Name = (entity["Title"] + "/" + entity["Model"] + "/" + entity["Batch"] + "-" + (entity["Enabled"] ? 'enabled' : 'disabled'));;
+        const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
             table: "CODBEX_PRODUCT",
             entity: entity,
+            previousEntity: previousEntity,
             key: {
                 name: "Id",
                 column: "PRODUCT_ID",
@@ -455,7 +461,7 @@ export class ProductRepository {
         return 0;
     }
 
-    private async triggerEvent(data: ProductEntityEvent) {
+    private async triggerEvent(data: ProductEntityEvent | ProductUpdateEntityEvent) {
         const triggerExtensions = await extensions.loadExtensionModules("codbex-products-Products-Product", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {

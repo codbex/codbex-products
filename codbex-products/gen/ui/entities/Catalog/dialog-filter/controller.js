@@ -1,6 +1,6 @@
 angular.module('page', ["ideUI", "ideView"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-products.Products.ProductAttribute';
+		messageHubProvider.eventIdPrefix = 'codbex-products.entities.Catalog';
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'ViewParameters', function ($scope, messageHub, ViewParameters) {
 
@@ -14,7 +14,6 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.entity = params.entity ?? {};
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
-			$scope.optionsProduct = params.optionsProduct;
 		}
 
 		$scope.filter = function () {
@@ -43,11 +42,11 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Product !== undefined) {
 				filter.$filter.equals.Product = entity.Product;
 			}
-			if (entity.Name) {
-				filter.$filter.contains.Name = entity.Name;
+			if (entity.Store !== undefined) {
+				filter.$filter.equals.Store = entity.Store;
 			}
-			if (entity.Value) {
-				filter.$filter.contains.Value = entity.Value;
+			if (entity.Quantity !== undefined) {
+				filter.$filter.equals.Quantity = entity.Quantity;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,
@@ -62,7 +61,7 @@ angular.module('page', ["ideUI", "ideView"])
 		};
 
 		$scope.cancel = function () {
-			messageHub.closeDialogWindow("ProductAttribute-filter");
+			messageHub.closeDialogWindow("Catalog-filter");
 		};
 
 		$scope.clearErrorMessage = function () {

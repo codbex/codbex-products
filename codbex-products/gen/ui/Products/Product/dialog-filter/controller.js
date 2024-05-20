@@ -41,7 +41,7 @@ angular.module('page', ["ideUI", "ideView"])
 					}
 				},
 			};
-			if (entity.Id) {
+			if (entity.Id !== undefined) {
 				filter.$filter.equals.Id = entity.Id;
 			}
 			if (entity.Name) {
@@ -56,16 +56,16 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Batch) {
 				filter.$filter.contains.Batch = entity.Batch;
 			}
-			if (entity.Type) {
+			if (entity.Type !== undefined) {
 				filter.$filter.equals.Type = entity.Type;
 			}
-			if (entity.Category) {
+			if (entity.Category !== undefined) {
 				filter.$filter.equals.Category = entity.Category;
 			}
 			if (entity.BaseUnit) {
 				filter.$filter.contains.BaseUnit = entity.BaseUnit;
 			}
-			if (entity.Company) {
+			if (entity.Company !== undefined) {
 				filter.$filter.equals.Company = entity.Company;
 			}
 			if (entity.SKU) {
@@ -86,22 +86,22 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.MPN) {
 				filter.$filter.contains.MPN = entity.MPN;
 			}
-			if (entity.Manufacturer) {
+			if (entity.Manufacturer !== undefined) {
 				filter.$filter.equals.Manufacturer = entity.Manufacturer;
 			}
-			if (entity.Weight) {
+			if (entity.Weight !== undefined) {
 				filter.$filter.equals.Weight = entity.Weight;
 			}
-			if (entity.Height) {
+			if (entity.Height !== undefined) {
 				filter.$filter.equals.Height = entity.Height;
 			}
-			if (entity.Length) {
+			if (entity.Length !== undefined) {
 				filter.$filter.equals.Length = entity.Length;
 			}
-			if (entity.VAT) {
+			if (entity.VAT !== undefined) {
 				filter.$filter.equals.VAT = entity.VAT;
 			}
-			if (entity.Enabled) {
+			if (entity.Enabled !== undefined && entity.isEnabledIndeterminate === false) {
 				filter.$filter.equals.Enabled = entity.Enabled;
 			}
 			messageHub.postMessage("entitySearch", {
