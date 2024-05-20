@@ -6,9 +6,9 @@
 exports.getTile = function () {
     return {
         group: "Entities",
-        name: "Catalog",
-        caption: "Manage entity Catalog",
-        tooltip: "Catalog",
+        name: "Catalogue",
+        caption: "Manage entity Catalogue",
+        tooltip: "Catalogue",
         // icon: "file-o",
         location: "/services/web/codbex-products/gen/ui/entities/index.html",
         order: "100",

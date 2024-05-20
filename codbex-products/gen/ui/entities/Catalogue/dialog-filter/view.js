@@ -4,9 +4,9 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "Catalog-filter",
-    label: "Catalog Filter",
-    link: "/services/web/codbex-products/gen/ui/entities/Catalog/dialog-filter/index.html",
+    id: "Catalogue-filter",
+    label: "Catalogue Filter",
+    link: "/services/web/codbex-products/gen/ui/entities/Catalogue/dialog-filter/index.html",
     perspectiveName: "entities",
 };
 

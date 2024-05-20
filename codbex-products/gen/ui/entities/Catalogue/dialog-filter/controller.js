@@ -1,6 +1,6 @@
 angular.module('page', ["ideUI", "ideView"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-products.entities.Catalog';
+		messageHubProvider.eventIdPrefix = 'codbex-products.entities.Catalogue';
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'ViewParameters', function ($scope, messageHub, ViewParameters) {
 
@@ -61,7 +61,7 @@ angular.module('page', ["ideUI", "ideView"])
 		};
 
 		$scope.cancel = function () {
-			messageHub.closeDialogWindow("Catalog-filter");
+			messageHub.closeDialogWindow("Catalogue-filter");
 		};
 
 		$scope.clearErrorMessage = function () {

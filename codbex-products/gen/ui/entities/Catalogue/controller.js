@@ -1,6 +1,6 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-products.entities.Catalog';
+		messageHubProvider.eventIdPrefix = 'codbex-products.entities.Catalogue';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
 		entityApiProvider.baseUrl = "/services/ts/codbex-products/gen/api/entities/CatalogueService.ts";
@@ -13,8 +13,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		//-----------------Custom Actions-------------------//
 		Extensions.get('dialogWindow', 'codbex-products-custom-action').then(function (response) {
-			$scope.pageActions = response.filter(e => e.perspective === "entities" && e.view === "Catalog" && (e.type === "page" || e.type === undefined));
-			$scope.entityActions = response.filter(e => e.perspective === "entities" && e.view === "Catalog" && e.type === "entity");
+			$scope.pageActions = response.filter(e => e.perspective === "entities" && e.view === "Catalogue" && (e.type === "page" || e.type === undefined));
+			$scope.entityActions = response.filter(e => e.perspective === "entities" && e.view === "Catalogue" && e.type === "entity");
 		});
 
 		$scope.triggerPageAction = function (action) {
@@ -71,7 +71,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.dataPage = pageNumber;
 			entityApi.count(filter).then(function (response) {
 				if (response.status != 200) {
-					messageHub.showAlertError("Catalog", `Unable to count Catalog: '${response.message}'`);
+					messageHub.showAlertError("Catalogue", `Unable to count Catalogue: '${response.message}'`);
 					return;
 				}
 				if (response.data) {
@@ -89,7 +89,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				}
 				request.then(function (response) {
 					if (response.status != 200) {
-						messageHub.showAlertError("Catalog", `Unable to list/filter Catalog: '${response.message}'`);
+						messageHub.showAlertError("Catalogue", `Unable to list/filter Catalogue: '${response.message}'`);
 						return;
 					}
 					$scope.data = response.data;
@@ -104,28 +104,28 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		$scope.openDetails = function (entity) {
 			$scope.selectedEntity = entity;
-			messageHub.showDialogWindow("Catalog-details", {
+			messageHub.showDialogWindow("Catalogue-details", {
 				action: "select",
 				entity: entity,
 			});
 		};
 
 		$scope.openFilter = function (entity) {
-			messageHub.showDialogWindow("Catalog-filter", {
+			messageHub.showDialogWindow("Catalogue-filter", {
 				entity: $scope.filterEntity,
 			});
 		};
 
 		$scope.createEntity = function () {
 			$scope.selectedEntity = null;
-			messageHub.showDialogWindow("Catalog-details", {
+			messageHub.showDialogWindow("Catalogue-details", {
 				action: "create",
 				entity: {},
 			}, null, false);
 		};
 
 		$scope.updateEntity = function (entity) {
-			messageHub.showDialogWindow("Catalog-details", {
+			messageHub.showDialogWindow("Catalogue-details", {
 				action: "update",
 				entity: entity,
 			}, null, false);
@@ -134,8 +134,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.deleteEntity = function (entity) {
 			let id = entity.Id;
 			messageHub.showDialogAsync(
-				'Delete Catalog?',
-				`Are you sure you want to delete Catalog? This action cannot be undone.`,
+				'Delete Catalogue?',
+				`Are you sure you want to delete Catalogue? This action cannot be undone.`,
 				[{
 					id: "delete-btn-yes",
 					type: "emphasized",
@@ -150,7 +150,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				if (msg.data === "delete-btn-yes") {
 					entityApi.delete(id).then(function (response) {
 						if (response.status != 204) {
-							messageHub.showAlertError("Catalog", `Unable to delete Catalog: '${response.message}'`);
+							messageHub.showAlertError("Catalogue", `Unable to delete Catalog: '${response.message}'`);
 							return;
 						}
 						$scope.loadPage($scope.dataPage, $scope.filter);
