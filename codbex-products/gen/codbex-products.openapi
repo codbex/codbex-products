@@ -1665,7 +1665,7 @@ paths:
                 $ref: '#/components/schemas/Error'
   /codbex-products/gen/api/entities/CatalogueService.ts:
     get:
-      summary: List Catalog
+      summary: List Catalogue
       parameters:
         - in: query
           name: $limit
@@ -1693,7 +1693,7 @@ paths:
               schema:
                 type: array
                 items:
-                    $ref: '#/components/schemas/Catalog'
+                    $ref: '#/components/schemas/Catalogue'
         400:
           description: Bad Request Error
           content:

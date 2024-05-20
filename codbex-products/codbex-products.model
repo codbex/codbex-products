@@ -1296,7 +1296,7 @@
                         "calculatedPropertyExpressionUpdate": "",
                         "dataAutoIncrement": "true",
                         "dataLength": "0",
-                        "dataName": "CATALOG_ID",
+                        "dataName": "CATALOGUE_ID",
                         "dataNullable": "true",
                         "dataPrecision": "NaN",
                         "dataPrimaryKey": "true",

@@ -1,10 +1,10 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { CatalogueRepository, CatalogEntityOptions } from "../../dao/entities/CatalogueRepository";
+import { CatalogueRepository, CatalogueEntityOptions } from "../../dao/entities/CatalogueRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-products-entities-Catalog", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-products-entities-Catalogue", ["validate"]);
 
 @Controller
 class CatalogueService {
@@ -14,7 +14,7 @@ class CatalogueService {
     @Get("/")
     public getAll(_: any, ctx: any) {
         try {
-            const options: CatalogEntityOptions = {
+            const options: CatalogueEntityOptions = {
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
@@ -73,7 +73,7 @@ class CatalogueService {
             if (entity) {
                 return entity;
             } else {
-                HttpUtils.sendResponseNotFound("Catalog not found");
+                HttpUtils.sendResponseNotFound("Catalogue not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -101,7 +101,7 @@ class CatalogueService {
                 this.repository.deleteById(id);
                 HttpUtils.sendResponseNoContent();
             } else {
-                HttpUtils.sendResponseNotFound("Catalog not found");
+                HttpUtils.sendResponseNotFound("Catalogue not found");
             }
         } catch (error: any) {
             this.handleError(error);

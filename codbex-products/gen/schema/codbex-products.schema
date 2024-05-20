@@ -254,7 +254,7 @@
                 ]
             },
             {
-                "name": "CODBEX_CATALOG",
+                "name": "CODBEX_CATALOGUE",
                 "type": "TABLE",
                 "columns": [
                     {
@@ -263,7 +263,7 @@
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
-                        "name": "CATALOG_ID"
+                        "name": "CATALOGUE_ID"
                     },
                     {
                         "type": "INTEGER",
@@ -271,14 +271,14 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "CATALOG_PRODUCT"
+                        "name": "CATALOGUE_PRODUCT"
                     },
                     {
                         "type": "INTEGER",
                         "length": 20,
                         "precision": "NaN",
                         "scale": "NaN",
-                        "name": "CATALOG_STORE"
+                        "name": "CATALOGUE_STORE"
                     },
                     {
                         "type": "DOUBLE",
@@ -286,7 +286,7 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "nullable": true,
-                        "name": "CATALOG_QUANTITY"
+                        "name": "CATALOGUE_QUANTITY"
                     }
                 ]
             },
@@ -345,11 +345,11 @@
                 "referencedColumns": "PRODUCT_ID"
             },
             {
-                "name": "Catalog_Product",
+                "name": "Catalogue_Product",
                 "type": "foreignKey",
-                "table": "CODBEX_CATALOG",
-                "constraintName": "Catalog_Product",
-                "columns": "CATALOG_PRODUCT",
+                "table": "CODBEX_CATALOGUE",
+                "constraintName": "Catalogue_Product",
+                "columns": "CATALOGUE_PRODUCT",
                 "referencedTable": "CODBEX_PRODUCT",
                 "referencedColumns": "PRODUCT_ID"
             }
