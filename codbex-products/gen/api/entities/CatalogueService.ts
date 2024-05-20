@@ -1,15 +1,15 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { CatalogRepository, CatalogEntityOptions } from "../../dao/entities/CatalogRepository";
+import { CatalogueRepository, CatalogEntityOptions } from "../../dao/entities/CatalogueRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
 const validationModules = await Extensions.loadExtensionModules("codbex-products-entities-Catalog", ["validate"]);
 
 @Controller
-class CatalogService {
+class CatalogueService {
 
-    private readonly repository = new CatalogRepository();
+    private readonly repository = new CatalogueRepository();
 
     @Get("/")
     public getAll(_: any, ctx: any) {
@@ -30,7 +30,7 @@ class CatalogService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-products/gen/api/entities/CatalogService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-products/gen/api/entities/CatalogueService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {

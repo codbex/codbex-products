@@ -1663,7 +1663,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/api/entities/CatalogService.ts:
+  /codbex-products/gen/api/entities/CatalogueService.ts:
     get:
       summary: List Catalog
       parameters:
@@ -1747,7 +1747,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/api/entities/CatalogService.ts/{id}:
+  /codbex-products/gen/api/entities/CatalogueService.ts/{id}:
     get:
       summary: Get Catalog by Id
       parameters:
@@ -1866,7 +1866,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/api/entities/CatalogService.ts/count:
+  /codbex-products/gen/api/entities/CatalogueService.ts/count:
     get:
       summary: Count the number of Catalog
       tags:
@@ -1968,7 +1968,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/api/entities/CatalogService.ts/search:
+  /codbex-products/gen/api/entities/CatalogueService.ts/search:
     post:
       summary: Search Catalog by CatalogFilterOptions
       tags:

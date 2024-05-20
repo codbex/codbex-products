@@ -87,7 +87,7 @@ interface CatalogUpdateEntityEvent extends CatalogEntityEvent {
     readonly previousEntity: CatalogEntity;
 }
 
-export class CatalogRepository {
+export class CatalogueRepository {
 
     private static readonly DEFINITION = {
         table: "CODBEX_CATALOG",
@@ -121,7 +121,7 @@ export class CatalogRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(CatalogRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(CatalogueRepository.DEFINITION, null, dataSource);
     }
 
     public findAll(options?: CatalogEntityOptions): CatalogEntity[] {
