@@ -5,13 +5,13 @@ import { dao as daoApi } from "sdk/db";
 
 export interface CatalogueEntity {
     readonly Id: number;
-    Product?: number;
+    Product: number;
     Store: number;
     Quantity?: number;
 }
 
 export interface CatalogueCreateEntity {
-    readonly Product?: number;
+    readonly Product: number;
     readonly Store: number;
     readonly Quantity?: number;
 }
@@ -103,11 +103,13 @@ export class CatalogueRepository {
                 name: "Product",
                 column: "CATALOGUE_PRODUCT",
                 type: "INTEGER",
+                required: true
             },
             {
                 name: "Store",
                 column: "CATALOGUE_STORE",
                 type: "INTEGER",
+                required: true
             },
             {
                 name: "Quantity",

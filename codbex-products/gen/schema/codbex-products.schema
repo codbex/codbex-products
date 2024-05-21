@@ -268,13 +268,15 @@
                     {
                         "type": "INTEGER",
                         "length": 0,
-                        "nullable": true,
+                        "precision": "NaN",
+                        "scale": "NaN",
                         "name": "CATALOGUE_PRODUCT"
                     },
                     {
                         "type": "INTEGER",
                         "length": 0,
-                        "nullable": true,
+                        "precision": "NaN",
+                        "scale": "NaN",
                         "name": "CATALOGUE_STORE"
                     },
                     {

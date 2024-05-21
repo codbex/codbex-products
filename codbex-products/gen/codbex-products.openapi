@@ -3423,6 +3423,9 @@ components:
     Catalogue:
       type: object
       required:
+        - Product
+        - Store
+        - Quantity
       properties:
         Id:
           type: integer
