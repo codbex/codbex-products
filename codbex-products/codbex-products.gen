@@ -2887,6 +2887,7 @@
           "isRequiredProperty": true,
           "name": "Store",
           "widgetDropDownKey": "Id",
+          "widgetDropDownValue": "Name",
           "widgetIsMajor": true,
           "widgetLength": "20",
           "widgetSize": "",

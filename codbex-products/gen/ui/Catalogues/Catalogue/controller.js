@@ -186,7 +186,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.optionsStore = response.data.map(e => {
 				return {
 					value: e.Id,
-					text: e.${property.widgetDropDownValue}
+					text: e.Name
 				}
 			});
 		});
