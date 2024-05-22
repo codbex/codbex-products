@@ -212,7 +212,7 @@ export class CatalogueRepository {
     }
 
     private async triggerEvent(data: CatalogueEntityEvent | CatalogueUpdateEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-products-Catalogue-Catalogue", ["trigger"]);
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-products-Catalogues-Catalogue", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -220,6 +220,6 @@ export class CatalogueRepository {
                 console.error(error);
             }            
         });
-        producer.topic("codbex-products-Catalogue-Catalogue").send(JSON.stringify(data));
+        producer.topic("codbex-products-Catalogues-Catalogue").send(JSON.stringify(data));
     }
 }

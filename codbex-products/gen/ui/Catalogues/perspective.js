@@ -4,9 +4,9 @@
  * Do not modify the content as it may be re-generated again.
  */
 const perspectiveData = {
-	id: 'Catalogue',
-	name: 'Catalogue',
-	link: '/services/web/codbex-products/gen/ui/Catalogue/index.html',
+	id: 'Catalogues',
+	name: 'Catalogues',
+	link: '/services/web/codbex-products/gen/ui/Catalogues/index.html',
 	order: 300,
 	icon: '/services/web/resources/unicons/book-open.svg',
 };

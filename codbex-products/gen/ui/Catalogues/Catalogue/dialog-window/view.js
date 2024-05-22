@@ -4,10 +4,10 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "Catalogue-filter",
-    label: "Catalogue Filter",
-    link: "/services/web/codbex-products/gen/ui/Catalogue/Catalogue/dialog-filter/index.html",
-    perspectiveName: "Catalogue",
+    id: "Catalogue-details",
+    label: "Catalogue",
+    link: "/services/web/codbex-products/gen/ui/Catalogues/Catalogue/dialog-window/index.html",
+    perspectiveName: "Catalogues",
 };
 
 if (typeof exports !== 'undefined') {

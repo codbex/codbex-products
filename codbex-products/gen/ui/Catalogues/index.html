@@ -65,7 +65,7 @@
                     };
                     Extensions.get('view', 'codbex-products-view').then(function (response) {
                         $scope.layoutModel = {
-                            views: response.filter(e => !e.isLaunchpad && e.perspectiveName === 'Catalogue').map(e => e.id)
+                            views: response.filter(e => !e.isLaunchpad && e.perspectiveName === 'Catalogues').map(e => e.id)
                         };
                         $scope.state.isBusy = false;
                     }, function (error) {

@@ -1,9 +1,9 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-products.Catalogue.Catalogue';
+		messageHubProvider.eventIdPrefix = 'codbex-products.Catalogues.Catalogue';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-products/gen/api/Catalogue/CatalogueService.ts";
+		entityApiProvider.baseUrl = "/services/ts/codbex-products/gen/api/Catalogues/CatalogueService.ts";
 	}])
 	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', 'Extensions', function ($scope, $http, messageHub, entityApi, Extensions) {
 
@@ -13,8 +13,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		//-----------------Custom Actions-------------------//
 		Extensions.get('dialogWindow', 'codbex-products-custom-action').then(function (response) {
-			$scope.pageActions = response.filter(e => e.perspective === "Catalogue" && e.view === "Catalogue" && (e.type === "page" || e.type === undefined));
-			$scope.entityActions = response.filter(e => e.perspective === "Catalogue" && e.view === "Catalogue" && e.type === "entity");
+			$scope.pageActions = response.filter(e => e.perspective === "Catalogues" && e.view === "Catalogue" && (e.type === "page" || e.type === undefined));
+			$scope.entityActions = response.filter(e => e.perspective === "Catalogues" && e.view === "Catalogue" && e.type === "entity");
 		});
 
 		$scope.triggerPageAction = function (action) {

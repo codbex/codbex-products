@@ -5,12 +5,12 @@
  */
 exports.getTile = function () {
     return {
-        group: "Catalogue",
+        group: "Catalogues",
         name: "Catalogue",
         caption: "Manage entity Catalogue",
         tooltip: "Catalogue",
         // icon: "file-o",
-        location: "/services/web/codbex-products/gen/ui/Catalogue/index.html",
+        location: "/services/web/codbex-products/gen/ui/Catalogues/index.html",
         order: "100",
         groupOrder: "300",
     };

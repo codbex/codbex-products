@@ -101,12 +101,12 @@
       "icon": "/services/web/resources/unicons/store.svg",
       "role": ""
     },
-    "Catalogue": {
+    "Catalogues": {
       "views": [
         "Catalogue"
       ],
-      "name": "Catalogue",
-      "label": "Catalogue",
+      "name": "Catalogues",
+      "label": "Catalogues",
       "order": "300",
       "icon": "/services/web/resources/unicons/book-open.svg",
       "role": ""
@@ -2942,8 +2942,8 @@
       "name": "Catalogue",
       "navigationPath": "/Home",
       "perspectiveIcon": "/services/web/resources/unicons/book-open.svg",
-      "perspectiveLabel": "Catalogue",
-      "perspectiveName": "Catalogue",
+      "perspectiveLabel": "Catalogues",
+      "perspectiveName": "Catalogues",
       "perspectiveOrder": "300",
       "perspectiveRole": "",
       "title": "Catalogue",
