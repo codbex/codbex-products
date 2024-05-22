@@ -6,8 +6,8 @@
 const viewData = {
     id: "Catalogue-filter",
     label: "Catalogue Filter",
-    link: "/services/web/codbex-products/gen/ui/entities/Catalogue/dialog-filter/index.html",
-    perspectiveName: "entities",
+    link: "/services/web/codbex-products/gen/ui/Catalogue/Catalogue/dialog-filter/index.html",
+    perspectiveName: "Catalogue",
 };
 
 if (typeof exports !== 'undefined') {

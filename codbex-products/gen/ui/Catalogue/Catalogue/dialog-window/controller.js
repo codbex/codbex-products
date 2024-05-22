@@ -1,9 +1,9 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-products.entities.Catalogue';
+		messageHubProvider.eventIdPrefix = 'codbex-products.Catalogue.Catalogue';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-products/gen/api/entities/CatalogueService.ts";
+		entityApiProvider.baseUrl = "/services/ts/codbex-products/gen/api/Catalogue/CatalogueService.ts";
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'ViewParameters', 'entityApi', function ($scope, messageHub, ViewParameters, entityApi) {
 
@@ -24,6 +24,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.entity = params.entity;
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
+			$scope.optionsProduct = params.optionsProduct;
+			$scope.optionsStore = params.optionsStore;
 		}
 
 		$scope.create = function () {

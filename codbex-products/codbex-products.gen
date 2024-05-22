@@ -101,14 +101,14 @@
       "icon": "/services/web/resources/unicons/store.svg",
       "role": ""
     },
-    "entities": {
+    "Catalogue": {
       "views": [
         "Catalogue"
       ],
-      "name": "entities",
-      "label": "entities",
-      "order": "100",
-      "icon": "/services/web/resources/unicons/copy.svg",
+      "name": "Catalogue",
+      "label": "Catalogue",
+      "order": "300",
+      "icon": "/services/web/resources/unicons/book-open.svg",
       "role": ""
     }
   },
@@ -2854,17 +2854,19 @@
           "isCalculatedProperty": false,
           "isRequiredProperty": true,
           "name": "Product",
+          "widgetDropDownKey": "Id",
+          "widgetDropDownValue": "Name",
           "widgetIsMajor": true,
           "widgetLength": "20",
           "widgetSize": "",
-          "widgetType": "TEXTBOX",
+          "widgetType": "DROPDOWN",
           "relationshipName": "Catalogue_Product",
           "relationshipEntityName": "Product",
           "relationshipEntityPerspectiveName": "Products",
           "relationshipEntityPerspectiveLabel": "Entities",
           "dataNotNull": true,
           "widgetLabel": "Product",
-          "widgetDropdownUrl": "",
+          "widgetDropdownUrl": "\"/services/ts/codbex-products/gen/api/Products/ProductService.ts\"",
           "dataTypeJava": "int",
           "dataTypeTypescript": "number",
           "inputRule": ""
@@ -2884,17 +2886,18 @@
           "isCalculatedProperty": false,
           "isRequiredProperty": true,
           "name": "Store",
+          "widgetDropDownKey": "Id",
           "widgetIsMajor": true,
           "widgetLength": "20",
           "widgetSize": "",
-          "widgetType": "TEXTBOX",
+          "widgetType": "DROPDOWN",
           "relationshipName": "Catalogue_Store",
           "relationshipEntityName": "Store",
           "relationshipEntityPerspectiveName": "Stores",
           "relationshipEntityPerspectiveLabel": "Stores",
           "dataNotNull": true,
           "widgetLabel": "Store",
-          "widgetDropdownUrl": "",
+          "widgetDropdownUrl": "\"/services/ts/codbex-inventory/gen/api/Stores/StoreService.ts\"",
           "dataTypeJava": "int",
           "dataTypeTypescript": "number",
           "inputRule": ""
@@ -2938,10 +2941,10 @@
       "menuLabel": "Catalogue",
       "name": "Catalogue",
       "navigationPath": "/Home",
-      "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
-      "perspectiveLabel": "Entities",
-      "perspectiveName": "entities",
-      "perspectiveOrder": "100",
+      "perspectiveIcon": "/services/web/resources/unicons/book-open.svg",
+      "perspectiveLabel": "Catalogue",
+      "perspectiveName": "Catalogue",
+      "perspectiveOrder": "300",
       "perspectiveRole": "",
       "title": "Catalogue",
       "tooltip": "Catalogue",
@@ -2956,7 +2959,8 @@
       "primaryKeys": [
         "Id"
       ],
-      "primaryKeysString": "Id"
+      "primaryKeysString": "Id",
+      "hasDropdowns": true
     }
   ]
 }

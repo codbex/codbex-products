@@ -4,14 +4,16 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "Catalogue-details",
+    id: "Catalogue",
     label: "Catalogue",
-    link: "/services/web/codbex-products/gen/ui/entities/Catalogue/dialog-window/index.html",
-    perspectiveName: "entities",
+    factory: "frame",
+    region: "center",
+    link: "/services/web/codbex-products/gen/ui/Catalogue/Catalogue/index.html",
+    perspectiveName: "Catalogue",
 };
 
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
+    exports.getView = function () {
         return viewData;
     }
 }

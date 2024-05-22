@@ -1,11 +1,11 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-products.entities.Catalogue';
+		messageHubProvider.eventIdPrefix = 'codbex-products.Catalogue.Catalogue';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-products/gen/api/entities/CatalogueService.ts";
+		entityApiProvider.baseUrl = "/services/ts/codbex-products/gen/api/Catalogue/CatalogueService.ts";
 	}])
-	.controller('PageController', ['$scope', 'messageHub', 'entityApi', 'Extensions', function ($scope, messageHub, entityApi, Extensions) {
+	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', 'Extensions', function ($scope, $http, messageHub, entityApi, Extensions) {
 
 		$scope.dataPage = 1;
 		$scope.dataCount = 0;
@@ -13,8 +13,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		//-----------------Custom Actions-------------------//
 		Extensions.get('dialogWindow', 'codbex-products-custom-action').then(function (response) {
-			$scope.pageActions = response.filter(e => e.perspective === "entities" && e.view === "Catalogue" && (e.type === "page" || e.type === undefined));
-			$scope.entityActions = response.filter(e => e.perspective === "entities" && e.view === "Catalogue" && e.type === "entity");
+			$scope.pageActions = response.filter(e => e.perspective === "Catalogue" && e.view === "Catalogue" && (e.type === "page" || e.type === undefined));
+			$scope.entityActions = response.filter(e => e.perspective === "Catalogue" && e.view === "Catalogue" && e.type === "entity");
 		});
 
 		$scope.triggerPageAction = function (action) {
@@ -107,12 +107,16 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("Catalogue-details", {
 				action: "select",
 				entity: entity,
+				optionsProduct: $scope.optionsProduct,
+				optionsStore: $scope.optionsStore,
 			});
 		};
 
 		$scope.openFilter = function (entity) {
 			messageHub.showDialogWindow("Catalogue-filter", {
 				entity: $scope.filterEntity,
+				optionsProduct: $scope.optionsProduct,
+				optionsStore: $scope.optionsStore,
 			});
 		};
 
@@ -121,6 +125,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("Catalogue-details", {
 				action: "create",
 				entity: {},
+				optionsProduct: $scope.optionsProduct,
+				optionsStore: $scope.optionsStore,
 			}, null, false);
 		};
 
@@ -128,6 +134,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("Catalogue-details", {
 				action: "update",
 				entity: entity,
+				optionsProduct: $scope.optionsProduct,
+				optionsStore: $scope.optionsStore,
 			}, null, false);
 		};
 
@@ -159,5 +167,46 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				}
 			});
 		};
+
+		//----------------Dropdowns-----------------//
+		$scope.optionsProduct = [];
+		$scope.optionsStore = [];
+
+
+		$http.get("/services/ts/codbex-products/gen/api/Products/ProductService.ts").then(function (response) {
+			$scope.optionsProduct = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
+				}
+			});
+		});
+
+		$http.get("/services/ts/codbex-inventory/gen/api/Stores/StoreService.ts").then(function (response) {
+			$scope.optionsStore = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.${property.widgetDropDownValue}
+				}
+			});
+		});
+
+		$scope.optionsProductValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsProduct.length; i++) {
+				if ($scope.optionsProduct[i].value === optionKey) {
+					return $scope.optionsProduct[i].text;
+				}
+			}
+			return null;
+		};
+		$scope.optionsStoreValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsStore.length; i++) {
+				if ($scope.optionsStore[i].value === optionKey) {
+					return $scope.optionsStore[i].text;
+				}
+			}
+			return null;
+		};
+		//----------------Dropdowns-----------------//
 
 	}]);

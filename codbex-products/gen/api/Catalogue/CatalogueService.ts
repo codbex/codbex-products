@@ -1,10 +1,10 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { CatalogueRepository, CatalogueEntityOptions } from "../../dao/entities/CatalogueRepository";
+import { CatalogueRepository, CatalogueEntityOptions } from "../../dao/Catalogue/CatalogueRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-products-entities-Catalogue", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-products-Catalogue-Catalogue", ["validate"]);
 
 @Controller
 class CatalogueService {
@@ -30,7 +30,7 @@ class CatalogueService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-products/gen/api/entities/CatalogueService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-products/gen/api/Catalogue/CatalogueService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {

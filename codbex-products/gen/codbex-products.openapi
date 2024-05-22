@@ -13,7 +13,7 @@ tags:
   - name: Categories
   - name: Products
   - name: Products
-  - name: entities
+  - name: Catalogue
 paths:
   /codbex-products/gen/api/Settings/ProductTypeService.ts:
     get:
@@ -1663,7 +1663,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/api/entities/CatalogueService.ts:
+  /codbex-products/gen/api/Catalogue/CatalogueService.ts:
     get:
       summary: List Catalogue
       parameters:
@@ -1684,7 +1684,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - entities
+        - Catalogue
       responses:
         200:
           description: Successful Request
@@ -1715,7 +1715,7 @@ paths:
     post:
       summary: Create Catalogue
       tags:
-        - entities
+        - Catalogue
       requestBody:
         content:
           application/json:
@@ -1747,7 +1747,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/api/entities/CatalogueService.ts/{id}:
+  /codbex-products/gen/api/Catalogue/CatalogueService.ts/{id}:
     get:
       summary: Get Catalogue by Id
       parameters:
@@ -1758,7 +1758,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Catalogue
       responses:
         200:
           description: Successful Request
@@ -1796,7 +1796,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Catalogue
       requestBody:
         content:
           application/json:
@@ -1844,7 +1844,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Catalogue
       responses:
         204:
           description: Successful Request
@@ -1866,11 +1866,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/api/entities/CatalogueService.ts/count:
+  /codbex-products/gen/api/Catalogue/CatalogueService.ts/count:
     get:
       summary: Count the number of Catalogue
       tags:
-        - entities
+        - Catalogue
       responses:
         200:
           description: Successful Request
@@ -1894,7 +1894,7 @@ paths:
     post:
       summary: Count the number of Catalogue by CatalogueFilterOptions
       tags:
-        - entities
+        - Catalogue
       requestBody:
         content:
           application/json:
@@ -1968,11 +1968,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/api/entities/CatalogueService.ts/search:
+  /codbex-products/gen/api/Catalogue/CatalogueService.ts/search:
     post:
       summary: Search Catalogue by CatalogueFilterOptions
       tags:
-        - entities
+        - Catalogue
       requestBody:
         content:
           application/json:
