@@ -3,61 +3,79 @@ import { producer } from "sdk/messaging";
 import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
 
-export interface ProductTypeEntity {
+export interface CatalogueEntity {
     readonly Id: number;
-    Name?: string;
+    Product: number;
+    Store: number;
+    Quantity?: number;
 }
 
-export interface ProductTypeCreateEntity {
-    readonly Name?: string;
+export interface CatalogueCreateEntity {
+    readonly Product: number;
+    readonly Store: number;
+    readonly Quantity?: number;
 }
 
-export interface ProductTypeUpdateEntity extends ProductTypeCreateEntity {
+export interface CatalogueUpdateEntity extends CatalogueCreateEntity {
     readonly Id: number;
 }
 
-export interface ProductTypeEntityOptions {
+export interface CatalogueEntityOptions {
     $filter?: {
         equals?: {
             Id?: number | number[];
-            Name?: string | string[];
+            Product?: number | number[];
+            Store?: number | number[];
+            Quantity?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
-            Name?: string | string[];
+            Product?: number | number[];
+            Store?: number | number[];
+            Quantity?: number | number[];
         };
         contains?: {
             Id?: number;
-            Name?: string;
+            Product?: number;
+            Store?: number;
+            Quantity?: number;
         };
         greaterThan?: {
             Id?: number;
-            Name?: string;
+            Product?: number;
+            Store?: number;
+            Quantity?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
-            Name?: string;
+            Product?: number;
+            Store?: number;
+            Quantity?: number;
         };
         lessThan?: {
             Id?: number;
-            Name?: string;
+            Product?: number;
+            Store?: number;
+            Quantity?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
-            Name?: string;
+            Product?: number;
+            Store?: number;
+            Quantity?: number;
         };
     },
-    $select?: (keyof ProductTypeEntity)[],
-    $sort?: string | (keyof ProductTypeEntity)[],
+    $select?: (keyof CatalogueEntity)[],
+    $sort?: string | (keyof CatalogueEntity)[],
     $order?: 'asc' | 'desc',
     $offset?: number,
     $limit?: number,
 }
 
-interface ProductTypeEntityEvent {
+interface CatalogueEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
-    readonly entity: Partial<ProductTypeEntity>;
+    readonly entity: Partial<CatalogueEntity>;
     readonly key: {
         name: string;
         column: string;
@@ -65,26 +83,38 @@ interface ProductTypeEntityEvent {
     }
 }
 
-interface ProductTypeUpdateEntityEvent extends ProductTypeEntityEvent {
-    readonly previousEntity: ProductTypeEntity;
+interface CatalogueUpdateEntityEvent extends CatalogueEntityEvent {
+    readonly previousEntity: CatalogueEntity;
 }
 
-export class ProductTypeRepository {
+export class CatalogueRepository {
 
     private static readonly DEFINITION = {
-        table: "CODBEX_PRODUCTTYPE",
+        table: "CODBEX_CATALOGUE",
         properties: [
             {
                 name: "Id",
-                column: "PRODUCTTYPE_ID",
+                column: "CATALOGUE_ID",
                 type: "INTEGER",
                 id: true,
                 autoIncrement: true,
             },
             {
-                name: "Name",
-                column: "PRODUCTTYPE_NAME",
-                type: "VARCHAR",
+                name: "Product",
+                column: "CATALOGUE_PRODUCT",
+                type: "INTEGER",
+                required: true
+            },
+            {
+                name: "Store",
+                column: "CATALOGUE_STORE",
+                type: "INTEGER",
+                required: true
+            },
+            {
+                name: "Quantity",
+                column: "CATALOGUE_QUANTITY",
+                type: "DOUBLE",
             }
         ]
     };
@@ -92,58 +122,58 @@ export class ProductTypeRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(ProductTypeRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(CatalogueRepository.DEFINITION, null, dataSource);
     }
 
-    public findAll(options?: ProductTypeEntityOptions): ProductTypeEntity[] {
+    public findAll(options?: CatalogueEntityOptions): CatalogueEntity[] {
         return this.dao.list(options);
     }
 
-    public findById(id: number): ProductTypeEntity | undefined {
+    public findById(id: number): CatalogueEntity | undefined {
         const entity = this.dao.find(id);
         return entity ?? undefined;
     }
 
-    public create(entity: ProductTypeCreateEntity): number {
+    public create(entity: CatalogueCreateEntity): number {
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
-            table: "CODBEX_PRODUCTTYPE",
+            table: "CODBEX_CATALOGUE",
             entity: entity,
             key: {
                 name: "Id",
-                column: "PRODUCTTYPE_ID",
+                column: "CATALOGUE_ID",
                 value: id
             }
         });
         return id;
     }
 
-    public update(entity: ProductTypeUpdateEntity): void {
+    public update(entity: CatalogueUpdateEntity): void {
         const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
-            table: "CODBEX_PRODUCTTYPE",
+            table: "CODBEX_CATALOGUE",
             entity: entity,
             previousEntity: previousEntity,
             key: {
                 name: "Id",
-                column: "PRODUCTTYPE_ID",
+                column: "CATALOGUE_ID",
                 value: entity.Id
             }
         });
     }
 
-    public upsert(entity: ProductTypeCreateEntity | ProductTypeUpdateEntity): number {
-        const id = (entity as ProductTypeUpdateEntity).Id;
+    public upsert(entity: CatalogueCreateEntity | CatalogueUpdateEntity): number {
+        const id = (entity as CatalogueUpdateEntity).Id;
         if (!id) {
             return this.create(entity);
         }
 
         const existingEntity = this.findById(id);
         if (existingEntity) {
-            this.update(entity as ProductTypeUpdateEntity);
+            this.update(entity as CatalogueUpdateEntity);
             return id;
         } else {
             return this.create(entity);
@@ -155,22 +185,22 @@ export class ProductTypeRepository {
         this.dao.remove(id);
         this.triggerEvent({
             operation: "delete",
-            table: "CODBEX_PRODUCTTYPE",
+            table: "CODBEX_CATALOGUE",
             entity: entity,
             key: {
                 name: "Id",
-                column: "PRODUCTTYPE_ID",
+                column: "CATALOGUE_ID",
                 value: id
             }
         });
     }
 
-    public count(options?: ProductTypeEntityOptions): number {
+    public count(options?: CatalogueEntityOptions): number {
         return this.dao.count(options);
     }
 
     public customDataCount(): number {
-        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX__PRODUCTTYPE"');
+        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_CATALOGUE"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
                 return resultSet[0].COUNT;
@@ -181,8 +211,8 @@ export class ProductTypeRepository {
         return 0;
     }
 
-    private async triggerEvent(data: ProductTypeEntityEvent | ProductTypeUpdateEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-products-Settings-ProductType", ["trigger"]);
+    private async triggerEvent(data: CatalogueEntityEvent | CatalogueUpdateEntityEvent) {
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-products-Catalogues-Catalogue", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -190,6 +220,6 @@ export class ProductTypeRepository {
                 console.error(error);
             }            
         });
-        producer.topic("codbex-products-Settings-ProductType").send(JSON.stringify(data));
+        producer.topic("codbex-products-Catalogues-Catalogue").send(JSON.stringify(data));
     }
 }

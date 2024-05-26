@@ -1,34 +1,23 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { ProductAttributeRepository, ProductAttributeEntityOptions } from "../../dao/Products/ProductAttributeRepository";
+import { CatalogueRepository, CatalogueEntityOptions } from "../../dao/Catalogues/CatalogueRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-products-Products-ProductAttribute", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-products-Catalogues-Catalogue", ["validate"]);
 
 @Controller
-class ProductAttributeService {
+class CatalogueService {
 
-    private readonly repository = new ProductAttributeRepository();
+    private readonly repository = new CatalogueRepository();
 
     @Get("/")
     public getAll(_: any, ctx: any) {
         try {
-            const options: ProductAttributeEntityOptions = {
+            const options: CatalogueEntityOptions = {
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
-
-            let Product = parseInt(ctx.queryParameters.Product);
-            Product = isNaN(Product) ? ctx.queryParameters.Product : Product;
-
-            if (Product !== undefined) {
-                options.$filter = {
-                    equals: {
-                        Product: Product
-                    }
-                };
-            }
 
             return this.repository.findAll(options);
         } catch (error: any) {
@@ -41,7 +30,7 @@ class ProductAttributeService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-products/gen/api/Products/ProductAttributeService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-products/gen/api/Catalogues/CatalogueService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
@@ -84,7 +73,7 @@ class ProductAttributeService {
             if (entity) {
                 return entity;
             } else {
-                HttpUtils.sendResponseNotFound("ProductAttribute not found");
+                HttpUtils.sendResponseNotFound("Catalogue not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -112,7 +101,7 @@ class ProductAttributeService {
                 this.repository.deleteById(id);
                 HttpUtils.sendResponseNoContent();
             } else {
-                HttpUtils.sendResponseNotFound("ProductAttribute not found");
+                HttpUtils.sendResponseNotFound("Catalogue not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -130,11 +119,14 @@ class ProductAttributeService {
     }
 
     private validateEntity(entity: any): void {
-        if (entity.Name?.length > 200) {
-            throw new ValidationError(`The 'Name' exceeds the maximum length of [200] characters`);
+        if (entity.Product === null || entity.Product === undefined) {
+            throw new ValidationError(`The 'Product' property is required, provide a valid value`);
         }
-        if (entity.Value?.length > 2000) {
-            throw new ValidationError(`The 'Value' exceeds the maximum length of [2000] characters`);
+        if (entity.Store === null || entity.Store === undefined) {
+            throw new ValidationError(`The 'Store' property is required, provide a valid value`);
+        }
+        if (entity.Quantity === null || entity.Quantity === undefined) {
+            throw new ValidationError(`The 'Quantity' property is required, provide a valid value`);
         }
         for (const next of validationModules) {
             next.validate(entity);

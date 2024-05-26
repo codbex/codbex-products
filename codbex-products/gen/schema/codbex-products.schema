@@ -254,6 +254,42 @@
                 ]
             },
             {
+                "name": "CODBEX_CATALOGUE",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "CATALOGUE_ID"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "name": "CATALOGUE_PRODUCT"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "name": "CATALOGUE_STORE"
+                    },
+                    {
+                        "type": "DOUBLE",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "CATALOGUE_QUANTITY"
+                    }
+                ]
+            },
+            {
                 "name": "Product_ProductType",
                 "type": "foreignKey",
                 "table": "CODBEX_PRODUCT",
@@ -306,6 +342,24 @@
                 "columns": "PRODUCTDETAILS_PRODUCTID",
                 "referencedTable": "CODBEX_PRODUCT",
                 "referencedColumns": "PRODUCT_ID"
+            },
+            {
+                "name": "Catalogue_Product",
+                "type": "foreignKey",
+                "table": "CODBEX_CATALOGUE",
+                "constraintName": "Catalogue_Product",
+                "columns": "CATALOGUE_PRODUCT",
+                "referencedTable": "CODBEX_PRODUCT",
+                "referencedColumns": "PRODUCT_ID"
+            },
+            {
+                "name": "Catalogue_Store",
+                "type": "foreignKey",
+                "table": "CODBEX_CATALOGUE",
+                "constraintName": "Catalogue_Store",
+                "columns": "CATALOGUE_STORE",
+                "referencedTable": "CODBEX_STORE",
+                "referencedColumns": "STORE_ID"
             }
         ]
     },
