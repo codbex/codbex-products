@@ -1665,7 +1665,7 @@
                         "dataAutoIncrement": "false",
                         "dataLength": "20",
                         "dataName": "CATALOGUE_QUANTITY",
-                        "dataNullable": "true",
+                        "dataNullable": "false",
                         "dataPrecision": "NaN",
                         "dataPrimaryKey": "false",
                         "dataScale": "NaN",

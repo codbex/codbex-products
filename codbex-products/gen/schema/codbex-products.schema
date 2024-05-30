@@ -284,7 +284,6 @@
                         "length": 20,
                         "precision": "NaN",
                         "scale": "NaN",
-                        "nullable": true,
                         "name": "CATALOGUE_QUANTITY"
                     }
                 ]
