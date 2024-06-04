@@ -7,13 +7,13 @@ export interface CatalogueEntity {
     readonly Id: number;
     Product: number;
     Store: number;
-    Quantity?: number;
+    Quantity: number;
 }
 
 export interface CatalogueCreateEntity {
     readonly Product: number;
     readonly Store: number;
-    readonly Quantity?: number;
+    readonly Quantity: number;
 }
 
 export interface CatalogueUpdateEntity extends CatalogueCreateEntity {
@@ -115,6 +115,7 @@ export class CatalogueRepository {
                 name: "Quantity",
                 column: "CATALOGUE_QUANTITY",
                 type: "DOUBLE",
+                required: true
             }
         ]
     };
