@@ -1,4 +1,4 @@
-name: Release - Application
+name: Release - Module
 
 on:
   workflow_dispatch:
@@ -12,24 +12,24 @@ run-name: 'version set to ${{ inputs.release-version }} for release'
 
 jobs:
   main:
-    uses: codbex/codbex-infra/.github/workflows/application-release.yaml@main
+    uses: codbex/codbex-infra/.github/workflows/module-release.yaml@main
     with:
-      application-name: codbex-products
+      packages: codbex-products,codbex-products-data
+      packages-build: codbex-products
       release-version: ${{ inputs.release-version }}
       release-content: |
         ## codbex-products - ${{ inputs.release-version }}
   
-        Products Management Application
+        Products Management Module
   
-        ## Deployment
+        ## Installation
   
         ```
-        docker run --name codbex-products \
-        --rm -p 8080:8080 -p 8081:8081 \
-        ghcr.io/codbex/codbex-products:${{ inputs.release-version }}
+        npm install @codbex/codbex-products@${{ inputs.release-version }}
+        npm install @codbex/codbex-products-data@${{ inputs.release-version }}
         ```
   
         ## Access points:
   
-        - [/services/web/codbex-products/gen/](http://localhost:8080/services/web/codbex-products/gen/) - Admin Panel
+        - [/services/web/codbex-products/gen/](http://localhost:80/services/web/codbex-products/gen/) - Admin Panel
     secrets: inherit
