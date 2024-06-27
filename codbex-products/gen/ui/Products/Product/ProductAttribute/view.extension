@@ -1,5 +1,0 @@
-{
-    "module": "codbex-products/gen/ui/Products/Product/ProductAttribute/view.js",
-    "extensionPoint": "codbex-products-view",
-    "description": "codbex-products - Application View - Details"
-}
