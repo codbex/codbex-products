@@ -10,7 +10,7 @@
     },
     "dependencies": {
         "@codbex/codbex-uoms": "0.1.0",
-        "@codbex/codbex-companies": "0.1.0",
+        "@codbex/codbex-companies": "0.2.0",
         "@codbex/codbex-partners": "0.1.0"
     }
 }
