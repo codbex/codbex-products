@@ -7,7 +7,6 @@
                 "columns": [
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
@@ -27,7 +26,6 @@
                 "columns": [
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
@@ -53,7 +51,6 @@
                 "columns": [
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
@@ -81,13 +78,11 @@
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "nullable": true,
                         "name": "PRODUCT_TYPE"
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "nullable": true,
                         "name": "PRODUCT_CATEGORY"
                     },
@@ -99,7 +94,6 @@
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "nullable": true,
                         "name": "PRODUCT_COMPANY"
                     },
@@ -141,31 +135,26 @@
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "nullable": true,
                         "name": "PRODUCT_MANUFACTURER"
                     },
                     {
                         "type": "DOUBLE",
-                        "length": 20,
                         "nullable": true,
                         "name": "PRODUCT_WEIGHT"
                     },
                     {
                         "type": "DOUBLE",
-                        "length": 20,
                         "nullable": true,
                         "name": "PRODUCT_HEIGHT"
                     },
                     {
                         "type": "DOUBLE",
-                        "length": 20,
                         "nullable": true,
                         "name": "PRODUCT_LENGTH"
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 20,
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
@@ -173,7 +162,6 @@
                     },
                     {
                         "type": "BOOLEAN",
-                        "length": 20,
                         "nullable": true,
                         "name": "PRODUCT_ENABLED"
                     }
@@ -185,7 +173,6 @@
                 "columns": [
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
@@ -193,7 +180,6 @@
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "nullable": true,
                         "name": "PRODUCTDETAILS_PRODUCTID"
                     },
@@ -217,7 +203,6 @@
                 "columns": [
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
@@ -225,17 +210,14 @@
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "name": "CATALOGUE_PRODUCT"
                     },
                     {
                         "type": "INTEGER",
-                        "length": 0,
                         "name": "CATALOGUE_STORE"
                     },
                     {
                         "type": "DOUBLE",
-                        "length": 20,
                         "name": "CATALOGUE_QUANTITY"
                     }
                 ]
