@@ -1,0 +1,5 @@
+{
+    "extensionPoint": "codbex-products-Catalogues-Catalogue",
+    "module": "codbex-products/events/Catalogue/UpdateCatalogueHandler.ts",
+    "description": "Catalogue update extension"
+}
