@@ -1,7 +1,6 @@
 import { SalesOrderItemRepository } from "codbex-orders/gen/codbex-orders/dao/SalesOrder/SalesOrderItemRepository";
 import { SalesOrderRepository } from "codbex-orders/gen/codbex-orders/dao/SalesOrder/SalesOrderRepository";
 
-
 export const trigger = (event) => {
 
     const SalesOrderItemDao = new SalesOrderItemRepository();
@@ -15,7 +14,7 @@ export const trigger = (event) => {
         const salesOrders = SalesOrderDao.findAll({
             $filter: {
                 equals: {
-                    Store: catalogueItem.Store
+                    Store: catalogueItem.Store.Id
                 }
             }
         });
@@ -37,7 +36,9 @@ export const trigger = (event) => {
 
             salesOrderItems.forEach(function (item) {
                 item.Availability = catalogueItem.Quantity;
+
                 console.log(item.Availability);
+
                 SalesOrderItemDao.update(item);
             });
 
