@@ -12,7 +12,7 @@ export const trigger = (event) => {
 
     if (operation === "update") {
 
-        const salesOrder = SalesOrderDao.findAll({
+        const salesOrders = SalesOrderDao.findAll({
             $filter: {
                 equals: {
                     Store: catalogueItem.Store
@@ -20,18 +20,28 @@ export const trigger = (event) => {
             }
         });
 
-        let salesOrderItems = SalesOrderItemDao.findAll({
-            $filter: {
-                equals: {
-                    SalesOrder: salesOrder[0].Id
+        console.log(salesOrders);
+
+        salesOrders.forEach(function (order) {
+
+            let salesOrderItems = SalesOrderItemDao.findAll({
+                $filter: {
+                    equals: {
+                        SalesOrder: order.Id,
+                        Product: catalogueItem.Product
+                    }
                 }
-            }
-        });
+            });
 
-        salesOrderItems.forEach(function (item) {
-            SalesOrderItemDao.update(item);
-        });
+            console.log(salesOrderItems);
 
+            salesOrderItems.forEach(function (item) {
+                item.Availability = catalogueItem.Quantity;
+                console.log(item.Availability);
+                SalesOrderItemDao.update(item);
+            });
+
+        });
     }
 
 }
