@@ -1,7 +1,7 @@
 const viewData = {
     id: 'product-duplicate',
     label: 'Duplicate',
-    link: '/services/web/codbex-orders/print/PurchaseOrder/print-purchase-order.html',
+    link: '/services/web/codbex-products/duplicate/products-duplicate.html',
     perspective: 'Products',
     view: 'Product',
     type: 'entity',
