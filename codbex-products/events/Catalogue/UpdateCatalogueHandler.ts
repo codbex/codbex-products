@@ -14,12 +14,10 @@ export const trigger = (event) => {
         const salesOrders = SalesOrderDao.findAll({
             $filter: {
                 equals: {
-                    Store: catalogueItem.Store.Id
+                    Store: catalogueItem.Store
                 }
             }
         });
-
-        console.log(salesOrders);
 
         salesOrders.forEach(function (order) {
 
@@ -32,13 +30,8 @@ export const trigger = (event) => {
                 }
             });
 
-            console.log(salesOrderItems);
-
             salesOrderItems.forEach(function (item) {
                 item.Availability = catalogueItem.Quantity;
-
-                console.log(item.Availability);
-
                 SalesOrderItemDao.update(item);
             });
 
