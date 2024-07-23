@@ -1,5 +1,5 @@
 {
-    "module": "codbex-products/duplicate/products-duplicate.js",
+    "module": "codbex-products/duplicate/Products/products-duplicate.js",
     "extensionPoint": "codbex-products-custom-action",
     "description": "Duplicate Product Custom Action"
 }
