@@ -1,6 +1,6 @@
 const widgetsView = angular.module('widgets', ['ideUI', 'ideView']);
 
-widgetsView.controller('WidgetsViewController', ['$scope', '$http', 'ViewParameters', function ($scope, $http, ViewParameters) {
+widgetsView.controller('WidgetsViewController', ['$scope', '$http', 'ViewParameters', "messageHub", function ($scope, $http, ViewParameters, messageHub) {
     $scope.submitCopy = function (batch) {
         const params = ViewParameters.get();
 
@@ -31,6 +31,8 @@ widgetsView.controller('WidgetsViewController', ['$scope', '$http', 'ViewParamet
                     Length: response.data.Length,
                     VAT: response.data.VAT,
                     Enabled: response.data.Enabled
+                }).then(function (_) {
+                    messageHub.closeDialogWindow('product-duplicate');
                 });
             });
     }
