@@ -33,6 +33,13 @@ widgetsView.controller('WidgetsViewController', ['$scope', '$http', 'ViewParamet
                     Enabled: response.data.Enabled
                 }).then(function (_) {
                     messageHub.closeDialogWindow('product-duplicate');
+
+                    messageHub.postMessage(
+                        'entityUpdated',
+                        {
+                            info: `Duplicated a product witd id ${params.id}`
+                        }
+                    );
                 });
             });
     }
