@@ -1,5 +1,9 @@
 const widgetsView = angular.module('widgets', ['ideUI', 'ideView']);
 
+widgetsView.config(["messageHubProvider", function (messageHubProvider) {
+    messageHubProvider.eventIdPrefix = 'codbex-products.Products.Product';
+}])
+
 widgetsView.controller('WidgetsViewController', ['$scope', '$http', 'ViewParameters', "messageHub", function ($scope, $http, ViewParameters, messageHub) {
     $scope.submitCopy = function (batch) {
         const params = ViewParameters.get();
@@ -34,12 +38,7 @@ widgetsView.controller('WidgetsViewController', ['$scope', '$http', 'ViewParamet
                 }).then(function (_) {
                     messageHub.closeDialogWindow('product-duplicate');
 
-                    messageHub.postMessage(
-                        'entityUpdated',
-                        {
-                            info: `Duplicated a product witd id ${params.id}`
-                        }
-                    );
+                    messageHub.triggerEvent('entityUpdated');
                 });
             });
     }
