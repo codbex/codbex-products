@@ -24,12 +24,12 @@ export interface ProductEntity {
     Weight?: number;
     Height?: number;
     Length?: number;
-    Width?: string;
-    IsStoredInBox?: boolean;
-    Weight?: number;
-    Height?: number;
-    Length?: number;
     Width?: number;
+    IsStoredInBox?: boolean;
+    BoxWeight?: number;
+    BoxHeight?: number;
+    BoxLength?: number;
+    BoxWidth?: number;
     PiecesInBox?: number;
     VAT?: number;
     Enabled?: boolean;
@@ -53,12 +53,12 @@ export interface ProductCreateEntity {
     readonly Weight?: number;
     readonly Height?: number;
     readonly Length?: number;
-    readonly Width?: string;
-    readonly IsStoredInBox?: boolean;
-    readonly Weight?: number;
-    readonly Height?: number;
-    readonly Length?: number;
     readonly Width?: number;
+    readonly IsStoredInBox?: boolean;
+    readonly BoxWeight?: number;
+    readonly BoxHeight?: number;
+    readonly BoxLength?: number;
+    readonly BoxWidth?: number;
     readonly PiecesInBox?: number;
     readonly VAT?: number;
     readonly Enabled?: boolean;
@@ -90,12 +90,12 @@ export interface ProductEntityOptions {
             Weight?: number | number[];
             Height?: number | number[];
             Length?: number | number[];
-            Width?: string | string[];
-            IsStoredInBox?: boolean | boolean[];
-            Weight?: number | number[];
-            Height?: number | number[];
-            Length?: number | number[];
             Width?: number | number[];
+            IsStoredInBox?: boolean | boolean[];
+            BoxWeight?: number | number[];
+            BoxHeight?: number | number[];
+            BoxLength?: number | number[];
+            BoxWidth?: number | number[];
             PiecesInBox?: number | number[];
             VAT?: number | number[];
             Enabled?: boolean | boolean[];
@@ -120,12 +120,12 @@ export interface ProductEntityOptions {
             Weight?: number | number[];
             Height?: number | number[];
             Length?: number | number[];
-            Width?: string | string[];
-            IsStoredInBox?: boolean | boolean[];
-            Weight?: number | number[];
-            Height?: number | number[];
-            Length?: number | number[];
             Width?: number | number[];
+            IsStoredInBox?: boolean | boolean[];
+            BoxWeight?: number | number[];
+            BoxHeight?: number | number[];
+            BoxLength?: number | number[];
+            BoxWidth?: number | number[];
             PiecesInBox?: number | number[];
             VAT?: number | number[];
             Enabled?: boolean | boolean[];
@@ -150,12 +150,12 @@ export interface ProductEntityOptions {
             Weight?: number;
             Height?: number;
             Length?: number;
-            Width?: string;
-            IsStoredInBox?: boolean;
-            Weight?: number;
-            Height?: number;
-            Length?: number;
             Width?: number;
+            IsStoredInBox?: boolean;
+            BoxWeight?: number;
+            BoxHeight?: number;
+            BoxLength?: number;
+            BoxWidth?: number;
             PiecesInBox?: number;
             VAT?: number;
             Enabled?: boolean;
@@ -180,12 +180,12 @@ export interface ProductEntityOptions {
             Weight?: number;
             Height?: number;
             Length?: number;
-            Width?: string;
-            IsStoredInBox?: boolean;
-            Weight?: number;
-            Height?: number;
-            Length?: number;
             Width?: number;
+            IsStoredInBox?: boolean;
+            BoxWeight?: number;
+            BoxHeight?: number;
+            BoxLength?: number;
+            BoxWidth?: number;
             PiecesInBox?: number;
             VAT?: number;
             Enabled?: boolean;
@@ -210,12 +210,12 @@ export interface ProductEntityOptions {
             Weight?: number;
             Height?: number;
             Length?: number;
-            Width?: string;
-            IsStoredInBox?: boolean;
-            Weight?: number;
-            Height?: number;
-            Length?: number;
             Width?: number;
+            IsStoredInBox?: boolean;
+            BoxWeight?: number;
+            BoxHeight?: number;
+            BoxLength?: number;
+            BoxWidth?: number;
             PiecesInBox?: number;
             VAT?: number;
             Enabled?: boolean;
@@ -240,12 +240,12 @@ export interface ProductEntityOptions {
             Weight?: number;
             Height?: number;
             Length?: number;
-            Width?: string;
-            IsStoredInBox?: boolean;
-            Weight?: number;
-            Height?: number;
-            Length?: number;
             Width?: number;
+            IsStoredInBox?: boolean;
+            BoxWeight?: number;
+            BoxHeight?: number;
+            BoxLength?: number;
+            BoxWidth?: number;
             PiecesInBox?: number;
             VAT?: number;
             Enabled?: boolean;
@@ -270,12 +270,12 @@ export interface ProductEntityOptions {
             Weight?: number;
             Height?: number;
             Length?: number;
-            Width?: string;
-            IsStoredInBox?: boolean;
-            Weight?: number;
-            Height?: number;
-            Length?: number;
             Width?: number;
+            IsStoredInBox?: boolean;
+            BoxWeight?: number;
+            BoxHeight?: number;
+            BoxLength?: number;
+            BoxWidth?: number;
             PiecesInBox?: number;
             VAT?: number;
             Enabled?: boolean;
@@ -412,7 +412,7 @@ export class ProductRepository {
             {
                 name: "Width",
                 column: "PRODUCT_WIDTH",
-                type: "VARCHAR",
+                type: "DOUBLE",
             },
             {
                 name: "IsStoredInBox",
@@ -420,22 +420,22 @@ export class ProductRepository {
                 type: "BOOLEAN",
             },
             {
-                name: "Weight",
+                name: "BoxWeight",
                 column: "PRODUCT_WEIGHT",
                 type: "DOUBLE",
             },
             {
-                name: "Height",
+                name: "BoxHeight",
                 column: "PRODUCT_HEIGHT",
                 type: "DOUBLE",
             },
             {
-                name: "Length",
+                name: "BoxLength",
                 column: "PRODUCT_LENGTH",
                 type: "DOUBLE",
             },
             {
-                name: "Width",
+                name: "BoxWidth",
                 column: "PRODUCT_WIDTH",
                 type: "DOUBLE",
             },

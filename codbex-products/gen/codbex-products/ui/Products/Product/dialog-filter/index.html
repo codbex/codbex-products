@@ -330,19 +330,14 @@
                     	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idWidth" dg-colon="true">Width</fd-form-label>
                         </div>
-                        <div class="fd-col fd-col-md--8">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Width'].$valid }}">
-	                            <fd-input id="idWidth"
-	                                name="Width"
-	                                state="{{ forms.details['Width'].$valid ? '' : 'error' }}"
-	                                ng-model="entity.Width"
-	                                ng-minlength="0.0 || 0"
-	                                ng-maxlength="20.0 || -1"
-	                                type="text"
-	                                placeholder="Enter Width">
-	                            </fd-input>
-	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
-	                        </fd-form-input-message-group>
+                        <div class="fd-col fd-col-md--4">
+	                        <fd-step-input dg-id="idWidth"
+								name="Width"
+								state="{{ forms.details['Width'].$valid ? '' : 'error' }}"
+								ng-model="entity.Width"
+								placeholder="Enter Width"
+								>
+							</fd-step-input>
 	                    </div>
                     </fd-form-item>
                     <fd-form-item class="fd-row">
@@ -360,56 +355,56 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idWeight" dg-colon="true">Weight</fd-form-label>
+                        	<fd-form-label for="idBoxWeight" dg-colon="true">BoxWeight</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--4">
-	                        <fd-step-input dg-id="idWeight"
-								name="Weight"
-								state="{{ forms.details['Weight'].$valid ? '' : 'error' }}"
-								ng-model="entity.Weight"
-								placeholder="Enter Weight"
+	                        <fd-step-input dg-id="idBoxWeight"
+								name="BoxWeight"
+								state="{{ forms.details['BoxWeight'].$valid ? '' : 'error' }}"
+								ng-model="entity.BoxWeight"
+								placeholder="Enter BoxWeight"
 								>
 							</fd-step-input>
 	                    </div>
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idHeight" dg-colon="true">Height</fd-form-label>
+                        	<fd-form-label for="idBoxHeight" dg-colon="true">BoxHeight</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--4">
-	                        <fd-step-input dg-id="idHeight"
-								name="Height"
-								state="{{ forms.details['Height'].$valid ? '' : 'error' }}"
-								ng-model="entity.Height"
-								placeholder="Enter Height"
+	                        <fd-step-input dg-id="idBoxHeight"
+								name="BoxHeight"
+								state="{{ forms.details['BoxHeight'].$valid ? '' : 'error' }}"
+								ng-model="entity.BoxHeight"
+								placeholder="Enter BoxHeight"
 								>
 							</fd-step-input>
 	                    </div>
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idLength" dg-colon="true">Length</fd-form-label>
+                        	<fd-form-label for="idBoxLength" dg-colon="true">BoxLength</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--4">
-	                        <fd-step-input dg-id="idLength"
-								name="Length"
-								state="{{ forms.details['Length'].$valid ? '' : 'error' }}"
-								ng-model="entity.Length"
-								placeholder="Enter Length"
+	                        <fd-step-input dg-id="idBoxLength"
+								name="BoxLength"
+								state="{{ forms.details['BoxLength'].$valid ? '' : 'error' }}"
+								ng-model="entity.BoxLength"
+								placeholder="Enter BoxLength"
 								>
 							</fd-step-input>
 	                    </div>
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idWidth" dg-colon="true">Width</fd-form-label>
+                        	<fd-form-label for="idBoxWidth" dg-colon="true">BoxWidth</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--4">
-	                        <fd-step-input dg-id="idWidth"
-								name="Width"
-								state="{{ forms.details['Width'].$valid ? '' : 'error' }}"
-								ng-model="entity.Width"
-								placeholder="Enter Width"
+	                        <fd-step-input dg-id="idBoxWidth"
+								name="BoxWidth"
+								state="{{ forms.details['BoxWidth'].$valid ? '' : 'error' }}"
+								ng-model="entity.BoxWidth"
+								placeholder="Enter BoxWidth"
 								>
 							</fd-step-input>
 	                    </div>

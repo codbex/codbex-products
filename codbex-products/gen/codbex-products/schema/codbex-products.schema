@@ -154,8 +154,7 @@
                         "name": "PRODUCT_LENGTH"
                     },
                     {
-                        "type": "VARCHAR",
-                        "length": 20,
+                        "type": "DOUBLE",
                         "nullable": true,
                         "name": "PRODUCT_WIDTH"
                     },

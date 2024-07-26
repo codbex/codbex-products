@@ -348,15 +348,14 @@
                         "widgetType": "NUMBER"
                     },
                     {
-                        "dataLength": "20",
                         "dataName": "PRODUCT_WIDTH",
                         "dataNullable": "true",
-                        "dataType": "VARCHAR",
+                        "dataType": "DOUBLE",
                         "name": "Width",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
                         "widgetSize": "",
-                        "widgetType": "TEXTBOX"
+                        "widgetType": "NUMBER"
                     },
                     {
                         "dataName": "PRODUCT_ISSTOREDINBOX",
@@ -372,7 +371,7 @@
                         "dataName": "PRODUCT_WEIGHT",
                         "dataNullable": "true",
                         "dataType": "DOUBLE",
-                        "name": "Weight",
+                        "name": "BoxWeight",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
                         "widgetSize": "",
@@ -382,7 +381,7 @@
                         "dataName": "PRODUCT_HEIGHT",
                         "dataNullable": "true",
                         "dataType": "DOUBLE",
-                        "name": "Height",
+                        "name": "BoxHeight",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
                         "widgetSize": "",
@@ -392,7 +391,7 @@
                         "dataName": "PRODUCT_LENGTH",
                         "dataNullable": "true",
                         "dataType": "DOUBLE",
-                        "name": "Length",
+                        "name": "BoxLength",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
                         "widgetSize": "",
@@ -402,7 +401,7 @@
                         "dataName": "PRODUCT_WIDTH",
                         "dataNullable": "true",
                         "dataType": "DOUBLE",
-                        "name": "Width",
+                        "name": "BoxWidth",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
                         "widgetSize": "",

@@ -161,9 +161,6 @@ class ProductService {
         if (entity.MPN?.length > 40) {
             throw new ValidationError(`The 'MPN' exceeds the maximum length of [40] characters`);
         }
-        if (entity.Width?.length > 20) {
-            throw new ValidationError(`The 'Width' exceeds the maximum length of [20] characters`);
-        }
         for (const next of validationModules) {
             next.validate(entity);
         }
