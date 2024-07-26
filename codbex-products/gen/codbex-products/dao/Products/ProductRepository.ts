@@ -24,6 +24,13 @@ export interface ProductEntity {
     Weight?: number;
     Height?: number;
     Length?: number;
+    Width?: string;
+    IsStoredInBox?: boolean;
+    Weight?: number;
+    Height?: number;
+    Length?: number;
+    Width?: number;
+    PiecesInBox?: number;
     VAT?: number;
     Enabled?: boolean;
 }
@@ -46,6 +53,13 @@ export interface ProductCreateEntity {
     readonly Weight?: number;
     readonly Height?: number;
     readonly Length?: number;
+    readonly Width?: string;
+    readonly IsStoredInBox?: boolean;
+    readonly Weight?: number;
+    readonly Height?: number;
+    readonly Length?: number;
+    readonly Width?: number;
+    readonly PiecesInBox?: number;
     readonly VAT?: number;
     readonly Enabled?: boolean;
 }
@@ -76,6 +90,13 @@ export interface ProductEntityOptions {
             Weight?: number | number[];
             Height?: number | number[];
             Length?: number | number[];
+            Width?: string | string[];
+            IsStoredInBox?: boolean | boolean[];
+            Weight?: number | number[];
+            Height?: number | number[];
+            Length?: number | number[];
+            Width?: number | number[];
+            PiecesInBox?: number | number[];
             VAT?: number | number[];
             Enabled?: boolean | boolean[];
         };
@@ -99,6 +120,13 @@ export interface ProductEntityOptions {
             Weight?: number | number[];
             Height?: number | number[];
             Length?: number | number[];
+            Width?: string | string[];
+            IsStoredInBox?: boolean | boolean[];
+            Weight?: number | number[];
+            Height?: number | number[];
+            Length?: number | number[];
+            Width?: number | number[];
+            PiecesInBox?: number | number[];
             VAT?: number | number[];
             Enabled?: boolean | boolean[];
         };
@@ -122,6 +150,13 @@ export interface ProductEntityOptions {
             Weight?: number;
             Height?: number;
             Length?: number;
+            Width?: string;
+            IsStoredInBox?: boolean;
+            Weight?: number;
+            Height?: number;
+            Length?: number;
+            Width?: number;
+            PiecesInBox?: number;
             VAT?: number;
             Enabled?: boolean;
         };
@@ -145,6 +180,13 @@ export interface ProductEntityOptions {
             Weight?: number;
             Height?: number;
             Length?: number;
+            Width?: string;
+            IsStoredInBox?: boolean;
+            Weight?: number;
+            Height?: number;
+            Length?: number;
+            Width?: number;
+            PiecesInBox?: number;
             VAT?: number;
             Enabled?: boolean;
         };
@@ -168,6 +210,13 @@ export interface ProductEntityOptions {
             Weight?: number;
             Height?: number;
             Length?: number;
+            Width?: string;
+            IsStoredInBox?: boolean;
+            Weight?: number;
+            Height?: number;
+            Length?: number;
+            Width?: number;
+            PiecesInBox?: number;
             VAT?: number;
             Enabled?: boolean;
         };
@@ -191,6 +240,13 @@ export interface ProductEntityOptions {
             Weight?: number;
             Height?: number;
             Length?: number;
+            Width?: string;
+            IsStoredInBox?: boolean;
+            Weight?: number;
+            Height?: number;
+            Length?: number;
+            Width?: number;
+            PiecesInBox?: number;
             VAT?: number;
             Enabled?: boolean;
         };
@@ -214,6 +270,13 @@ export interface ProductEntityOptions {
             Weight?: number;
             Height?: number;
             Length?: number;
+            Width?: string;
+            IsStoredInBox?: boolean;
+            Weight?: number;
+            Height?: number;
+            Length?: number;
+            Width?: number;
+            PiecesInBox?: number;
             VAT?: number;
             Enabled?: boolean;
         };
@@ -347,6 +410,41 @@ export class ProductRepository {
                 type: "DOUBLE",
             },
             {
+                name: "Width",
+                column: "PRODUCT_WIDTH",
+                type: "VARCHAR",
+            },
+            {
+                name: "IsStoredInBox",
+                column: "PRODUCT_ISSTOREDINBOX",
+                type: "BOOLEAN",
+            },
+            {
+                name: "Weight",
+                column: "PRODUCT_WEIGHT",
+                type: "DOUBLE",
+            },
+            {
+                name: "Height",
+                column: "PRODUCT_HEIGHT",
+                type: "DOUBLE",
+            },
+            {
+                name: "Length",
+                column: "PRODUCT_LENGTH",
+                type: "DOUBLE",
+            },
+            {
+                name: "Width",
+                column: "PRODUCT_WIDTH",
+                type: "DOUBLE",
+            },
+            {
+                name: "PiecesInBox",
+                column: "PRODUCT_PIECESINBOX",
+                type: "INTEGER",
+            },
+            {
                 name: "VAT",
                 column: "PRODUCT_VAT",
                 type: "DECIMAL",
@@ -367,6 +465,7 @@ export class ProductRepository {
 
     public findAll(options?: ProductEntityOptions): ProductEntity[] {
         return this.dao.list(options).map((e: ProductEntity) => {
+            EntityUtils.setBoolean(e, "IsStoredInBox");
             EntityUtils.setBoolean(e, "Enabled");
             return e;
         });
@@ -374,11 +473,13 @@ export class ProductRepository {
 
     public findById(id: number): ProductEntity | undefined {
         const entity = this.dao.find(id);
+        EntityUtils.setBoolean(entity, "IsStoredInBox");
         EntityUtils.setBoolean(entity, "Enabled");
         return entity ?? undefined;
     }
 
     public create(entity: ProductCreateEntity): number {
+        EntityUtils.setBoolean(entity, "IsStoredInBox");
         EntityUtils.setBoolean(entity, "Enabled");
         // @ts-ignore
         (entity as ProductEntity).Name = (entity["Title"] + "/" + entity["Model"] + "/" + entity["Batch"] + "-" + (entity["Enabled"] ? 'enabled' : 'disabled'));;
@@ -397,6 +498,7 @@ export class ProductRepository {
     }
 
     public update(entity: ProductUpdateEntity): void {
+        EntityUtils.setBoolean(entity, "IsStoredInBox");
         EntityUtils.setBoolean(entity, "Enabled");
         // @ts-ignore
         (entity as ProductEntity).Name = (entity["Title"] + "/" + entity["Model"] + "/" + entity["Batch"] + "-" + (entity["Enabled"] ? 'enabled' : 'disabled'));;

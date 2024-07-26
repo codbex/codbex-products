@@ -348,6 +348,77 @@
                         "widgetType": "NUMBER"
                     },
                     {
+                        "dataLength": "20",
+                        "dataName": "PRODUCT_WIDTH",
+                        "dataNullable": "true",
+                        "dataType": "VARCHAR",
+                        "name": "Width",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "dataName": "PRODUCT_ISSTOREDINBOX",
+                        "dataNullable": "true",
+                        "dataType": "BOOLEAN",
+                        "name": "IsStoredInBox",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "CHECKBOX"
+                    },
+                    {
+                        "dataName": "PRODUCT_WEIGHT",
+                        "dataNullable": "true",
+                        "dataType": "DOUBLE",
+                        "name": "Weight",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "NUMBER"
+                    },
+                    {
+                        "dataName": "PRODUCT_HEIGHT",
+                        "dataNullable": "true",
+                        "dataType": "DOUBLE",
+                        "name": "Height",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "NUMBER"
+                    },
+                    {
+                        "dataName": "PRODUCT_LENGTH",
+                        "dataNullable": "true",
+                        "dataType": "DOUBLE",
+                        "name": "Length",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "NUMBER"
+                    },
+                    {
+                        "dataName": "PRODUCT_WIDTH",
+                        "dataNullable": "true",
+                        "dataType": "DOUBLE",
+                        "name": "Width",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "NUMBER"
+                    },
+                    {
+                        "dataName": "PRODUCT_PIECESINBOX",
+                        "dataNullable": "true",
+                        "dataType": "INTEGER",
+                        "name": "PiecesInBox",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "NUMBER"
+                    },
+                    {
                         "dataName": "PRODUCT_VAT",
                         "dataNullable": "true",
                         "dataPrecision": "16",

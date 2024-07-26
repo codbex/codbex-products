@@ -1075,6 +1075,7 @@ paths:
                       JAN: "abcd"
                       ISBN: "abcd"
                       MPN: "abcd"
+                      Width: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -1107,6 +1108,7 @@ paths:
                       JAN: "abcd"
                       ISBN: "abcd"
                       MPN: "abcd"
+                      Width: "abcd"
               countWithGreaterThan:
                 summary: Count with Greater Than
                 value:
@@ -1181,6 +1183,7 @@ paths:
                       JAN: "abcd"
                       ISBN: "abcd"
                       MPN: "abcd"
+                      Width: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -1213,6 +1216,7 @@ paths:
                       JAN: "abcd"
                       ISBN: "abcd"
                       MPN: "abcd"
+                      Width: "abcd"
               searchWithGreaterThan:
                 summary: Search with Greater Than
                 value:
@@ -2425,6 +2429,27 @@ components:
         Length:
           type: number
           format: double
+        Width:
+          type: string
+          minLength: 0
+          maxLength: 20
+        IsStoredInBox:
+          type: boolean
+        Weight:
+          type: number
+          format: double
+        Height:
+          type: number
+          format: double
+        Length:
+          type: number
+          format: double
+        Width:
+          type: number
+          format: double
+        PiecesInBox:
+          type: integer
+          format: int32
         VAT:
           type: number
           format: double
@@ -2624,6 +2649,63 @@ components:
                       items:
                         type: number
                         format: double
+                Width:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
+                IsStoredInBox:
+                  oneOf:
+                    - type: boolean
+                    - type: array
+                      items:
+                        type: boolean
+                Weight:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Height:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Length:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Width:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                PiecesInBox:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 VAT:
                   oneOf:
                     - type: number
@@ -2826,6 +2908,63 @@ components:
                       items:
                         type: number
                         format: double
+                Width:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
+                IsStoredInBox:
+                  oneOf:
+                    - type: boolean
+                    - type: array
+                      items:
+                        type: boolean
+                Weight:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Height:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Length:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Width:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                PiecesInBox:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 VAT:
                   oneOf:
                     - type: number
@@ -2895,6 +3034,16 @@ components:
                 Weight:
                 Height:
                 Length:
+                Width:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                IsStoredInBox:
+                Weight:
+                Height:
+                Length:
+                Width:
+                PiecesInBox:
                 VAT:
                 Enabled:
             greaterThan:
@@ -2968,6 +3117,26 @@ components:
                 Length:
                   type: number
                   format: double
+                Width:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                IsStoredInBox:
+                Weight:
+                  type: number
+                  format: double
+                Height:
+                  type: number
+                  format: double
+                Length:
+                  type: number
+                  format: double
+                Width:
+                  type: number
+                  format: double
+                PiecesInBox:
+                  type: integer
+                  format: int32
                 VAT:
                   type: number
                   format: double
@@ -3043,6 +3212,26 @@ components:
                 Length:
                   type: number
                   format: double
+                Width:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                IsStoredInBox:
+                Weight:
+                  type: number
+                  format: double
+                Height:
+                  type: number
+                  format: double
+                Length:
+                  type: number
+                  format: double
+                Width:
+                  type: number
+                  format: double
+                PiecesInBox:
+                  type: integer
+                  format: int32
                 VAT:
                   type: number
                   format: double
@@ -3118,6 +3307,26 @@ components:
                 Length:
                   type: number
                   format: double
+                Width:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                IsStoredInBox:
+                Weight:
+                  type: number
+                  format: double
+                Height:
+                  type: number
+                  format: double
+                Length:
+                  type: number
+                  format: double
+                Width:
+                  type: number
+                  format: double
+                PiecesInBox:
+                  type: integer
+                  format: int32
                 VAT:
                   type: number
                   format: double
@@ -3193,18 +3402,38 @@ components:
                 Length:
                   type: number
                   format: double
+                Width:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                IsStoredInBox:
+                Weight:
+                  type: number
+                  format: double
+                Height:
+                  type: number
+                  format: double
+                Length:
+                  type: number
+                  format: double
+                Width:
+                  type: number
+                  format: double
+                PiecesInBox:
+                  type: integer
+                  format: int32
                 VAT:
                   type: number
                   format: double
                 Enabled:
         $select:
           type: array
-          example: ["Id", "Name", "Title", "Model", "Batch", "Type", "Category", "BaseUnit", "Company", "SKU", "UPC", "EAN", "JAN", "ISBN", "MPN", "Manufacturer", "Weight", "Height", "Length", "VAT", "Enabled"]
+          example: ["Id", "Name", "Title", "Model", "Batch", "Type", "Category", "BaseUnit", "Company", "SKU", "UPC", "EAN", "JAN", "ISBN", "MPN", "Manufacturer", "Weight", "Height", "Length", "Width", "IsStoredInBox", "Weight", "Height", "Length", "Width", "PiecesInBox", "VAT", "Enabled"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Name,Title,Model,Batch,Type,Category,BaseUnit,Company,SKU,UPC,EAN,JAN,ISBN,MPN,Manufacturer,Weight,Height,Length,VAT,Enabled"
+            example: "Id,Name,Title,Model,Batch,Type,Category,BaseUnit,Company,SKU,UPC,EAN,JAN,ISBN,MPN,Manufacturer,Weight,Height,Length,Width,IsStoredInBox,Weight,Height,Length,Width,PiecesInBox,VAT,Enabled"
         $order:
           type: string
           enum: ["asc", "desc"]

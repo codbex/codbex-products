@@ -154,6 +154,42 @@
                         "name": "PRODUCT_LENGTH"
                     },
                     {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "PRODUCT_WIDTH"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "nullable": true,
+                        "name": "PRODUCT_ISSTOREDINBOX"
+                    },
+                    {
+                        "type": "DOUBLE",
+                        "nullable": true,
+                        "name": "PRODUCT_WEIGHT"
+                    },
+                    {
+                        "type": "DOUBLE",
+                        "nullable": true,
+                        "name": "PRODUCT_HEIGHT"
+                    },
+                    {
+                        "type": "DOUBLE",
+                        "nullable": true,
+                        "name": "PRODUCT_LENGTH"
+                    },
+                    {
+                        "type": "DOUBLE",
+                        "nullable": true,
+                        "name": "PRODUCT_WIDTH"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "PRODUCT_PIECESINBOX"
+                    },
+                    {
                         "type": "DECIMAL",
                         "precision": "16",
                         "scale": "2",
