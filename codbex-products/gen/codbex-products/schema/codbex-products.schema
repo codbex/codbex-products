@@ -166,22 +166,22 @@
                     {
                         "type": "DOUBLE",
                         "nullable": true,
-                        "name": "PRODUCT_WEIGHT"
+                        "name": "PRODUCT_BOXWEIGHT"
                     },
                     {
                         "type": "DOUBLE",
                         "nullable": true,
-                        "name": "PRODUCT_HEIGHT"
+                        "name": "PRODUCT_BOXHEIGHT"
                     },
                     {
                         "type": "DOUBLE",
                         "nullable": true,
-                        "name": "PRODUCT_LENGTH"
+                        "name": "PRODUCT_BOXLENGTH"
                     },
                     {
                         "type": "DOUBLE",
                         "nullable": true,
-                        "name": "PRODUCT_WIDTH"
+                        "name": "PRODUCT_BOXWIDTH"
                     },
                     {
                         "type": "INTEGER",

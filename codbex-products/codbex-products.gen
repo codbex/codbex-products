@@ -797,7 +797,7 @@
           "inputRule": ""
         },
         {
-          "dataName": "PRODUCT_WEIGHT",
+          "dataName": "PRODUCT_BOXWEIGHT",
           "dataNullable": true,
           "dataType": "DOUBLE",
           "name": "BoxWeight",
@@ -818,7 +818,7 @@
           "inputRule": ""
         },
         {
-          "dataName": "PRODUCT_HEIGHT",
+          "dataName": "PRODUCT_BOXHEIGHT",
           "dataNullable": true,
           "dataType": "DOUBLE",
           "name": "BoxHeight",
@@ -839,7 +839,7 @@
           "inputRule": ""
         },
         {
-          "dataName": "PRODUCT_LENGTH",
+          "dataName": "PRODUCT_BOXLENGTH",
           "dataNullable": true,
           "dataType": "DOUBLE",
           "name": "BoxLength",
@@ -860,7 +860,7 @@
           "inputRule": ""
         },
         {
-          "dataName": "PRODUCT_WIDTH",
+          "dataName": "PRODUCT_BOXWIDTH",
           "dataNullable": true,
           "dataType": "DOUBLE",
           "name": "BoxWidth",
@@ -1476,7 +1476,7 @@
             "inputRule": ""
           },
           {
-            "dataName": "PRODUCT_WEIGHT",
+            "dataName": "PRODUCT_BOXWEIGHT",
             "dataNullable": true,
             "dataType": "DOUBLE",
             "name": "BoxWeight",
@@ -1497,7 +1497,7 @@
             "inputRule": ""
           },
           {
-            "dataName": "PRODUCT_HEIGHT",
+            "dataName": "PRODUCT_BOXHEIGHT",
             "dataNullable": true,
             "dataType": "DOUBLE",
             "name": "BoxHeight",
@@ -1518,7 +1518,7 @@
             "inputRule": ""
           },
           {
-            "dataName": "PRODUCT_LENGTH",
+            "dataName": "PRODUCT_BOXLENGTH",
             "dataNullable": true,
             "dataType": "DOUBLE",
             "name": "BoxLength",
@@ -1539,7 +1539,7 @@
             "inputRule": ""
           },
           {
-            "dataName": "PRODUCT_WIDTH",
+            "dataName": "PRODUCT_BOXWIDTH",
             "dataNullable": true,
             "dataType": "DOUBLE",
             "name": "BoxWidth",

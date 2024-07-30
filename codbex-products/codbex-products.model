@@ -368,7 +368,7 @@
                         "widgetType": "CHECKBOX"
                     },
                     {
-                        "dataName": "PRODUCT_WEIGHT",
+                        "dataName": "PRODUCT_BOXWEIGHT",
                         "dataNullable": "true",
                         "dataType": "DOUBLE",
                         "name": "BoxWeight",
@@ -378,7 +378,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
-                        "dataName": "PRODUCT_HEIGHT",
+                        "dataName": "PRODUCT_BOXHEIGHT",
                         "dataNullable": "true",
                         "dataType": "DOUBLE",
                         "name": "BoxHeight",
@@ -388,7 +388,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
-                        "dataName": "PRODUCT_LENGTH",
+                        "dataName": "PRODUCT_BOXLENGTH",
                         "dataNullable": "true",
                         "dataType": "DOUBLE",
                         "name": "BoxLength",
@@ -398,7 +398,7 @@
                         "widgetType": "NUMBER"
                     },
                     {
-                        "dataName": "PRODUCT_WIDTH",
+                        "dataName": "PRODUCT_BOXWIDTH",
                         "dataNullable": "true",
                         "dataType": "DOUBLE",
                         "name": "BoxWidth",

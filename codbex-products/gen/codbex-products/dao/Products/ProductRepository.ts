@@ -421,22 +421,22 @@ export class ProductRepository {
             },
             {
                 name: "BoxWeight",
-                column: "PRODUCT_WEIGHT",
+                column: "PRODUCT_BOXWEIGHT",
                 type: "DOUBLE",
             },
             {
                 name: "BoxHeight",
-                column: "PRODUCT_HEIGHT",
+                column: "PRODUCT_BOXHEIGHT",
                 type: "DOUBLE",
             },
             {
                 name: "BoxLength",
-                column: "PRODUCT_LENGTH",
+                column: "PRODUCT_BOXLENGTH",
                 type: "DOUBLE",
             },
             {
                 name: "BoxWidth",
-                column: "PRODUCT_WIDTH",
+                column: "PRODUCT_BOXWIDTH",
                 type: "DOUBLE",
             },
             {
