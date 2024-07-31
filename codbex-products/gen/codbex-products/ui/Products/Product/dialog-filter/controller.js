@@ -89,6 +89,9 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Manufacturer !== undefined) {
 				filter.$filter.equals.Manufacturer = entity.Manufacturer;
 			}
+			if (entity.VAT !== undefined) {
+				filter.$filter.equals.VAT = entity.VAT;
+			}
 			if (entity.Weight !== undefined) {
 				filter.$filter.equals.Weight = entity.Weight;
 			}
@@ -118,9 +121,6 @@ angular.module('page', ["ideUI", "ideView"])
 			}
 			if (entity.PiecesInBox !== undefined) {
 				filter.$filter.equals.PiecesInBox = entity.PiecesInBox;
-			}
-			if (entity.VAT !== undefined) {
-				filter.$filter.equals.VAT = entity.VAT;
 			}
 			if (entity.Enabled !== undefined && entity.isEnabledIndeterminate === false) {
 				filter.$filter.equals.Enabled = entity.Enabled;

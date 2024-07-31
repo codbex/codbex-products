@@ -21,6 +21,7 @@ export interface ProductEntity {
     ISBN?: string;
     MPN?: string;
     Manufacturer?: number;
+    VAT?: number;
     Weight?: number;
     Height?: number;
     Length?: number;
@@ -31,7 +32,6 @@ export interface ProductEntity {
     BoxLength?: number;
     BoxWidth?: number;
     PiecesInBox?: number;
-    VAT?: number;
     Enabled?: boolean;
 }
 
@@ -50,6 +50,7 @@ export interface ProductCreateEntity {
     readonly ISBN?: string;
     readonly MPN?: string;
     readonly Manufacturer?: number;
+    readonly VAT?: number;
     readonly Weight?: number;
     readonly Height?: number;
     readonly Length?: number;
@@ -60,7 +61,6 @@ export interface ProductCreateEntity {
     readonly BoxLength?: number;
     readonly BoxWidth?: number;
     readonly PiecesInBox?: number;
-    readonly VAT?: number;
     readonly Enabled?: boolean;
 }
 
@@ -87,6 +87,7 @@ export interface ProductEntityOptions {
             ISBN?: string | string[];
             MPN?: string | string[];
             Manufacturer?: number | number[];
+            VAT?: number | number[];
             Weight?: number | number[];
             Height?: number | number[];
             Length?: number | number[];
@@ -97,7 +98,6 @@ export interface ProductEntityOptions {
             BoxLength?: number | number[];
             BoxWidth?: number | number[];
             PiecesInBox?: number | number[];
-            VAT?: number | number[];
             Enabled?: boolean | boolean[];
         };
         notEquals?: {
@@ -117,6 +117,7 @@ export interface ProductEntityOptions {
             ISBN?: string | string[];
             MPN?: string | string[];
             Manufacturer?: number | number[];
+            VAT?: number | number[];
             Weight?: number | number[];
             Height?: number | number[];
             Length?: number | number[];
@@ -127,7 +128,6 @@ export interface ProductEntityOptions {
             BoxLength?: number | number[];
             BoxWidth?: number | number[];
             PiecesInBox?: number | number[];
-            VAT?: number | number[];
             Enabled?: boolean | boolean[];
         };
         contains?: {
@@ -147,6 +147,7 @@ export interface ProductEntityOptions {
             ISBN?: string;
             MPN?: string;
             Manufacturer?: number;
+            VAT?: number;
             Weight?: number;
             Height?: number;
             Length?: number;
@@ -157,7 +158,6 @@ export interface ProductEntityOptions {
             BoxLength?: number;
             BoxWidth?: number;
             PiecesInBox?: number;
-            VAT?: number;
             Enabled?: boolean;
         };
         greaterThan?: {
@@ -177,6 +177,7 @@ export interface ProductEntityOptions {
             ISBN?: string;
             MPN?: string;
             Manufacturer?: number;
+            VAT?: number;
             Weight?: number;
             Height?: number;
             Length?: number;
@@ -187,7 +188,6 @@ export interface ProductEntityOptions {
             BoxLength?: number;
             BoxWidth?: number;
             PiecesInBox?: number;
-            VAT?: number;
             Enabled?: boolean;
         };
         greaterThanOrEqual?: {
@@ -207,6 +207,7 @@ export interface ProductEntityOptions {
             ISBN?: string;
             MPN?: string;
             Manufacturer?: number;
+            VAT?: number;
             Weight?: number;
             Height?: number;
             Length?: number;
@@ -217,7 +218,6 @@ export interface ProductEntityOptions {
             BoxLength?: number;
             BoxWidth?: number;
             PiecesInBox?: number;
-            VAT?: number;
             Enabled?: boolean;
         };
         lessThan?: {
@@ -237,6 +237,7 @@ export interface ProductEntityOptions {
             ISBN?: string;
             MPN?: string;
             Manufacturer?: number;
+            VAT?: number;
             Weight?: number;
             Height?: number;
             Length?: number;
@@ -247,7 +248,6 @@ export interface ProductEntityOptions {
             BoxLength?: number;
             BoxWidth?: number;
             PiecesInBox?: number;
-            VAT?: number;
             Enabled?: boolean;
         };
         lessThanOrEqual?: {
@@ -267,6 +267,7 @@ export interface ProductEntityOptions {
             ISBN?: string;
             MPN?: string;
             Manufacturer?: number;
+            VAT?: number;
             Weight?: number;
             Height?: number;
             Length?: number;
@@ -277,7 +278,6 @@ export interface ProductEntityOptions {
             BoxLength?: number;
             BoxWidth?: number;
             PiecesInBox?: number;
-            VAT?: number;
             Enabled?: boolean;
         };
     },
@@ -395,6 +395,11 @@ export class ProductRepository {
                 type: "INTEGER",
             },
             {
+                name: "VAT",
+                column: "PRODUCT_VAT",
+                type: "DECIMAL",
+            },
+            {
                 name: "Weight",
                 column: "PRODUCT_WEIGHT",
                 type: "DOUBLE",
@@ -443,11 +448,6 @@ export class ProductRepository {
                 name: "PiecesInBox",
                 column: "PRODUCT_PIECESINBOX",
                 type: "INTEGER",
-            },
-            {
-                name: "VAT",
-                column: "PRODUCT_VAT",
-                type: "DECIMAL",
             },
             {
                 name: "Enabled",

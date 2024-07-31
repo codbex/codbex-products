@@ -2416,6 +2416,9 @@ components:
         Manufacturer:
           type: integer
           format: int32
+        VAT:
+          type: number
+          format: double
         Weight:
           type: number
           format: double
@@ -2445,9 +2448,6 @@ components:
         PiecesInBox:
           type: integer
           format: int32
-        VAT:
-          type: number
-          format: double
         Enabled:
           type: boolean
     ProductFilterOptions:
@@ -2620,6 +2620,14 @@ components:
                       items:
                         type: integer
                         format: int32
+                VAT:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
                 Weight:
                   oneOf:
                     - type: number
@@ -2698,14 +2706,6 @@ components:
                       items:
                         type: integer
                         format: int32
-                VAT:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
                 Enabled:
                   oneOf:
                     - type: boolean
@@ -2876,6 +2876,14 @@ components:
                       items:
                         type: integer
                         format: int32
+                VAT:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
                 Weight:
                   oneOf:
                     - type: number
@@ -2954,14 +2962,6 @@ components:
                       items:
                         type: integer
                         format: int32
-                VAT:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
                 Enabled:
                   oneOf:
                     - type: boolean
@@ -3020,6 +3020,7 @@ components:
                   minLength: 0
                   maxLength: 40
                 Manufacturer:
+                VAT:
                 Weight:
                 Height:
                 Length:
@@ -3030,7 +3031,6 @@ components:
                 BoxLength:
                 BoxWidth:
                 PiecesInBox:
-                VAT:
                 Enabled:
             greaterThan:
               type: object
@@ -3094,6 +3094,9 @@ components:
                 Manufacturer:
                   type: integer
                   format: int32
+                VAT:
+                  type: number
+                  format: double
                 Weight:
                   type: number
                   format: double
@@ -3122,9 +3125,6 @@ components:
                 PiecesInBox:
                   type: integer
                   format: int32
-                VAT:
-                  type: number
-                  format: double
                 Enabled:
             greaterThanOrEqual:
               type: object
@@ -3188,6 +3188,9 @@ components:
                 Manufacturer:
                   type: integer
                   format: int32
+                VAT:
+                  type: number
+                  format: double
                 Weight:
                   type: number
                   format: double
@@ -3216,9 +3219,6 @@ components:
                 PiecesInBox:
                   type: integer
                   format: int32
-                VAT:
-                  type: number
-                  format: double
                 Enabled:
             lessThan:
               type: object
@@ -3282,6 +3282,9 @@ components:
                 Manufacturer:
                   type: integer
                   format: int32
+                VAT:
+                  type: number
+                  format: double
                 Weight:
                   type: number
                   format: double
@@ -3310,9 +3313,6 @@ components:
                 PiecesInBox:
                   type: integer
                   format: int32
-                VAT:
-                  type: number
-                  format: double
                 Enabled:
             lessThanOrEqual:
               type: object
@@ -3376,6 +3376,9 @@ components:
                 Manufacturer:
                   type: integer
                   format: int32
+                VAT:
+                  type: number
+                  format: double
                 Weight:
                   type: number
                   format: double
@@ -3404,18 +3407,15 @@ components:
                 PiecesInBox:
                   type: integer
                   format: int32
-                VAT:
-                  type: number
-                  format: double
                 Enabled:
         $select:
           type: array
-          example: ["Id", "Name", "Title", "Model", "Batch", "Type", "Category", "BaseUnit", "Company", "SKU", "UPC", "EAN", "JAN", "ISBN", "MPN", "Manufacturer", "Weight", "Height", "Length", "Width", "IsStoredInBox", "BoxWeight", "BoxHeight", "BoxLength", "BoxWidth", "PiecesInBox", "VAT", "Enabled"]
+          example: ["Id", "Name", "Title", "Model", "Batch", "Type", "Category", "BaseUnit", "Company", "SKU", "UPC", "EAN", "JAN", "ISBN", "MPN", "Manufacturer", "VAT", "Weight", "Height", "Length", "Width", "IsStoredInBox", "BoxWeight", "BoxHeight", "BoxLength", "BoxWidth", "PiecesInBox", "Enabled"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Name,Title,Model,Batch,Type,Category,BaseUnit,Company,SKU,UPC,EAN,JAN,ISBN,MPN,Manufacturer,Weight,Height,Length,Width,IsStoredInBox,BoxWeight,BoxHeight,BoxLength,BoxWidth,PiecesInBox,VAT,Enabled"
+            example: "Id,Name,Title,Model,Batch,Type,Category,BaseUnit,Company,SKU,UPC,EAN,JAN,ISBN,MPN,Manufacturer,VAT,Weight,Height,Length,Width,IsStoredInBox,BoxWeight,BoxHeight,BoxLength,BoxWidth,PiecesInBox,Enabled"
         $order:
           type: string
           enum: ["asc", "desc"]

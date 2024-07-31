@@ -318,6 +318,18 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "dataName": "PRODUCT_VAT",
+                        "dataNullable": "true",
+                        "dataPrecision": "16",
+                        "dataScale": "2",
+                        "dataType": "DECIMAL",
+                        "name": "VAT",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "NUMBER"
+                    },
+                    {
                         "dataName": "PRODUCT_WEIGHT",
                         "dataNullable": "true",
                         "dataType": "DOUBLE",
@@ -412,18 +424,6 @@
                         "dataNullable": "true",
                         "dataType": "INTEGER",
                         "name": "PiecesInBox",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "NUMBER"
-                    },
-                    {
-                        "dataName": "PRODUCT_VAT",
-                        "dataNullable": "true",
-                        "dataPrecision": "16",
-                        "dataScale": "2",
-                        "dataType": "DECIMAL",
-                        "name": "VAT",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
                         "widgetSize": "",
