@@ -42,7 +42,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.entity = {};
 				$scope.optionsType = [];
 				$scope.optionsCategory = [];
-				$scope.optionsBaseUnit = [];
+				$scope.optionsUoM = [];
 				$scope.optionsCompany = [];
 				$scope.optionsManufacturer = [];
 				$scope.action = 'select';
@@ -54,7 +54,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.entity = msg.data.entity;
 				$scope.optionsType = msg.data.optionsType;
 				$scope.optionsCategory = msg.data.optionsCategory;
-				$scope.optionsBaseUnit = msg.data.optionsBaseUnit;
+				$scope.optionsUoM = msg.data.optionsUoM;
 				$scope.optionsCompany = msg.data.optionsCompany;
 				$scope.optionsManufacturer = msg.data.optionsManufacturer;
 				$scope.action = 'select';
@@ -66,7 +66,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.entity = {};
 				$scope.optionsType = msg.data.optionsType;
 				$scope.optionsCategory = msg.data.optionsCategory;
-				$scope.optionsBaseUnit = msg.data.optionsBaseUnit;
+				$scope.optionsUoM = msg.data.optionsUoM;
 				$scope.optionsCompany = msg.data.optionsCompany;
 				$scope.optionsManufacturer = msg.data.optionsManufacturer;
 				$scope.action = 'create';
@@ -78,7 +78,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.entity = msg.data.entity;
 				$scope.optionsType = msg.data.optionsType;
 				$scope.optionsCategory = msg.data.optionsCategory;
-				$scope.optionsBaseUnit = msg.data.optionsBaseUnit;
+				$scope.optionsUoM = msg.data.optionsUoM;
 				$scope.optionsCompany = msg.data.optionsCompany;
 				$scope.optionsManufacturer = msg.data.optionsManufacturer;
 				$scope.action = 'update';

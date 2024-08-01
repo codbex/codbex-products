@@ -203,11 +203,10 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
-                        "dataLength": "20",
-                        "dataName": "PRODUCT_BASEUNIT",
+                        "dataName": "PRODUCT_UOM",
                         "dataNullable": "true",
-                        "dataType": "VARCHAR",
-                        "name": "BaseUnit",
+                        "dataType": "INTEGER",
+                        "name": "UoM",
                         "widgetDropDownKey": "Id",
                         "widgetDropDownValue": "Name",
                         "widgetIsMajor": "true",

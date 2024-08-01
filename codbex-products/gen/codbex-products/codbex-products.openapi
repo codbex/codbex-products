@@ -1068,7 +1068,6 @@ paths:
                       Title: "abcd"
                       Model: "abcd"
                       Batch: "abcd"
-                      BaseUnit: "abcd"
                       SKU: "abcd"
                       UPC: "abcd"
                       EAN: "abcd"
@@ -1100,7 +1099,6 @@ paths:
                       Title: "abcd"
                       Model: "abcd"
                       Batch: "abcd"
-                      BaseUnit: "abcd"
                       SKU: "abcd"
                       UPC: "abcd"
                       EAN: "abcd"
@@ -1174,7 +1172,6 @@ paths:
                       Title: "abcd"
                       Model: "abcd"
                       Batch: "abcd"
-                      BaseUnit: "abcd"
                       SKU: "abcd"
                       UPC: "abcd"
                       EAN: "abcd"
@@ -1206,7 +1203,6 @@ paths:
                       Title: "abcd"
                       Model: "abcd"
                       Batch: "abcd"
-                      BaseUnit: "abcd"
                       SKU: "abcd"
                       UPC: "abcd"
                       EAN: "abcd"
@@ -2355,6 +2351,7 @@ components:
         - Title
         - Model
         - Batch
+        - UoM
       properties:
         Id:
           type: integer
@@ -2382,10 +2379,9 @@ components:
         Category:
           type: integer
           format: int32
-        BaseUnit:
-          type: string
-          minLength: 0
-          maxLength: 20
+        UoM:
+          type: integer
+          format: int32
         Company:
           type: integer
           format: int32
@@ -2507,17 +2503,14 @@ components:
                       items:
                         type: integer
                         format: int32
-                BaseUnit:
+                UoM:
                   oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 20
+                    - type: integer
+                      format: int32
                     - type: array
                       items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 20
+                        type: integer
+                        format: int32
                 Company:
                   oneOf:
                     - type: integer
@@ -2709,17 +2702,14 @@ components:
                       items:
                         type: integer
                         format: int32
-                BaseUnit:
+                UoM:
                   oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 20
+                    - type: integer
+                      format: int32
                     - type: array
                       items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 20
+                        type: integer
+                        format: int32
                 Company:
                   oneOf:
                     - type: integer
@@ -2862,10 +2852,7 @@ components:
                   maxLength: 50
                 Type:
                 Category:
-                BaseUnit:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
+                UoM:
                 Company:
                 SKU:
                   type: string
@@ -2925,10 +2912,9 @@ components:
                 Category:
                   type: integer
                   format: int32
-                BaseUnit:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
+                UoM:
+                  type: integer
+                  format: int32
                 Company:
                   type: integer
                   format: int32
@@ -3000,10 +2986,9 @@ components:
                 Category:
                   type: integer
                   format: int32
-                BaseUnit:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
+                UoM:
+                  type: integer
+                  format: int32
                 Company:
                   type: integer
                   format: int32
@@ -3075,10 +3060,9 @@ components:
                 Category:
                   type: integer
                   format: int32
-                BaseUnit:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
+                UoM:
+                  type: integer
+                  format: int32
                 Company:
                   type: integer
                   format: int32
@@ -3150,10 +3134,9 @@ components:
                 Category:
                   type: integer
                   format: int32
-                BaseUnit:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
+                UoM:
+                  type: integer
+                  format: int32
                 Company:
                   type: integer
                   format: int32
@@ -3199,12 +3182,12 @@ components:
                 Enabled:
         $select:
           type: array
-          example: ["Id", "Name", "Title", "Model", "Batch", "Type", "Category", "BaseUnit", "Company", "SKU", "UPC", "EAN", "JAN", "ISBN", "MPN", "Manufacturer", "Weight", "Height", "Length", "VAT", "Enabled"]
+          example: ["Id", "Name", "Title", "Model", "Batch", "Type", "Category", "UoM", "Company", "SKU", "UPC", "EAN", "JAN", "ISBN", "MPN", "Manufacturer", "Weight", "Height", "Length", "VAT", "Enabled"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Name,Title,Model,Batch,Type,Category,BaseUnit,Company,SKU,UPC,EAN,JAN,ISBN,MPN,Manufacturer,Weight,Height,Length,VAT,Enabled"
+            example: "Id,Name,Title,Model,Batch,Type,Category,UoM,Company,SKU,UPC,EAN,JAN,ISBN,MPN,Manufacturer,Weight,Height,Length,VAT,Enabled"
         $order:
           type: string
           enum: ["asc", "desc"]

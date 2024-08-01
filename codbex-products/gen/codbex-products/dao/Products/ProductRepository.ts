@@ -12,7 +12,7 @@ export interface ProductEntity {
     Batch: string;
     Type?: number;
     Category?: number;
-    BaseUnit?: string;
+    UoM?: number;
     Company?: number;
     SKU?: string;
     UPC?: string;
@@ -34,7 +34,7 @@ export interface ProductCreateEntity {
     readonly Batch: string;
     readonly Type?: number;
     readonly Category?: number;
-    readonly BaseUnit?: string;
+    readonly UoM?: number;
     readonly Company?: number;
     readonly SKU?: string;
     readonly UPC?: string;
@@ -64,7 +64,7 @@ export interface ProductEntityOptions {
             Batch?: string | string[];
             Type?: number | number[];
             Category?: number | number[];
-            BaseUnit?: string | string[];
+            UoM?: number | number[];
             Company?: number | number[];
             SKU?: string | string[];
             UPC?: string | string[];
@@ -87,7 +87,7 @@ export interface ProductEntityOptions {
             Batch?: string | string[];
             Type?: number | number[];
             Category?: number | number[];
-            BaseUnit?: string | string[];
+            UoM?: number | number[];
             Company?: number | number[];
             SKU?: string | string[];
             UPC?: string | string[];
@@ -110,7 +110,7 @@ export interface ProductEntityOptions {
             Batch?: string;
             Type?: number;
             Category?: number;
-            BaseUnit?: string;
+            UoM?: number;
             Company?: number;
             SKU?: string;
             UPC?: string;
@@ -133,7 +133,7 @@ export interface ProductEntityOptions {
             Batch?: string;
             Type?: number;
             Category?: number;
-            BaseUnit?: string;
+            UoM?: number;
             Company?: number;
             SKU?: string;
             UPC?: string;
@@ -156,7 +156,7 @@ export interface ProductEntityOptions {
             Batch?: string;
             Type?: number;
             Category?: number;
-            BaseUnit?: string;
+            UoM?: number;
             Company?: number;
             SKU?: string;
             UPC?: string;
@@ -179,7 +179,7 @@ export interface ProductEntityOptions {
             Batch?: string;
             Type?: number;
             Category?: number;
-            BaseUnit?: string;
+            UoM?: number;
             Company?: number;
             SKU?: string;
             UPC?: string;
@@ -202,7 +202,7 @@ export interface ProductEntityOptions {
             Batch?: string;
             Type?: number;
             Category?: number;
-            BaseUnit?: string;
+            UoM?: number;
             Company?: number;
             SKU?: string;
             UPC?: string;
@@ -287,9 +287,9 @@ export class ProductRepository {
                 type: "INTEGER",
             },
             {
-                name: "BaseUnit",
-                column: "PRODUCT_BASEUNIT",
-                type: "VARCHAR",
+                name: "UoM",
+                column: "PRODUCT_UOM",
+                type: "INTEGER",
             },
             {
                 name: "Company",

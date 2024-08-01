@@ -87,10 +87,9 @@
                         "name": "PRODUCT_CATEGORY"
                     },
                     {
-                        "type": "VARCHAR",
-                        "length": 20,
+                        "type": "INTEGER",
                         "nullable": true,
-                        "name": "PRODUCT_BASEUNIT"
+                        "name": "PRODUCT_UOM"
                     },
                     {
                         "type": "INTEGER",
@@ -245,7 +244,7 @@
                 "type": "foreignKey",
                 "table": "CODBEX_PRODUCT",
                 "constraintName": "Product_UoM",
-                "columns": "PRODUCT_BASEUNIT",
+                "columns": "PRODUCT_UOM",
                 "referencedTable": "CODBEX_UOM",
                 "referencedColumns": "UOM_ID"
             },

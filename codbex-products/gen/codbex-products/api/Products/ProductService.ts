@@ -140,8 +140,8 @@ class ProductService {
         if (entity.Batch?.length > 50) {
             throw new ValidationError(`The 'Batch' exceeds the maximum length of [50] characters`);
         }
-        if (entity.BaseUnit?.length > 20) {
-            throw new ValidationError(`The 'BaseUnit' exceeds the maximum length of [20] characters`);
+        if (entity.UoM === null || entity.UoM === undefined) {
+            throw new ValidationError(`The 'UoM' property is required, provide a valid value`);
         }
         if (entity.SKU?.length > 64) {
             throw new ValidationError(`The 'SKU' exceeds the maximum length of [64] characters`);

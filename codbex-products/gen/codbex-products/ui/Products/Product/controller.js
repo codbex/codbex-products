@@ -114,7 +114,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				selectedMainEntityId: entity.Id,
 				optionsType: $scope.optionsType,
 				optionsCategory: $scope.optionsCategory,
-				optionsBaseUnit: $scope.optionsBaseUnit,
+				optionsUoM: $scope.optionsUoM,
 				optionsCompany: $scope.optionsCompany,
 				optionsManufacturer: $scope.optionsManufacturer,
 			});
@@ -128,7 +128,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: {},
 				optionsType: $scope.optionsType,
 				optionsCategory: $scope.optionsCategory,
-				optionsBaseUnit: $scope.optionsBaseUnit,
+				optionsUoM: $scope.optionsUoM,
 				optionsCompany: $scope.optionsCompany,
 				optionsManufacturer: $scope.optionsManufacturer,
 			});
@@ -140,7 +140,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: $scope.selectedEntity,
 				optionsType: $scope.optionsType,
 				optionsCategory: $scope.optionsCategory,
-				optionsBaseUnit: $scope.optionsBaseUnit,
+				optionsUoM: $scope.optionsUoM,
 				optionsCompany: $scope.optionsCompany,
 				optionsManufacturer: $scope.optionsManufacturer,
 			});
@@ -181,7 +181,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: $scope.filterEntity,
 				optionsType: $scope.optionsType,
 				optionsCategory: $scope.optionsCategory,
-				optionsBaseUnit: $scope.optionsBaseUnit,
+				optionsUoM: $scope.optionsUoM,
 				optionsCompany: $scope.optionsCompany,
 				optionsManufacturer: $scope.optionsManufacturer,
 			});
@@ -190,7 +190,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		//----------------Dropdowns-----------------//
 		$scope.optionsType = [];
 		$scope.optionsCategory = [];
-		$scope.optionsBaseUnit = [];
+		$scope.optionsUoM = [];
 		$scope.optionsCompany = [];
 		$scope.optionsManufacturer = [];
 
@@ -214,7 +214,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		});
 
 		$http.get("/services/ts/codbex-uoms/gen/codbex-uoms/api/UnitsOfMeasures/UoMService.ts").then(function (response) {
-			$scope.optionsBaseUnit = response.data.map(e => {
+			$scope.optionsUoM = response.data.map(e => {
 				return {
 					value: e.Id,
 					text: e.Name
@@ -256,10 +256,10 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			}
 			return null;
 		};
-		$scope.optionsBaseUnitValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsBaseUnit.length; i++) {
-				if ($scope.optionsBaseUnit[i].value === optionKey) {
-					return $scope.optionsBaseUnit[i].text;
+		$scope.optionsUoMValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsUoM.length; i++) {
+				if ($scope.optionsUoM[i].value === optionKey) {
+					return $scope.optionsUoM[i].text;
 				}
 			}
 			return null;

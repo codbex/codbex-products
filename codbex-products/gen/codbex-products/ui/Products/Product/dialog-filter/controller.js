@@ -16,7 +16,7 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
 			$scope.optionsType = params.optionsType;
 			$scope.optionsCategory = params.optionsCategory;
-			$scope.optionsBaseUnit = params.optionsBaseUnit;
+			$scope.optionsUoM = params.optionsUoM;
 			$scope.optionsCompany = params.optionsCompany;
 			$scope.optionsManufacturer = params.optionsManufacturer;
 		}
@@ -62,8 +62,8 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Category !== undefined) {
 				filter.$filter.equals.Category = entity.Category;
 			}
-			if (entity.BaseUnit) {
-				filter.$filter.contains.BaseUnit = entity.BaseUnit;
+			if (entity.UoM !== undefined) {
+				filter.$filter.equals.UoM = entity.UoM;
 			}
 			if (entity.Company !== undefined) {
 				filter.$filter.equals.Company = entity.Company;
