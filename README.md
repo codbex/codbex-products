@@ -15,8 +15,11 @@ Products Management Application
 
 ![management](images/products-management.png)
 
+![management](images/products-product-category.png)
 
-![management](images/products-product-type-management.png)
+![management](images/products-catalogue.png)
+
+![management](images/products-product-type.png)
 
 ### Infrastructure
 
