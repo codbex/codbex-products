@@ -2416,6 +2416,9 @@ components:
         Manufacturer:
           type: integer
           format: int32
+        VAT:
+          type: number
+          format: double
         Weight:
           type: number
           format: double
@@ -2425,9 +2428,26 @@ components:
         Length:
           type: number
           format: double
-        VAT:
+        Width:
           type: number
           format: double
+        IsStoredInBox:
+          type: boolean
+        BoxWeight:
+          type: number
+          format: double
+        BoxHeight:
+          type: number
+          format: double
+        BoxLength:
+          type: number
+          format: double
+        BoxWidth:
+          type: number
+          format: double
+        PiecesInBox:
+          type: integer
+          format: int32
         Enabled:
           type: boolean
     ProductFilterOptions:
@@ -2600,6 +2620,14 @@ components:
                       items:
                         type: integer
                         format: int32
+                VAT:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
                 Weight:
                   oneOf:
                     - type: number
@@ -2624,7 +2652,7 @@ components:
                       items:
                         type: number
                         format: double
-                VAT:
+                Width:
                   oneOf:
                     - type: number
                       format: double
@@ -2632,6 +2660,52 @@ components:
                       items:
                         type: number
                         format: double
+                IsStoredInBox:
+                  oneOf:
+                    - type: boolean
+                    - type: array
+                      items:
+                        type: boolean
+                BoxWeight:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                BoxHeight:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                BoxLength:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                BoxWidth:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                PiecesInBox:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 Enabled:
                   oneOf:
                     - type: boolean
@@ -2802,6 +2876,14 @@ components:
                       items:
                         type: integer
                         format: int32
+                VAT:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
                 Weight:
                   oneOf:
                     - type: number
@@ -2826,7 +2908,7 @@ components:
                       items:
                         type: number
                         format: double
-                VAT:
+                Width:
                   oneOf:
                     - type: number
                       format: double
@@ -2834,6 +2916,52 @@ components:
                       items:
                         type: number
                         format: double
+                IsStoredInBox:
+                  oneOf:
+                    - type: boolean
+                    - type: array
+                      items:
+                        type: boolean
+                BoxWeight:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                BoxHeight:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                BoxLength:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                BoxWidth:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                PiecesInBox:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 Enabled:
                   oneOf:
                     - type: boolean
@@ -2892,10 +3020,17 @@ components:
                   minLength: 0
                   maxLength: 40
                 Manufacturer:
+                VAT:
                 Weight:
                 Height:
                 Length:
-                VAT:
+                Width:
+                IsStoredInBox:
+                BoxWeight:
+                BoxHeight:
+                BoxLength:
+                BoxWidth:
+                PiecesInBox:
                 Enabled:
             greaterThan:
               type: object
@@ -2959,6 +3094,9 @@ components:
                 Manufacturer:
                   type: integer
                   format: int32
+                VAT:
+                  type: number
+                  format: double
                 Weight:
                   type: number
                   format: double
@@ -2968,9 +3106,25 @@ components:
                 Length:
                   type: number
                   format: double
-                VAT:
+                Width:
                   type: number
                   format: double
+                IsStoredInBox:
+                BoxWeight:
+                  type: number
+                  format: double
+                BoxHeight:
+                  type: number
+                  format: double
+                BoxLength:
+                  type: number
+                  format: double
+                BoxWidth:
+                  type: number
+                  format: double
+                PiecesInBox:
+                  type: integer
+                  format: int32
                 Enabled:
             greaterThanOrEqual:
               type: object
@@ -3034,6 +3188,9 @@ components:
                 Manufacturer:
                   type: integer
                   format: int32
+                VAT:
+                  type: number
+                  format: double
                 Weight:
                   type: number
                   format: double
@@ -3043,9 +3200,25 @@ components:
                 Length:
                   type: number
                   format: double
-                VAT:
+                Width:
                   type: number
                   format: double
+                IsStoredInBox:
+                BoxWeight:
+                  type: number
+                  format: double
+                BoxHeight:
+                  type: number
+                  format: double
+                BoxLength:
+                  type: number
+                  format: double
+                BoxWidth:
+                  type: number
+                  format: double
+                PiecesInBox:
+                  type: integer
+                  format: int32
                 Enabled:
             lessThan:
               type: object
@@ -3109,6 +3282,9 @@ components:
                 Manufacturer:
                   type: integer
                   format: int32
+                VAT:
+                  type: number
+                  format: double
                 Weight:
                   type: number
                   format: double
@@ -3118,9 +3294,25 @@ components:
                 Length:
                   type: number
                   format: double
-                VAT:
+                Width:
                   type: number
                   format: double
+                IsStoredInBox:
+                BoxWeight:
+                  type: number
+                  format: double
+                BoxHeight:
+                  type: number
+                  format: double
+                BoxLength:
+                  type: number
+                  format: double
+                BoxWidth:
+                  type: number
+                  format: double
+                PiecesInBox:
+                  type: integer
+                  format: int32
                 Enabled:
             lessThanOrEqual:
               type: object
@@ -3184,6 +3376,9 @@ components:
                 Manufacturer:
                   type: integer
                   format: int32
+                VAT:
+                  type: number
+                  format: double
                 Weight:
                   type: number
                   format: double
@@ -3193,18 +3388,34 @@ components:
                 Length:
                   type: number
                   format: double
-                VAT:
+                Width:
                   type: number
                   format: double
+                IsStoredInBox:
+                BoxWeight:
+                  type: number
+                  format: double
+                BoxHeight:
+                  type: number
+                  format: double
+                BoxLength:
+                  type: number
+                  format: double
+                BoxWidth:
+                  type: number
+                  format: double
+                PiecesInBox:
+                  type: integer
+                  format: int32
                 Enabled:
         $select:
           type: array
-          example: ["Id", "Name", "Title", "Model", "Batch", "Type", "Category", "BaseUnit", "Company", "SKU", "UPC", "EAN", "JAN", "ISBN", "MPN", "Manufacturer", "Weight", "Height", "Length", "VAT", "Enabled"]
+          example: ["Id", "Name", "Title", "Model", "Batch", "Type", "Category", "BaseUnit", "Company", "SKU", "UPC", "EAN", "JAN", "ISBN", "MPN", "Manufacturer", "VAT", "Weight", "Height", "Length", "Width", "IsStoredInBox", "BoxWeight", "BoxHeight", "BoxLength", "BoxWidth", "PiecesInBox", "Enabled"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Name,Title,Model,Batch,Type,Category,BaseUnit,Company,SKU,UPC,EAN,JAN,ISBN,MPN,Manufacturer,Weight,Height,Length,VAT,Enabled"
+            example: "Id,Name,Title,Model,Batch,Type,Category,BaseUnit,Company,SKU,UPC,EAN,JAN,ISBN,MPN,Manufacturer,VAT,Weight,Height,Length,Width,IsStoredInBox,BoxWeight,BoxHeight,BoxLength,BoxWidth,PiecesInBox,Enabled"
         $order:
           type: string
           enum: ["asc", "desc"]

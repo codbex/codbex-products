@@ -318,6 +318,22 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idVAT" dg-required="false" dg-colon="true">VAT</fd-form-label>
+                        </div>
+                        <div class="fd-col  fd-col-md--4 ">
+							<fd-step-input dg-id="idVAT"
+								name="VAT"
+								state="{{ forms.details['VAT'].$valid ? '' : 'error' }}"
+								dg-required="false"
+								ng-model="entity.VAT"
+								is-readonly="action === 'select'"
+								placeholder="Enter VAT"
+								>
+							</fd-step-input>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idWeight" dg-required="false" dg-colon="true">Weight</fd-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--4 ">
@@ -366,16 +382,108 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idVAT" dg-required="false" dg-colon="true">VAT</fd-form-label>
+                        	<fd-form-label for="idWidth" dg-required="false" dg-colon="true">Width</fd-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--4 ">
-							<fd-step-input dg-id="idVAT"
-								name="VAT"
-								state="{{ forms.details['VAT'].$valid ? '' : 'error' }}"
+							<fd-step-input dg-id="idWidth"
+								name="Width"
+								state="{{ forms.details['Width'].$valid ? '' : 'error' }}"
 								dg-required="false"
-								ng-model="entity.VAT"
+								ng-model="entity.Width"
 								is-readonly="action === 'select'"
-								placeholder="Enter VAT"
+								placeholder="Enter Width"
+								>
+							</fd-step-input>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2"></div>
+	                    <div class="fd-col  fd-col-md--8 ">
+	                        <fd-checkbox id="idIsStoredInBox"
+	                            compact="false"
+	                            ng-required="false"
+	                            ng-disabled="action === 'select'"
+	                            ng-model="entity.IsStoredInBox">
+	                        </fd-checkbox>
+                        	<fd-checkbox-label for="idIsStoredInBox" dg-required="false">IsStoredInBox</fd-checkbox-label>
+                        </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idBoxWeight" dg-required="false" dg-colon="true">BoxWeight</fd-form-label>
+                        </div>
+                        <div class="fd-col  fd-col-md--4 ">
+							<fd-step-input dg-id="idBoxWeight"
+								name="BoxWeight"
+								state="{{ forms.details['BoxWeight'].$valid ? '' : 'error' }}"
+								dg-required="false"
+								ng-model="entity.BoxWeight"
+								is-readonly="action === 'select'"
+								placeholder="Enter BoxWeight"
+								>
+							</fd-step-input>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idBoxHeight" dg-required="false" dg-colon="true">BoxHeight</fd-form-label>
+                        </div>
+                        <div class="fd-col  fd-col-md--4 ">
+							<fd-step-input dg-id="idBoxHeight"
+								name="BoxHeight"
+								state="{{ forms.details['BoxHeight'].$valid ? '' : 'error' }}"
+								dg-required="false"
+								ng-model="entity.BoxHeight"
+								is-readonly="action === 'select'"
+								placeholder="Enter BoxHeight"
+								>
+							</fd-step-input>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idBoxLength" dg-required="false" dg-colon="true">BoxLength</fd-form-label>
+                        </div>
+                        <div class="fd-col  fd-col-md--4 ">
+							<fd-step-input dg-id="idBoxLength"
+								name="BoxLength"
+								state="{{ forms.details['BoxLength'].$valid ? '' : 'error' }}"
+								dg-required="false"
+								ng-model="entity.BoxLength"
+								is-readonly="action === 'select'"
+								placeholder="Enter BoxLength"
+								>
+							</fd-step-input>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idBoxWidth" dg-required="false" dg-colon="true">BoxWidth</fd-form-label>
+                        </div>
+                        <div class="fd-col  fd-col-md--4 ">
+							<fd-step-input dg-id="idBoxWidth"
+								name="BoxWidth"
+								state="{{ forms.details['BoxWidth'].$valid ? '' : 'error' }}"
+								dg-required="false"
+								ng-model="entity.BoxWidth"
+								is-readonly="action === 'select'"
+								placeholder="Enter BoxWidth"
+								>
+							</fd-step-input>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idPiecesInBox" dg-required="false" dg-colon="true">PiecesInBox</fd-form-label>
+                        </div>
+                        <div class="fd-col  fd-col-md--4 ">
+							<fd-step-input dg-id="idPiecesInBox"
+								name="PiecesInBox"
+								state="{{ forms.details['PiecesInBox'].$valid ? '' : 'error' }}"
+								dg-required="false"
+								ng-model="entity.PiecesInBox"
+								is-readonly="action === 'select'"
+								placeholder="Enter PiecesInBox"
 								>
 							</fd-step-input>
 	                    </div>

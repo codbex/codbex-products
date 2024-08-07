@@ -15,26 +15,8 @@ widgetsView.controller('WidgetsViewController', ['$scope', '$http', 'ViewParamet
                 console.log(JSON.stringify(params.data));
 
                 $http.post(productUrl, {
-                    Name: response.data.Name,
-                    Title: response.data.Title,
-                    Model: response.data.Model,
-                    Batch: batch,
-                    Type: response.data.Type,
-                    Category: response.data.Category,
-                    BaseUnit: response.data.BaseUnit,
-                    Company: response.data.Company,
-                    SKU: response.data.SKU,
-                    UPC: response.data.UPC,
-                    EAN: response.data.EAN,
-                    JAN: response.data.JAN,
-                    ISBN: response.data.ISBN,
-                    MPN: response.data.MPN,
-                    Manufacturer: response.data.Manufacturer,
-                    Weight: response.data.Weight,
-                    Height: response.data.Height,
-                    Length: response.data.Length,
-                    VAT: response.data.VAT,
-                    Enabled: response.data.Enabled
+                    ...response.data,
+                    Batch: batch
                 }).then(function (_) {
                     messageHub.closeDialogWindow('product-duplicate');
 

@@ -318,6 +318,18 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "dataName": "PRODUCT_VAT",
+                        "dataNullable": "true",
+                        "dataPrecision": "16",
+                        "dataScale": "2",
+                        "dataType": "DECIMAL",
+                        "name": "VAT",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "NUMBER"
+                    },
+                    {
                         "dataName": "PRODUCT_WEIGHT",
                         "dataNullable": "true",
                         "dataType": "DOUBLE",
@@ -348,12 +360,70 @@
                         "widgetType": "NUMBER"
                     },
                     {
-                        "dataName": "PRODUCT_VAT",
+                        "dataName": "PRODUCT_WIDTH",
                         "dataNullable": "true",
-                        "dataPrecision": "16",
-                        "dataScale": "2",
-                        "dataType": "DECIMAL",
-                        "name": "VAT",
+                        "dataType": "DOUBLE",
+                        "name": "Width",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "NUMBER"
+                    },
+                    {
+                        "dataName": "PRODUCT_ISSTOREDINBOX",
+                        "dataNullable": "true",
+                        "dataType": "BOOLEAN",
+                        "name": "IsStoredInBox",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "CHECKBOX"
+                    },
+                    {
+                        "dataName": "PRODUCT_BOXWEIGHT",
+                        "dataNullable": "true",
+                        "dataType": "DOUBLE",
+                        "name": "BoxWeight",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "NUMBER"
+                    },
+                    {
+                        "dataName": "PRODUCT_BOXHEIGHT",
+                        "dataNullable": "true",
+                        "dataType": "DOUBLE",
+                        "name": "BoxHeight",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "NUMBER"
+                    },
+                    {
+                        "dataName": "PRODUCT_BOXLENGTH",
+                        "dataNullable": "true",
+                        "dataType": "DOUBLE",
+                        "name": "BoxLength",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "NUMBER"
+                    },
+                    {
+                        "dataName": "PRODUCT_BOXWIDTH",
+                        "dataNullable": "true",
+                        "dataType": "DOUBLE",
+                        "name": "BoxWidth",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "NUMBER"
+                    },
+                    {
+                        "dataName": "PRODUCT_PIECESINBOX",
+                        "dataNullable": "true",
+                        "dataType": "INTEGER",
+                        "name": "PiecesInBox",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
                         "widgetSize": "",

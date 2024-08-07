@@ -89,6 +89,9 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Manufacturer !== undefined) {
 				filter.$filter.equals.Manufacturer = entity.Manufacturer;
 			}
+			if (entity.VAT !== undefined) {
+				filter.$filter.equals.VAT = entity.VAT;
+			}
 			if (entity.Weight !== undefined) {
 				filter.$filter.equals.Weight = entity.Weight;
 			}
@@ -98,8 +101,26 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Length !== undefined) {
 				filter.$filter.equals.Length = entity.Length;
 			}
-			if (entity.VAT !== undefined) {
-				filter.$filter.equals.VAT = entity.VAT;
+			if (entity.Width !== undefined) {
+				filter.$filter.equals.Width = entity.Width;
+			}
+			if (entity.IsStoredInBox !== undefined && entity.isIsStoredInBoxIndeterminate === false) {
+				filter.$filter.equals.IsStoredInBox = entity.IsStoredInBox;
+			}
+			if (entity.BoxWeight !== undefined) {
+				filter.$filter.equals.BoxWeight = entity.BoxWeight;
+			}
+			if (entity.BoxHeight !== undefined) {
+				filter.$filter.equals.BoxHeight = entity.BoxHeight;
+			}
+			if (entity.BoxLength !== undefined) {
+				filter.$filter.equals.BoxLength = entity.BoxLength;
+			}
+			if (entity.BoxWidth !== undefined) {
+				filter.$filter.equals.BoxWidth = entity.BoxWidth;
+			}
+			if (entity.PiecesInBox !== undefined) {
+				filter.$filter.equals.PiecesInBox = entity.PiecesInBox;
 			}
 			if (entity.Enabled !== undefined && entity.isEnabledIndeterminate === false) {
 				filter.$filter.equals.Enabled = entity.Enabled;
