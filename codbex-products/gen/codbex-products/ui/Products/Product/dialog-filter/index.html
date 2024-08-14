@@ -425,14 +425,14 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idPiecesInBox" dg-colon="true">PiecesInBox</fd-form-label>
+                        	<fd-form-label for="idPiecesInBox" dg-colon="true">^[1-9]\d*$</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--4">
 	                        <fd-step-input dg-id="idPiecesInBox"
 								name="PiecesInBox"
 								state="{{ forms.details['PiecesInBox'].$valid ? '' : 'error' }}"
 								ng-model="entity.PiecesInBox"
-								placeholder="Enter PiecesInBox"
+								placeholder="Enter ^[1-9]\d*$"
 								>
 							</fd-step-input>
 	                    </div>

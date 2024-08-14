@@ -336,6 +336,7 @@
                         "name": "Weight",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
+                        "widgetPattern": "^[1-9]\\d*$",
                         "widgetSize": "",
                         "widgetType": "NUMBER"
                     },
@@ -346,6 +347,7 @@
                         "name": "Height",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
+                        "widgetPattern": "^[1-9]\\d*$",
                         "widgetSize": "",
                         "widgetType": "NUMBER"
                     },
@@ -356,6 +358,7 @@
                         "name": "Length",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
+                        "widgetPattern": "^[1-9]\\d*$",
                         "widgetSize": "",
                         "widgetType": "NUMBER"
                     },
@@ -366,6 +369,7 @@
                         "name": "Width",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
+                        "widgetPattern": "^[1-9]\\d*$",
                         "widgetSize": "",
                         "widgetType": "NUMBER"
                     },
@@ -386,6 +390,7 @@
                         "name": "BoxWeight",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
+                        "widgetPattern": "^[1-9]\\d*$",
                         "widgetSize": "",
                         "widgetType": "NUMBER"
                     },
@@ -396,6 +401,7 @@
                         "name": "BoxHeight",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
+                        "widgetPattern": "^[1-9]\\d*$",
                         "widgetSize": "",
                         "widgetType": "NUMBER"
                     },
@@ -406,6 +412,7 @@
                         "name": "BoxLength",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
+                        "widgetPattern": "^[1-9]\\d*$",
                         "widgetSize": "",
                         "widgetType": "NUMBER"
                     },
@@ -416,6 +423,7 @@
                         "name": "BoxWidth",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
+                        "widgetPattern": "^[1-9]\\d*$",
                         "widgetSize": "",
                         "widgetType": "NUMBER"
                     },
@@ -425,6 +433,7 @@
                         "dataType": "INTEGER",
                         "name": "PiecesInBox",
                         "widgetIsMajor": "true",
+                        "widgetLabel": "^[1-9]\\d*$",
                         "widgetLength": "20",
                         "widgetSize": "",
                         "widgetType": "NUMBER"

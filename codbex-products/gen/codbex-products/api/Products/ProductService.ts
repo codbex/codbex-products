@@ -161,6 +161,30 @@ class ProductService {
         if (entity.MPN?.length > 40) {
             throw new ValidationError(`The 'MPN' exceeds the maximum length of [40] characters`);
         }
+        if (!RegExp(/^[1-9]\d*$/).test(entity.Weight)) {
+            throw new ValidationError(`The value provided for the 'Weight' property ('[${entity.Weight}]') doesn't match the required pattern '^[1-9]\d*$'`);
+        }
+        if (!RegExp(/^[1-9]\d*$/).test(entity.Height)) {
+            throw new ValidationError(`The value provided for the 'Height' property ('[${entity.Height}]') doesn't match the required pattern '^[1-9]\d*$'`);
+        }
+        if (!RegExp(/^[1-9]\d*$/).test(entity.Length)) {
+            throw new ValidationError(`The value provided for the 'Length' property ('[${entity.Length}]') doesn't match the required pattern '^[1-9]\d*$'`);
+        }
+        if (!RegExp(/^[1-9]\d*$/).test(entity.Width)) {
+            throw new ValidationError(`The value provided for the 'Width' property ('[${entity.Width}]') doesn't match the required pattern '^[1-9]\d*$'`);
+        }
+        if (!RegExp(/^[1-9]\d*$/).test(entity.BoxWeight)) {
+            throw new ValidationError(`The value provided for the 'BoxWeight' property ('[${entity.BoxWeight}]') doesn't match the required pattern '^[1-9]\d*$'`);
+        }
+        if (!RegExp(/^[1-9]\d*$/).test(entity.BoxHeight)) {
+            throw new ValidationError(`The value provided for the 'BoxHeight' property ('[${entity.BoxHeight}]') doesn't match the required pattern '^[1-9]\d*$'`);
+        }
+        if (!RegExp(/^[1-9]\d*$/).test(entity.BoxLength)) {
+            throw new ValidationError(`The value provided for the 'BoxLength' property ('[${entity.BoxLength}]') doesn't match the required pattern '^[1-9]\d*$'`);
+        }
+        if (!RegExp(/^[1-9]\d*$/).test(entity.BoxWidth)) {
+            throw new ValidationError(`The value provided for the 'BoxWidth' property ('[${entity.BoxWidth}]') doesn't match the required pattern '^[1-9]\d*$'`);
+        }
         for (const next of validationModules) {
             next.validate(entity);
         }

@@ -721,6 +721,7 @@
           "name": "Weight",
           "widgetIsMajor": true,
           "widgetLength": "20",
+          "widgetPattern": "^[1-9]\\d*$",
           "widgetSize": "",
           "widgetType": "NUMBER",
           "dataNotNull": false,
@@ -733,7 +734,7 @@
           "widgetDropdownUrl": "",
           "dataTypeJava": "double",
           "dataTypeTypescript": "number",
-          "inputRule": ""
+          "inputRule": "^[1-9]\\d*$"
         },
         {
           "dataName": "PRODUCT_HEIGHT",
@@ -742,6 +743,7 @@
           "name": "Height",
           "widgetIsMajor": true,
           "widgetLength": "20",
+          "widgetPattern": "^[1-9]\\d*$",
           "widgetSize": "",
           "widgetType": "NUMBER",
           "dataNotNull": false,
@@ -754,7 +756,7 @@
           "widgetDropdownUrl": "",
           "dataTypeJava": "double",
           "dataTypeTypescript": "number",
-          "inputRule": ""
+          "inputRule": "^[1-9]\\d*$"
         },
         {
           "dataName": "PRODUCT_LENGTH",
@@ -763,6 +765,7 @@
           "name": "Length",
           "widgetIsMajor": true,
           "widgetLength": "20",
+          "widgetPattern": "^[1-9]\\d*$",
           "widgetSize": "",
           "widgetType": "NUMBER",
           "dataNotNull": false,
@@ -775,7 +778,7 @@
           "widgetDropdownUrl": "",
           "dataTypeJava": "double",
           "dataTypeTypescript": "number",
-          "inputRule": ""
+          "inputRule": "^[1-9]\\d*$"
         },
         {
           "dataName": "PRODUCT_WIDTH",
@@ -784,6 +787,7 @@
           "name": "Width",
           "widgetIsMajor": true,
           "widgetLength": "20",
+          "widgetPattern": "^[1-9]\\d*$",
           "widgetSize": "",
           "widgetType": "NUMBER",
           "dataNotNull": false,
@@ -796,7 +800,7 @@
           "widgetDropdownUrl": "",
           "dataTypeJava": "double",
           "dataTypeTypescript": "number",
-          "inputRule": ""
+          "inputRule": "^[1-9]\\d*$"
         },
         {
           "dataName": "PRODUCT_ISSTOREDINBOX",
@@ -826,6 +830,7 @@
           "name": "BoxWeight",
           "widgetIsMajor": true,
           "widgetLength": "20",
+          "widgetPattern": "^[1-9]\\d*$",
           "widgetSize": "",
           "widgetType": "NUMBER",
           "dataNotNull": false,
@@ -838,7 +843,7 @@
           "widgetDropdownUrl": "",
           "dataTypeJava": "double",
           "dataTypeTypescript": "number",
-          "inputRule": ""
+          "inputRule": "^[1-9]\\d*$"
         },
         {
           "dataName": "PRODUCT_BOXHEIGHT",
@@ -847,6 +852,7 @@
           "name": "BoxHeight",
           "widgetIsMajor": true,
           "widgetLength": "20",
+          "widgetPattern": "^[1-9]\\d*$",
           "widgetSize": "",
           "widgetType": "NUMBER",
           "dataNotNull": false,
@@ -859,7 +865,7 @@
           "widgetDropdownUrl": "",
           "dataTypeJava": "double",
           "dataTypeTypescript": "number",
-          "inputRule": ""
+          "inputRule": "^[1-9]\\d*$"
         },
         {
           "dataName": "PRODUCT_BOXLENGTH",
@@ -868,6 +874,7 @@
           "name": "BoxLength",
           "widgetIsMajor": true,
           "widgetLength": "20",
+          "widgetPattern": "^[1-9]\\d*$",
           "widgetSize": "",
           "widgetType": "NUMBER",
           "dataNotNull": false,
@@ -880,7 +887,7 @@
           "widgetDropdownUrl": "",
           "dataTypeJava": "double",
           "dataTypeTypescript": "number",
-          "inputRule": ""
+          "inputRule": "^[1-9]\\d*$"
         },
         {
           "dataName": "PRODUCT_BOXWIDTH",
@@ -889,6 +896,7 @@
           "name": "BoxWidth",
           "widgetIsMajor": true,
           "widgetLength": "20",
+          "widgetPattern": "^[1-9]\\d*$",
           "widgetSize": "",
           "widgetType": "NUMBER",
           "dataNotNull": false,
@@ -901,7 +909,7 @@
           "widgetDropdownUrl": "",
           "dataTypeJava": "double",
           "dataTypeTypescript": "number",
-          "inputRule": ""
+          "inputRule": "^[1-9]\\d*$"
         },
         {
           "dataName": "PRODUCT_PIECESINBOX",
@@ -909,6 +917,7 @@
           "dataType": "INTEGER",
           "name": "PiecesInBox",
           "widgetIsMajor": true,
+          "widgetLabel": "^[1-9]\\d*$",
           "widgetLength": "20",
           "widgetSize": "",
           "widgetType": "NUMBER",
@@ -918,7 +927,6 @@
           "dataUnique": false,
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
-          "widgetLabel": "PiecesInBox",
           "widgetDropdownUrl": "",
           "dataTypeJava": "int",
           "dataTypeTypescript": "number",
@@ -1400,6 +1408,7 @@
             "name": "Weight",
             "widgetIsMajor": true,
             "widgetLength": "20",
+            "widgetPattern": "^[1-9]\\d*$",
             "widgetSize": "",
             "widgetType": "NUMBER",
             "dataNotNull": false,
@@ -1412,7 +1421,7 @@
             "widgetDropdownUrl": "",
             "dataTypeJava": "double",
             "dataTypeTypescript": "number",
-            "inputRule": ""
+            "inputRule": "^[1-9]\\d*$"
           },
           {
             "dataName": "PRODUCT_HEIGHT",
@@ -1421,6 +1430,7 @@
             "name": "Height",
             "widgetIsMajor": true,
             "widgetLength": "20",
+            "widgetPattern": "^[1-9]\\d*$",
             "widgetSize": "",
             "widgetType": "NUMBER",
             "dataNotNull": false,
@@ -1433,7 +1443,7 @@
             "widgetDropdownUrl": "",
             "dataTypeJava": "double",
             "dataTypeTypescript": "number",
-            "inputRule": ""
+            "inputRule": "^[1-9]\\d*$"
           },
           {
             "dataName": "PRODUCT_LENGTH",
@@ -1442,6 +1452,7 @@
             "name": "Length",
             "widgetIsMajor": true,
             "widgetLength": "20",
+            "widgetPattern": "^[1-9]\\d*$",
             "widgetSize": "",
             "widgetType": "NUMBER",
             "dataNotNull": false,
@@ -1454,7 +1465,7 @@
             "widgetDropdownUrl": "",
             "dataTypeJava": "double",
             "dataTypeTypescript": "number",
-            "inputRule": ""
+            "inputRule": "^[1-9]\\d*$"
           },
           {
             "dataName": "PRODUCT_WIDTH",
@@ -1463,6 +1474,7 @@
             "name": "Width",
             "widgetIsMajor": true,
             "widgetLength": "20",
+            "widgetPattern": "^[1-9]\\d*$",
             "widgetSize": "",
             "widgetType": "NUMBER",
             "dataNotNull": false,
@@ -1475,7 +1487,7 @@
             "widgetDropdownUrl": "",
             "dataTypeJava": "double",
             "dataTypeTypescript": "number",
-            "inputRule": ""
+            "inputRule": "^[1-9]\\d*$"
           },
           {
             "dataName": "PRODUCT_ISSTOREDINBOX",
@@ -1505,6 +1517,7 @@
             "name": "BoxWeight",
             "widgetIsMajor": true,
             "widgetLength": "20",
+            "widgetPattern": "^[1-9]\\d*$",
             "widgetSize": "",
             "widgetType": "NUMBER",
             "dataNotNull": false,
@@ -1517,7 +1530,7 @@
             "widgetDropdownUrl": "",
             "dataTypeJava": "double",
             "dataTypeTypescript": "number",
-            "inputRule": ""
+            "inputRule": "^[1-9]\\d*$"
           },
           {
             "dataName": "PRODUCT_BOXHEIGHT",
@@ -1526,6 +1539,7 @@
             "name": "BoxHeight",
             "widgetIsMajor": true,
             "widgetLength": "20",
+            "widgetPattern": "^[1-9]\\d*$",
             "widgetSize": "",
             "widgetType": "NUMBER",
             "dataNotNull": false,
@@ -1538,7 +1552,7 @@
             "widgetDropdownUrl": "",
             "dataTypeJava": "double",
             "dataTypeTypescript": "number",
-            "inputRule": ""
+            "inputRule": "^[1-9]\\d*$"
           },
           {
             "dataName": "PRODUCT_BOXLENGTH",
@@ -1547,6 +1561,7 @@
             "name": "BoxLength",
             "widgetIsMajor": true,
             "widgetLength": "20",
+            "widgetPattern": "^[1-9]\\d*$",
             "widgetSize": "",
             "widgetType": "NUMBER",
             "dataNotNull": false,
@@ -1559,7 +1574,7 @@
             "widgetDropdownUrl": "",
             "dataTypeJava": "double",
             "dataTypeTypescript": "number",
-            "inputRule": ""
+            "inputRule": "^[1-9]\\d*$"
           },
           {
             "dataName": "PRODUCT_BOXWIDTH",
@@ -1568,6 +1583,7 @@
             "name": "BoxWidth",
             "widgetIsMajor": true,
             "widgetLength": "20",
+            "widgetPattern": "^[1-9]\\d*$",
             "widgetSize": "",
             "widgetType": "NUMBER",
             "dataNotNull": false,
@@ -1580,7 +1596,7 @@
             "widgetDropdownUrl": "",
             "dataTypeJava": "double",
             "dataTypeTypescript": "number",
-            "inputRule": ""
+            "inputRule": "^[1-9]\\d*$"
           },
           {
             "dataName": "PRODUCT_PIECESINBOX",
@@ -1588,6 +1604,7 @@
             "dataType": "INTEGER",
             "name": "PiecesInBox",
             "widgetIsMajor": true,
+            "widgetLabel": "^[1-9]\\d*$",
             "widgetLength": "20",
             "widgetSize": "",
             "widgetType": "NUMBER",
@@ -1597,7 +1614,6 @@
             "dataUnique": false,
             "isRequiredProperty": false,
             "isCalculatedProperty": false,
-            "widgetLabel": "PiecesInBox",
             "widgetDropdownUrl": "",
             "dataTypeJava": "int",
             "dataTypeTypescript": "number",
