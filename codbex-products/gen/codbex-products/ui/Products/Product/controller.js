@@ -117,6 +117,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				optionsBaseUnit: $scope.optionsBaseUnit,
 				optionsCompany: $scope.optionsCompany,
 				optionsManufacturer: $scope.optionsManufacturer,
+				optionsSet: $scope.optionsSet,
 			});
 		};
 
@@ -131,6 +132,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				optionsBaseUnit: $scope.optionsBaseUnit,
 				optionsCompany: $scope.optionsCompany,
 				optionsManufacturer: $scope.optionsManufacturer,
+				optionsSet: $scope.optionsSet,
 			});
 		};
 
@@ -143,6 +145,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				optionsBaseUnit: $scope.optionsBaseUnit,
 				optionsCompany: $scope.optionsCompany,
 				optionsManufacturer: $scope.optionsManufacturer,
+				optionsSet: $scope.optionsSet,
 			});
 		};
 
@@ -184,6 +187,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				optionsBaseUnit: $scope.optionsBaseUnit,
 				optionsCompany: $scope.optionsCompany,
 				optionsManufacturer: $scope.optionsManufacturer,
+				optionsSet: $scope.optionsSet,
 			});
 		};
 
@@ -193,6 +197,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.optionsBaseUnit = [];
 		$scope.optionsCompany = [];
 		$scope.optionsManufacturer = [];
+		$scope.optionsSet = [];
 
 
 		$http.get("/services/ts/codbex-products/gen/codbex-products/api/Settings/ProductTypeService.ts").then(function (response) {
@@ -240,6 +245,15 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
+		$http.get("/services/ts/codbex-products/gen/codbex-products/api/entities/SetService.ts").then(function (response) {
+			$scope.optionsSet = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
+				}
+			});
+		});
+
 		$scope.optionsTypeValue = function (optionKey) {
 			for (let i = 0; i < $scope.optionsType.length; i++) {
 				if ($scope.optionsType[i].value === optionKey) {
@@ -276,6 +290,14 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			for (let i = 0; i < $scope.optionsManufacturer.length; i++) {
 				if ($scope.optionsManufacturer[i].value === optionKey) {
 					return $scope.optionsManufacturer[i].text;
+				}
+			}
+			return null;
+		};
+		$scope.optionsSetValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsSet.length; i++) {
+				if ($scope.optionsSet[i].value === optionKey) {
+					return $scope.optionsSet[i].text;
 				}
 			}
 			return null;

@@ -19,6 +19,7 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.optionsBaseUnit = params.optionsBaseUnit;
 			$scope.optionsCompany = params.optionsCompany;
 			$scope.optionsManufacturer = params.optionsManufacturer;
+			$scope.optionsSet = params.optionsSet;
 		}
 
 		$scope.filter = function () {
@@ -92,6 +93,9 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.VAT !== undefined) {
 				filter.$filter.equals.VAT = entity.VAT;
 			}
+			if (entity.Set !== undefined) {
+				filter.$filter.equals.Set = entity.Set;
+			}
 			if (entity.Weight !== undefined) {
 				filter.$filter.equals.Weight = entity.Weight;
 			}
@@ -103,24 +107,6 @@ angular.module('page', ["ideUI", "ideView"])
 			}
 			if (entity.Width !== undefined) {
 				filter.$filter.equals.Width = entity.Width;
-			}
-			if (entity.IsStoredInBox !== undefined && entity.isIsStoredInBoxIndeterminate === false) {
-				filter.$filter.equals.IsStoredInBox = entity.IsStoredInBox;
-			}
-			if (entity.BoxWeight !== undefined) {
-				filter.$filter.equals.BoxWeight = entity.BoxWeight;
-			}
-			if (entity.BoxHeight !== undefined) {
-				filter.$filter.equals.BoxHeight = entity.BoxHeight;
-			}
-			if (entity.BoxLength !== undefined) {
-				filter.$filter.equals.BoxLength = entity.BoxLength;
-			}
-			if (entity.BoxWidth !== undefined) {
-				filter.$filter.equals.BoxWidth = entity.BoxWidth;
-			}
-			if (entity.PiecesInBox !== undefined) {
-				filter.$filter.equals.PiecesInBox = entity.PiecesInBox;
 			}
 			if (entity.Enabled !== undefined && entity.isEnabledIndeterminate === false) {
 				filter.$filter.equals.Enabled = entity.Enabled;

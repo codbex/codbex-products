@@ -146,6 +146,11 @@
                         "name": "PRODUCT_VAT"
                     },
                     {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "PRODUCT_SET"
+                    },
+                    {
                         "type": "DOUBLE",
                         "nullable": true,
                         "name": "PRODUCT_WEIGHT"
@@ -164,36 +169,6 @@
                         "type": "DOUBLE",
                         "nullable": true,
                         "name": "PRODUCT_WIDTH"
-                    },
-                    {
-                        "type": "BOOLEAN",
-                        "nullable": true,
-                        "name": "PRODUCT_ISSTOREDINBOX"
-                    },
-                    {
-                        "type": "DOUBLE",
-                        "nullable": true,
-                        "name": "PRODUCT_BOXWEIGHT"
-                    },
-                    {
-                        "type": "DOUBLE",
-                        "nullable": true,
-                        "name": "PRODUCT_BOXHEIGHT"
-                    },
-                    {
-                        "type": "DOUBLE",
-                        "nullable": true,
-                        "name": "PRODUCT_BOXLENGTH"
-                    },
-                    {
-                        "type": "DOUBLE",
-                        "nullable": true,
-                        "name": "PRODUCT_BOXWIDTH"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "PRODUCT_PIECESINBOX"
                     },
                     {
                         "type": "BOOLEAN",
@@ -258,6 +233,59 @@
                 ]
             },
             {
+                "name": "CODBEX_SET",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "SET_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 40,
+                        "name": "SET_NAME"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 40,
+                        "name": "SET_MEASURETYPE"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 40,
+                        "nullable": true,
+                        "name": "SET_QUANTITY"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "precision": "16",
+                        "scale": "2",
+                        "name": "SET_WEIGHT"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "precision": "16",
+                        "scale": "2",
+                        "name": "SET_HEIGHT"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "precision": "16",
+                        "scale": "2",
+                        "name": "SET_LENGTH"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "precision": "16",
+                        "scale": "2",
+                        "name": "SET_WIDTH"
+                    }
+                ]
+            },
+            {
                 "name": "Product_ProductType",
                 "type": "foreignKey",
                 "table": "CODBEX_PRODUCT",
@@ -301,6 +329,15 @@
                 "columns": "PRODUCT_MANUFACTURER",
                 "referencedTable": "CODBEX_MANUFACTURER",
                 "referencedColumns": "ENTITY5_ENTITY5ID"
+            },
+            {
+                "name": "Product_Set",
+                "type": "foreignKey",
+                "table": "CODBEX_PRODUCT",
+                "constraintName": "Product_Set",
+                "columns": "PRODUCT_SET",
+                "referencedTable": "CODBEX_SET",
+                "referencedColumns": "SET_ID"
             },
             {
                 "name": "ProductAttribute_Product",

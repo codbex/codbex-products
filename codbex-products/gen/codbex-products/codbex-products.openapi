@@ -14,6 +14,7 @@ tags:
   - name: Products
   - name: Products
   - name: Catalogues
+  - name: entities
 paths:
   /codbex-products/gen/codbex-products/api/Settings/ProductTypeService.ts:
     get:
@@ -2047,6 +2048,414 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /codbex-products/gen/codbex-products/api/entities/SetService.ts:
+    get:
+      summary: List Set
+      parameters:
+        - in: query
+          name: $limit
+          description: The number of records to be returned _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+        - in: query
+          name: $offset
+          description: The number of records to skip _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+      tags:
+        - entities
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/Set'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create Set
+      tags:
+        - entities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Set'
+        required: true
+      responses:
+        201:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Set'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-products/gen/codbex-products/api/entities/SetService.ts/{id}:
+    get:
+      summary: Get Set by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - entities
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/Set'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Update Set by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - entities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Set'
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Set'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Delete Set by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - entities
+      responses:
+        204:
+          description: Successful Request
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-products/gen/codbex-products/api/entities/SetService.ts/count:
+    get:
+      summary: Count the number of Set
+      tags:
+        - entities
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Count the number of Set by SetFilterOptions
+      tags:
+        - entities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SetFilterOptions'
+            examples:
+              countWithMultipleCriteria:
+                summary: Count with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    contains:
+                      Name: "abcd"
+                      MeasureType: "abcd"
+                      Quantity: "abcd"
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              countWithEquals:
+                summary: Count with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              countWithNotEquals:
+                summary: Count with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              countWithContains:
+                summary: Count with Contains
+                value:
+                  $filter:
+                    contains:
+                      Name: "abcd"
+                      MeasureType: "abcd"
+                      Quantity: "abcd"
+              countWithGreaterThan:
+                summary: Count with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              countWithGreaterThanOrEqual:
+                summary: Count with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              countWithLessThan:
+                summary: Count with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              countWithLessThanOrEqual:
+                summary: Count with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-products/gen/codbex-products/api/entities/SetService.ts/search:
+    post:
+      summary: Search Set by SetFilterOptions
+      tags:
+        - entities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SetFilterOptions'
+            examples:
+              searchWithMultipleCriteria:
+                summary: Search with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    contains:
+                      Name: "abcd"
+                      MeasureType: "abcd"
+                      Quantity: "abcd"
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              searchWithEquals:
+                summary: Search with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              searchWithNotEquals:
+                summary: Search with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              searchWithContains:
+                summary: Search with Contains
+                value:
+                  $filter:
+                    contains:
+                      Name: "abcd"
+                      MeasureType: "abcd"
+                      Quantity: "abcd"
+              searchWithGreaterThan:
+                summary: Search with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              searchWithGreaterThanOrEqual:
+                summary: Search with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              searchWithLessThan:
+                summary: Search with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              searchWithLessThanOrEqual:
+                summary: Search with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/Set'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 components:
   schemas:
     ProductType:
@@ -2419,6 +2828,9 @@ components:
         VAT:
           type: number
           format: double
+        Set:
+          type: integer
+          format: int32
         Weight:
           type: number
           format: double
@@ -2431,23 +2843,6 @@ components:
         Width:
           type: number
           format: double
-        IsStoredInBox:
-          type: boolean
-        BoxWeight:
-          type: number
-          format: double
-        BoxHeight:
-          type: number
-          format: double
-        BoxLength:
-          type: number
-          format: double
-        BoxWidth:
-          type: number
-          format: double
-        PiecesInBox:
-          type: integer
-          format: int32
         Enabled:
           type: boolean
     ProductFilterOptions:
@@ -2628,6 +3023,14 @@ components:
                       items:
                         type: number
                         format: double
+                Set:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 Weight:
                   oneOf:
                     - type: number
@@ -2660,52 +3063,6 @@ components:
                       items:
                         type: number
                         format: double
-                IsStoredInBox:
-                  oneOf:
-                    - type: boolean
-                    - type: array
-                      items:
-                        type: boolean
-                BoxWeight:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                BoxHeight:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                BoxLength:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                BoxWidth:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                PiecesInBox:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
                 Enabled:
                   oneOf:
                     - type: boolean
@@ -2884,6 +3241,14 @@ components:
                       items:
                         type: number
                         format: double
+                Set:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 Weight:
                   oneOf:
                     - type: number
@@ -2916,52 +3281,6 @@ components:
                       items:
                         type: number
                         format: double
-                IsStoredInBox:
-                  oneOf:
-                    - type: boolean
-                    - type: array
-                      items:
-                        type: boolean
-                BoxWeight:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                BoxHeight:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                BoxLength:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                BoxWidth:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                PiecesInBox:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
                 Enabled:
                   oneOf:
                     - type: boolean
@@ -3021,16 +3340,11 @@ components:
                   maxLength: 40
                 Manufacturer:
                 VAT:
+                Set:
                 Weight:
                 Height:
                 Length:
                 Width:
-                IsStoredInBox:
-                BoxWeight:
-                BoxHeight:
-                BoxLength:
-                BoxWidth:
-                PiecesInBox:
                 Enabled:
             greaterThan:
               type: object
@@ -3097,6 +3411,9 @@ components:
                 VAT:
                   type: number
                   format: double
+                Set:
+                  type: integer
+                  format: int32
                 Weight:
                   type: number
                   format: double
@@ -3109,22 +3426,6 @@ components:
                 Width:
                   type: number
                   format: double
-                IsStoredInBox:
-                BoxWeight:
-                  type: number
-                  format: double
-                BoxHeight:
-                  type: number
-                  format: double
-                BoxLength:
-                  type: number
-                  format: double
-                BoxWidth:
-                  type: number
-                  format: double
-                PiecesInBox:
-                  type: integer
-                  format: int32
                 Enabled:
             greaterThanOrEqual:
               type: object
@@ -3191,6 +3492,9 @@ components:
                 VAT:
                   type: number
                   format: double
+                Set:
+                  type: integer
+                  format: int32
                 Weight:
                   type: number
                   format: double
@@ -3203,22 +3507,6 @@ components:
                 Width:
                   type: number
                   format: double
-                IsStoredInBox:
-                BoxWeight:
-                  type: number
-                  format: double
-                BoxHeight:
-                  type: number
-                  format: double
-                BoxLength:
-                  type: number
-                  format: double
-                BoxWidth:
-                  type: number
-                  format: double
-                PiecesInBox:
-                  type: integer
-                  format: int32
                 Enabled:
             lessThan:
               type: object
@@ -3285,6 +3573,9 @@ components:
                 VAT:
                   type: number
                   format: double
+                Set:
+                  type: integer
+                  format: int32
                 Weight:
                   type: number
                   format: double
@@ -3297,22 +3588,6 @@ components:
                 Width:
                   type: number
                   format: double
-                IsStoredInBox:
-                BoxWeight:
-                  type: number
-                  format: double
-                BoxHeight:
-                  type: number
-                  format: double
-                BoxLength:
-                  type: number
-                  format: double
-                BoxWidth:
-                  type: number
-                  format: double
-                PiecesInBox:
-                  type: integer
-                  format: int32
                 Enabled:
             lessThanOrEqual:
               type: object
@@ -3379,6 +3654,9 @@ components:
                 VAT:
                   type: number
                   format: double
+                Set:
+                  type: integer
+                  format: int32
                 Weight:
                   type: number
                   format: double
@@ -3391,31 +3669,15 @@ components:
                 Width:
                   type: number
                   format: double
-                IsStoredInBox:
-                BoxWeight:
-                  type: number
-                  format: double
-                BoxHeight:
-                  type: number
-                  format: double
-                BoxLength:
-                  type: number
-                  format: double
-                BoxWidth:
-                  type: number
-                  format: double
-                PiecesInBox:
-                  type: integer
-                  format: int32
                 Enabled:
         $select:
           type: array
-          example: ["Id", "Name", "Title", "Model", "Batch", "Type", "Category", "BaseUnit", "Company", "SKU", "UPC", "EAN", "JAN", "ISBN", "MPN", "Manufacturer", "VAT", "Weight", "Height", "Length", "Width", "IsStoredInBox", "BoxWeight", "BoxHeight", "BoxLength", "BoxWidth", "PiecesInBox", "Enabled"]
+          example: ["Id", "Name", "Title", "Model", "Batch", "Type", "Category", "BaseUnit", "Company", "SKU", "UPC", "EAN", "JAN", "ISBN", "MPN", "Manufacturer", "VAT", "Set", "Weight", "Height", "Length", "Width", "Enabled"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Name,Title,Model,Batch,Type,Category,BaseUnit,Company,SKU,UPC,EAN,JAN,ISBN,MPN,Manufacturer,VAT,Weight,Height,Length,Width,IsStoredInBox,BoxWeight,BoxHeight,BoxLength,BoxWidth,PiecesInBox,Enabled"
+            example: "Id,Name,Title,Model,Batch,Type,Category,BaseUnit,Company,SKU,UPC,EAN,JAN,ISBN,MPN,Manufacturer,VAT,Set,Weight,Height,Length,Width,Enabled"
         $order:
           type: string
           enum: ["asc", "desc"]
@@ -3801,6 +4063,360 @@ components:
         $sort:
           - type: string
             example: "Id,Product,Store,Quantity"
+        $order:
+          type: string
+          enum: ["asc", "desc"]
+          example: "asc"
+        $offset:
+          type: integer
+          example: 0
+        $limit:
+          type: integer
+          example: 10
+    Set:
+      type: object
+      required:
+        - Name
+        - MeasureType
+        - Quantity
+        - Weight
+        - Height
+        - Length
+        - Width
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type: string
+          minLength: 0
+          maxLength: 40
+        MeasureType:
+          type: string
+          minLength: 0
+          maxLength: 40
+        Quantity:
+          type: string
+          minLength: 0
+          maxLength: 40
+        Weight:
+          type: number
+          format: double
+        Height:
+          type: number
+          format: double
+        Length:
+          type: number
+          format: double
+        Width:
+          type: number
+          format: double
+    SetFilterOptions:
+      type: object
+      properties:
+        $filter:
+          type: object
+          properties:
+            equals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Name:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 40
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 40
+                MeasureType:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 40
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 40
+                Quantity:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 40
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 40
+                Weight:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Height:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Length:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Width:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+            notEquals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Name:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 40
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 40
+                MeasureType:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 40
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 40
+                Quantity:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 40
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 40
+                Weight:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Height:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Length:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Width:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+            contains:
+              type: object
+              properties:
+                Id:
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 40
+                MeasureType:
+                  type: string
+                  minLength: 0
+                  maxLength: 40
+                Quantity:
+                  type: string
+                  minLength: 0
+                  maxLength: 40
+                Weight:
+                Height:
+                Length:
+                Width:
+            greaterThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 40
+                MeasureType:
+                  type: string
+                  minLength: 0
+                  maxLength: 40
+                Quantity:
+                  type: string
+                  minLength: 0
+                  maxLength: 40
+                Weight:
+                  type: number
+                  format: double
+                Height:
+                  type: number
+                  format: double
+                Length:
+                  type: number
+                  format: double
+                Width:
+                  type: number
+                  format: double
+            greaterThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 40
+                MeasureType:
+                  type: string
+                  minLength: 0
+                  maxLength: 40
+                Quantity:
+                  type: string
+                  minLength: 0
+                  maxLength: 40
+                Weight:
+                  type: number
+                  format: double
+                Height:
+                  type: number
+                  format: double
+                Length:
+                  type: number
+                  format: double
+                Width:
+                  type: number
+                  format: double
+            lessThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 40
+                MeasureType:
+                  type: string
+                  minLength: 0
+                  maxLength: 40
+                Quantity:
+                  type: string
+                  minLength: 0
+                  maxLength: 40
+                Weight:
+                  type: number
+                  format: double
+                Height:
+                  type: number
+                  format: double
+                Length:
+                  type: number
+                  format: double
+                Width:
+                  type: number
+                  format: double
+            lessThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 40
+                MeasureType:
+                  type: string
+                  minLength: 0
+                  maxLength: 40
+                Quantity:
+                  type: string
+                  minLength: 0
+                  maxLength: 40
+                Weight:
+                  type: number
+                  format: double
+                Height:
+                  type: number
+                  format: double
+                Length:
+                  type: number
+                  format: double
+                Width:
+                  type: number
+                  format: double
+        $select:
+          type: array
+          example: ["Id", "Name", "MeasureType", "Quantity", "Weight", "Height", "Length", "Width"]
+          items:
+            type: string
+        $sort:
+          - type: string
+            example: "Id,Name,MeasureType,Quantity,Weight,Height,Length,Width"
         $order:
           type: string
           enum: ["asc", "desc"]

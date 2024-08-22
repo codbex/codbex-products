@@ -22,16 +22,11 @@ export interface ProductEntity {
     MPN?: string;
     Manufacturer?: number;
     VAT?: number;
+    Set?: number;
     Weight?: number;
     Height?: number;
     Length?: number;
     Width?: number;
-    IsStoredInBox?: boolean;
-    BoxWeight?: number;
-    BoxHeight?: number;
-    BoxLength?: number;
-    BoxWidth?: number;
-    PiecesInBox?: number;
     Enabled?: boolean;
 }
 
@@ -51,16 +46,11 @@ export interface ProductCreateEntity {
     readonly MPN?: string;
     readonly Manufacturer?: number;
     readonly VAT?: number;
+    readonly Set?: number;
     readonly Weight?: number;
     readonly Height?: number;
     readonly Length?: number;
     readonly Width?: number;
-    readonly IsStoredInBox?: boolean;
-    readonly BoxWeight?: number;
-    readonly BoxHeight?: number;
-    readonly BoxLength?: number;
-    readonly BoxWidth?: number;
-    readonly PiecesInBox?: number;
     readonly Enabled?: boolean;
 }
 
@@ -88,16 +78,11 @@ export interface ProductEntityOptions {
             MPN?: string | string[];
             Manufacturer?: number | number[];
             VAT?: number | number[];
+            Set?: number | number[];
             Weight?: number | number[];
             Height?: number | number[];
             Length?: number | number[];
             Width?: number | number[];
-            IsStoredInBox?: boolean | boolean[];
-            BoxWeight?: number | number[];
-            BoxHeight?: number | number[];
-            BoxLength?: number | number[];
-            BoxWidth?: number | number[];
-            PiecesInBox?: number | number[];
             Enabled?: boolean | boolean[];
         };
         notEquals?: {
@@ -118,16 +103,11 @@ export interface ProductEntityOptions {
             MPN?: string | string[];
             Manufacturer?: number | number[];
             VAT?: number | number[];
+            Set?: number | number[];
             Weight?: number | number[];
             Height?: number | number[];
             Length?: number | number[];
             Width?: number | number[];
-            IsStoredInBox?: boolean | boolean[];
-            BoxWeight?: number | number[];
-            BoxHeight?: number | number[];
-            BoxLength?: number | number[];
-            BoxWidth?: number | number[];
-            PiecesInBox?: number | number[];
             Enabled?: boolean | boolean[];
         };
         contains?: {
@@ -148,16 +128,11 @@ export interface ProductEntityOptions {
             MPN?: string;
             Manufacturer?: number;
             VAT?: number;
+            Set?: number;
             Weight?: number;
             Height?: number;
             Length?: number;
             Width?: number;
-            IsStoredInBox?: boolean;
-            BoxWeight?: number;
-            BoxHeight?: number;
-            BoxLength?: number;
-            BoxWidth?: number;
-            PiecesInBox?: number;
             Enabled?: boolean;
         };
         greaterThan?: {
@@ -178,16 +153,11 @@ export interface ProductEntityOptions {
             MPN?: string;
             Manufacturer?: number;
             VAT?: number;
+            Set?: number;
             Weight?: number;
             Height?: number;
             Length?: number;
             Width?: number;
-            IsStoredInBox?: boolean;
-            BoxWeight?: number;
-            BoxHeight?: number;
-            BoxLength?: number;
-            BoxWidth?: number;
-            PiecesInBox?: number;
             Enabled?: boolean;
         };
         greaterThanOrEqual?: {
@@ -208,16 +178,11 @@ export interface ProductEntityOptions {
             MPN?: string;
             Manufacturer?: number;
             VAT?: number;
+            Set?: number;
             Weight?: number;
             Height?: number;
             Length?: number;
             Width?: number;
-            IsStoredInBox?: boolean;
-            BoxWeight?: number;
-            BoxHeight?: number;
-            BoxLength?: number;
-            BoxWidth?: number;
-            PiecesInBox?: number;
             Enabled?: boolean;
         };
         lessThan?: {
@@ -238,16 +203,11 @@ export interface ProductEntityOptions {
             MPN?: string;
             Manufacturer?: number;
             VAT?: number;
+            Set?: number;
             Weight?: number;
             Height?: number;
             Length?: number;
             Width?: number;
-            IsStoredInBox?: boolean;
-            BoxWeight?: number;
-            BoxHeight?: number;
-            BoxLength?: number;
-            BoxWidth?: number;
-            PiecesInBox?: number;
             Enabled?: boolean;
         };
         lessThanOrEqual?: {
@@ -268,16 +228,11 @@ export interface ProductEntityOptions {
             MPN?: string;
             Manufacturer?: number;
             VAT?: number;
+            Set?: number;
             Weight?: number;
             Height?: number;
             Length?: number;
             Width?: number;
-            IsStoredInBox?: boolean;
-            BoxWeight?: number;
-            BoxHeight?: number;
-            BoxLength?: number;
-            BoxWidth?: number;
-            PiecesInBox?: number;
             Enabled?: boolean;
         };
     },
@@ -400,6 +355,11 @@ export class ProductRepository {
                 type: "DECIMAL",
             },
             {
+                name: "Set",
+                column: "PRODUCT_SET",
+                type: "INTEGER",
+            },
+            {
                 name: "Weight",
                 column: "PRODUCT_WEIGHT",
                 type: "DOUBLE",
@@ -420,36 +380,6 @@ export class ProductRepository {
                 type: "DOUBLE",
             },
             {
-                name: "IsStoredInBox",
-                column: "PRODUCT_ISSTOREDINBOX",
-                type: "BOOLEAN",
-            },
-            {
-                name: "BoxWeight",
-                column: "PRODUCT_BOXWEIGHT",
-                type: "DOUBLE",
-            },
-            {
-                name: "BoxHeight",
-                column: "PRODUCT_BOXHEIGHT",
-                type: "DOUBLE",
-            },
-            {
-                name: "BoxLength",
-                column: "PRODUCT_BOXLENGTH",
-                type: "DOUBLE",
-            },
-            {
-                name: "BoxWidth",
-                column: "PRODUCT_BOXWIDTH",
-                type: "DOUBLE",
-            },
-            {
-                name: "PiecesInBox",
-                column: "PRODUCT_PIECESINBOX",
-                type: "INTEGER",
-            },
-            {
                 name: "Enabled",
                 column: "PRODUCT_ENABLED",
                 type: "BOOLEAN",
@@ -465,7 +395,6 @@ export class ProductRepository {
 
     public findAll(options?: ProductEntityOptions): ProductEntity[] {
         return this.dao.list(options).map((e: ProductEntity) => {
-            EntityUtils.setBoolean(e, "IsStoredInBox");
             EntityUtils.setBoolean(e, "Enabled");
             return e;
         });
@@ -473,13 +402,11 @@ export class ProductRepository {
 
     public findById(id: number): ProductEntity | undefined {
         const entity = this.dao.find(id);
-        EntityUtils.setBoolean(entity, "IsStoredInBox");
         EntityUtils.setBoolean(entity, "Enabled");
         return entity ?? undefined;
     }
 
     public create(entity: ProductCreateEntity): number {
-        EntityUtils.setBoolean(entity, "IsStoredInBox");
         EntityUtils.setBoolean(entity, "Enabled");
         // @ts-ignore
         (entity as ProductEntity).Name = (entity["Title"] + "/" + entity["Model"] + "/" + entity["Batch"] + "-" + (entity["Enabled"] ? 'enabled' : 'disabled'));;
@@ -498,7 +425,6 @@ export class ProductRepository {
     }
 
     public update(entity: ProductUpdateEntity): void {
-        EntityUtils.setBoolean(entity, "IsStoredInBox");
         EntityUtils.setBoolean(entity, "Enabled");
         // @ts-ignore
         (entity as ProductEntity).Name = (entity["Title"] + "/" + entity["Model"] + "/" + entity["Batch"] + "-" + (entity["Enabled"] ? 'enabled' : 'disabled'));;
