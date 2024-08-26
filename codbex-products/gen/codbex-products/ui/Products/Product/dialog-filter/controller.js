@@ -19,7 +19,6 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.optionsBaseUnit = params.optionsBaseUnit;
 			$scope.optionsCompany = params.optionsCompany;
 			$scope.optionsManufacturer = params.optionsManufacturer;
-			$scope.optionsSet = params.optionsSet;
 		}
 
 		$scope.filter = function () {
@@ -92,9 +91,6 @@ angular.module('page', ["ideUI", "ideView"])
 			}
 			if (entity.VAT !== undefined) {
 				filter.$filter.equals.VAT = entity.VAT;
-			}
-			if (entity.Set !== undefined) {
-				filter.$filter.equals.Set = entity.Set;
 			}
 			if (entity.Weight !== undefined) {
 				filter.$filter.equals.Weight = entity.Weight;

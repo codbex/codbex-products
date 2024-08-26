@@ -22,7 +22,6 @@ export interface ProductEntity {
     MPN?: string;
     Manufacturer?: number;
     VAT?: number;
-    Set?: number;
     Weight?: number;
     Height?: number;
     Length?: number;
@@ -46,7 +45,6 @@ export interface ProductCreateEntity {
     readonly MPN?: string;
     readonly Manufacturer?: number;
     readonly VAT?: number;
-    readonly Set?: number;
     readonly Weight?: number;
     readonly Height?: number;
     readonly Length?: number;
@@ -78,7 +76,6 @@ export interface ProductEntityOptions {
             MPN?: string | string[];
             Manufacturer?: number | number[];
             VAT?: number | number[];
-            Set?: number | number[];
             Weight?: number | number[];
             Height?: number | number[];
             Length?: number | number[];
@@ -103,7 +100,6 @@ export interface ProductEntityOptions {
             MPN?: string | string[];
             Manufacturer?: number | number[];
             VAT?: number | number[];
-            Set?: number | number[];
             Weight?: number | number[];
             Height?: number | number[];
             Length?: number | number[];
@@ -128,7 +124,6 @@ export interface ProductEntityOptions {
             MPN?: string;
             Manufacturer?: number;
             VAT?: number;
-            Set?: number;
             Weight?: number;
             Height?: number;
             Length?: number;
@@ -153,7 +148,6 @@ export interface ProductEntityOptions {
             MPN?: string;
             Manufacturer?: number;
             VAT?: number;
-            Set?: number;
             Weight?: number;
             Height?: number;
             Length?: number;
@@ -178,7 +172,6 @@ export interface ProductEntityOptions {
             MPN?: string;
             Manufacturer?: number;
             VAT?: number;
-            Set?: number;
             Weight?: number;
             Height?: number;
             Length?: number;
@@ -203,7 +196,6 @@ export interface ProductEntityOptions {
             MPN?: string;
             Manufacturer?: number;
             VAT?: number;
-            Set?: number;
             Weight?: number;
             Height?: number;
             Length?: number;
@@ -228,7 +220,6 @@ export interface ProductEntityOptions {
             MPN?: string;
             Manufacturer?: number;
             VAT?: number;
-            Set?: number;
             Weight?: number;
             Height?: number;
             Length?: number;
@@ -353,11 +344,6 @@ export class ProductRepository {
                 name: "VAT",
                 column: "PRODUCT_VAT",
                 type: "DECIMAL",
-            },
-            {
-                name: "Set",
-                column: "PRODUCT_SET",
-                type: "INTEGER",
             },
             {
                 name: "Weight",
