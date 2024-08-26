@@ -29,13 +29,13 @@
                 <fd-form-group dg-header="{{formHeaders[action]}}" name="entityForm" class="fd-container fd-form-layout-grid-container">
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idSetType" dg-required="false" dg-colon="true">SetType</fd-form-label>
+                        	<fd-form-label for="idSetType" dg-required="true" dg-colon="true">SetType</fd-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
 	                        <fd-combobox-input id="idSetType"
 	                            name="SetType"
 	                            state="{{ forms.details['SetType'].$valid ? '' : 'error' }}"
-	                            ng-required="false"
+	                            ng-required="true"
 	                            ng-model="entity.SetType"
 	                            dg-disabled="action === 'select'"
 	                            dropdown-items="optionsSetType"

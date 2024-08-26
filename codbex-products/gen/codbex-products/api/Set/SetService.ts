@@ -119,6 +119,9 @@ class SetService {
     }
 
     private validateEntity(entity: any): void {
+        if (entity.SetType === null || entity.SetType === undefined) {
+            throw new ValidationError(`The 'SetType' property is required, provide a valid value`);
+        }
         if (entity.Quantity === null || entity.Quantity === undefined) {
             throw new ValidationError(`The 'Quantity' property is required, provide a valid value`);
         }

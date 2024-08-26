@@ -4437,6 +4437,7 @@ components:
     Set:
       type: object
       required:
+        - SetType
         - Quantity
         - Weight
         - Height

@@ -1193,6 +1193,7 @@
                         "dataName": "SET_SETTYPE",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
+                        "isRequiredProperty": "true",
                         "name": "SetType",
                         "widgetDropDownKey": "Id",
                         "widgetDropDownValue": "Name",
