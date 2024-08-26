@@ -14,8 +14,8 @@ tags:
   - name: Products
   - name: Products
   - name: Catalogues
-  - name: Set
-  - name: Set
+  - name: Products
+  - name: entities
 paths:
   /codbex-products/gen/codbex-products/api/Settings/ProductTypeService.ts:
     get:
@@ -2049,7 +2049,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/Set/SetService.ts:
+  /codbex-products/gen/codbex-products/api/Products/SetService.ts:
     get:
       summary: List Set
       parameters:
@@ -2070,7 +2070,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - Set
+        - Products
       responses:
         200:
           description: Successful Request
@@ -2101,7 +2101,7 @@ paths:
     post:
       summary: Create Set
       tags:
-        - Set
+        - Products
       requestBody:
         content:
           application/json:
@@ -2133,7 +2133,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/Set/SetService.ts/{id}:
+  /codbex-products/gen/codbex-products/api/Products/SetService.ts/{id}:
     get:
       summary: Get Set by Id
       parameters:
@@ -2144,7 +2144,7 @@ paths:
           schema:
             type: string
       tags:
-        - Set
+        - Products
       responses:
         200:
           description: Successful Request
@@ -2182,7 +2182,7 @@ paths:
           schema:
             type: string
       tags:
-        - Set
+        - Products
       requestBody:
         content:
           application/json:
@@ -2230,7 +2230,7 @@ paths:
           schema:
             type: string
       tags:
-        - Set
+        - Products
       responses:
         204:
           description: Successful Request
@@ -2252,11 +2252,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/Set/SetService.ts/count:
+  /codbex-products/gen/codbex-products/api/Products/SetService.ts/count:
     get:
       summary: Count the number of Set
       tags:
-        - Set
+        - Products
       responses:
         200:
           description: Successful Request
@@ -2280,7 +2280,7 @@ paths:
     post:
       summary: Count the number of Set by SetFilterOptions
       tags:
-        - Set
+        - Products
       requestBody:
         content:
           application/json:
@@ -2362,11 +2362,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/Set/SetService.ts/search:
+  /codbex-products/gen/codbex-products/api/Products/SetService.ts/search:
     post:
       summary: Search Set by SetFilterOptions
       tags:
-        - Set
+        - Products
       requestBody:
         content:
           application/json:
@@ -2449,7 +2449,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/Set/SetTypeService.ts:
+  /codbex-products/gen/codbex-products/api/entities/SetTypeService.ts:
     get:
       summary: List SetType
       parameters:
@@ -2470,7 +2470,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - Set
+        - entities
       responses:
         200:
           description: Successful Request
@@ -2501,7 +2501,7 @@ paths:
     post:
       summary: Create SetType
       tags:
-        - Set
+        - entities
       requestBody:
         content:
           application/json:
@@ -2533,7 +2533,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/Set/SetTypeService.ts/{id}:
+  /codbex-products/gen/codbex-products/api/entities/SetTypeService.ts/{id}:
     get:
       summary: Get SetType by Id
       parameters:
@@ -2544,7 +2544,7 @@ paths:
           schema:
             type: string
       tags:
-        - Set
+        - entities
       responses:
         200:
           description: Successful Request
@@ -2582,7 +2582,7 @@ paths:
           schema:
             type: string
       tags:
-        - Set
+        - entities
       requestBody:
         content:
           application/json:
@@ -2630,7 +2630,7 @@ paths:
           schema:
             type: string
       tags:
-        - Set
+        - entities
       responses:
         204:
           description: Successful Request
@@ -2652,11 +2652,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/Set/SetTypeService.ts/count:
+  /codbex-products/gen/codbex-products/api/entities/SetTypeService.ts/count:
     get:
       summary: Count the number of SetType
       tags:
-        - Set
+        - entities
       responses:
         200:
           description: Successful Request
@@ -2680,7 +2680,7 @@ paths:
     post:
       summary: Count the number of SetType by SetTypeFilterOptions
       tags:
-        - Set
+        - entities
       requestBody:
         content:
           application/json:
@@ -2762,11 +2762,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/Set/SetTypeService.ts/search:
+  /codbex-products/gen/codbex-products/api/entities/SetTypeService.ts/search:
     post:
       summary: Search SetType by SetTypeFilterOptions
       tags:
-        - Set
+        - entities
       requestBody:
         content:
           application/json:

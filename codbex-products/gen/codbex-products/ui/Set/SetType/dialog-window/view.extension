@@ -1,5 +1,0 @@
-{
-    "module": "codbex-products/gen/codbex-products/ui/Set/${masterEntity}/SetType/dialog-window/view.js",
-    "extensionPoint": "codbex-products-dialog-window",
-    "description": "codbex-products - Application Dialog Window"
-}

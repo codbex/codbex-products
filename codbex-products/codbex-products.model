@@ -1198,12 +1198,12 @@
                         "widgetDropDownKey": "Id",
                         "widgetDropDownValue": "Name",
                         "widgetIsMajor": "true",
-                        "widgetLength": "40",
+                        "widgetLength": "20",
                         "widgetSize": "",
                         "widgetType": "DROPDOWN",
                         "relationshipName": "Set_SetType",
                         "relationshipEntityName": "SetType",
-                        "relationshipEntityPerspectiveName": "Set",
+                        "relationshipEntityPerspectiveName": "entities",
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
@@ -1280,13 +1280,15 @@
                         "dataType": "INTEGER",
                         "isRequiredProperty": "true",
                         "name": "Product",
+                        "relationshipCardinality": "1_n",
+                        "relationshipName": "Set_Product",
+                        "relationshipType": "COMPOSITION",
                         "widgetDropDownKey": "Id",
                         "widgetDropDownValue": "Name",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
                         "widgetSize": "",
                         "widgetType": "DROPDOWN",
-                        "relationshipName": "Set_Product",
                         "relationshipEntityName": "Product",
                         "relationshipEntityPerspectiveName": "Products",
                         "relationshipEntityPerspectiveLabel": "Entities"
@@ -1298,20 +1300,20 @@
                 "dataQuery": "",
                 "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "MANAGE",
+                "layoutType": "MANAGE_DETAILS",
                 "menuIndex": "100",
                 "menuKey": "set",
                 "menuLabel": "Set",
                 "name": "Set",
                 "navigationPath": "/Home",
-                "perspectiveIcon": "/services/web/resources/unicons/puzzle-piece.svg",
-                "perspectiveLabel": "Set",
-                "perspectiveName": "Set",
-                "perspectiveOrder": "400",
+                "perspectiveIcon": "/services/web/resources/unicons/cube.svg",
+                "perspectiveLabel": "Products",
+                "perspectiveName": "Products",
+                "perspectiveOrder": "100",
                 "perspectiveRole": "",
                 "title": "Set",
                 "tooltip": "Set",
-                "type": "PRIMARY"
+                "type": "DEPENDENT"
             },
             {
                 "properties": [
@@ -1346,20 +1348,20 @@
                 "dataQuery": "",
                 "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "MANAGE_DETAILS",
+                "layoutType": "MANAGE",
                 "menuIndex": "100",
                 "menuKey": "settype",
                 "menuLabel": "SetType",
                 "name": "SetType",
                 "navigationPath": "/Home",
-                "perspectiveIcon": "/services/web/resources/unicons/puzzle-piece.svg",
-                "perspectiveLabel": "Set",
-                "perspectiveName": "Set",
-                "perspectiveOrder": "400",
+                "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
+                "perspectiveLabel": "Entities",
+                "perspectiveName": "entities",
+                "perspectiveOrder": "100",
                 "perspectiveRole": "",
                 "title": "SetType",
                 "tooltip": "SetType",
-                "type": "DEPENDENT"
+                "type": "SETTING"
             }
         ],
         "perspectives": [
@@ -1389,13 +1391,6 @@
                 "label": "Catalogues",
                 "icon": "/services/web/resources/unicons/book-open.svg",
                 "order": "300",
-                "role": {}
-            },
-            {
-                "name": "Set",
-                "label": "Set",
-                "icon": "/services/web/resources/unicons/puzzle-piece.svg",
-                "order": "400",
                 "role": {}
             }
         ],
