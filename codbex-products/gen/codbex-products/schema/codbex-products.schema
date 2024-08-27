@@ -140,6 +140,7 @@
                     },
                     {
                         "type": "DECIMAL",
+                        "length": 18,
                         "precision": "16",
                         "scale": "2",
                         "nullable": true,
@@ -164,36 +165,6 @@
                         "type": "DOUBLE",
                         "nullable": true,
                         "name": "PRODUCT_WIDTH"
-                    },
-                    {
-                        "type": "BOOLEAN",
-                        "nullable": true,
-                        "name": "PRODUCT_ISSTOREDINBOX"
-                    },
-                    {
-                        "type": "DOUBLE",
-                        "nullable": true,
-                        "name": "PRODUCT_BOXWEIGHT"
-                    },
-                    {
-                        "type": "DOUBLE",
-                        "nullable": true,
-                        "name": "PRODUCT_BOXHEIGHT"
-                    },
-                    {
-                        "type": "DOUBLE",
-                        "nullable": true,
-                        "name": "PRODUCT_BOXLENGTH"
-                    },
-                    {
-                        "type": "DOUBLE",
-                        "nullable": true,
-                        "name": "PRODUCT_BOXWIDTH"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "PRODUCT_PIECESINBOX"
                     },
                     {
                         "type": "BOOLEAN",
@@ -254,6 +225,82 @@
                     {
                         "type": "DOUBLE",
                         "name": "CATALOGUE_QUANTITY"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_SET",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "SET_ID"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "SET_SETTYPE"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 40,
+                        "nullable": true,
+                        "name": "SET_QUANTITY"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
+                        "name": "SET_WEIGHT"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
+                        "name": "SET_HEIGHT"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
+                        "name": "SET_LENGTH"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
+                        "name": "SET_WIDTH"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "SET_PRODUCT"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_SETTYPE",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "SETTYPE_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 40,
+                        "nullable": true,
+                        "name": "SETTYPE_NAME"
                     }
                 ]
             },
@@ -328,6 +375,24 @@
                 "columns": "CATALOGUE_STORE",
                 "referencedTable": "CODBEX_STORE",
                 "referencedColumns": "STORE_ID"
+            },
+            {
+                "name": "Set_SetType",
+                "type": "foreignKey",
+                "table": "CODBEX_SET",
+                "constraintName": "Set_SetType",
+                "columns": "SET_SETTYPE",
+                "referencedTable": "CODBEX_SETTYPE",
+                "referencedColumns": "SETTYPE_ID"
+            },
+            {
+                "name": "Set_Product",
+                "type": "foreignKey",
+                "table": "CODBEX_SET",
+                "constraintName": "Set_Product",
+                "columns": "SET_PRODUCT",
+                "referencedTable": "CODBEX_PRODUCT",
+                "referencedColumns": "PRODUCT_ID"
             }
         ]
     },
