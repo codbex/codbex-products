@@ -281,12 +281,12 @@
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "SET_PRODUCT"
+                        "name": "SET_RATIO"
                     },
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "SET_RATIO"
+                        "name": "SET_PRODUCT"
                     }
                 ]
             },
@@ -418,15 +418,6 @@
                 "referencedColumns": "SETTYPE_ID"
             },
             {
-                "name": "Set_Product",
-                "type": "foreignKey",
-                "table": "CODBEX_SET",
-                "constraintName": "Set_Product",
-                "columns": "SET_PRODUCT",
-                "referencedTable": "CODBEX_PRODUCT",
-                "referencedColumns": "PRODUCT_ID"
-            },
-            {
                 "name": "Set_Ratio",
                 "type": "foreignKey",
                 "table": "CODBEX_SET",
@@ -434,6 +425,15 @@
                 "columns": "SET_RATIO",
                 "referencedTable": "CODBEX_RATIO",
                 "referencedColumns": "RATIO_ID"
+            },
+            {
+                "name": "Set_Product",
+                "type": "foreignKey",
+                "table": "CODBEX_SET",
+                "constraintName": "Set_Product",
+                "columns": "SET_PRODUCT",
+                "referencedTable": "CODBEX_PRODUCT",
+                "referencedColumns": "PRODUCT_ID"
             }
         ]
     },

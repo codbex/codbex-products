@@ -126,6 +126,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				action: "select",
 				entity: entity,
 				optionsSetType: $scope.optionsSetType,
+				optionsRatio: $scope.optionsRatio,
 				optionsProduct: $scope.optionsProduct,
 			});
 		};
@@ -134,6 +135,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("Set-filter", {
 				entity: $scope.filterEntity,
 				optionsSetType: $scope.optionsSetType,
+				optionsRatio: $scope.optionsRatio,
 				optionsProduct: $scope.optionsProduct,
 			});
 		};
@@ -146,6 +148,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				selectedMainEntityKey: "Product",
 				selectedMainEntityId: $scope.selectedMainEntityId,
 				optionsSetType: $scope.optionsSetType,
+				optionsRatio: $scope.optionsRatio,
 				optionsProduct: $scope.optionsProduct,
 			}, null, false);
 		};
@@ -157,6 +160,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				selectedMainEntityKey: "Product",
 				selectedMainEntityId: $scope.selectedMainEntityId,
 				optionsSetType: $scope.optionsSetType,
+				optionsRatio: $scope.optionsRatio,
 				optionsProduct: $scope.optionsProduct,
 			}, null, false);
 		};
@@ -192,6 +196,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		//----------------Dropdowns-----------------//
 		$scope.optionsSetType = [];
+		$scope.optionsRatio = [];
 		$scope.optionsProduct = [];
 
 
@@ -200,6 +205,15 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				return {
 					value: e.Id,
 					text: e.Name
+				}
+			});
+		});
+
+		$http.get("/services/ts/codbex-products/gen/codbex-products/api/entities/RatioService.ts").then(function (response) {
+			$scope.optionsRatio = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Type
 				}
 			});
 		});
@@ -217,6 +231,14 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			for (let i = 0; i < $scope.optionsSetType.length; i++) {
 				if ($scope.optionsSetType[i].value === optionKey) {
 					return $scope.optionsSetType[i].text;
+				}
+			}
+			return null;
+		};
+		$scope.optionsRatioValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsRatio.length; i++) {
+				if ($scope.optionsRatio[i].value === optionKey) {
+					return $scope.optionsRatio[i].text;
 				}
 			}
 			return null;

@@ -11,8 +11,8 @@ export interface SetEntity {
     Height: number;
     Length: number;
     Width: number;
-    Product?: number;
     Ratio?: number;
+    Product?: number;
 }
 
 export interface SetCreateEntity {
@@ -22,8 +22,8 @@ export interface SetCreateEntity {
     readonly Height: number;
     readonly Length: number;
     readonly Width: number;
-    readonly Product?: number;
     readonly Ratio?: number;
+    readonly Product?: number;
 }
 
 export interface SetUpdateEntity extends SetCreateEntity {
@@ -40,8 +40,8 @@ export interface SetEntityOptions {
             Height?: number | number[];
             Length?: number | number[];
             Width?: number | number[];
-            Product?: number | number[];
             Ratio?: number | number[];
+            Product?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
@@ -51,8 +51,8 @@ export interface SetEntityOptions {
             Height?: number | number[];
             Length?: number | number[];
             Width?: number | number[];
-            Product?: number | number[];
             Ratio?: number | number[];
+            Product?: number | number[];
         };
         contains?: {
             Id?: number;
@@ -62,8 +62,8 @@ export interface SetEntityOptions {
             Height?: number;
             Length?: number;
             Width?: number;
-            Product?: number;
             Ratio?: number;
+            Product?: number;
         };
         greaterThan?: {
             Id?: number;
@@ -73,8 +73,8 @@ export interface SetEntityOptions {
             Height?: number;
             Length?: number;
             Width?: number;
-            Product?: number;
             Ratio?: number;
+            Product?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
@@ -84,8 +84,8 @@ export interface SetEntityOptions {
             Height?: number;
             Length?: number;
             Width?: number;
-            Product?: number;
             Ratio?: number;
+            Product?: number;
         };
         lessThan?: {
             Id?: number;
@@ -95,8 +95,8 @@ export interface SetEntityOptions {
             Height?: number;
             Length?: number;
             Width?: number;
-            Product?: number;
             Ratio?: number;
+            Product?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
@@ -106,8 +106,8 @@ export interface SetEntityOptions {
             Height?: number;
             Length?: number;
             Width?: number;
-            Product?: number;
             Ratio?: number;
+            Product?: number;
         };
     },
     $select?: (keyof SetEntity)[],
@@ -179,13 +179,13 @@ export class SetRepository {
                 required: true
             },
             {
-                name: "Product",
-                column: "SET_PRODUCT",
+                name: "Ratio",
+                column: "SET_RATIO",
                 type: "INTEGER",
             },
             {
-                name: "Ratio",
-                column: "SET_RATIO",
+                name: "Product",
+                column: "SET_PRODUCT",
                 type: "INTEGER",
             }
         ]

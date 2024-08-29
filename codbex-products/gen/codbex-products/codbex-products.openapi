@@ -4868,10 +4868,10 @@ components:
         Width:
           type: number
           format: double
-        Product:
+        Ratio:
           type: integer
           format: int32
-        Ratio:
+        Product:
           type: integer
           format: int32
     SetFilterOptions:
@@ -4942,7 +4942,7 @@ components:
                       items:
                         type: number
                         format: double
-                Product:
+                Ratio:
                   oneOf:
                     - type: integer
                       format: int32
@@ -4950,7 +4950,7 @@ components:
                       items:
                         type: integer
                         format: int32
-                Ratio:
+                Product:
                   oneOf:
                     - type: integer
                       format: int32
@@ -5020,7 +5020,7 @@ components:
                       items:
                         type: number
                         format: double
-                Product:
+                Ratio:
                   oneOf:
                     - type: integer
                       format: int32
@@ -5028,7 +5028,7 @@ components:
                       items:
                         type: integer
                         format: int32
-                Ratio:
+                Product:
                   oneOf:
                     - type: integer
                       format: int32
@@ -5049,8 +5049,8 @@ components:
                 Height:
                 Length:
                 Width:
-                Product:
                 Ratio:
+                Product:
             greaterThan:
               type: object
               properties:
@@ -5076,10 +5076,10 @@ components:
                 Width:
                   type: number
                   format: double
-                Product:
+                Ratio:
                   type: integer
                   format: int32
-                Ratio:
+                Product:
                   type: integer
                   format: int32
             greaterThanOrEqual:
@@ -5107,10 +5107,10 @@ components:
                 Width:
                   type: number
                   format: double
-                Product:
+                Ratio:
                   type: integer
                   format: int32
-                Ratio:
+                Product:
                   type: integer
                   format: int32
             lessThan:
@@ -5138,10 +5138,10 @@ components:
                 Width:
                   type: number
                   format: double
-                Product:
+                Ratio:
                   type: integer
                   format: int32
-                Ratio:
+                Product:
                   type: integer
                   format: int32
             lessThanOrEqual:
@@ -5169,20 +5169,20 @@ components:
                 Width:
                   type: number
                   format: double
-                Product:
+                Ratio:
                   type: integer
                   format: int32
-                Ratio:
+                Product:
                   type: integer
                   format: int32
         $select:
           type: array
-          example: ["Id", "SetType", "Quantity", "Weight", "Height", "Length", "Width", "Product", "Ratio"]
+          example: ["Id", "SetType", "Quantity", "Weight", "Height", "Length", "Width", "Ratio", "Product"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,SetType,Quantity,Weight,Height,Length,Width,Product,Ratio"
+            example: "Id,SetType,Quantity,Weight,Height,Length,Width,Ratio,Product"
         $order:
           type: string
           enum: ["asc", "desc"]

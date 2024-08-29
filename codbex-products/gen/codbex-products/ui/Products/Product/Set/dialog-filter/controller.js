@@ -15,6 +15,7 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
 			$scope.optionsSetType = params.optionsSetType;
+			$scope.optionsRatio = params.optionsRatio;
 			$scope.optionsProduct = params.optionsProduct;
 		}
 
@@ -59,11 +60,11 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Width !== undefined) {
 				filter.$filter.equals.Width = entity.Width;
 			}
-			if (entity.Product !== undefined) {
-				filter.$filter.equals.Product = entity.Product;
-			}
 			if (entity.Ratio !== undefined) {
 				filter.$filter.equals.Ratio = entity.Ratio;
+			}
+			if (entity.Product !== undefined) {
+				filter.$filter.equals.Product = entity.Product;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,

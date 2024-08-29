@@ -1275,6 +1275,22 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "dataName": "SET_RATIO",
+                        "dataNullable": "true",
+                        "dataType": "INTEGER",
+                        "name": "Ratio",
+                        "widgetDropDownKey": "Id",
+                        "widgetDropDownValue": "Type",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "DROPDOWN",
+                        "relationshipName": "Set_Ratio",
+                        "relationshipEntityName": "Ratio",
+                        "relationshipEntityPerspectiveName": "entities",
+                        "relationshipEntityPerspectiveLabel": "Entities"
+                    },
+                    {
                         "dataName": "SET_PRODUCT",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -1291,20 +1307,6 @@
                         "widgetType": "DROPDOWN",
                         "relationshipEntityName": "Product",
                         "relationshipEntityPerspectiveName": "Products",
-                        "relationshipEntityPerspectiveLabel": "Entities"
-                    },
-                    {
-                        "dataName": "SET_RATIO",
-                        "dataNullable": "true",
-                        "dataType": "INTEGER",
-                        "name": "Ratio",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "TEXTBOX",
-                        "relationshipName": "Set_Ratio",
-                        "relationshipEntityName": "Ratio",
-                        "relationshipEntityPerspectiveName": "entities",
                         "relationshipEntityPerspectiveLabel": "Entities"
                     }
                 ],
