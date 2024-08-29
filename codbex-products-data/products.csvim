@@ -34,9 +34,9 @@
       "version": "1.0"
     },
     {
-      "table": "CODBEX_RATIOTYPE",
+      "table": "CODBEX_RATIO",
       "schema": "PUBLIC",
-      "file": "/codbex-products-data/ratio-types.csv",
+      "file": "/codbex-products-data/ratios.csv",
       "header": true,
       "useHeaderNames": true,
       "delimField": ",",
