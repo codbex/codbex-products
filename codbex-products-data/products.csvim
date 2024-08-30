@@ -32,6 +32,17 @@
       "delimEnclosing": "\"",
       "distinguishEmptyFromNull": true,
       "version": "1.0"
+    },
+    {
+      "table": "CODBEX_RATIO",
+      "schema": "PUBLIC",
+      "file": "/codbex-products-data/ratios.csv",
+      "header": true,
+      "useHeaderNames": true,
+      "delimField": ",",
+      "delimEnclosing": "\"",
+      "distinguishEmptyFromNull": true,
+      "version": "1.0"
     }
   ]
 }

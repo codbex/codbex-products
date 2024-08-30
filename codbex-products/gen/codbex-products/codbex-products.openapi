@@ -15,7 +15,6 @@ tags:
   - name: Products
   - name: Catalogues
   - name: Products
-  - name: entities
 paths:
   /codbex-products/gen/codbex-products/api/Settings/ProductTypeService.ts:
     get:
@@ -2049,9 +2048,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/Products/SetService.ts:
+  /codbex-products/gen/codbex-products/api/Products/ProductSetService.ts:
     get:
-      summary: List Set
+      summary: List ProductSet
       parameters:
         - in: query
           name: $limit
@@ -2079,7 +2078,7 @@ paths:
               schema:
                 type: array
                 items:
-                    $ref: '#/components/schemas/Set'
+                    $ref: '#/components/schemas/ProductSet'
         400:
           description: Bad Request Error
           content:
@@ -2099,14 +2098,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     post:
-      summary: Create Set
+      summary: Create ProductSet
       tags:
         - Products
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Set'
+              $ref: '#/components/schemas/ProductSet'
         required: true
       responses:
         201:
@@ -2114,7 +2113,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Set'
+                $ref: '#/components/schemas/ProductSet'
         400:
           description: Bad Request Error
           content:
@@ -2133,9 +2132,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/Products/SetService.ts/{id}:
+  /codbex-products/gen/codbex-products/api/Products/ProductSetService.ts/{id}:
     get:
-      summary: Get Set by Id
+      summary: Get ProductSet by Id
       parameters:
         - in: path
           name: id
@@ -2153,7 +2152,7 @@ paths:
               schema:
                 type: array
                 items:
-                    $ref: '#/components/schemas/Set'
+                    $ref: '#/components/schemas/ProductSet'
         404:
           description: Entity Not Found
           content:
@@ -2173,7 +2172,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     put:
-      summary: Update Set by Id
+      summary: Update ProductSet by Id
       parameters:
         - in: path
           name: id
@@ -2187,7 +2186,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Set'
+              $ref: '#/components/schemas/ProductSet'
         required: true
       responses:
         200:
@@ -2195,7 +2194,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Set'
+                $ref: '#/components/schemas/ProductSet'
         400:
           description: Bad Request Error
           content:
@@ -2221,7 +2220,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     delete:
-      summary: Delete Set by Id
+      summary: Delete ProductSet by Id
       parameters:
         - in: path
           name: id
@@ -2252,9 +2251,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/Products/SetService.ts/count:
+  /codbex-products/gen/codbex-products/api/Products/ProductSetService.ts/count:
     get:
-      summary: Count the number of Set
+      summary: Count the number of ProductSet
       tags:
         - Products
       responses:
@@ -2278,14 +2277,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     post:
-      summary: Count the number of Set by SetFilterOptions
+      summary: Count the number of ProductSet by ProductSetFilterOptions
       tags:
         - Products
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SetFilterOptions'
+              $ref: '#/components/schemas/ProductSetFilterOptions'
             examples:
               countWithMultipleCriteria:
                 summary: Count with multiple criteria
@@ -2293,8 +2292,6 @@ paths:
                   $filter:
                     notEquals:
                       Id: 33
-                    contains:
-                      Quantity: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -2311,12 +2308,6 @@ paths:
                   $filter:
                     notEquals:
                       Id: 0
-              countWithContains:
-                summary: Count with Contains
-                value:
-                  $filter:
-                    contains:
-                      Quantity: "abcd"
               countWithGreaterThan:
                 summary: Count with Greater Than
                 value:
@@ -2362,16 +2353,16 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/Products/SetService.ts/search:
+  /codbex-products/gen/codbex-products/api/Products/ProductSetService.ts/search:
     post:
-      summary: Search Set by SetFilterOptions
+      summary: Search ProductSet by ProductSetFilterOptions
       tags:
         - Products
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SetFilterOptions'
+              $ref: '#/components/schemas/ProductSetFilterOptions'
             examples:
               searchWithMultipleCriteria:
                 summary: Search with multiple criteria
@@ -2379,8 +2370,6 @@ paths:
                   $filter:
                     notEquals:
                       Id: 33
-                    contains:
-                      Quantity: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -2397,12 +2386,6 @@ paths:
                   $filter:
                     notEquals:
                       Id: 0
-              searchWithContains:
-                summary: Search with Contains
-                value:
-                  $filter:
-                    contains:
-                      Quantity: "abcd"
               searchWithGreaterThan:
                 summary: Search with Greater Than
                 value:
@@ -2436,407 +2419,7 @@ paths:
               schema:
                 type: array
                 items:
-                    $ref: '#/components/schemas/Set'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/entities/SetTypeService.ts:
-    get:
-      summary: List SetType
-      parameters:
-        - in: query
-          name: $limit
-          description: The number of records to be returned _(both `$limit` and `$offset` should be provided)_.
-          required: false
-          allowReserved: true
-          schema:
-            type: integer
-            allowEmptyValue: true
-        - in: query
-          name: $offset
-          description: The number of records to skip _(both `$limit` and `$offset` should be provided)_.
-          required: false
-          allowReserved: true
-          schema:
-            type: integer
-            allowEmptyValue: true
-      tags:
-        - entities
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                    $ref: '#/components/schemas/SetType'
-        400:
-          description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-    post:
-      summary: Create SetType
-      tags:
-        - entities
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SetType'
-        required: true
-      responses:
-        201:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SetType'
-        400:
-          description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/entities/SetTypeService.ts/{id}:
-    get:
-      summary: Get SetType by Id
-      parameters:
-        - in: path
-          name: id
-          description: The Id of the entity.
-          required: true
-          schema:
-            type: string
-      tags:
-        - entities
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                    $ref: '#/components/schemas/SetType'
-        404:
-          description: Entity Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-    put:
-      summary: Update SetType by Id
-      parameters:
-        - in: path
-          name: id
-          description: The Id of the entity.
-          required: true
-          schema:
-            type: string
-      tags:
-        - entities
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SetType'
-        required: true
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SetType'
-        400:
-          description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        404:
-          description: Entity Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-    delete:
-      summary: Delete SetType by Id
-      parameters:
-        - in: path
-          name: id
-          description: The Id of the entity.
-          required: true
-          schema:
-            type: string
-      tags:
-        - entities
-      responses:
-        204:
-          description: Successful Request
-        404:
-          description: Entity Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/entities/SetTypeService.ts/count:
-    get:
-      summary: Count the number of SetType
-      tags:
-        - entities
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: integer
-                example: 100
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-    post:
-      summary: Count the number of SetType by SetTypeFilterOptions
-      tags:
-        - entities
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SetTypeFilterOptions'
-            examples:
-              countWithMultipleCriteria:
-                summary: Count with multiple criteria
-                value:
-                  $filter:
-                    notEquals:
-                      Id: 33
-                    contains:
-                      Name: "abcd"
-                    greaterThan:
-                      Id: 0
-                    lessThanOrEqual:
-                      Id: 100
-              countWithEquals:
-                summary: Count with Equals
-                value:
-                  $filter:
-                    equals:
-                      Id: 0
-              countWithNotEquals:
-                summary: Count with Not Equals
-                value:
-                  $filter:
-                    notEquals:
-                      Id: 0
-              countWithContains:
-                summary: Count with Contains
-                value:
-                  $filter:
-                    contains:
-                      Name: "abcd"
-              countWithGreaterThan:
-                summary: Count with Greater Than
-                value:
-                  $filter:
-                    greaterThan:
-                      Id: 0
-              countWithGreaterThanOrEqual:
-                summary: Count with Greater Than Or Equal
-                value:
-                  $filter:
-                    greaterThanOrEqual:
-                      Id: 0
-              countWithLessThan:
-                summary: Count with Less Than
-                value:
-                  $filter:
-                    lessThan:
-                      Id: 0
-              countWithLessThanOrEqual:
-                summary: Count with Less Than Or Equal
-                value:
-                  $filter:
-                    lessThanOrEqual:
-                      Id: 0
-        required: true
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: integer
-                example: 100
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/entities/SetTypeService.ts/search:
-    post:
-      summary: Search SetType by SetTypeFilterOptions
-      tags:
-        - entities
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SetTypeFilterOptions'
-            examples:
-              searchWithMultipleCriteria:
-                summary: Search with multiple criteria
-                value:
-                  $filter:
-                    notEquals:
-                      Id: 33
-                    contains:
-                      Name: "abcd"
-                    greaterThan:
-                      Id: 0
-                    lessThanOrEqual:
-                      Id: 100
-              searchWithEquals:
-                summary: Search with Equals
-                value:
-                  $filter:
-                    equals:
-                      Id: 0
-              searchWithNotEquals:
-                summary: Search with Not Equals
-                value:
-                  $filter:
-                    notEquals:
-                      Id: 0
-              searchWithContains:
-                summary: Search with Contains
-                value:
-                  $filter:
-                    contains:
-                      Name: "abcd"
-              searchWithGreaterThan:
-                summary: Search with Greater Than
-                value:
-                  $filter:
-                    greaterThan:
-                      Id: 0
-              searchWithGreaterThanOrEqual:
-                summary: Search with Greater Than Or Equal
-                value:
-                  $filter:
-                    greaterThanOrEqual:
-                      Id: 0
-              searchWithLessThan:
-                summary: Search with Less Than
-                value:
-                  $filter:
-                    lessThan:
-                      Id: 0
-              searchWithLessThanOrEqual:
-                summary: Search with Less Than Or Equal
-                value:
-                  $filter:
-                    lessThanOrEqual:
-                      Id: 0
-        required: true
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                    $ref: '#/components/schemas/SetType'
+                    $ref: '#/components/schemas/ProductSet'
         403:
           description: Forbidden Error
           content:
@@ -4434,27 +4017,26 @@ components:
         $limit:
           type: integer
           example: 10
-    Set:
+    ProductSet:
       type: object
       required:
-        - SetType
-        - Quantity
+        - UoM
+        - Product
         - Weight
         - Height
         - Length
         - Width
-        - Product
+        - Ratio
       properties:
         Id:
           type: integer
           format: int32
-        SetType:
+        UoM:
           type: integer
           format: int32
-        Quantity:
-          type: string
-          minLength: 0
-          maxLength: 40
+        Product:
+          type: integer
+          format: int32
         Weight:
           type: number
           format: double
@@ -4467,10 +4049,10 @@ components:
         Width:
           type: number
           format: double
-        Product:
-          type: integer
-          format: int32
-    SetFilterOptions:
+        Ratio:
+          type: number
+          format: double
+    ProductSetFilterOptions:
       type: object
       properties:
         $filter:
@@ -4487,7 +4069,7 @@ components:
                       items:
                         type: integer
                         format: int32
-                SetType:
+                UoM:
                   oneOf:
                     - type: integer
                       format: int32
@@ -4495,17 +4077,14 @@ components:
                       items:
                         type: integer
                         format: int32
-                Quantity:
+                Product:
                   oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 40
+                    - type: integer
+                      format: int32
                     - type: array
                       items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 40
+                        type: integer
+                        format: int32
                 Weight:
                   oneOf:
                     - type: number
@@ -4538,14 +4117,14 @@ components:
                       items:
                         type: number
                         format: double
-                Product:
+                Ratio:
                   oneOf:
-                    - type: integer
-                      format: int32
+                    - type: number
+                      format: double
                     - type: array
                       items:
-                        type: integer
-                        format: int32
+                        type: number
+                        format: double
             notEquals:
               type: object
               properties:
@@ -4557,7 +4136,7 @@ components:
                       items:
                         type: integer
                         format: int32
-                SetType:
+                UoM:
                   oneOf:
                     - type: integer
                       format: int32
@@ -4565,17 +4144,14 @@ components:
                       items:
                         type: integer
                         format: int32
-                Quantity:
+                Product:
                   oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 40
+                    - type: integer
+                      format: int32
                     - type: array
                       items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 40
+                        type: integer
+                        format: int32
                 Weight:
                   oneOf:
                     - type: number
@@ -4608,41 +4184,37 @@ components:
                       items:
                         type: number
                         format: double
-                Product:
+                Ratio:
                   oneOf:
-                    - type: integer
-                      format: int32
+                    - type: number
+                      format: double
                     - type: array
                       items:
-                        type: integer
-                        format: int32
+                        type: number
+                        format: double
             contains:
               type: object
               properties:
                 Id:
-                SetType:
-                Quantity:
-                  type: string
-                  minLength: 0
-                  maxLength: 40
+                UoM:
+                Product:
                 Weight:
                 Height:
                 Length:
                 Width:
-                Product:
+                Ratio:
             greaterThan:
               type: object
               properties:
                 Id:
                   type: integer
                   format: int32
-                SetType:
+                UoM:
                   type: integer
                   format: int32
-                Quantity:
-                  type: string
-                  minLength: 0
-                  maxLength: 40
+                Product:
+                  type: integer
+                  format: int32
                 Weight:
                   type: number
                   format: double
@@ -4655,22 +4227,21 @@ components:
                 Width:
                   type: number
                   format: double
-                Product:
-                  type: integer
-                  format: int32
+                Ratio:
+                  type: number
+                  format: double
             greaterThanOrEqual:
               type: object
               properties:
                 Id:
                   type: integer
                   format: int32
-                SetType:
+                UoM:
                   type: integer
                   format: int32
-                Quantity:
-                  type: string
-                  minLength: 0
-                  maxLength: 40
+                Product:
+                  type: integer
+                  format: int32
                 Weight:
                   type: number
                   format: double
@@ -4683,22 +4254,21 @@ components:
                 Width:
                   type: number
                   format: double
-                Product:
-                  type: integer
-                  format: int32
+                Ratio:
+                  type: number
+                  format: double
             lessThan:
               type: object
               properties:
                 Id:
                   type: integer
                   format: int32
-                SetType:
+                UoM:
                   type: integer
                   format: int32
-                Quantity:
-                  type: string
-                  minLength: 0
-                  maxLength: 40
+                Product:
+                  type: integer
+                  format: int32
                 Weight:
                   type: number
                   format: double
@@ -4711,22 +4281,21 @@ components:
                 Width:
                   type: number
                   format: double
-                Product:
-                  type: integer
-                  format: int32
+                Ratio:
+                  type: number
+                  format: double
             lessThanOrEqual:
               type: object
               properties:
                 Id:
                   type: integer
                   format: int32
-                SetType:
+                UoM:
                   type: integer
                   format: int32
-                Quantity:
-                  type: string
-                  minLength: 0
-                  maxLength: 40
+                Product:
+                  type: integer
+                  format: int32
                 Weight:
                   type: number
                   format: double
@@ -4739,145 +4308,17 @@ components:
                 Width:
                   type: number
                   format: double
-                Product:
-                  type: integer
-                  format: int32
+                Ratio:
+                  type: number
+                  format: double
         $select:
           type: array
-          example: ["Id", "SetType", "Quantity", "Weight", "Height", "Length", "Width", "Product"]
+          example: ["Id", "UoM", "Product", "Weight", "Height", "Length", "Width", "Ratio"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,SetType,Quantity,Weight,Height,Length,Width,Product"
-        $order:
-          type: string
-          enum: ["asc", "desc"]
-          example: "asc"
-        $offset:
-          type: integer
-          example: 0
-        $limit:
-          type: integer
-          example: 10
-    SetType:
-      type: object
-      required:
-        - Name
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Name:
-          type: string
-          minLength: 0
-          maxLength: 40
-    SetTypeFilterOptions:
-      type: object
-      properties:
-        $filter:
-          type: object
-          properties:
-            equals:
-              type: object
-              properties:
-                Id:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Name:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 40
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 40
-            notEquals:
-              type: object
-              properties:
-                Id:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Name:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 40
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 40
-            contains:
-              type: object
-              properties:
-                Id:
-                Name:
-                  type: string
-                  minLength: 0
-                  maxLength: 40
-            greaterThan:
-              type: object
-              properties:
-                Id:
-                  type: integer
-                  format: int32
-                Name:
-                  type: string
-                  minLength: 0
-                  maxLength: 40
-            greaterThanOrEqual:
-              type: object
-              properties:
-                Id:
-                  type: integer
-                  format: int32
-                Name:
-                  type: string
-                  minLength: 0
-                  maxLength: 40
-            lessThan:
-              type: object
-              properties:
-                Id:
-                  type: integer
-                  format: int32
-                Name:
-                  type: string
-                  minLength: 0
-                  maxLength: 40
-            lessThanOrEqual:
-              type: object
-              properties:
-                Id:
-                  type: integer
-                  format: int32
-                Name:
-                  type: string
-                  minLength: 0
-                  maxLength: 40
-        $select:
-          type: array
-          example: ["Id", "Name"]
-          items:
-            type: string
-        $sort:
-          - type: string
-            example: "Id,Name"
+            example: "Id,UoM,Product,Weight,Height,Length,Width,Ratio"
         $order:
           type: string
           enum: ["asc", "desc"]

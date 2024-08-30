@@ -3,115 +3,115 @@ import { producer } from "sdk/messaging";
 import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
 
-export interface SetEntity {
+export interface ProductSetEntity {
     readonly Id: number;
-    SetType?: number;
-    Quantity?: string;
+    UoM?: number;
+    Product?: number;
     Weight: number;
     Height: number;
     Length: number;
     Width: number;
-    Product?: number;
+    Ratio?: number;
 }
 
-export interface SetCreateEntity {
-    readonly SetType?: number;
-    readonly Quantity?: string;
+export interface ProductSetCreateEntity {
+    readonly UoM?: number;
+    readonly Product?: number;
     readonly Weight: number;
     readonly Height: number;
     readonly Length: number;
     readonly Width: number;
-    readonly Product?: number;
+    readonly Ratio?: number;
 }
 
-export interface SetUpdateEntity extends SetCreateEntity {
+export interface ProductSetUpdateEntity extends ProductSetCreateEntity {
     readonly Id: number;
 }
 
-export interface SetEntityOptions {
+export interface ProductSetEntityOptions {
     $filter?: {
         equals?: {
             Id?: number | number[];
-            SetType?: number | number[];
-            Quantity?: string | string[];
+            UoM?: number | number[];
+            Product?: number | number[];
             Weight?: number | number[];
             Height?: number | number[];
             Length?: number | number[];
             Width?: number | number[];
-            Product?: number | number[];
+            Ratio?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
-            SetType?: number | number[];
-            Quantity?: string | string[];
+            UoM?: number | number[];
+            Product?: number | number[];
             Weight?: number | number[];
             Height?: number | number[];
             Length?: number | number[];
             Width?: number | number[];
-            Product?: number | number[];
+            Ratio?: number | number[];
         };
         contains?: {
             Id?: number;
-            SetType?: number;
-            Quantity?: string;
+            UoM?: number;
+            Product?: number;
             Weight?: number;
             Height?: number;
             Length?: number;
             Width?: number;
-            Product?: number;
+            Ratio?: number;
         };
         greaterThan?: {
             Id?: number;
-            SetType?: number;
-            Quantity?: string;
+            UoM?: number;
+            Product?: number;
             Weight?: number;
             Height?: number;
             Length?: number;
             Width?: number;
-            Product?: number;
+            Ratio?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
-            SetType?: number;
-            Quantity?: string;
+            UoM?: number;
+            Product?: number;
             Weight?: number;
             Height?: number;
             Length?: number;
             Width?: number;
-            Product?: number;
+            Ratio?: number;
         };
         lessThan?: {
             Id?: number;
-            SetType?: number;
-            Quantity?: string;
+            UoM?: number;
+            Product?: number;
             Weight?: number;
             Height?: number;
             Length?: number;
             Width?: number;
-            Product?: number;
+            Ratio?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
-            SetType?: number;
-            Quantity?: string;
+            UoM?: number;
+            Product?: number;
             Weight?: number;
             Height?: number;
             Length?: number;
             Width?: number;
-            Product?: number;
+            Ratio?: number;
         };
     },
-    $select?: (keyof SetEntity)[],
-    $sort?: string | (keyof SetEntity)[],
+    $select?: (keyof ProductSetEntity)[],
+    $sort?: string | (keyof ProductSetEntity)[],
     $order?: 'asc' | 'desc',
     $offset?: number,
     $limit?: number,
 }
 
-interface SetEntityEvent {
+interface ProductSetEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
-    readonly entity: Partial<SetEntity>;
+    readonly entity: Partial<ProductSetEntity>;
     readonly key: {
         name: string;
         column: string;
@@ -119,60 +119,60 @@ interface SetEntityEvent {
     }
 }
 
-interface SetUpdateEntityEvent extends SetEntityEvent {
-    readonly previousEntity: SetEntity;
+interface ProductSetUpdateEntityEvent extends ProductSetEntityEvent {
+    readonly previousEntity: ProductSetEntity;
 }
 
-export class SetRepository {
+export class ProductSetRepository {
 
     private static readonly DEFINITION = {
-        table: "CODBEX_SET",
+        table: "CODBEX_PRODUCTSET",
         properties: [
             {
                 name: "Id",
-                column: "SET_ID",
+                column: "PRODUCTSET_ID",
                 type: "INTEGER",
                 id: true,
                 autoIncrement: true,
             },
             {
-                name: "SetType",
-                column: "SET_SETTYPE",
+                name: "UoM",
+                column: "PRODUCTSET_UOM",
                 type: "INTEGER",
             },
             {
-                name: "Quantity",
-                column: "SET_QUANTITY",
-                type: "VARCHAR",
+                name: "Product",
+                column: "PRODUCTSET_PRODUCT",
+                type: "INTEGER",
             },
             {
                 name: "Weight",
-                column: "SET_WEIGHT",
+                column: "PRODUCTSET_WEIGHT",
                 type: "DECIMAL",
                 required: true
             },
             {
                 name: "Height",
-                column: "SET_HEIGHT",
+                column: "PRODUCTSET_HEIGHT",
                 type: "DECIMAL",
                 required: true
             },
             {
                 name: "Length",
-                column: "SET_LENGTH",
+                column: "PRODUCTSET_LENGTH",
                 type: "DECIMAL",
                 required: true
             },
             {
                 name: "Width",
-                column: "SET_WIDTH",
+                column: "PRODUCTSET_WIDTH",
                 type: "DECIMAL",
                 required: true
             },
             {
-                name: "Product",
-                column: "SET_PRODUCT",
-                type: "INTEGER",
+                name: "Ratio",
+                column: "PRODUCTSET_RATIO",
+                type: "DECIMAL",
             }
         ]
     };
@@ -180,58 +180,58 @@ export class SetRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(SetRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(ProductSetRepository.DEFINITION, null, dataSource);
     }
 
-    public findAll(options?: SetEntityOptions): SetEntity[] {
+    public findAll(options?: ProductSetEntityOptions): ProductSetEntity[] {
         return this.dao.list(options);
     }
 
-    public findById(id: number): SetEntity | undefined {
+    public findById(id: number): ProductSetEntity | undefined {
         const entity = this.dao.find(id);
         return entity ?? undefined;
     }
 
-    public create(entity: SetCreateEntity): number {
+    public create(entity: ProductSetCreateEntity): number {
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
-            table: "CODBEX_SET",
+            table: "CODBEX_PRODUCTSET",
             entity: entity,
             key: {
                 name: "Id",
-                column: "SET_ID",
+                column: "PRODUCTSET_ID",
                 value: id
             }
         });
         return id;
     }
 
-    public update(entity: SetUpdateEntity): void {
+    public update(entity: ProductSetUpdateEntity): void {
         const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
-            table: "CODBEX_SET",
+            table: "CODBEX_PRODUCTSET",
             entity: entity,
             previousEntity: previousEntity,
             key: {
                 name: "Id",
-                column: "SET_ID",
+                column: "PRODUCTSET_ID",
                 value: entity.Id
             }
         });
     }
 
-    public upsert(entity: SetCreateEntity | SetUpdateEntity): number {
-        const id = (entity as SetUpdateEntity).Id;
+    public upsert(entity: ProductSetCreateEntity | ProductSetUpdateEntity): number {
+        const id = (entity as ProductSetUpdateEntity).Id;
         if (!id) {
             return this.create(entity);
         }
 
         const existingEntity = this.findById(id);
         if (existingEntity) {
-            this.update(entity as SetUpdateEntity);
+            this.update(entity as ProductSetUpdateEntity);
             return id;
         } else {
             return this.create(entity);
@@ -243,17 +243,17 @@ export class SetRepository {
         this.dao.remove(id);
         this.triggerEvent({
             operation: "delete",
-            table: "CODBEX_SET",
+            table: "CODBEX_PRODUCTSET",
             entity: entity,
             key: {
                 name: "Id",
-                column: "SET_ID",
+                column: "PRODUCTSET_ID",
                 value: id
             }
         });
     }
 
-    public count(options?: SetEntityOptions): number {
+    public count(options?: ProductSetEntityOptions): number {
         return this.dao.count(options);
     }
 
@@ -269,8 +269,8 @@ export class SetRepository {
         return 0;
     }
 
-    private async triggerEvent(data: SetEntityEvent | SetUpdateEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-products-Products-Set", ["trigger"]);
+    private async triggerEvent(data: ProductSetEntityEvent | ProductSetUpdateEntityEvent) {
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-products-Products-ProductSet", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -278,6 +278,6 @@ export class SetRepository {
                 console.error(error);
             }            
         });
-        producer.topic("codbex-products-Products-Set").send(JSON.stringify(data));
+        producer.topic("codbex-products-Products-ProductSet").send(JSON.stringify(data));
     }
 }

@@ -1,23 +1,34 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { SetTypeRepository, SetTypeEntityOptions } from "../../dao/entities/SetTypeRepository";
+import { ProductSetRepository, ProductSetEntityOptions } from "../../dao/Products/ProductSetRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-products-entities-SetType", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-products-Products-ProductSet", ["validate"]);
 
 @Controller
-class SetTypeService {
+class ProductSetService {
 
-    private readonly repository = new SetTypeRepository();
+    private readonly repository = new ProductSetRepository();
 
     @Get("/")
     public getAll(_: any, ctx: any) {
         try {
-            const options: SetTypeEntityOptions = {
+            const options: ProductSetEntityOptions = {
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
+
+            let Product = parseInt(ctx.queryParameters.Product);
+            Product = isNaN(Product) ? ctx.queryParameters.Product : Product;
+
+            if (Product !== undefined) {
+                options.$filter = {
+                    equals: {
+                        Product: Product
+                    }
+                };
+            }
 
             return this.repository.findAll(options);
         } catch (error: any) {
@@ -30,7 +41,7 @@ class SetTypeService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-products/gen/codbex-products/api/entities/SetTypeService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-products/gen/codbex-products/api/Products/ProductSetService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
@@ -73,7 +84,7 @@ class SetTypeService {
             if (entity) {
                 return entity;
             } else {
-                HttpUtils.sendResponseNotFound("SetType not found");
+                HttpUtils.sendResponseNotFound("ProductSet not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -101,7 +112,7 @@ class SetTypeService {
                 this.repository.deleteById(id);
                 HttpUtils.sendResponseNoContent();
             } else {
-                HttpUtils.sendResponseNotFound("SetType not found");
+                HttpUtils.sendResponseNotFound("ProductSet not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -119,11 +130,26 @@ class SetTypeService {
     }
 
     private validateEntity(entity: any): void {
-        if (entity.Name === null || entity.Name === undefined) {
-            throw new ValidationError(`The 'Name' property is required, provide a valid value`);
+        if (entity.UoM === null || entity.UoM === undefined) {
+            throw new ValidationError(`The 'UoM' property is required, provide a valid value`);
         }
-        if (entity.Name?.length > 40) {
-            throw new ValidationError(`The 'Name' exceeds the maximum length of [40] characters`);
+        if (entity.Product === null || entity.Product === undefined) {
+            throw new ValidationError(`The 'Product' property is required, provide a valid value`);
+        }
+        if (entity.Weight === null || entity.Weight === undefined) {
+            throw new ValidationError(`The 'Weight' property is required, provide a valid value`);
+        }
+        if (entity.Height === null || entity.Height === undefined) {
+            throw new ValidationError(`The 'Height' property is required, provide a valid value`);
+        }
+        if (entity.Length === null || entity.Length === undefined) {
+            throw new ValidationError(`The 'Length' property is required, provide a valid value`);
+        }
+        if (entity.Width === null || entity.Width === undefined) {
+            throw new ValidationError(`The 'Width' property is required, provide a valid value`);
+        }
+        if (entity.Ratio === null || entity.Ratio === undefined) {
+            throw new ValidationError(`The 'Ratio' property is required, provide a valid value`);
         }
         for (const next of validationModules) {
             next.validate(entity);

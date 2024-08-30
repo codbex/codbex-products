@@ -4,9 +4,9 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "Set-details",
-    label: "Set",
-    link: "/services/web/codbex-products/gen/codbex-products/ui/Products/Product/Set/dialog-window/index.html",
+    id: "ProductSet-details",
+    label: "ProductSet",
+    link: "/services/web/codbex-products/gen/codbex-products/ui/Products/Product/ProductSet/dialog-window/index.html",
     perspectiveName: "Products",
 };
 

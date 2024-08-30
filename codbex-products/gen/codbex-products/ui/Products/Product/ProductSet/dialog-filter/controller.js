@@ -1,6 +1,6 @@
 angular.module('page', ["ideUI", "ideView"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-products.Products.Set';
+		messageHubProvider.eventIdPrefix = 'codbex-products.Products.ProductSet';
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'ViewParameters', function ($scope, messageHub, ViewParameters) {
 
@@ -14,7 +14,7 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.entity = params.entity ?? {};
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
-			$scope.optionsSetType = params.optionsSetType;
+			$scope.optionsUoM = params.optionsUoM;
 			$scope.optionsProduct = params.optionsProduct;
 		}
 
@@ -41,11 +41,11 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Id !== undefined) {
 				filter.$filter.equals.Id = entity.Id;
 			}
-			if (entity.SetType !== undefined) {
-				filter.$filter.equals.SetType = entity.SetType;
+			if (entity.UoM !== undefined) {
+				filter.$filter.equals.UoM = entity.UoM;
 			}
-			if (entity.Quantity) {
-				filter.$filter.contains.Quantity = entity.Quantity;
+			if (entity.Product !== undefined) {
+				filter.$filter.equals.Product = entity.Product;
 			}
 			if (entity.Weight !== undefined) {
 				filter.$filter.equals.Weight = entity.Weight;
@@ -59,8 +59,8 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Width !== undefined) {
 				filter.$filter.equals.Width = entity.Width;
 			}
-			if (entity.Product !== undefined) {
-				filter.$filter.equals.Product = entity.Product;
+			if (entity.Ratio !== undefined) {
+				filter.$filter.equals.Ratio = entity.Ratio;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,
@@ -75,7 +75,7 @@ angular.module('page', ["ideUI", "ideView"])
 		};
 
 		$scope.cancel = function () {
-			messageHub.closeDialogWindow("Set-filter");
+			messageHub.closeDialogWindow("ProductSet-filter");
 		};
 
 		$scope.clearErrorMessage = function () {

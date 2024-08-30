@@ -4,12 +4,12 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "SetType",
-    label: "SetType",
+    id: "ProductSet",
+    label: "ProductSet",
     factory: "frame",
-    region: "center",
-    link: "/services/web/codbex-products/gen/codbex-products/ui/entities/SetType/index.html",
-    perspectiveName: "entities",
+    region: "bottom",
+    link: "/services/web/codbex-products/gen/codbex-products/ui/Products/Product/ProductSet/index.html",
+    perspectiveName: "Products",
 };
 
 if (typeof exports !== 'undefined') {
