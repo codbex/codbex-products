@@ -130,14 +130,11 @@ class ProductSetService {
     }
 
     private validateEntity(entity: any): void {
-        if (entity.Product === null || entity.Product === undefined) {
-            throw new ValidationError(`The 'Product' property is required, provide a valid value`);
-        }
         if (entity.UoM === null || entity.UoM === undefined) {
             throw new ValidationError(`The 'UoM' property is required, provide a valid value`);
         }
-        if (entity.UoM?.length > 20) {
-            throw new ValidationError(`The 'UoM' exceeds the maximum length of [20] characters`);
+        if (entity.Product === null || entity.Product === undefined) {
+            throw new ValidationError(`The 'Product' property is required, provide a valid value`);
         }
         if (entity.Weight === null || entity.Weight === undefined) {
             throw new ValidationError(`The 'Weight' property is required, provide a valid value`);

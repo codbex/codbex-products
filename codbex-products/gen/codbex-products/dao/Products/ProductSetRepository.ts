@@ -5,8 +5,8 @@ import { dao as daoApi } from "sdk/db";
 
 export interface ProductSetEntity {
     readonly Id: number;
+    UoM?: number;
     Product?: number;
-    UoM?: string;
     Weight: number;
     Height: number;
     Length: number;
@@ -15,8 +15,8 @@ export interface ProductSetEntity {
 }
 
 export interface ProductSetCreateEntity {
+    readonly UoM?: number;
     readonly Product?: number;
-    readonly UoM?: string;
     readonly Weight: number;
     readonly Height: number;
     readonly Length: number;
@@ -32,8 +32,8 @@ export interface ProductSetEntityOptions {
     $filter?: {
         equals?: {
             Id?: number | number[];
+            UoM?: number | number[];
             Product?: number | number[];
-            UoM?: string | string[];
             Weight?: number | number[];
             Height?: number | number[];
             Length?: number | number[];
@@ -42,8 +42,8 @@ export interface ProductSetEntityOptions {
         };
         notEquals?: {
             Id?: number | number[];
+            UoM?: number | number[];
             Product?: number | number[];
-            UoM?: string | string[];
             Weight?: number | number[];
             Height?: number | number[];
             Length?: number | number[];
@@ -52,8 +52,8 @@ export interface ProductSetEntityOptions {
         };
         contains?: {
             Id?: number;
+            UoM?: number;
             Product?: number;
-            UoM?: string;
             Weight?: number;
             Height?: number;
             Length?: number;
@@ -62,8 +62,8 @@ export interface ProductSetEntityOptions {
         };
         greaterThan?: {
             Id?: number;
+            UoM?: number;
             Product?: number;
-            UoM?: string;
             Weight?: number;
             Height?: number;
             Length?: number;
@@ -72,8 +72,8 @@ export interface ProductSetEntityOptions {
         };
         greaterThanOrEqual?: {
             Id?: number;
+            UoM?: number;
             Product?: number;
-            UoM?: string;
             Weight?: number;
             Height?: number;
             Length?: number;
@@ -82,8 +82,8 @@ export interface ProductSetEntityOptions {
         };
         lessThan?: {
             Id?: number;
+            UoM?: number;
             Product?: number;
-            UoM?: string;
             Weight?: number;
             Height?: number;
             Length?: number;
@@ -92,8 +92,8 @@ export interface ProductSetEntityOptions {
         };
         lessThanOrEqual?: {
             Id?: number;
+            UoM?: number;
             Product?: number;
-            UoM?: string;
             Weight?: number;
             Height?: number;
             Length?: number;
@@ -136,14 +136,14 @@ export class ProductSetRepository {
                 autoIncrement: true,
             },
             {
-                name: "Product",
-                column: "PRODUCTSET_PRODUCT",
+                name: "UoM",
+                column: "PRODUCTSET_UOM",
                 type: "INTEGER",
             },
             {
-                name: "UoM",
-                column: "PRODUCTSET_UOM",
-                type: "VARCHAR",
+                name: "Product",
+                column: "PRODUCTSET_PRODUCT",
+                type: "INTEGER",
             },
             {
                 name: "Weight",

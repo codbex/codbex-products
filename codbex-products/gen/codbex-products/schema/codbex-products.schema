@@ -242,13 +242,12 @@
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "PRODUCTSET_PRODUCT"
+                        "name": "PRODUCTSET_UOM"
                     },
                     {
-                        "type": "VARCHAR",
-                        "length": 20,
+                        "type": "INTEGER",
                         "nullable": true,
-                        "name": "PRODUCTSET_UOM"
+                        "name": "PRODUCTSET_PRODUCT"
                     },
                     {
                         "type": "DECIMAL",
@@ -358,15 +357,6 @@
                 "referencedColumns": "STORE_ID"
             },
             {
-                "name": "ProductSet_Product",
-                "type": "foreignKey",
-                "table": "CODBEX_PRODUCTSET",
-                "constraintName": "ProductSet_Product",
-                "columns": "PRODUCTSET_PRODUCT",
-                "referencedTable": "CODBEX_PRODUCT",
-                "referencedColumns": "PRODUCT_ID"
-            },
-            {
                 "name": "ProductSet_UoM",
                 "type": "foreignKey",
                 "table": "CODBEX_PRODUCTSET",
@@ -374,6 +364,15 @@
                 "columns": "PRODUCTSET_UOM",
                 "referencedTable": "CODBEX_UOM",
                 "referencedColumns": "UOM_ID"
+            },
+            {
+                "name": "ProductSet_Product",
+                "type": "foreignKey",
+                "table": "CODBEX_PRODUCTSET",
+                "constraintName": "ProductSet_Product",
+                "columns": "PRODUCTSET_PRODUCT",
+                "referencedTable": "CODBEX_PRODUCT",
+                "referencedColumns": "PRODUCT_ID"
             }
         ]
     },

@@ -1190,6 +1190,23 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "dataName": "PRODUCTSET_UOM",
+                        "dataNullable": "true",
+                        "dataType": "INTEGER",
+                        "isRequiredProperty": "true",
+                        "name": "UoM",
+                        "widgetDropDownKey": "Id",
+                        "widgetDropDownValue": "Name",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "DROPDOWN",
+                        "relationshipName": "ProductSet_UoM",
+                        "relationshipEntityName": "UoM",
+                        "relationshipEntityPerspectiveName": "UnitsOfMeasures",
+                        "relationshipEntityPerspectiveLabel": "Entities"
+                    },
+                    {
                         "dataName": "PRODUCTSET_PRODUCT",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -1206,24 +1223,6 @@
                         "widgetType": "DROPDOWN",
                         "relationshipEntityName": "Product",
                         "relationshipEntityPerspectiveName": "Products",
-                        "relationshipEntityPerspectiveLabel": "Entities"
-                    },
-                    {
-                        "dataLength": "20",
-                        "dataName": "PRODUCTSET_UOM",
-                        "dataNullable": "true",
-                        "dataType": "VARCHAR",
-                        "isRequiredProperty": "true",
-                        "name": "UoM",
-                        "widgetDropDownKey": "Id",
-                        "widgetDropDownValue": "Name",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "DROPDOWN",
-                        "relationshipName": "ProductSet_UoM",
-                        "relationshipEntityName": "UoM",
-                        "relationshipEntityPerspectiveName": "UnitsOfMeasures",
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {

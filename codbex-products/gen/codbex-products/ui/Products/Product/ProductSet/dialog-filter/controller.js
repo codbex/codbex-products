@@ -14,8 +14,8 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.entity = params.entity ?? {};
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
-			$scope.optionsProduct = params.optionsProduct;
 			$scope.optionsUoM = params.optionsUoM;
+			$scope.optionsProduct = params.optionsProduct;
 		}
 
 		$scope.filter = function () {
@@ -41,11 +41,11 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Id !== undefined) {
 				filter.$filter.equals.Id = entity.Id;
 			}
+			if (entity.UoM !== undefined) {
+				filter.$filter.equals.UoM = entity.UoM;
+			}
 			if (entity.Product !== undefined) {
 				filter.$filter.equals.Product = entity.Product;
-			}
-			if (entity.UoM) {
-				filter.$filter.contains.UoM = entity.UoM;
 			}
 			if (entity.Weight !== undefined) {
 				filter.$filter.equals.Weight = entity.Weight;

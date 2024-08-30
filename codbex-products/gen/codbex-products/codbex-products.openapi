@@ -2292,8 +2292,6 @@ paths:
                   $filter:
                     notEquals:
                       Id: 33
-                    contains:
-                      UoM: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -2310,12 +2308,6 @@ paths:
                   $filter:
                     notEquals:
                       Id: 0
-              countWithContains:
-                summary: Count with Contains
-                value:
-                  $filter:
-                    contains:
-                      UoM: "abcd"
               countWithGreaterThan:
                 summary: Count with Greater Than
                 value:
@@ -2378,8 +2370,6 @@ paths:
                   $filter:
                     notEquals:
                       Id: 33
-                    contains:
-                      UoM: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -2396,12 +2386,6 @@ paths:
                   $filter:
                     notEquals:
                       Id: 0
-              searchWithContains:
-                summary: Search with Contains
-                value:
-                  $filter:
-                    contains:
-                      UoM: "abcd"
               searchWithGreaterThan:
                 summary: Search with Greater Than
                 value:
@@ -4036,8 +4020,8 @@ components:
     ProductSet:
       type: object
       required:
-        - Product
         - UoM
+        - Product
         - Weight
         - Height
         - Length
@@ -4047,13 +4031,12 @@ components:
         Id:
           type: integer
           format: int32
+        UoM:
+          type: integer
+          format: int32
         Product:
           type: integer
           format: int32
-        UoM:
-          type: string
-          minLength: 0
-          maxLength: 20
         Weight:
           type: number
           format: double
@@ -4086,6 +4069,14 @@ components:
                       items:
                         type: integer
                         format: int32
+                UoM:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 Product:
                   oneOf:
                     - type: integer
@@ -4094,17 +4085,6 @@ components:
                       items:
                         type: integer
                         format: int32
-                UoM:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 20
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 20
                 Weight:
                   oneOf:
                     - type: number
@@ -4156,6 +4136,14 @@ components:
                       items:
                         type: integer
                         format: int32
+                UoM:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 Product:
                   oneOf:
                     - type: integer
@@ -4164,17 +4152,6 @@ components:
                       items:
                         type: integer
                         format: int32
-                UoM:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 20
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 20
                 Weight:
                   oneOf:
                     - type: number
@@ -4219,11 +4196,8 @@ components:
               type: object
               properties:
                 Id:
-                Product:
                 UoM:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
+                Product:
                 Weight:
                 Height:
                 Length:
@@ -4235,13 +4209,12 @@ components:
                 Id:
                   type: integer
                   format: int32
+                UoM:
+                  type: integer
+                  format: int32
                 Product:
                   type: integer
                   format: int32
-                UoM:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
                 Weight:
                   type: number
                   format: double
@@ -4263,13 +4236,12 @@ components:
                 Id:
                   type: integer
                   format: int32
+                UoM:
+                  type: integer
+                  format: int32
                 Product:
                   type: integer
                   format: int32
-                UoM:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
                 Weight:
                   type: number
                   format: double
@@ -4291,13 +4263,12 @@ components:
                 Id:
                   type: integer
                   format: int32
+                UoM:
+                  type: integer
+                  format: int32
                 Product:
                   type: integer
                   format: int32
-                UoM:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
                 Weight:
                   type: number
                   format: double
@@ -4319,13 +4290,12 @@ components:
                 Id:
                   type: integer
                   format: int32
+                UoM:
+                  type: integer
+                  format: int32
                 Product:
                   type: integer
                   format: int32
-                UoM:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
                 Weight:
                   type: number
                   format: double
@@ -4343,12 +4313,12 @@ components:
                   format: double
         $select:
           type: array
-          example: ["Id", "Product", "UoM", "Weight", "Height", "Length", "Width", "Ratio"]
+          example: ["Id", "UoM", "Product", "Weight", "Height", "Length", "Width", "Ratio"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Product,UoM,Weight,Height,Length,Width,Ratio"
+            example: "Id,UoM,Product,Weight,Height,Length,Width,Ratio"
         $order:
           type: string
           enum: ["asc", "desc"]
