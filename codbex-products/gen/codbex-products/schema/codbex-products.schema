@@ -229,7 +229,7 @@
                 ]
             },
             {
-                "name": "CODBEX_SET",
+                "name": "CODBEX_PRODUCTSET",
                 "type": "TABLE",
                 "columns": [
                     {
@@ -237,102 +237,51 @@
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
-                        "name": "SET_ID"
+                        "name": "PRODUCTSET_ID"
                     },
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "SET_SETTYPE"
+                        "name": "PRODUCTSET_PRODUCT"
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 40,
+                        "length": 20,
                         "nullable": true,
-                        "name": "SET_QUANTITY"
+                        "name": "PRODUCTSET_UOM"
                     },
                     {
                         "type": "DECIMAL",
                         "length": 18,
                         "precision": "16",
                         "scale": "2",
-                        "name": "SET_WEIGHT"
+                        "name": "PRODUCTSET_WEIGHT"
                     },
                     {
                         "type": "DECIMAL",
                         "length": 18,
                         "precision": "16",
                         "scale": "2",
-                        "name": "SET_HEIGHT"
+                        "name": "PRODUCTSET_HEIGHT"
                     },
                     {
                         "type": "DECIMAL",
                         "length": 18,
                         "precision": "16",
                         "scale": "2",
-                        "name": "SET_LENGTH"
+                        "name": "PRODUCTSET_LENGTH"
                     },
                     {
                         "type": "DECIMAL",
                         "length": 18,
                         "precision": "16",
                         "scale": "2",
-                        "name": "SET_WIDTH"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "SET_RATIO"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "SET_PRODUCT"
-                    }
-                ]
-            },
-            {
-                "name": "CODBEX_SETTYPE",
-                "type": "TABLE",
-                "columns": [
-                    {
-                        "type": "INTEGER",
-                        "primaryKey": true,
-                        "identity": true,
-                        "nullable": true,
-                        "name": "SETTYPE_ID"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 40,
-                        "nullable": true,
-                        "name": "SETTYPE_NAME"
-                    }
-                ]
-            },
-            {
-                "name": "CODBEX_RATIO",
-                "type": "TABLE",
-                "columns": [
-                    {
-                        "type": "INTEGER",
-                        "primaryKey": true,
-                        "identity": true,
-                        "nullable": true,
-                        "name": "RATIO_ID"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 40,
-                        "nullable": true,
-                        "name": "RATIO_TYPE"
+                        "name": "PRODUCTSET_WIDTH"
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
-                        "precision": "16",
-                        "scale": "2",
                         "nullable": true,
-                        "name": "RATIO_AMOUNT"
+                        "name": "PRODUCTSET_RATIO"
                     }
                 ]
             },
@@ -409,31 +358,22 @@
                 "referencedColumns": "STORE_ID"
             },
             {
-                "name": "Set_SetType",
+                "name": "ProductSet_Product",
                 "type": "foreignKey",
-                "table": "CODBEX_SET",
-                "constraintName": "Set_SetType",
-                "columns": "SET_SETTYPE",
-                "referencedTable": "CODBEX_SETTYPE",
-                "referencedColumns": "SETTYPE_ID"
-            },
-            {
-                "name": "Set_Ratio",
-                "type": "foreignKey",
-                "table": "CODBEX_SET",
-                "constraintName": "Set_Ratio",
-                "columns": "SET_RATIO",
-                "referencedTable": "CODBEX_RATIO",
-                "referencedColumns": "RATIO_ID"
-            },
-            {
-                "name": "Set_Product",
-                "type": "foreignKey",
-                "table": "CODBEX_SET",
-                "constraintName": "Set_Product",
-                "columns": "SET_PRODUCT",
+                "table": "CODBEX_PRODUCTSET",
+                "constraintName": "ProductSet_Product",
+                "columns": "PRODUCTSET_PRODUCT",
                 "referencedTable": "CODBEX_PRODUCT",
                 "referencedColumns": "PRODUCT_ID"
+            },
+            {
+                "name": "ProductSet_UoM",
+                "type": "foreignKey",
+                "table": "CODBEX_PRODUCTSET",
+                "constraintName": "ProductSet_UoM",
+                "columns": "PRODUCTSET_UOM",
+                "referencedTable": "CODBEX_UOM",
+                "referencedColumns": "UOM_ID"
             }
         ]
     },
