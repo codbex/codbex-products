@@ -1,0 +1,5 @@
+{
+    "extensionPoint": "dashboard-widgets",
+    "module": "codbex-products/widgets/services/product-details.js",
+    "description": "Product details"
+}

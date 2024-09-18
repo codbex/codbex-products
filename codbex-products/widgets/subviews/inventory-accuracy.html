@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="inventory-accuracy"
+    ng-controller="InventoryAccuracyController">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" sizes="any" href="data:;base64,iVBORw0KGgo=">
+        <title dg-view-title></title>
+        <script type="text/javascript" src="../services/inventory-accuracy.js"></script>
+        <theme></theme>
+        <script type="text/javascript" src="/services/js/resources-core/services/loader.js?id=application-view-js">
+        </script>
+        <link type="text/css" rel="stylesheet"
+            href="/services/js/resources-core/services/loader.js?id=application-view-css" />
+        <script type="text/javascript" src="/webjars/chart.js/dist/chart.umd.js"></script>
+        <script type="text/javascript" src="../js/inventory-accuracy-controller.js"></script>
+
+        <style>
+            .tile-auto-layout {
+                min-height: auto;
+                height: auto;
+                width: auto;
+                max-width: 100%;
+            }
+
+        </style>
+    </head>
+
+    <body fd-scrollbar class="fd-padding-begin-end--tiny">
+        <fd-panel expanded="true" class="fd-col fd-col--12">
+
+            <fd-panel-content aria-label="Products Content">
+
+                <div class="fd-row" style="margin: 0.5em">
+                    <div class="fd-col fd-col--6 fd-col-md--3 fd-col-lg--3 fd-col-xl--3">
+                        <div role="button" tabindex="0" class="inventory-tile tile-auto-layout">
+                            <div class="inventory-tile-title">Inventory Accuracy</div>
+                            <div class="inventory-tile-content">100%</div>
+                            <div class="inventory-tile-footer">Today: {{ today | date:'dd-MM-yyyy' }}</div>
+                        </div>
+                    </div>
+                </div>
+
+            </fd-panel-content>
+        </fd-panel>
+
+    </body>
+
+</html>
