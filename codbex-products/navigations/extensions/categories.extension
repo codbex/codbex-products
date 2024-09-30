@@ -1,5 +1,5 @@
 {
     "extensionPoint": "dashboard-navigations",
-    "module": "codbex-products/navigation/services/categories.js",
+    "module": "codbex-products/navigations/services/categories.js",
     "description": "Categories Navigation"
 }
