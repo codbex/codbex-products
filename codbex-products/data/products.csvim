@@ -3,7 +3,7 @@
     {
       "table": "CODBEX_PRODUCTTYPE",
       "schema": "PUBLIC",
-      "file": "/codbex-products-data/product-types.csv",
+      "file": "/codbex-products/data/product-types.csv",
       "header": true,
       "useHeaderNames": true,
       "delimField": ",",
@@ -14,7 +14,7 @@
     {
       "table": "CODBEX_PRODUCTCATEGORY",
       "schema": "PUBLIC",
-      "file": "/codbex-products-data/product-categories.csv",
+      "file": "/codbex-products/data/product-categories.csv",
       "header": true,
       "useHeaderNames": true,
       "delimField": ",",
@@ -25,7 +25,7 @@
     {
       "table": "CODBEX_SETTYPE",
       "schema": "PUBLIC",
-      "file": "/codbex-products-data/set-types.csv",
+      "file": "/codbex-products/data/set-types.csv",
       "header": true,
       "useHeaderNames": true,
       "delimField": ",",
@@ -36,7 +36,7 @@
     {
       "table": "CODBEX_RATIO",
       "schema": "PUBLIC",
-      "file": "/codbex-products-data/ratios.csv",
+      "file": "/codbex-products/data/ratios.csv",
       "header": true,
       "useHeaderNames": true,
       "delimField": ",",
