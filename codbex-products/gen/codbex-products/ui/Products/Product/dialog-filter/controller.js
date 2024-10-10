@@ -56,8 +56,8 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Batch) {
 				filter.$filter.contains.Batch = entity.Batch;
 			}
-			if (entity.BaseUnit) {
-				filter.$filter.contains.BaseUnit = entity.BaseUnit;
+			if (entity.BaseUnit !== undefined) {
+				filter.$filter.equals.BaseUnit = entity.BaseUnit;
 			}
 			if (entity.Price !== undefined) {
 				filter.$filter.equals.Price = entity.Price;

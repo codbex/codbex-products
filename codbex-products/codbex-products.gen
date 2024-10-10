@@ -409,10 +409,9 @@
           "inputRule": ""
         },
         {
-          "dataLength": "20",
           "dataName": "PRODUCT_BASEUNIT",
           "dataNullable": true,
-          "dataType": "VARCHAR",
+          "dataType": "INTEGER",
           "isRequiredProperty": true,
           "name": "BaseUnit",
           "widgetDropDownKey": "Id",
@@ -432,10 +431,8 @@
           "isCalculatedProperty": false,
           "widgetLabel": "BaseUnit",
           "widgetDropdownUrl": "/services/ts/codbex-uoms/gen/codbex-uoms/api/UnitsOfMeasures/UoMService.ts",
-          "dataTypeJava": "string",
-          "dataTypeTypescript": "string",
-          "minLength": 0,
-          "maxLength": 20,
+          "dataTypeJava": "int",
+          "dataTypeTypescript": "number",
           "inputRule": ""
         },
         {
@@ -984,10 +981,9 @@
             "inputRule": ""
           },
           {
-            "dataLength": "20",
             "dataName": "PRODUCT_BASEUNIT",
             "dataNullable": true,
-            "dataType": "VARCHAR",
+            "dataType": "INTEGER",
             "isRequiredProperty": true,
             "name": "BaseUnit",
             "widgetDropDownKey": "Id",
@@ -1007,10 +1003,8 @@
             "isCalculatedProperty": false,
             "widgetLabel": "BaseUnit",
             "widgetDropdownUrl": "/services/ts/codbex-uoms/gen/codbex-uoms/api/UnitsOfMeasures/UoMService.ts",
-            "dataTypeJava": "string",
-            "dataTypeTypescript": "string",
-            "minLength": 0,
-            "maxLength": 20,
+            "dataTypeJava": "int",
+            "dataTypeTypescript": "number",
             "inputRule": ""
           },
           {

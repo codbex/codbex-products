@@ -1069,7 +1069,6 @@ paths:
                       Title: "abcd"
                       Model: "abcd"
                       Batch: "abcd"
-                      BaseUnit: "abcd"
                       Name: "abcd"
                       UPC: "abcd"
                       EAN: "abcd"
@@ -1101,7 +1100,6 @@ paths:
                       Title: "abcd"
                       Model: "abcd"
                       Batch: "abcd"
-                      BaseUnit: "abcd"
                       Name: "abcd"
                       UPC: "abcd"
                       EAN: "abcd"
@@ -1175,7 +1173,6 @@ paths:
                       Title: "abcd"
                       Model: "abcd"
                       Batch: "abcd"
-                      BaseUnit: "abcd"
                       Name: "abcd"
                       UPC: "abcd"
                       EAN: "abcd"
@@ -1207,7 +1204,6 @@ paths:
                       Title: "abcd"
                       Model: "abcd"
                       Batch: "abcd"
-                      BaseUnit: "abcd"
                       Name: "abcd"
                       UPC: "abcd"
                       EAN: "abcd"
@@ -2763,9 +2759,8 @@ components:
           minLength: 0
           maxLength: 50
         BaseUnit:
-          type: string
-          minLength: 0
-          maxLength: 20
+          type: integer
+          format: int32
         Price:
           type: number
           format: double
@@ -2886,15 +2881,12 @@ components:
                         maxLength: 50
                 BaseUnit:
                   oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 20
+                    - type: integer
+                      format: int32
                     - type: array
                       items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 20
+                        type: integer
+                        format: int32
                 Price:
                   oneOf:
                     - type: number
@@ -3104,15 +3096,12 @@ components:
                         maxLength: 50
                 BaseUnit:
                   oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 20
+                    - type: integer
+                      format: int32
                     - type: array
                       items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 20
+                        type: integer
+                        format: int32
                 Price:
                   oneOf:
                     - type: number
@@ -3286,9 +3275,6 @@ components:
                   minLength: 0
                   maxLength: 50
                 BaseUnit:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
                 Price:
                 VAT:
                 Type:
@@ -3347,9 +3333,8 @@ components:
                   minLength: 0
                   maxLength: 50
                 BaseUnit:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
+                  type: integer
+                  format: int32
                 Price:
                   type: number
                   format: double
@@ -3428,9 +3413,8 @@ components:
                   minLength: 0
                   maxLength: 50
                 BaseUnit:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
+                  type: integer
+                  format: int32
                 Price:
                   type: number
                   format: double
@@ -3509,9 +3493,8 @@ components:
                   minLength: 0
                   maxLength: 50
                 BaseUnit:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
+                  type: integer
+                  format: int32
                 Price:
                   type: number
                   format: double
@@ -3590,9 +3573,8 @@ components:
                   minLength: 0
                   maxLength: 50
                 BaseUnit:
-                  type: string
-                  minLength: 0
-                  maxLength: 20
+                  type: integer
+                  format: int32
                 Price:
                   type: number
                   format: double

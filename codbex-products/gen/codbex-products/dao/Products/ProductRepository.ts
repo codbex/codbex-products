@@ -10,7 +10,7 @@ export interface ProductEntity {
     Title: string;
     Model: string;
     Batch: string;
-    BaseUnit?: string;
+    BaseUnit?: number;
     Price?: number;
     VAT?: number;
     Type?: number;
@@ -35,7 +35,7 @@ export interface ProductCreateEntity {
     readonly Title: string;
     readonly Model: string;
     readonly Batch: string;
-    readonly BaseUnit?: string;
+    readonly BaseUnit?: number;
     readonly Price?: number;
     readonly VAT?: number;
     readonly Type?: number;
@@ -66,7 +66,7 @@ export interface ProductEntityOptions {
             Title?: string | string[];
             Model?: string | string[];
             Batch?: string | string[];
-            BaseUnit?: string | string[];
+            BaseUnit?: number | number[];
             Price?: number | number[];
             VAT?: number | number[];
             Type?: number | number[];
@@ -91,7 +91,7 @@ export interface ProductEntityOptions {
             Title?: string | string[];
             Model?: string | string[];
             Batch?: string | string[];
-            BaseUnit?: string | string[];
+            BaseUnit?: number | number[];
             Price?: number | number[];
             VAT?: number | number[];
             Type?: number | number[];
@@ -116,7 +116,7 @@ export interface ProductEntityOptions {
             Title?: string;
             Model?: string;
             Batch?: string;
-            BaseUnit?: string;
+            BaseUnit?: number;
             Price?: number;
             VAT?: number;
             Type?: number;
@@ -141,7 +141,7 @@ export interface ProductEntityOptions {
             Title?: string;
             Model?: string;
             Batch?: string;
-            BaseUnit?: string;
+            BaseUnit?: number;
             Price?: number;
             VAT?: number;
             Type?: number;
@@ -166,7 +166,7 @@ export interface ProductEntityOptions {
             Title?: string;
             Model?: string;
             Batch?: string;
-            BaseUnit?: string;
+            BaseUnit?: number;
             Price?: number;
             VAT?: number;
             Type?: number;
@@ -191,7 +191,7 @@ export interface ProductEntityOptions {
             Title?: string;
             Model?: string;
             Batch?: string;
-            BaseUnit?: string;
+            BaseUnit?: number;
             Price?: number;
             VAT?: number;
             Type?: number;
@@ -216,7 +216,7 @@ export interface ProductEntityOptions {
             Title?: string;
             Model?: string;
             Batch?: string;
-            BaseUnit?: string;
+            BaseUnit?: number;
             Price?: number;
             VAT?: number;
             Type?: number;
@@ -296,7 +296,7 @@ export class ProductRepository {
             {
                 name: "BaseUnit",
                 column: "PRODUCT_BASEUNIT",
-                type: "VARCHAR",
+                type: "INTEGER",
             },
             {
                 name: "Price",

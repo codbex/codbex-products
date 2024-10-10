@@ -168,10 +168,9 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "dataLength": "20",
                         "dataName": "PRODUCT_BASEUNIT",
                         "dataNullable": "true",
-                        "dataType": "VARCHAR",
+                        "dataType": "INTEGER",
                         "isRequiredProperty": "true",
                         "name": "BaseUnit",
                         "widgetDropDownKey": "Id",

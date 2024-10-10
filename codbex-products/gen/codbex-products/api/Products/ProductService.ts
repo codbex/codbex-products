@@ -143,9 +143,6 @@ class ProductService {
         if (entity.BaseUnit === null || entity.BaseUnit === undefined) {
             throw new ValidationError(`The 'BaseUnit' property is required, provide a valid value`);
         }
-        if (entity.BaseUnit?.length > 20) {
-            throw new ValidationError(`The 'BaseUnit' exceeds the maximum length of [20] characters`);
-        }
         if (entity.Price === null || entity.Price === undefined) {
             throw new ValidationError(`The 'Price' property is required, provide a valid value`);
         }

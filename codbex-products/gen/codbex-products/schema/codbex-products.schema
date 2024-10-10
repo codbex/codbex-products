@@ -78,8 +78,7 @@
                         "name": "PRODUCT_BATCH"
                     },
                     {
-                        "type": "VARCHAR",
-                        "length": 20,
+                        "type": "INTEGER",
                         "nullable": true,
                         "name": "PRODUCT_BASEUNIT"
                     },
