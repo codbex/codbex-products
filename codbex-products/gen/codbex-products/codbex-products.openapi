@@ -2740,6 +2740,7 @@ components:
         - Title
         - Model
         - Batch
+        - BaseUnit
         - Price
       properties:
         Id:

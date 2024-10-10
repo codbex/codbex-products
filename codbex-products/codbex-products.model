@@ -172,6 +172,7 @@
                         "dataName": "PRODUCT_BASEUNIT",
                         "dataNullable": "true",
                         "dataType": "VARCHAR",
+                        "isRequiredProperty": "true",
                         "name": "BaseUnit",
                         "widgetDropDownKey": "Id",
                         "widgetDropDownValue": "Name",
