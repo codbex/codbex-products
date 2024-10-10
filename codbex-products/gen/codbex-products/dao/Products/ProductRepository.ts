@@ -6,49 +6,51 @@ import { EntityUtils } from "../utils/EntityUtils";
 
 export interface ProductEntity {
     readonly Id: number;
-    Name: string;
+    SKU?: string;
     Title: string;
     Model: string;
     Batch: string;
+    BaseUnit?: number;
+    Price?: number;
+    VAT?: number;
     Type?: number;
     Category?: number;
-    BaseUnit?: string;
+    Manufacturer?: number;
+    Weight?: number;
+    Height?: number;
+    Length?: number;
+    Width?: number;
+    Name: string;
     Company?: number;
-    SKU?: string;
     UPC?: string;
     EAN?: string;
     JAN?: string;
     ISBN?: string;
     MPN?: string;
-    Manufacturer?: number;
-    VAT?: number;
-    Weight?: number;
-    Height?: number;
-    Length?: number;
-    Width?: number;
     Enabled?: boolean;
 }
 
 export interface ProductCreateEntity {
+    readonly SKU?: string;
     readonly Title: string;
     readonly Model: string;
     readonly Batch: string;
+    readonly BaseUnit?: number;
+    readonly Price?: number;
+    readonly VAT?: number;
     readonly Type?: number;
     readonly Category?: number;
-    readonly BaseUnit?: string;
+    readonly Manufacturer?: number;
+    readonly Weight?: number;
+    readonly Height?: number;
+    readonly Length?: number;
+    readonly Width?: number;
     readonly Company?: number;
-    readonly SKU?: string;
     readonly UPC?: string;
     readonly EAN?: string;
     readonly JAN?: string;
     readonly ISBN?: string;
     readonly MPN?: string;
-    readonly Manufacturer?: number;
-    readonly VAT?: number;
-    readonly Weight?: number;
-    readonly Height?: number;
-    readonly Length?: number;
-    readonly Width?: number;
     readonly Enabled?: boolean;
 }
 
@@ -60,170 +62,177 @@ export interface ProductEntityOptions {
     $filter?: {
         equals?: {
             Id?: number | number[];
-            Name?: string | string[];
+            SKU?: string | string[];
             Title?: string | string[];
             Model?: string | string[];
             Batch?: string | string[];
+            BaseUnit?: number | number[];
+            Price?: number | number[];
+            VAT?: number | number[];
             Type?: number | number[];
             Category?: number | number[];
-            BaseUnit?: string | string[];
+            Manufacturer?: number | number[];
+            Weight?: number | number[];
+            Height?: number | number[];
+            Length?: number | number[];
+            Width?: number | number[];
+            Name?: string | string[];
             Company?: number | number[];
-            SKU?: string | string[];
             UPC?: string | string[];
             EAN?: string | string[];
             JAN?: string | string[];
             ISBN?: string | string[];
             MPN?: string | string[];
-            Manufacturer?: number | number[];
-            VAT?: number | number[];
-            Weight?: number | number[];
-            Height?: number | number[];
-            Length?: number | number[];
-            Width?: number | number[];
             Enabled?: boolean | boolean[];
         };
         notEquals?: {
             Id?: number | number[];
-            Name?: string | string[];
+            SKU?: string | string[];
             Title?: string | string[];
             Model?: string | string[];
             Batch?: string | string[];
+            BaseUnit?: number | number[];
+            Price?: number | number[];
+            VAT?: number | number[];
             Type?: number | number[];
             Category?: number | number[];
-            BaseUnit?: string | string[];
+            Manufacturer?: number | number[];
+            Weight?: number | number[];
+            Height?: number | number[];
+            Length?: number | number[];
+            Width?: number | number[];
+            Name?: string | string[];
             Company?: number | number[];
-            SKU?: string | string[];
             UPC?: string | string[];
             EAN?: string | string[];
             JAN?: string | string[];
             ISBN?: string | string[];
             MPN?: string | string[];
-            Manufacturer?: number | number[];
-            VAT?: number | number[];
-            Weight?: number | number[];
-            Height?: number | number[];
-            Length?: number | number[];
-            Width?: number | number[];
             Enabled?: boolean | boolean[];
         };
         contains?: {
             Id?: number;
-            Name?: string;
+            SKU?: string;
             Title?: string;
             Model?: string;
             Batch?: string;
+            BaseUnit?: number;
+            Price?: number;
+            VAT?: number;
             Type?: number;
             Category?: number;
-            BaseUnit?: string;
+            Manufacturer?: number;
+            Weight?: number;
+            Height?: number;
+            Length?: number;
+            Width?: number;
+            Name?: string;
             Company?: number;
-            SKU?: string;
             UPC?: string;
             EAN?: string;
             JAN?: string;
             ISBN?: string;
             MPN?: string;
-            Manufacturer?: number;
-            VAT?: number;
-            Weight?: number;
-            Height?: number;
-            Length?: number;
-            Width?: number;
             Enabled?: boolean;
         };
         greaterThan?: {
             Id?: number;
-            Name?: string;
+            SKU?: string;
             Title?: string;
             Model?: string;
             Batch?: string;
+            BaseUnit?: number;
+            Price?: number;
+            VAT?: number;
             Type?: number;
             Category?: number;
-            BaseUnit?: string;
+            Manufacturer?: number;
+            Weight?: number;
+            Height?: number;
+            Length?: number;
+            Width?: number;
+            Name?: string;
             Company?: number;
-            SKU?: string;
             UPC?: string;
             EAN?: string;
             JAN?: string;
             ISBN?: string;
             MPN?: string;
-            Manufacturer?: number;
-            VAT?: number;
-            Weight?: number;
-            Height?: number;
-            Length?: number;
-            Width?: number;
             Enabled?: boolean;
         };
         greaterThanOrEqual?: {
             Id?: number;
-            Name?: string;
+            SKU?: string;
             Title?: string;
             Model?: string;
             Batch?: string;
+            BaseUnit?: number;
+            Price?: number;
+            VAT?: number;
             Type?: number;
             Category?: number;
-            BaseUnit?: string;
+            Manufacturer?: number;
+            Weight?: number;
+            Height?: number;
+            Length?: number;
+            Width?: number;
+            Name?: string;
             Company?: number;
-            SKU?: string;
             UPC?: string;
             EAN?: string;
             JAN?: string;
             ISBN?: string;
             MPN?: string;
-            Manufacturer?: number;
-            VAT?: number;
-            Weight?: number;
-            Height?: number;
-            Length?: number;
-            Width?: number;
             Enabled?: boolean;
         };
         lessThan?: {
             Id?: number;
-            Name?: string;
+            SKU?: string;
             Title?: string;
             Model?: string;
             Batch?: string;
+            BaseUnit?: number;
+            Price?: number;
+            VAT?: number;
             Type?: number;
             Category?: number;
-            BaseUnit?: string;
+            Manufacturer?: number;
+            Weight?: number;
+            Height?: number;
+            Length?: number;
+            Width?: number;
+            Name?: string;
             Company?: number;
-            SKU?: string;
             UPC?: string;
             EAN?: string;
             JAN?: string;
             ISBN?: string;
             MPN?: string;
-            Manufacturer?: number;
-            VAT?: number;
-            Weight?: number;
-            Height?: number;
-            Length?: number;
-            Width?: number;
             Enabled?: boolean;
         };
         lessThanOrEqual?: {
             Id?: number;
-            Name?: string;
+            SKU?: string;
             Title?: string;
             Model?: string;
             Batch?: string;
+            BaseUnit?: number;
+            Price?: number;
+            VAT?: number;
             Type?: number;
             Category?: number;
-            BaseUnit?: string;
+            Manufacturer?: number;
+            Weight?: number;
+            Height?: number;
+            Length?: number;
+            Width?: number;
+            Name?: string;
             Company?: number;
-            SKU?: string;
             UPC?: string;
             EAN?: string;
             JAN?: string;
             ISBN?: string;
             MPN?: string;
-            Manufacturer?: number;
-            VAT?: number;
-            Weight?: number;
-            Height?: number;
-            Length?: number;
-            Width?: number;
             Enabled?: boolean;
         };
     },
@@ -262,10 +271,9 @@ export class ProductRepository {
                 autoIncrement: true,
             },
             {
-                name: "Name",
-                column: "PRODUCT_NAME",
+                name: "SKU",
+                column: "PRODUCT_SKU",
                 type: "VARCHAR",
-                required: true
             },
             {
                 name: "Title",
@@ -286,6 +294,21 @@ export class ProductRepository {
                 required: true
             },
             {
+                name: "BaseUnit",
+                column: "PRODUCT_BASEUNIT",
+                type: "INTEGER",
+            },
+            {
+                name: "Price",
+                column: "PRODUCT_PRICE",
+                type: "DECIMAL",
+            },
+            {
+                name: "VAT",
+                column: "PRODUCT_VAT",
+                type: "DECIMAL",
+            },
+            {
                 name: "Type",
                 column: "PRODUCT_TYPE",
                 type: "INTEGER",
@@ -296,19 +319,40 @@ export class ProductRepository {
                 type: "INTEGER",
             },
             {
-                name: "BaseUnit",
-                column: "PRODUCT_BASEUNIT",
+                name: "Manufacturer",
+                column: "PRODUCT_MANUFACTURER",
+                type: "INTEGER",
+            },
+            {
+                name: "Weight",
+                column: "PRODUCT_WEIGHT",
+                type: "DOUBLE",
+            },
+            {
+                name: "Height",
+                column: "PRODUCT_HEIGHT",
+                type: "DOUBLE",
+            },
+            {
+                name: "Length",
+                column: "PRODUCT_LENGTH",
+                type: "DOUBLE",
+            },
+            {
+                name: "Width",
+                column: "PRODUCT_WIDTH",
+                type: "DOUBLE",
+            },
+            {
+                name: "Name",
+                column: "PRODUCT_NAME",
                 type: "VARCHAR",
+                required: true
             },
             {
                 name: "Company",
                 column: "PRODUCT_COMPANY",
                 type: "INTEGER",
-            },
-            {
-                name: "SKU",
-                column: "PRODUCT_SKU",
-                type: "VARCHAR",
             },
             {
                 name: "UPC",
@@ -334,36 +378,6 @@ export class ProductRepository {
                 name: "MPN",
                 column: "PRODUCT_MPN",
                 type: "VARCHAR",
-            },
-            {
-                name: "Manufacturer",
-                column: "PRODUCT_MANUFACTURER",
-                type: "INTEGER",
-            },
-            {
-                name: "VAT",
-                column: "PRODUCT_VAT",
-                type: "DECIMAL",
-            },
-            {
-                name: "Weight",
-                column: "PRODUCT_WEIGHT",
-                type: "DOUBLE",
-            },
-            {
-                name: "Height",
-                column: "PRODUCT_HEIGHT",
-                type: "DOUBLE",
-            },
-            {
-                name: "Length",
-                column: "PRODUCT_LENGTH",
-                type: "DOUBLE",
-            },
-            {
-                name: "Width",
-                column: "PRODUCT_WIDTH",
-                type: "DOUBLE",
             },
             {
                 name: "Enabled",
