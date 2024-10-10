@@ -119,8 +119,8 @@ class ProductService {
     }
 
     private validateEntity(entity: any): void {
-        if (entity.Name?.length > 500) {
-            throw new ValidationError(`The 'Name' exceeds the maximum length of [500] characters`);
+        if (entity.SKU?.length > 64) {
+            throw new ValidationError(`The 'SKU' exceeds the maximum length of [64] characters`);
         }
         if (entity.Title === null || entity.Title === undefined) {
             throw new ValidationError(`The 'Title' property is required, provide a valid value`);
@@ -143,8 +143,11 @@ class ProductService {
         if (entity.BaseUnit?.length > 20) {
             throw new ValidationError(`The 'BaseUnit' exceeds the maximum length of [20] characters`);
         }
-        if (entity.SKU?.length > 64) {
-            throw new ValidationError(`The 'SKU' exceeds the maximum length of [64] characters`);
+        if (entity.Price === null || entity.Price === undefined) {
+            throw new ValidationError(`The 'Price' property is required, provide a valid value`);
+        }
+        if (entity.Name?.length > 500) {
+            throw new ValidationError(`The 'Name' exceeds the maximum length of [500] characters`);
         }
         if (entity.UPC?.length > 20) {
             throw new ValidationError(`The 'UPC' exceeds the maximum length of [20] characters`);

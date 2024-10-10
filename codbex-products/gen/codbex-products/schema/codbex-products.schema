@@ -58,8 +58,9 @@
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 500,
-                        "name": "PRODUCT_NAME"
+                        "length": 64,
+                        "nullable": true,
+                        "name": "PRODUCT_SKU"
                     },
                     {
                         "type": "VARCHAR",
@@ -77,6 +78,25 @@
                         "name": "PRODUCT_BATCH"
                     },
                     {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "PRODUCT_BASEUNIT"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "nullable": true,
+                        "name": "PRODUCT_PRICE"
+                    },
+                    {
+                        "type": "DECIMAL",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
+                        "nullable": true,
+                        "name": "PRODUCT_VAT"
+                    },
+                    {
                         "type": "INTEGER",
                         "nullable": true,
                         "name": "PRODUCT_TYPE"
@@ -87,21 +107,39 @@
                         "name": "PRODUCT_CATEGORY"
                     },
                     {
-                        "type": "VARCHAR",
-                        "length": 20,
+                        "type": "INTEGER",
                         "nullable": true,
-                        "name": "PRODUCT_BASEUNIT"
+                        "name": "PRODUCT_MANUFACTURER"
+                    },
+                    {
+                        "type": "DOUBLE",
+                        "nullable": true,
+                        "name": "PRODUCT_WEIGHT"
+                    },
+                    {
+                        "type": "DOUBLE",
+                        "nullable": true,
+                        "name": "PRODUCT_HEIGHT"
+                    },
+                    {
+                        "type": "DOUBLE",
+                        "nullable": true,
+                        "name": "PRODUCT_LENGTH"
+                    },
+                    {
+                        "type": "DOUBLE",
+                        "nullable": true,
+                        "name": "PRODUCT_WIDTH"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 500,
+                        "name": "PRODUCT_NAME"
                     },
                     {
                         "type": "INTEGER",
                         "nullable": true,
                         "name": "PRODUCT_COMPANY"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 64,
-                        "nullable": true,
-                        "name": "PRODUCT_SKU"
                     },
                     {
                         "type": "VARCHAR",
@@ -132,39 +170,6 @@
                         "length": 40,
                         "nullable": true,
                         "name": "PRODUCT_MPN"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "PRODUCT_MANUFACTURER"
-                    },
-                    {
-                        "type": "DECIMAL",
-                        "length": 18,
-                        "precision": "16",
-                        "scale": "2",
-                        "nullable": true,
-                        "name": "PRODUCT_VAT"
-                    },
-                    {
-                        "type": "DOUBLE",
-                        "nullable": true,
-                        "name": "PRODUCT_WEIGHT"
-                    },
-                    {
-                        "type": "DOUBLE",
-                        "nullable": true,
-                        "name": "PRODUCT_HEIGHT"
-                    },
-                    {
-                        "type": "DOUBLE",
-                        "nullable": true,
-                        "name": "PRODUCT_LENGTH"
-                    },
-                    {
-                        "type": "DOUBLE",
-                        "nullable": true,
-                        "name": "PRODUCT_WIDTH"
                     },
                     {
                         "type": "BOOLEAN",
@@ -285,6 +290,15 @@
                 ]
             },
             {
+                "name": "Product_UoM",
+                "type": "foreignKey",
+                "table": "CODBEX_PRODUCT",
+                "constraintName": "Product_UoM",
+                "columns": "PRODUCT_BASEUNIT",
+                "referencedTable": "CODBEX_UOM",
+                "referencedColumns": "UOM_ID"
+            },
+            {
                 "name": "Product_ProductType",
                 "type": "foreignKey",
                 "table": "CODBEX_PRODUCT",
@@ -303,13 +317,13 @@
                 "referencedColumns": "PRODUCTCATEGORY_ID"
             },
             {
-                "name": "Product_UoM",
+                "name": "Product_Manufacturer",
                 "type": "foreignKey",
                 "table": "CODBEX_PRODUCT",
-                "constraintName": "Product_UoM",
-                "columns": "PRODUCT_BASEUNIT",
-                "referencedTable": "CODBEX_UOM",
-                "referencedColumns": "UOM_ID"
+                "constraintName": "Product_Manufacturer",
+                "columns": "PRODUCT_MANUFACTURER",
+                "referencedTable": "CODBEX_MANUFACTURER",
+                "referencedColumns": "ENTITY5_ENTITY5ID"
             },
             {
                 "name": "Product_Company",
@@ -319,15 +333,6 @@
                 "columns": "PRODUCT_COMPANY",
                 "referencedTable": "CODBEX_COMPANY",
                 "referencedColumns": "COMPANY_ID"
-            },
-            {
-                "name": "Product_Manufacturer",
-                "type": "foreignKey",
-                "table": "CODBEX_PRODUCT",
-                "constraintName": "Product_Manufacturer",
-                "columns": "PRODUCT_MANUFACTURER",
-                "referencedTable": "CODBEX_MANUFACTURER",
-                "referencedColumns": "ENTITY5_ENTITY5ID"
             },
             {
                 "name": "ProductAttribute_Product",

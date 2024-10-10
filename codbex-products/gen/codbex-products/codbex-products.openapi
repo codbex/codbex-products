@@ -1065,12 +1065,12 @@ paths:
                     notEquals:
                       Id: 33
                     contains:
-                      Name: "abcd"
+                      SKU: "abcd"
                       Title: "abcd"
                       Model: "abcd"
                       Batch: "abcd"
                       BaseUnit: "abcd"
-                      SKU: "abcd"
+                      Name: "abcd"
                       UPC: "abcd"
                       EAN: "abcd"
                       JAN: "abcd"
@@ -1097,12 +1097,12 @@ paths:
                 value:
                   $filter:
                     contains:
-                      Name: "abcd"
+                      SKU: "abcd"
                       Title: "abcd"
                       Model: "abcd"
                       Batch: "abcd"
                       BaseUnit: "abcd"
-                      SKU: "abcd"
+                      Name: "abcd"
                       UPC: "abcd"
                       EAN: "abcd"
                       JAN: "abcd"
@@ -1171,12 +1171,12 @@ paths:
                     notEquals:
                       Id: 33
                     contains:
-                      Name: "abcd"
+                      SKU: "abcd"
                       Title: "abcd"
                       Model: "abcd"
                       Batch: "abcd"
                       BaseUnit: "abcd"
-                      SKU: "abcd"
+                      Name: "abcd"
                       UPC: "abcd"
                       EAN: "abcd"
                       JAN: "abcd"
@@ -1203,12 +1203,12 @@ paths:
                 value:
                   $filter:
                     contains:
-                      Name: "abcd"
+                      SKU: "abcd"
                       Title: "abcd"
                       Model: "abcd"
                       Batch: "abcd"
                       BaseUnit: "abcd"
-                      SKU: "abcd"
+                      Name: "abcd"
                       UPC: "abcd"
                       EAN: "abcd"
                       JAN: "abcd"
@@ -2740,15 +2740,15 @@ components:
         - Title
         - Model
         - Batch
+        - Price
       properties:
         Id:
           type: integer
           format: int32
-        Name:
+        SKU:
           type: string
           minLength: 0
-          maxLength: 500
-          readOnly: true
+          maxLength: 64
         Title:
           type: string
           minLength: 0
@@ -2761,23 +2761,45 @@ components:
           type: string
           minLength: 0
           maxLength: 50
+        BaseUnit:
+          type: string
+          minLength: 0
+          maxLength: 20
+        Price:
+          type: number
+          format: double
+        VAT:
+          type: number
+          format: double
         Type:
           type: integer
           format: int32
         Category:
           type: integer
           format: int32
-        BaseUnit:
+        Manufacturer:
+          type: integer
+          format: int32
+        Weight:
+          type: number
+          format: double
+        Height:
+          type: number
+          format: double
+        Length:
+          type: number
+          format: double
+        Width:
+          type: number
+          format: double
+        Name:
           type: string
           minLength: 0
-          maxLength: 20
+          maxLength: 500
+          readOnly: true
         Company:
           type: integer
           format: int32
-        SKU:
-          type: string
-          minLength: 0
-          maxLength: 64
         UPC:
           type: string
           minLength: 0
@@ -2798,24 +2820,6 @@ components:
           type: string
           minLength: 0
           maxLength: 40
-        Manufacturer:
-          type: integer
-          format: int32
-        VAT:
-          type: number
-          format: double
-        Weight:
-          type: number
-          format: double
-        Height:
-          type: number
-          format: double
-        Length:
-          type: number
-          format: double
-        Width:
-          type: number
-          format: double
         Enabled:
           type: boolean
     ProductFilterOptions:
@@ -2835,17 +2839,17 @@ components:
                       items:
                         type: integer
                         format: int32
-                Name:
+                SKU:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 500
+                      maxLength: 64
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 500
+                        maxLength: 64
                 Title:
                   oneOf:
                     - type: string
@@ -2879,6 +2883,33 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 50
+                BaseUnit:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
+                Price:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                VAT:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
                 Type:
                   oneOf:
                     - type: integer
@@ -2895,17 +2926,57 @@ components:
                       items:
                         type: integer
                         format: int32
-                BaseUnit:
+                Manufacturer:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Weight:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Height:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Length:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Width:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Name:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 20
+                      maxLength: 500
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 20
+                        maxLength: 500
                 Company:
                   oneOf:
                     - type: integer
@@ -2914,17 +2985,6 @@ components:
                       items:
                         type: integer
                         format: int32
-                SKU:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 64
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 64
                 UPC:
                   oneOf:
                     - type: string
@@ -2980,54 +3040,6 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 40
-                Manufacturer:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                VAT:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                Weight:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                Height:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                Length:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                Width:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
                 Enabled:
                   oneOf:
                     - type: boolean
@@ -3045,17 +3057,17 @@ components:
                       items:
                         type: integer
                         format: int32
-                Name:
+                SKU:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 500
+                      maxLength: 64
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 500
+                        maxLength: 64
                 Title:
                   oneOf:
                     - type: string
@@ -3089,6 +3101,33 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 50
+                BaseUnit:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
+                Price:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                VAT:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
                 Type:
                   oneOf:
                     - type: integer
@@ -3105,17 +3144,57 @@ components:
                       items:
                         type: integer
                         format: int32
-                BaseUnit:
+                Manufacturer:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Weight:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Height:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Length:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Width:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Name:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 20
+                      maxLength: 500
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 20
+                        maxLength: 500
                 Company:
                   oneOf:
                     - type: integer
@@ -3124,17 +3203,6 @@ components:
                       items:
                         type: integer
                         format: int32
-                SKU:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 64
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 64
                 UPC:
                   oneOf:
                     - type: string
@@ -3190,54 +3258,6 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 40
-                Manufacturer:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                VAT:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                Weight:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                Height:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                Length:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                Width:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
                 Enabled:
                   oneOf:
                     - type: boolean
@@ -3248,10 +3268,10 @@ components:
               type: object
               properties:
                 Id:
-                Name:
+                SKU:
                   type: string
                   minLength: 0
-                  maxLength: 500
+                  maxLength: 64
                 Title:
                   type: string
                   minLength: 0
@@ -3264,17 +3284,24 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 50
-                Type:
-                Category:
                 BaseUnit:
                   type: string
                   minLength: 0
                   maxLength: 20
-                Company:
-                SKU:
+                Price:
+                VAT:
+                Type:
+                Category:
+                Manufacturer:
+                Weight:
+                Height:
+                Length:
+                Width:
+                Name:
                   type: string
                   minLength: 0
-                  maxLength: 64
+                  maxLength: 500
+                Company:
                 UPC:
                   type: string
                   minLength: 0
@@ -3295,12 +3322,6 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 40
-                Manufacturer:
-                VAT:
-                Weight:
-                Height:
-                Length:
-                Width:
                 Enabled:
             greaterThan:
               type: object
@@ -3308,10 +3329,10 @@ components:
                 Id:
                   type: integer
                   format: int32
-                Name:
+                SKU:
                   type: string
                   minLength: 0
-                  maxLength: 500
+                  maxLength: 64
                 Title:
                   type: string
                   minLength: 0
@@ -3324,23 +3345,44 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 50
+                BaseUnit:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Price:
+                  type: number
+                  format: double
+                VAT:
+                  type: number
+                  format: double
                 Type:
                   type: integer
                   format: int32
                 Category:
                   type: integer
                   format: int32
-                BaseUnit:
+                Manufacturer:
+                  type: integer
+                  format: int32
+                Weight:
+                  type: number
+                  format: double
+                Height:
+                  type: number
+                  format: double
+                Length:
+                  type: number
+                  format: double
+                Width:
+                  type: number
+                  format: double
+                Name:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 500
                 Company:
                   type: integer
                   format: int32
-                SKU:
-                  type: string
-                  minLength: 0
-                  maxLength: 64
                 UPC:
                   type: string
                   minLength: 0
@@ -3361,24 +3403,6 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 40
-                Manufacturer:
-                  type: integer
-                  format: int32
-                VAT:
-                  type: number
-                  format: double
-                Weight:
-                  type: number
-                  format: double
-                Height:
-                  type: number
-                  format: double
-                Length:
-                  type: number
-                  format: double
-                Width:
-                  type: number
-                  format: double
                 Enabled:
             greaterThanOrEqual:
               type: object
@@ -3386,10 +3410,10 @@ components:
                 Id:
                   type: integer
                   format: int32
-                Name:
+                SKU:
                   type: string
                   minLength: 0
-                  maxLength: 500
+                  maxLength: 64
                 Title:
                   type: string
                   minLength: 0
@@ -3402,23 +3426,44 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 50
+                BaseUnit:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Price:
+                  type: number
+                  format: double
+                VAT:
+                  type: number
+                  format: double
                 Type:
                   type: integer
                   format: int32
                 Category:
                   type: integer
                   format: int32
-                BaseUnit:
+                Manufacturer:
+                  type: integer
+                  format: int32
+                Weight:
+                  type: number
+                  format: double
+                Height:
+                  type: number
+                  format: double
+                Length:
+                  type: number
+                  format: double
+                Width:
+                  type: number
+                  format: double
+                Name:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 500
                 Company:
                   type: integer
                   format: int32
-                SKU:
-                  type: string
-                  minLength: 0
-                  maxLength: 64
                 UPC:
                   type: string
                   minLength: 0
@@ -3439,24 +3484,6 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 40
-                Manufacturer:
-                  type: integer
-                  format: int32
-                VAT:
-                  type: number
-                  format: double
-                Weight:
-                  type: number
-                  format: double
-                Height:
-                  type: number
-                  format: double
-                Length:
-                  type: number
-                  format: double
-                Width:
-                  type: number
-                  format: double
                 Enabled:
             lessThan:
               type: object
@@ -3464,10 +3491,10 @@ components:
                 Id:
                   type: integer
                   format: int32
-                Name:
+                SKU:
                   type: string
                   minLength: 0
-                  maxLength: 500
+                  maxLength: 64
                 Title:
                   type: string
                   minLength: 0
@@ -3480,23 +3507,44 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 50
+                BaseUnit:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Price:
+                  type: number
+                  format: double
+                VAT:
+                  type: number
+                  format: double
                 Type:
                   type: integer
                   format: int32
                 Category:
                   type: integer
                   format: int32
-                BaseUnit:
+                Manufacturer:
+                  type: integer
+                  format: int32
+                Weight:
+                  type: number
+                  format: double
+                Height:
+                  type: number
+                  format: double
+                Length:
+                  type: number
+                  format: double
+                Width:
+                  type: number
+                  format: double
+                Name:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 500
                 Company:
                   type: integer
                   format: int32
-                SKU:
-                  type: string
-                  minLength: 0
-                  maxLength: 64
                 UPC:
                   type: string
                   minLength: 0
@@ -3517,24 +3565,6 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 40
-                Manufacturer:
-                  type: integer
-                  format: int32
-                VAT:
-                  type: number
-                  format: double
-                Weight:
-                  type: number
-                  format: double
-                Height:
-                  type: number
-                  format: double
-                Length:
-                  type: number
-                  format: double
-                Width:
-                  type: number
-                  format: double
                 Enabled:
             lessThanOrEqual:
               type: object
@@ -3542,10 +3572,10 @@ components:
                 Id:
                   type: integer
                   format: int32
-                Name:
+                SKU:
                   type: string
                   minLength: 0
-                  maxLength: 500
+                  maxLength: 64
                 Title:
                   type: string
                   minLength: 0
@@ -3558,23 +3588,44 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 50
+                BaseUnit:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Price:
+                  type: number
+                  format: double
+                VAT:
+                  type: number
+                  format: double
                 Type:
                   type: integer
                   format: int32
                 Category:
                   type: integer
                   format: int32
-                BaseUnit:
+                Manufacturer:
+                  type: integer
+                  format: int32
+                Weight:
+                  type: number
+                  format: double
+                Height:
+                  type: number
+                  format: double
+                Length:
+                  type: number
+                  format: double
+                Width:
+                  type: number
+                  format: double
+                Name:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 500
                 Company:
                   type: integer
                   format: int32
-                SKU:
-                  type: string
-                  minLength: 0
-                  maxLength: 64
                 UPC:
                   type: string
                   minLength: 0
@@ -3595,33 +3646,15 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 40
-                Manufacturer:
-                  type: integer
-                  format: int32
-                VAT:
-                  type: number
-                  format: double
-                Weight:
-                  type: number
-                  format: double
-                Height:
-                  type: number
-                  format: double
-                Length:
-                  type: number
-                  format: double
-                Width:
-                  type: number
-                  format: double
                 Enabled:
         $select:
           type: array
-          example: ["Id", "Name", "Title", "Model", "Batch", "Type", "Category", "BaseUnit", "Company", "SKU", "UPC", "EAN", "JAN", "ISBN", "MPN", "Manufacturer", "VAT", "Weight", "Height", "Length", "Width", "Enabled"]
+          example: ["Id", "SKU", "Title", "Model", "Batch", "BaseUnit", "Price", "VAT", "Type", "Category", "Manufacturer", "Weight", "Height", "Length", "Width", "Name", "Company", "UPC", "EAN", "JAN", "ISBN", "MPN", "Enabled"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Name,Title,Model,Batch,Type,Category,BaseUnit,Company,SKU,UPC,EAN,JAN,ISBN,MPN,Manufacturer,VAT,Weight,Height,Length,Width,Enabled"
+            example: "Id,SKU,Title,Model,Batch,BaseUnit,Price,VAT,Type,Category,Manufacturer,Weight,Height,Length,Width,Name,Company,UPC,EAN,JAN,ISBN,MPN,Enabled"
         $order:
           type: string
           enum: ["asc", "desc"]

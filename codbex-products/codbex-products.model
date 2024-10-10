@@ -121,18 +121,15 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "calculatedPropertyExpressionCreate": "(entity[\"Title\"] + \"/\" + entity[\"Model\"] + \"/\" + entity[\"Batch\"] + \"-\" + (entity[\"Enabled\"] ? 'enabled' : 'disabled'));",
-                        "calculatedPropertyExpressionUpdate": "(entity[\"Title\"] + \"/\" + entity[\"Model\"] + \"/\" + entity[\"Batch\"] + \"-\" + (entity[\"Enabled\"] ? 'enabled' : 'disabled'));",
-                        "dataLength": "500",
-                        "dataName": "PRODUCT_NAME",
-                        "dataNullable": "false",
+                        "dataLength": "64",
+                        "dataName": "PRODUCT_SKU",
+                        "dataNullable": "true",
                         "dataType": "VARCHAR",
-                        "isCalculatedProperty": "true",
-                        "name": "Name",
+                        "name": "SKU",
                         "widgetIsMajor": "true",
-                        "widgetLength": "500",
+                        "widgetLength": "64",
                         "widgetSize": "",
-                        "widgetType": "TEXTAREA"
+                        "widgetType": "TEXTBOX"
                     },
                     {
                         "dataLength": "200",
@@ -171,6 +168,50 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
+                        "dataLength": "20",
+                        "dataName": "PRODUCT_BASEUNIT",
+                        "dataNullable": "true",
+                        "dataType": "VARCHAR",
+                        "name": "BaseUnit",
+                        "widgetDropDownKey": "Id",
+                        "widgetDropDownValue": "Name",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "DROPDOWN",
+                        "relationshipName": "Product_UoM",
+                        "relationshipEntityName": "UoM",
+                        "relationshipEntityPerspectiveName": "UnitsOfMeasures",
+                        "relationshipEntityPerspectiveLabel": "Entities"
+                    },
+                    {
+                        "dataLength": "NaN",
+                        "dataName": "PRODUCT_PRICE",
+                        "dataNullable": "true",
+                        "dataPrecision": "NaN",
+                        "dataScale": "NaN",
+                        "dataType": "DECIMAL",
+                        "isRequiredProperty": "true",
+                        "name": "Price",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "dataLength": "18",
+                        "dataName": "PRODUCT_VAT",
+                        "dataNullable": "true",
+                        "dataPrecision": "16",
+                        "dataScale": "2",
+                        "dataType": "DECIMAL",
+                        "name": "VAT",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "NUMBER"
+                    },
+                    {
                         "dataName": "PRODUCT_TYPE",
                         "dataNullable": "true",
                         "dataType": "INTEGER",
@@ -203,21 +244,74 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
-                        "dataLength": "20",
-                        "dataName": "PRODUCT_BASEUNIT",
+                        "dataName": "PRODUCT_MANUFACTURER",
                         "dataNullable": "true",
-                        "dataType": "VARCHAR",
-                        "name": "BaseUnit",
+                        "dataType": "INTEGER",
+                        "name": "Manufacturer",
                         "widgetDropDownKey": "Id",
                         "widgetDropDownValue": "Name",
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
                         "widgetSize": "",
                         "widgetType": "DROPDOWN",
-                        "relationshipName": "Product_UoM",
-                        "relationshipEntityName": "UoM",
-                        "relationshipEntityPerspectiveName": "UnitsOfMeasures",
+                        "relationshipName": "Product_Manufacturer",
+                        "relationshipEntityName": "Manufacturer",
+                        "relationshipEntityPerspectiveName": "Manufacturers",
                         "relationshipEntityPerspectiveLabel": "Entities"
+                    },
+                    {
+                        "dataName": "PRODUCT_WEIGHT",
+                        "dataNullable": "true",
+                        "dataType": "DOUBLE",
+                        "name": "Weight",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "NUMBER"
+                    },
+                    {
+                        "dataName": "PRODUCT_HEIGHT",
+                        "dataNullable": "true",
+                        "dataType": "DOUBLE",
+                        "name": "Height",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "NUMBER"
+                    },
+                    {
+                        "dataName": "PRODUCT_LENGTH",
+                        "dataNullable": "true",
+                        "dataType": "DOUBLE",
+                        "name": "Length",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "NUMBER"
+                    },
+                    {
+                        "dataName": "PRODUCT_WIDTH",
+                        "dataNullable": "true",
+                        "dataType": "DOUBLE",
+                        "name": "Width",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "NUMBER"
+                    },
+                    {
+                        "calculatedPropertyExpressionCreate": "(entity[\"Title\"] + \"/\" + entity[\"Model\"] + \"/\" + entity[\"Batch\"] + \"-\" + (entity[\"Enabled\"] ? 'enabled' : 'disabled'));",
+                        "calculatedPropertyExpressionUpdate": "(entity[\"Title\"] + \"/\" + entity[\"Model\"] + \"/\" + entity[\"Batch\"] + \"-\" + (entity[\"Enabled\"] ? 'enabled' : 'disabled'));",
+                        "dataLength": "500",
+                        "dataName": "PRODUCT_NAME",
+                        "dataNullable": "false",
+                        "dataType": "VARCHAR",
+                        "isCalculatedProperty": "true",
+                        "name": "Name",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "500",
+                        "widgetSize": "",
+                        "widgetType": "TEXTAREA"
                     },
                     {
                         "dataName": "PRODUCT_COMPANY",
@@ -234,17 +328,6 @@
                         "relationshipEntityName": "Company",
                         "relationshipEntityPerspectiveName": "Companies",
                         "relationshipEntityPerspectiveLabel": "Entities"
-                    },
-                    {
-                        "dataLength": "64",
-                        "dataName": "PRODUCT_SKU",
-                        "dataNullable": "true",
-                        "dataType": "VARCHAR",
-                        "name": "SKU",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "64",
-                        "widgetSize": "",
-                        "widgetType": "TEXTBOX"
                     },
                     {
                         "dataLength": "20",
@@ -300,75 +383,6 @@
                         "widgetLength": "40",
                         "widgetSize": "",
                         "widgetType": "TEXTBOX"
-                    },
-                    {
-                        "dataName": "PRODUCT_MANUFACTURER",
-                        "dataNullable": "true",
-                        "dataType": "INTEGER",
-                        "name": "Manufacturer",
-                        "widgetDropDownKey": "Id",
-                        "widgetDropDownValue": "Name",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "DROPDOWN",
-                        "relationshipName": "Product_Manufacturer",
-                        "relationshipEntityName": "Manufacturer",
-                        "relationshipEntityPerspectiveName": "Manufacturers",
-                        "relationshipEntityPerspectiveLabel": "Entities"
-                    },
-                    {
-                        "dataLength": "18",
-                        "dataName": "PRODUCT_VAT",
-                        "dataNullable": "true",
-                        "dataPrecision": "16",
-                        "dataScale": "2",
-                        "dataType": "DECIMAL",
-                        "name": "VAT",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "NUMBER"
-                    },
-                    {
-                        "dataName": "PRODUCT_WEIGHT",
-                        "dataNullable": "true",
-                        "dataType": "DOUBLE",
-                        "name": "Weight",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "NUMBER"
-                    },
-                    {
-                        "dataName": "PRODUCT_HEIGHT",
-                        "dataNullable": "true",
-                        "dataType": "DOUBLE",
-                        "name": "Height",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "NUMBER"
-                    },
-                    {
-                        "dataName": "PRODUCT_LENGTH",
-                        "dataNullable": "true",
-                        "dataType": "DOUBLE",
-                        "name": "Length",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "NUMBER"
-                    },
-                    {
-                        "dataName": "PRODUCT_WIDTH",
-                        "dataNullable": "true",
-                        "dataType": "DOUBLE",
-                        "name": "Width",
-                        "widgetIsMajor": "true",
-                        "widgetLength": "20",
-                        "widgetSize": "",
-                        "widgetType": "NUMBER"
                     },
                     {
                         "dataName": "PRODUCT_ENABLED",

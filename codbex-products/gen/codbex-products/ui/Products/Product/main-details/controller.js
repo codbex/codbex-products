@@ -40,11 +40,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHub.onDidReceiveMessage("clearDetails", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = {};
+				$scope.optionsBaseUnit = [];
 				$scope.optionsType = [];
 				$scope.optionsCategory = [];
-				$scope.optionsBaseUnit = [];
-				$scope.optionsCompany = [];
 				$scope.optionsManufacturer = [];
+				$scope.optionsCompany = [];
 				$scope.action = 'select';
 			});
 		});
@@ -52,11 +52,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHub.onDidReceiveMessage("entitySelected", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = msg.data.entity;
+				$scope.optionsBaseUnit = msg.data.optionsBaseUnit;
 				$scope.optionsType = msg.data.optionsType;
 				$scope.optionsCategory = msg.data.optionsCategory;
-				$scope.optionsBaseUnit = msg.data.optionsBaseUnit;
-				$scope.optionsCompany = msg.data.optionsCompany;
 				$scope.optionsManufacturer = msg.data.optionsManufacturer;
+				$scope.optionsCompany = msg.data.optionsCompany;
 				$scope.action = 'select';
 			});
 		});
@@ -64,11 +64,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHub.onDidReceiveMessage("createEntity", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = {};
+				$scope.optionsBaseUnit = msg.data.optionsBaseUnit;
 				$scope.optionsType = msg.data.optionsType;
 				$scope.optionsCategory = msg.data.optionsCategory;
-				$scope.optionsBaseUnit = msg.data.optionsBaseUnit;
-				$scope.optionsCompany = msg.data.optionsCompany;
 				$scope.optionsManufacturer = msg.data.optionsManufacturer;
+				$scope.optionsCompany = msg.data.optionsCompany;
 				$scope.action = 'create';
 			});
 		});
@@ -76,11 +76,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHub.onDidReceiveMessage("updateEntity", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = msg.data.entity;
+				$scope.optionsBaseUnit = msg.data.optionsBaseUnit;
 				$scope.optionsType = msg.data.optionsType;
 				$scope.optionsCategory = msg.data.optionsCategory;
-				$scope.optionsBaseUnit = msg.data.optionsBaseUnit;
-				$scope.optionsCompany = msg.data.optionsCompany;
 				$scope.optionsManufacturer = msg.data.optionsManufacturer;
+				$scope.optionsCompany = msg.data.optionsCompany;
 				$scope.action = 'update';
 			});
 		});
