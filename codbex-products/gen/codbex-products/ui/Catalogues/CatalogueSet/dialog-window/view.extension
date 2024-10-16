@@ -1,0 +1,5 @@
+{
+    "module": "codbex-products/gen/codbex-products/ui/Catalogues/${masterEntity}/CatalogueSet/dialog-window/view.js",
+    "extensionPoint": "codbex-products-dialog-window",
+    "description": "codbex-products - Application Dialog Window"
+}

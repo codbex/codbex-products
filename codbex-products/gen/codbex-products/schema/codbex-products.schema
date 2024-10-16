@@ -229,6 +229,12 @@
                     {
                         "type": "DOUBLE",
                         "name": "CATALOGUE_QUANTITY"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "defaultValue": "17",
+                        "nullable": true,
+                        "name": "CATALOGUE_BASEUNIT"
                     }
                 ]
             },
@@ -285,6 +291,34 @@
                         "type": "DECIMAL",
                         "nullable": true,
                         "name": "PRODUCTSET_RATIO"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_SET",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "SET_ID"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "SET_CATALOGUE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "SET_PRODUCTSET"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "SET_QUANTITY"
                     }
                 ]
             },
@@ -361,6 +395,15 @@
                 "referencedColumns": "STORE_ID"
             },
             {
+                "name": "Catalogue_UoM",
+                "type": "foreignKey",
+                "table": "CODBEX_CATALOGUE",
+                "constraintName": "Catalogue_UoM",
+                "columns": "CATALOGUE_BASEUNIT",
+                "referencedTable": "CODBEX_UOM",
+                "referencedColumns": "UOM_ID"
+            },
+            {
                 "name": "ProductSet_UoM",
                 "type": "foreignKey",
                 "table": "CODBEX_PRODUCTSET",
@@ -377,6 +420,24 @@
                 "columns": "PRODUCTSET_PRODUCT",
                 "referencedTable": "CODBEX_PRODUCT",
                 "referencedColumns": "PRODUCT_ID"
+            },
+            {
+                "name": "CatalogueSet_Catalogue",
+                "type": "foreignKey",
+                "table": "CODBEX_SET",
+                "constraintName": "CatalogueSet_Catalogue",
+                "columns": "SET_CATALOGUE",
+                "referencedTable": "CODBEX_CATALOGUE",
+                "referencedColumns": "CATALOGUE_ID"
+            },
+            {
+                "name": "CatalogueSet_ProductSet",
+                "type": "foreignKey",
+                "table": "CODBEX_SET",
+                "constraintName": "CatalogueSet_ProductSet",
+                "columns": "SET_PRODUCTSET",
+                "referencedTable": "CODBEX_PRODUCTSET",
+                "referencedColumns": "PRODUCTSET_ID"
             }
         ]
     },

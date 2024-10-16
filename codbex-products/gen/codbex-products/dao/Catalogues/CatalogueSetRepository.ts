@@ -3,88 +3,79 @@ import { producer } from "sdk/messaging";
 import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
 
-export interface CatalogueEntity {
+export interface CatalogueSetEntity {
     readonly Id: number;
-    Product: number;
-    Store: number;
-    Quantity: number;
-    BaseUnit?: number;
+    Catalogue?: number;
+    ProductSet?: number;
+    Quantity?: number;
 }
 
-export interface CatalogueCreateEntity {
-    readonly Product: number;
-    readonly Store: number;
-    readonly Quantity: number;
-    readonly BaseUnit?: number;
+export interface CatalogueSetCreateEntity {
+    readonly Catalogue?: number;
+    readonly ProductSet?: number;
+    readonly Quantity?: number;
 }
 
-export interface CatalogueUpdateEntity extends CatalogueCreateEntity {
+export interface CatalogueSetUpdateEntity extends CatalogueSetCreateEntity {
     readonly Id: number;
 }
 
-export interface CatalogueEntityOptions {
+export interface CatalogueSetEntityOptions {
     $filter?: {
         equals?: {
             Id?: number | number[];
-            Product?: number | number[];
-            Store?: number | number[];
+            Catalogue?: number | number[];
+            ProductSet?: number | number[];
             Quantity?: number | number[];
-            BaseUnit?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
-            Product?: number | number[];
-            Store?: number | number[];
+            Catalogue?: number | number[];
+            ProductSet?: number | number[];
             Quantity?: number | number[];
-            BaseUnit?: number | number[];
         };
         contains?: {
             Id?: number;
-            Product?: number;
-            Store?: number;
+            Catalogue?: number;
+            ProductSet?: number;
             Quantity?: number;
-            BaseUnit?: number;
         };
         greaterThan?: {
             Id?: number;
-            Product?: number;
-            Store?: number;
+            Catalogue?: number;
+            ProductSet?: number;
             Quantity?: number;
-            BaseUnit?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
-            Product?: number;
-            Store?: number;
+            Catalogue?: number;
+            ProductSet?: number;
             Quantity?: number;
-            BaseUnit?: number;
         };
         lessThan?: {
             Id?: number;
-            Product?: number;
-            Store?: number;
+            Catalogue?: number;
+            ProductSet?: number;
             Quantity?: number;
-            BaseUnit?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
-            Product?: number;
-            Store?: number;
+            Catalogue?: number;
+            ProductSet?: number;
             Quantity?: number;
-            BaseUnit?: number;
         };
     },
-    $select?: (keyof CatalogueEntity)[],
-    $sort?: string | (keyof CatalogueEntity)[],
+    $select?: (keyof CatalogueSetEntity)[],
+    $sort?: string | (keyof CatalogueSetEntity)[],
     $order?: 'asc' | 'desc',
     $offset?: number,
     $limit?: number,
 }
 
-interface CatalogueEntityEvent {
+interface CatalogueSetEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
-    readonly entity: Partial<CatalogueEntity>;
+    readonly entity: Partial<CatalogueSetEntity>;
     readonly key: {
         name: string;
         column: string;
@@ -92,43 +83,35 @@ interface CatalogueEntityEvent {
     }
 }
 
-interface CatalogueUpdateEntityEvent extends CatalogueEntityEvent {
-    readonly previousEntity: CatalogueEntity;
+interface CatalogueSetUpdateEntityEvent extends CatalogueSetEntityEvent {
+    readonly previousEntity: CatalogueSetEntity;
 }
 
-export class CatalogueRepository {
+export class CatalogueSetRepository {
 
     private static readonly DEFINITION = {
-        table: "CODBEX_CATALOGUE",
+        table: "CODBEX_SET",
         properties: [
             {
                 name: "Id",
-                column: "CATALOGUE_ID",
+                column: "SET_ID",
                 type: "INTEGER",
                 id: true,
                 autoIncrement: true,
             },
             {
-                name: "Product",
-                column: "CATALOGUE_PRODUCT",
+                name: "Catalogue",
+                column: "SET_CATALOGUE",
                 type: "INTEGER",
-                required: true
             },
             {
-                name: "Store",
-                column: "CATALOGUE_STORE",
+                name: "ProductSet",
+                column: "SET_PRODUCTSET",
                 type: "INTEGER",
-                required: true
             },
             {
                 name: "Quantity",
-                column: "CATALOGUE_QUANTITY",
-                type: "DOUBLE",
-                required: true
-            },
-            {
-                name: "BaseUnit",
-                column: "CATALOGUE_BASEUNIT",
+                column: "SET_QUANTITY",
                 type: "INTEGER",
             }
         ]
@@ -137,61 +120,58 @@ export class CatalogueRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(CatalogueRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(CatalogueSetRepository.DEFINITION, null, dataSource);
     }
 
-    public findAll(options?: CatalogueEntityOptions): CatalogueEntity[] {
+    public findAll(options?: CatalogueSetEntityOptions): CatalogueSetEntity[] {
         return this.dao.list(options);
     }
 
-    public findById(id: number): CatalogueEntity | undefined {
+    public findById(id: number): CatalogueSetEntity | undefined {
         const entity = this.dao.find(id);
         return entity ?? undefined;
     }
 
-    public create(entity: CatalogueCreateEntity): number {
-        if (entity.BaseUnit === undefined || entity.BaseUnit === null) {
-            (entity as CatalogueEntity).BaseUnit = 17;
-        }
+    public create(entity: CatalogueSetCreateEntity): number {
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
-            table: "CODBEX_CATALOGUE",
+            table: "CODBEX_SET",
             entity: entity,
             key: {
                 name: "Id",
-                column: "CATALOGUE_ID",
+                column: "SET_ID",
                 value: id
             }
         });
         return id;
     }
 
-    public update(entity: CatalogueUpdateEntity): void {
+    public update(entity: CatalogueSetUpdateEntity): void {
         const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
-            table: "CODBEX_CATALOGUE",
+            table: "CODBEX_SET",
             entity: entity,
             previousEntity: previousEntity,
             key: {
                 name: "Id",
-                column: "CATALOGUE_ID",
+                column: "SET_ID",
                 value: entity.Id
             }
         });
     }
 
-    public upsert(entity: CatalogueCreateEntity | CatalogueUpdateEntity): number {
-        const id = (entity as CatalogueUpdateEntity).Id;
+    public upsert(entity: CatalogueSetCreateEntity | CatalogueSetUpdateEntity): number {
+        const id = (entity as CatalogueSetUpdateEntity).Id;
         if (!id) {
             return this.create(entity);
         }
 
         const existingEntity = this.findById(id);
         if (existingEntity) {
-            this.update(entity as CatalogueUpdateEntity);
+            this.update(entity as CatalogueSetUpdateEntity);
             return id;
         } else {
             return this.create(entity);
@@ -203,22 +183,22 @@ export class CatalogueRepository {
         this.dao.remove(id);
         this.triggerEvent({
             operation: "delete",
-            table: "CODBEX_CATALOGUE",
+            table: "CODBEX_SET",
             entity: entity,
             key: {
                 name: "Id",
-                column: "CATALOGUE_ID",
+                column: "SET_ID",
                 value: id
             }
         });
     }
 
-    public count(options?: CatalogueEntityOptions): number {
+    public count(options?: CatalogueSetEntityOptions): number {
         return this.dao.count(options);
     }
 
     public customDataCount(): number {
-        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_CATALOGUE"');
+        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_SET"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
                 return resultSet[0].COUNT;
@@ -229,8 +209,8 @@ export class CatalogueRepository {
         return 0;
     }
 
-    private async triggerEvent(data: CatalogueEntityEvent | CatalogueUpdateEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-products-Catalogues-Catalogue", ["trigger"]);
+    private async triggerEvent(data: CatalogueSetEntityEvent | CatalogueSetUpdateEntityEvent) {
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-products-Catalogues-CatalogueSet", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -238,6 +218,6 @@ export class CatalogueRepository {
                 console.error(error);
             }            
         });
-        producer.topic("codbex-products-Catalogues-Catalogue").send(JSON.stringify(data));
+        producer.topic("codbex-products-Catalogues-CatalogueSet").send(JSON.stringify(data));
     }
 }

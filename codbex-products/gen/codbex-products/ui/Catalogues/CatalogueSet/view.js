@@ -4,11 +4,11 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "Catalogue",
-    label: "Catalogue",
+    id: "CatalogueSet",
+    label: "CatalogueSet",
     factory: "frame",
-    region: "left",
-    link: "/services/web/codbex-products/gen/codbex-products/ui/Catalogues/Catalogue/index.html",
+    region: "bottom",
+    link: "/services/web/codbex-products/gen/codbex-products/ui/Catalogues/${masterEntity}/CatalogueSet/index.html",
     perspectiveName: "Catalogues",
 };
 
