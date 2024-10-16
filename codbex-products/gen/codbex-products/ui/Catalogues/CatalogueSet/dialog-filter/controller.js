@@ -42,8 +42,8 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Catalogue !== undefined) {
 				filter.$filter.equals.Catalogue = entity.Catalogue;
 			}
-			if (entity.ProductSet !== undefined) {
-				filter.$filter.equals.ProductSet = entity.ProductSet;
+			if (entity.Product !== undefined) {
+				filter.$filter.equals.Product = entity.Product;
 			}
 			if (entity.Quantity !== undefined) {
 				filter.$filter.equals.Quantity = entity.Quantity;

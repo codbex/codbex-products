@@ -43,13 +43,13 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		resetPagination();
 
 		//-----------------Events-------------------//
-		messageHub.onDidReceiveMessage("codbex-products.Products.Product.entitySelected", function (msg) {
+		messageHub.onDidReceiveMessage("codbex-products.Products.${masterEntity}.entitySelected", function (msg) {
 			resetPagination();
 			$scope.selectedMainEntityId = msg.data.selectedMainEntityId;
 			$scope.loadPage($scope.dataPage);
 		}, true);
 
-		messageHub.onDidReceiveMessage("codbex-products.Products.Product.clearDetails", function (msg) {
+		messageHub.onDidReceiveMessage("codbex-products.Products.${masterEntity}.clearDetails", function (msg) {
 			$scope.$apply(function () {
 				resetPagination();
 				$scope.selectedMainEntityId = null;
@@ -81,7 +81,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		//-----------------Events-------------------//
 
 		$scope.loadPage = function (pageNumber, filter) {
-			let Product = $scope.selectedMainEntityId;
+			let ${masterEntityId} = $scope.selectedMainEntityId;
 			$scope.dataPage = pageNumber;
 			if (!filter && $scope.filter) {
 				filter = $scope.filter;
@@ -95,7 +95,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			if (!filter.$filter.equals) {
 				filter.$filter.equals = {};
 			}
-			filter.$filter.equals.Product = Product;
+			filter.$filter.equals.${masterEntityId} = ${masterEntityId};
 			entityApi.count(filter).then(function (response) {
 				if (response.status != 200) {
 					messageHub.showAlertError("ProductSet", `Unable to count ProductSet: '${response.message}'`);
@@ -126,7 +126,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				action: "select",
 				entity: entity,
 				optionsUoM: $scope.optionsUoM,
-				optionsProduct: $scope.optionsProduct,
 			});
 		};
 
@@ -134,7 +133,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("ProductSet-filter", {
 				entity: $scope.filterEntity,
 				optionsUoM: $scope.optionsUoM,
-				optionsProduct: $scope.optionsProduct,
 			});
 		};
 
@@ -143,10 +141,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("ProductSet-details", {
 				action: "create",
 				entity: {},
-				selectedMainEntityKey: "Product",
+				selectedMainEntityKey: "${masterEntityId}",
 				selectedMainEntityId: $scope.selectedMainEntityId,
 				optionsUoM: $scope.optionsUoM,
-				optionsProduct: $scope.optionsProduct,
 			}, null, false);
 		};
 
@@ -154,10 +151,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("ProductSet-details", {
 				action: "update",
 				entity: entity,
-				selectedMainEntityKey: "Product",
+				selectedMainEntityKey: "${masterEntityId}",
 				selectedMainEntityId: $scope.selectedMainEntityId,
 				optionsUoM: $scope.optionsUoM,
-				optionsProduct: $scope.optionsProduct,
 			}, null, false);
 		};
 
@@ -192,7 +188,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		//----------------Dropdowns-----------------//
 		$scope.optionsUoM = [];
-		$scope.optionsProduct = [];
 
 
 		$http.get("/services/ts/codbex-uoms/gen/codbex-uoms/api/UnitsOfMeasures/UoMService.ts").then(function (response) {
@@ -204,27 +199,10 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/ts/codbex-products/gen/codbex-products/api/Products/ProductService.ts").then(function (response) {
-			$scope.optionsProduct = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
-				}
-			});
-		});
-
 		$scope.optionsUoMValue = function (optionKey) {
 			for (let i = 0; i < $scope.optionsUoM.length; i++) {
 				if ($scope.optionsUoM[i].value === optionKey) {
 					return $scope.optionsUoM[i].text;
-				}
-			}
-			return null;
-		};
-		$scope.optionsProductValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsProduct.length; i++) {
-				if ($scope.optionsProduct[i].value === optionKey) {
-					return $scope.optionsProduct[i].text;
 				}
 			}
 			return null;

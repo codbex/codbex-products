@@ -25,7 +25,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
 			$scope.optionsUoM = params.optionsUoM;
-			$scope.optionsProduct = params.optionsProduct;
 		}
 
 		$scope.create = function () {

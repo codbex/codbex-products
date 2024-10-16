@@ -6,13 +6,13 @@ import { dao as daoApi } from "sdk/db";
 export interface CatalogueSetEntity {
     readonly Id: number;
     Catalogue?: number;
-    ProductSet?: number;
+    Product?: number;
     Quantity?: number;
 }
 
 export interface CatalogueSetCreateEntity {
     readonly Catalogue?: number;
-    readonly ProductSet?: number;
+    readonly Product?: number;
     readonly Quantity?: number;
 }
 
@@ -25,43 +25,43 @@ export interface CatalogueSetEntityOptions {
         equals?: {
             Id?: number | number[];
             Catalogue?: number | number[];
-            ProductSet?: number | number[];
+            Product?: number | number[];
             Quantity?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
             Catalogue?: number | number[];
-            ProductSet?: number | number[];
+            Product?: number | number[];
             Quantity?: number | number[];
         };
         contains?: {
             Id?: number;
             Catalogue?: number;
-            ProductSet?: number;
+            Product?: number;
             Quantity?: number;
         };
         greaterThan?: {
             Id?: number;
             Catalogue?: number;
-            ProductSet?: number;
+            Product?: number;
             Quantity?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
             Catalogue?: number;
-            ProductSet?: number;
+            Product?: number;
             Quantity?: number;
         };
         lessThan?: {
             Id?: number;
             Catalogue?: number;
-            ProductSet?: number;
+            Product?: number;
             Quantity?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
             Catalogue?: number;
-            ProductSet?: number;
+            Product?: number;
             Quantity?: number;
         };
     },
@@ -90,28 +90,28 @@ interface CatalogueSetUpdateEntityEvent extends CatalogueSetEntityEvent {
 export class CatalogueSetRepository {
 
     private static readonly DEFINITION = {
-        table: "CODBEX_SET",
+        table: "CODBEX_CATALOGUESET",
         properties: [
             {
                 name: "Id",
-                column: "SET_ID",
+                column: "CATALOGUESET_ID",
                 type: "INTEGER",
                 id: true,
                 autoIncrement: true,
             },
             {
                 name: "Catalogue",
-                column: "SET_CATALOGUE",
+                column: "CATALOGUESET_CATALOGUE",
                 type: "INTEGER",
             },
             {
-                name: "ProductSet",
-                column: "SET_PRODUCTSET",
+                name: "Product",
+                column: "CATALOGUESET_PRODUCT",
                 type: "INTEGER",
             },
             {
                 name: "Quantity",
-                column: "SET_QUANTITY",
+                column: "CATALOGUESET_QUANTITY",
                 type: "INTEGER",
             }
         ]
@@ -136,11 +136,11 @@ export class CatalogueSetRepository {
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
-            table: "CODBEX_SET",
+            table: "CODBEX_CATALOGUESET",
             entity: entity,
             key: {
                 name: "Id",
-                column: "SET_ID",
+                column: "CATALOGUESET_ID",
                 value: id
             }
         });
@@ -152,12 +152,12 @@ export class CatalogueSetRepository {
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
-            table: "CODBEX_SET",
+            table: "CODBEX_CATALOGUESET",
             entity: entity,
             previousEntity: previousEntity,
             key: {
                 name: "Id",
-                column: "SET_ID",
+                column: "CATALOGUESET_ID",
                 value: entity.Id
             }
         });
@@ -183,11 +183,11 @@ export class CatalogueSetRepository {
         this.dao.remove(id);
         this.triggerEvent({
             operation: "delete",
-            table: "CODBEX_SET",
+            table: "CODBEX_CATALOGUESET",
             entity: entity,
             key: {
                 name: "Id",
-                column: "SET_ID",
+                column: "CATALOGUESET_ID",
                 value: id
             }
         });
@@ -198,7 +198,7 @@ export class CatalogueSetRepository {
     }
 
     public customDataCount(): number {
-        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_SET"');
+        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_CATALOGUESET"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
                 return resultSet[0].COUNT;

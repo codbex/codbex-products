@@ -7,20 +7,20 @@ export interface ProductSetEntity {
     readonly Id: number;
     UoM?: number;
     Product?: number;
-    Weight: number;
-    Height: number;
-    Length: number;
-    Width: number;
+    Weight?: number;
+    Height?: number;
+    Length?: number;
+    Width?: number;
     Ratio?: number;
 }
 
 export interface ProductSetCreateEntity {
     readonly UoM?: number;
     readonly Product?: number;
-    readonly Weight: number;
-    readonly Height: number;
-    readonly Length: number;
-    readonly Width: number;
+    readonly Weight?: number;
+    readonly Height?: number;
+    readonly Length?: number;
+    readonly Width?: number;
     readonly Ratio?: number;
 }
 
@@ -149,25 +149,21 @@ export class ProductSetRepository {
                 name: "Weight",
                 column: "PRODUCTSET_WEIGHT",
                 type: "DECIMAL",
-                required: true
             },
             {
                 name: "Height",
                 column: "PRODUCTSET_HEIGHT",
                 type: "DECIMAL",
-                required: true
             },
             {
                 name: "Length",
                 column: "PRODUCTSET_LENGTH",
                 type: "DECIMAL",
-                required: true
             },
             {
                 name: "Width",
                 column: "PRODUCTSET_WIDTH",
                 type: "DECIMAL",
-                required: true
             },
             {
                 name: "Ratio",
@@ -258,7 +254,7 @@ export class ProductSetRepository {
     }
 
     public customDataCount(): number {
-        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_SET"');
+        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_PRODUCTSET"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
                 return resultSet[0].COUNT;

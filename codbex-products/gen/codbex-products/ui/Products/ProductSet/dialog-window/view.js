@@ -4,16 +4,14 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "ProductSet",
+    id: "ProductSet-details",
     label: "ProductSet",
-    factory: "frame",
-    region: "bottom",
-    link: "/services/web/codbex-products/gen/codbex-products/ui/Products/Product/ProductSet/index.html",
+    link: "/services/web/codbex-products/gen/codbex-products/ui/Products/${masterEntity}/ProductSet/dialog-window/index.html",
     perspectiveName: "Products",
 };
 
 if (typeof exports !== 'undefined') {
-    exports.getView = function () {
+    exports.getDialogWindow = function () {
         return viewData;
     }
 }
