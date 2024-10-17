@@ -8,7 +8,7 @@ const viewData = {
     label: "CatalogueSet",
     factory: "frame",
     region: "bottom",
-    link: "/services/web/codbex-products/gen/codbex-products/ui/Catalogues/${masterEntity}/CatalogueSet/index.html",
+    link: "/services/web/codbex-products/gen/codbex-products/ui/Catalogues/Catalogue/CatalogueSet/index.html",
     perspectiveName: "Catalogues",
 };
 

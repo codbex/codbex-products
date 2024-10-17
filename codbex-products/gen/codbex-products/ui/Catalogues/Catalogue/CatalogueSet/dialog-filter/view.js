@@ -6,7 +6,7 @@
 const viewData = {
     id: "CatalogueSet-filter",
     label: "CatalogueSet Filter",
-    link: "/services/web/codbex-products/gen/codbex-products/ui/Catalogues/${masterEntity}/CatalogueSet/dialog-filter/index.html",
+    link: "/services/web/codbex-products/gen/codbex-products/ui/Catalogues/Catalogue/CatalogueSet/dialog-filter/index.html",
     perspectiveName: "Catalogues",
 };
 

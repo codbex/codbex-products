@@ -19,13 +19,13 @@ class CatalogueSetService {
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
 
-            let ${masterEntityId} = parseInt(ctx.queryParameters.${masterEntityId});
-            ${masterEntityId} = isNaN(${masterEntityId}) ? ctx.queryParameters.${masterEntityId} : ${masterEntityId};
+            let Catalogue = parseInt(ctx.queryParameters.Catalogue);
+            Catalogue = isNaN(Catalogue) ? ctx.queryParameters.Catalogue : Catalogue;
 
-            if (${masterEntityId} !== undefined) {
+            if (Catalogue !== undefined) {
                 options.$filter = {
                     equals: {
-                        ${masterEntityId}: ${masterEntityId}
+                        Catalogue: Catalogue
                     }
                 };
             }

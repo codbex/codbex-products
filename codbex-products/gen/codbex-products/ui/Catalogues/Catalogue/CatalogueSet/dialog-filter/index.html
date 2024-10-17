@@ -29,25 +29,6 @@
                 <fd-form-group dg-header="CatalogueSet Filter" name="entityForm" class="fd-container fd-form-layout-grid-container">
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idCatalogue" dg-colon="true">Catalogue</fd-form-label>
-                        </div>
-                        <div class="fd-col fd-col-md--8">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Catalogue'].$valid }}">
-	                            <fd-input id="idCatalogue"
-	                                name="Catalogue"
-	                                state="{{ forms.details['Catalogue'].$valid ? '' : 'error' }}"
-	                                ng-model="entity.Catalogue"
-	                                ng-minlength="${property.minLength} || 0"
-	                                ng-maxlength="${property.maxLength} || -1"
-	                                type="text"
-	                                placeholder="Enter Catalogue">
-	                            </fd-input>
-	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
-	                        </fd-form-input-message-group>
-	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
-                    	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idProduct" dg-colon="true">Product</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">

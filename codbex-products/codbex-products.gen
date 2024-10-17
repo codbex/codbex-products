@@ -3165,12 +3165,14 @@
           "dataType": "INTEGER",
           "description": "",
           "name": "Catalogue",
+          "relationshipCardinality": "1_n",
+          "relationshipName": "CatalogueSet_Catalogue",
+          "relationshipType": "COMPOSITION",
           "tooltip": "",
-          "widgetIsMajor": true,
+          "widgetIsMajor": false,
           "widgetLength": "20",
           "widgetSize": "",
           "widgetType": "TEXTBOX",
-          "relationshipName": "CatalogueSet_Catalogue",
           "relationshipEntityName": "Catalogue",
           "relationshipEntityPerspectiveName": "Catalogues",
           "relationshipEntityPerspectiveLabel": "Entities",
@@ -3263,7 +3265,9 @@
       "primaryKeys": [
         "Id"
       ],
-      "primaryKeysString": "Id"
+      "primaryKeysString": "Id",
+      "masterEntity": "Catalogue",
+      "masterEntityId": "Catalogue"
     },
     {
       "properties": [
@@ -3325,12 +3329,14 @@
           "dataType": "INTEGER",
           "description": "",
           "name": "Product",
+          "relationshipCardinality": "1_n",
+          "relationshipName": "ProductSet_Product",
+          "relationshipType": "COMPOSITION",
           "tooltip": "",
-          "widgetIsMajor": true,
+          "widgetIsMajor": false,
           "widgetLength": "20",
           "widgetSize": "",
           "widgetType": "TEXTBOX",
-          "relationshipName": "ProductSet_Product",
           "relationshipEntityName": "Product",
           "relationshipEntityPerspectiveName": "Products",
           "relationshipEntityPerspectiveLabel": "Entities",
@@ -3495,7 +3501,9 @@
         "Id"
       ],
       "primaryKeysString": "Id",
-      "hasDropdowns": true
+      "hasDropdowns": true,
+      "masterEntity": "Product",
+      "masterEntityId": "Product"
     }
   ]
 }

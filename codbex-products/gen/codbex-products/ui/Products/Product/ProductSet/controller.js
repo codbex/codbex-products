@@ -1,15 +1,15 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-products.Catalogues.CatalogueSet';
+		messageHubProvider.eventIdPrefix = 'codbex-products.Products.ProductSet';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-products/gen/codbex-products/api/Catalogues/CatalogueSetService.ts";
+		entityApiProvider.baseUrl = "/services/ts/codbex-products/gen/codbex-products/api/Products/ProductSetService.ts";
 	}])
-	.controller('PageController', ['$scope', 'messageHub', 'entityApi', 'Extensions', function ($scope, messageHub, entityApi, Extensions) {
+	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', 'Extensions', function ($scope, $http, messageHub, entityApi, Extensions) {
 		//-----------------Custom Actions-------------------//
 		Extensions.get('dialogWindow', 'codbex-products-custom-action').then(function (response) {
-			$scope.pageActions = response.filter(e => e.perspective === "Catalogues" && e.view === "CatalogueSet" && (e.type === "page" || e.type === undefined));
-			$scope.entityActions = response.filter(e => e.perspective === "Catalogues" && e.view === "CatalogueSet" && e.type === "entity");
+			$scope.pageActions = response.filter(e => e.perspective === "Products" && e.view === "ProductSet" && (e.type === "page" || e.type === undefined));
+			$scope.entityActions = response.filter(e => e.perspective === "Products" && e.view === "ProductSet" && e.type === "entity");
 		});
 
 		$scope.triggerPageAction = function (action) {
@@ -43,13 +43,13 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		resetPagination();
 
 		//-----------------Events-------------------//
-		messageHub.onDidReceiveMessage("codbex-products.Catalogues.${masterEntity}.entitySelected", function (msg) {
+		messageHub.onDidReceiveMessage("codbex-products.Products.Product.entitySelected", function (msg) {
 			resetPagination();
 			$scope.selectedMainEntityId = msg.data.selectedMainEntityId;
 			$scope.loadPage($scope.dataPage);
 		}, true);
 
-		messageHub.onDidReceiveMessage("codbex-products.Catalogues.${masterEntity}.clearDetails", function (msg) {
+		messageHub.onDidReceiveMessage("codbex-products.Products.Product.clearDetails", function (msg) {
 			$scope.$apply(function () {
 				resetPagination();
 				$scope.selectedMainEntityId = null;
@@ -81,7 +81,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		//-----------------Events-------------------//
 
 		$scope.loadPage = function (pageNumber, filter) {
-			let ${masterEntityId} = $scope.selectedMainEntityId;
+			let Product = $scope.selectedMainEntityId;
 			$scope.dataPage = pageNumber;
 			if (!filter && $scope.filter) {
 				filter = $scope.filter;
@@ -95,10 +95,10 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			if (!filter.$filter.equals) {
 				filter.$filter.equals = {};
 			}
-			filter.$filter.equals.${masterEntityId} = ${masterEntityId};
+			filter.$filter.equals.Product = Product;
 			entityApi.count(filter).then(function (response) {
 				if (response.status != 200) {
-					messageHub.showAlertError("CatalogueSet", `Unable to count CatalogueSet: '${response.message}'`);
+					messageHub.showAlertError("ProductSet", `Unable to count ProductSet: '${response.message}'`);
 					return;
 				}
 				if (response.data) {
@@ -108,7 +108,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				filter.$limit = $scope.dataLimit;
 				entityApi.search(filter).then(function (response) {
 					if (response.status != 200) {
-						messageHub.showAlertError("CatalogueSet", `Unable to list/filter CatalogueSet: '${response.message}'`);
+						messageHub.showAlertError("ProductSet", `Unable to list/filter ProductSet: '${response.message}'`);
 						return;
 					}
 					$scope.data = response.data;
@@ -122,42 +122,46 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		$scope.openDetails = function (entity) {
 			$scope.selectedEntity = entity;
-			messageHub.showDialogWindow("CatalogueSet-details", {
+			messageHub.showDialogWindow("ProductSet-details", {
 				action: "select",
 				entity: entity,
+				optionsUoM: $scope.optionsUoM,
 			});
 		};
 
 		$scope.openFilter = function (entity) {
-			messageHub.showDialogWindow("CatalogueSet-filter", {
+			messageHub.showDialogWindow("ProductSet-filter", {
 				entity: $scope.filterEntity,
+				optionsUoM: $scope.optionsUoM,
 			});
 		};
 
 		$scope.createEntity = function () {
 			$scope.selectedEntity = null;
-			messageHub.showDialogWindow("CatalogueSet-details", {
+			messageHub.showDialogWindow("ProductSet-details", {
 				action: "create",
 				entity: {},
-				selectedMainEntityKey: "${masterEntityId}",
+				selectedMainEntityKey: "Product",
 				selectedMainEntityId: $scope.selectedMainEntityId,
+				optionsUoM: $scope.optionsUoM,
 			}, null, false);
 		};
 
 		$scope.updateEntity = function (entity) {
-			messageHub.showDialogWindow("CatalogueSet-details", {
+			messageHub.showDialogWindow("ProductSet-details", {
 				action: "update",
 				entity: entity,
-				selectedMainEntityKey: "${masterEntityId}",
+				selectedMainEntityKey: "Product",
 				selectedMainEntityId: $scope.selectedMainEntityId,
+				optionsUoM: $scope.optionsUoM,
 			}, null, false);
 		};
 
 		$scope.deleteEntity = function (entity) {
 			let id = entity.Id;
 			messageHub.showDialogAsync(
-				'Delete CatalogueSet?',
-				`Are you sure you want to delete CatalogueSet? This action cannot be undone.`,
+				'Delete ProductSet?',
+				`Are you sure you want to delete ProductSet? This action cannot be undone.`,
 				[{
 					id: "delete-btn-yes",
 					type: "emphasized",
@@ -172,7 +176,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				if (msg.data === "delete-btn-yes") {
 					entityApi.delete(id).then(function (response) {
 						if (response.status != 204) {
-							messageHub.showAlertError("CatalogueSet", `Unable to delete CatalogueSet: '${response.message}'`);
+							messageHub.showAlertError("ProductSet", `Unable to delete ProductSet: '${response.message}'`);
 							return;
 						}
 						$scope.loadPage($scope.dataPage, $scope.filter);
@@ -181,5 +185,28 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				}
 			});
 		};
+
+		//----------------Dropdowns-----------------//
+		$scope.optionsUoM = [];
+
+
+		$http.get("/services/ts/codbex-uoms/gen/codbex-uoms/api/UnitsOfMeasures/UoMService.ts").then(function (response) {
+			$scope.optionsUoM = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
+				}
+			});
+		});
+
+		$scope.optionsUoMValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsUoM.length; i++) {
+				if ($scope.optionsUoM[i].value === optionKey) {
+					return $scope.optionsUoM[i].text;
+				}
+			}
+			return null;
+		};
+		//----------------Dropdowns-----------------//
 
 	}]);
