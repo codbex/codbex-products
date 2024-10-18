@@ -27,22 +27,25 @@
 
             <fd-fieldset ng-form="forms.details">
                 <fd-form-group dg-header="Product Filter" name="entityForm" class="fd-container fd-form-layout-grid-container">
-					<fd-form-item class="fd-row">
-						<div class="fd-col fd-col-md--2">
-							<fd-form-label for="idName" dg-colon="true">Name</fd-form-label>
-						</div>
-						<div class="fd-col fd-col-md--8">
-							<fd-textarea id="idName"
-								name="Name"
-								state="{{ forms.details['Name'].$valid ? '' : 'error' }}"
-								ng-model="entity.Name"
-								ng-minlength="0.0 || 0"
-								ng-maxlength="500.0 || -1"
-								placeholder="Enter Name">
-							</fd-textarea>
-							<fd-form-message dg-type="error" ng-show="!forms.details['Name'].$valid">Incorrect Input</fd-form-message>
-						</div>
-					</fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idSKU" dg-colon="true">SKU</fd-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--8">
+	                        <fd-form-input-message-group dg-inactive="{{ forms.details['SKU'].$valid }}">
+	                            <fd-input id="idSKU"
+	                                name="SKU"
+	                                state="{{ forms.details['SKU'].$valid ? '' : 'error' }}"
+	                                ng-model="entity.SKU"
+	                                ng-minlength="0.0 || 0"
+	                                ng-maxlength="64.0 || -1"
+	                                type="text"
+	                                placeholder="Enter SKU">
+	                            </fd-input>
+	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
+	                        </fd-form-input-message-group>
+	                    </div>
+                    </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idTitle" dg-colon="true">Title</fd-form-label>
@@ -102,6 +105,53 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idBaseUnit" dg-colon="true">BaseUnit</fd-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--8">
+	                        <fd-combobox-input id="idBaseUnit"
+	                            name="BaseUnit"
+	                            state="{{ forms.details['BaseUnit'].$valid ? '' : 'error' }}"
+	                            ng-model="entity.BaseUnit"
+	                            dropdown-items="optionsBaseUnit"
+	                            dg-placeholder="Search BaseUnit ...">
+	                        </fd-combobox-input>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idPrice" dg-colon="true">Price</fd-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--8">
+	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Price'].$valid }}">
+	                            <fd-input id="idPrice"
+	                                name="Price"
+	                                state="{{ forms.details['Price'].$valid ? '' : 'error' }}"
+	                                ng-model="entity.Price"
+	                                ng-minlength="${property.minLength} || 0"
+	                                ng-maxlength="${property.maxLength} || -1"
+	                                type="text"
+	                                placeholder="Enter Price">
+	                            </fd-input>
+	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
+	                        </fd-form-input-message-group>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idVAT" dg-colon="true">VAT</fd-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--4">
+	                        <fd-step-input dg-id="idVAT"
+								name="VAT"
+								state="{{ forms.details['VAT'].$valid ? '' : 'error' }}"
+								ng-model="entity.VAT"
+								placeholder="Enter VAT"
+								>
+							</fd-step-input>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idType" dg-colon="true">Type</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
@@ -130,18 +180,90 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idBaseUnit" dg-colon="true">BaseUnit</fd-form-label>
+                        	<fd-form-label for="idManufacturer" dg-colon="true">Manufacturer</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
-	                        <fd-combobox-input id="idBaseUnit"
-	                            name="BaseUnit"
-	                            state="{{ forms.details['BaseUnit'].$valid ? '' : 'error' }}"
-	                            ng-model="entity.BaseUnit"
-	                            dropdown-items="optionsBaseUnit"
-	                            dg-placeholder="Search BaseUnit ...">
+	                        <fd-combobox-input id="idManufacturer"
+	                            name="Manufacturer"
+	                            state="{{ forms.details['Manufacturer'].$valid ? '' : 'error' }}"
+	                            ng-model="entity.Manufacturer"
+	                            dropdown-items="optionsManufacturer"
+	                            dg-placeholder="Search Manufacturer ...">
 	                        </fd-combobox-input>
 	                    </div>
                     </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idWeight" dg-colon="true">Weight</fd-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--4">
+	                        <fd-step-input dg-id="idWeight"
+								name="Weight"
+								state="{{ forms.details['Weight'].$valid ? '' : 'error' }}"
+								ng-model="entity.Weight"
+								placeholder="Enter Weight"
+								>
+							</fd-step-input>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idHeight" dg-colon="true">Height</fd-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--4">
+	                        <fd-step-input dg-id="idHeight"
+								name="Height"
+								state="{{ forms.details['Height'].$valid ? '' : 'error' }}"
+								ng-model="entity.Height"
+								placeholder="Enter Height"
+								>
+							</fd-step-input>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idLength" dg-colon="true">Length</fd-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--4">
+	                        <fd-step-input dg-id="idLength"
+								name="Length"
+								state="{{ forms.details['Length'].$valid ? '' : 'error' }}"
+								ng-model="entity.Length"
+								placeholder="Enter Length"
+								>
+							</fd-step-input>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idWidth" dg-colon="true">Width</fd-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--4">
+	                        <fd-step-input dg-id="idWidth"
+								name="Width"
+								state="{{ forms.details['Width'].$valid ? '' : 'error' }}"
+								ng-model="entity.Width"
+								placeholder="Enter Width"
+								>
+							</fd-step-input>
+	                    </div>
+                    </fd-form-item>
+					<fd-form-item class="fd-row">
+						<div class="fd-col fd-col-md--2">
+							<fd-form-label for="idName" dg-colon="true">Name</fd-form-label>
+						</div>
+						<div class="fd-col fd-col-md--8">
+							<fd-textarea id="idName"
+								name="Name"
+								state="{{ forms.details['Name'].$valid ? '' : 'error' }}"
+								ng-model="entity.Name"
+								ng-minlength="0.0 || 0"
+								ng-maxlength="500.0 || -1"
+								placeholder="Enter Name">
+							</fd-textarea>
+							<fd-form-message dg-type="error" ng-show="!forms.details['Name'].$valid">Incorrect Input</fd-form-message>
+						</div>
+					</fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idCompany" dg-colon="true">Company</fd-form-label>
@@ -154,25 +276,6 @@
 	                            dropdown-items="optionsCompany"
 	                            dg-placeholder="Search Company ...">
 	                        </fd-combobox-input>
-	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
-                    	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idSKU" dg-colon="true">SKU</fd-form-label>
-                        </div>
-                        <div class="fd-col fd-col-md--8">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['SKU'].$valid }}">
-	                            <fd-input id="idSKU"
-	                                name="SKU"
-	                                state="{{ forms.details['SKU'].$valid ? '' : 'error' }}"
-	                                ng-model="entity.SKU"
-	                                ng-minlength="0.0 || 0"
-	                                ng-maxlength="64.0 || -1"
-	                                type="text"
-	                                placeholder="Enter SKU">
-	                            </fd-input>
-	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
-	                        </fd-form-input-message-group>
 	                    </div>
                     </fd-form-item>
                     <fd-form-item class="fd-row">
@@ -268,90 +371,6 @@
 	                            </fd-input>
 	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
 	                        </fd-form-input-message-group>
-	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
-                    	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idManufacturer" dg-colon="true">Manufacturer</fd-form-label>
-                        </div>
-                        <div class="fd-col fd-col-md--8">
-	                        <fd-combobox-input id="idManufacturer"
-	                            name="Manufacturer"
-	                            state="{{ forms.details['Manufacturer'].$valid ? '' : 'error' }}"
-	                            ng-model="entity.Manufacturer"
-	                            dropdown-items="optionsManufacturer"
-	                            dg-placeholder="Search Manufacturer ...">
-	                        </fd-combobox-input>
-	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
-                    	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idVAT" dg-colon="true">VAT</fd-form-label>
-                        </div>
-                        <div class="fd-col fd-col-md--4">
-	                        <fd-step-input dg-id="idVAT"
-								name="VAT"
-								state="{{ forms.details['VAT'].$valid ? '' : 'error' }}"
-								ng-model="entity.VAT"
-								placeholder="Enter VAT"
-								>
-							</fd-step-input>
-	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
-                    	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idWeight" dg-colon="true">Weight</fd-form-label>
-                        </div>
-                        <div class="fd-col fd-col-md--4">
-	                        <fd-step-input dg-id="idWeight"
-								name="Weight"
-								state="{{ forms.details['Weight'].$valid ? '' : 'error' }}"
-								ng-model="entity.Weight"
-								placeholder="Enter Weight"
-								>
-							</fd-step-input>
-	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
-                    	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idHeight" dg-colon="true">Height</fd-form-label>
-                        </div>
-                        <div class="fd-col fd-col-md--4">
-	                        <fd-step-input dg-id="idHeight"
-								name="Height"
-								state="{{ forms.details['Height'].$valid ? '' : 'error' }}"
-								ng-model="entity.Height"
-								placeholder="Enter Height"
-								>
-							</fd-step-input>
-	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
-                    	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idLength" dg-colon="true">Length</fd-form-label>
-                        </div>
-                        <div class="fd-col fd-col-md--4">
-	                        <fd-step-input dg-id="idLength"
-								name="Length"
-								state="{{ forms.details['Length'].$valid ? '' : 'error' }}"
-								ng-model="entity.Length"
-								placeholder="Enter Length"
-								>
-							</fd-step-input>
-	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
-                    	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idWidth" dg-colon="true">Width</fd-form-label>
-                        </div>
-                        <div class="fd-col fd-col-md--4">
-	                        <fd-step-input dg-id="idWidth"
-								name="Width"
-								state="{{ forms.details['Width'].$valid ? '' : 'error' }}"
-								ng-model="entity.Width"
-								placeholder="Enter Width"
-								>
-							</fd-step-input>
 	                    </div>
                     </fd-form-item>
                     <fd-form-item class="fd-row">

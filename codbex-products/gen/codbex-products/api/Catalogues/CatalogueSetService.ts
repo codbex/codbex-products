@@ -1,23 +1,34 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { ProductRepository, ProductEntityOptions } from "../../dao/Products/ProductRepository";
+import { CatalogueSetRepository, CatalogueSetEntityOptions } from "../../dao/Catalogues/CatalogueSetRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-products-Products-Product", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-products-Catalogues-CatalogueSet", ["validate"]);
 
 @Controller
-class ProductService {
+class CatalogueSetService {
 
-    private readonly repository = new ProductRepository();
+    private readonly repository = new CatalogueSetRepository();
 
     @Get("/")
     public getAll(_: any, ctx: any) {
         try {
-            const options: ProductEntityOptions = {
+            const options: CatalogueSetEntityOptions = {
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
+
+            let Catalogue = parseInt(ctx.queryParameters.Catalogue);
+            Catalogue = isNaN(Catalogue) ? ctx.queryParameters.Catalogue : Catalogue;
+
+            if (Catalogue !== undefined) {
+                options.$filter = {
+                    equals: {
+                        Catalogue: Catalogue
+                    }
+                };
+            }
 
             return this.repository.findAll(options);
         } catch (error: any) {
@@ -30,7 +41,7 @@ class ProductService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-products/gen/codbex-products/api/Products/ProductService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-products/gen/codbex-products/api/Catalogues/CatalogueSetService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
@@ -73,7 +84,7 @@ class ProductService {
             if (entity) {
                 return entity;
             } else {
-                HttpUtils.sendResponseNotFound("Product not found");
+                HttpUtils.sendResponseNotFound("CatalogueSet not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -101,7 +112,7 @@ class ProductService {
                 this.repository.deleteById(id);
                 HttpUtils.sendResponseNoContent();
             } else {
-                HttpUtils.sendResponseNotFound("Product not found");
+                HttpUtils.sendResponseNotFound("CatalogueSet not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -119,54 +130,6 @@ class ProductService {
     }
 
     private validateEntity(entity: any): void {
-        if (entity.SKU?.length > 64) {
-            throw new ValidationError(`The 'SKU' exceeds the maximum length of [64] characters`);
-        }
-        if (entity.Title === null || entity.Title === undefined) {
-            throw new ValidationError(`The 'Title' property is required, provide a valid value`);
-        }
-        if (entity.Title?.length > 200) {
-            throw new ValidationError(`The 'Title' exceeds the maximum length of [200] characters`);
-        }
-        if (entity.Model === null || entity.Model === undefined) {
-            throw new ValidationError(`The 'Model' property is required, provide a valid value`);
-        }
-        if (entity.Model?.length > 200) {
-            throw new ValidationError(`The 'Model' exceeds the maximum length of [200] characters`);
-        }
-        if (entity.Batch === null || entity.Batch === undefined) {
-            throw new ValidationError(`The 'Batch' property is required, provide a valid value`);
-        }
-        if (entity.Batch?.length > 50) {
-            throw new ValidationError(`The 'Batch' exceeds the maximum length of [50] characters`);
-        }
-        if (entity.BaseUnit === null || entity.BaseUnit === undefined) {
-            throw new ValidationError(`The 'BaseUnit' property is required, provide a valid value`);
-        }
-        if (entity.Price === null || entity.Price === undefined) {
-            throw new ValidationError(`The 'Price' property is required, provide a valid value`);
-        }
-        if (entity.VAT === null || entity.VAT === undefined) {
-            throw new ValidationError(`The 'VAT' property is required, provide a valid value`);
-        }
-        if (entity.Name?.length > 500) {
-            throw new ValidationError(`The 'Name' exceeds the maximum length of [500] characters`);
-        }
-        if (entity.UPC?.length > 20) {
-            throw new ValidationError(`The 'UPC' exceeds the maximum length of [20] characters`);
-        }
-        if (entity.EAN?.length > 20) {
-            throw new ValidationError(`The 'EAN' exceeds the maximum length of [20] characters`);
-        }
-        if (entity.JAN?.length > 20) {
-            throw new ValidationError(`The 'JAN' exceeds the maximum length of [20] characters`);
-        }
-        if (entity.ISBN?.length > 20) {
-            throw new ValidationError(`The 'ISBN' exceeds the maximum length of [20] characters`);
-        }
-        if (entity.MPN?.length > 40) {
-            throw new ValidationError(`The 'MPN' exceeds the maximum length of [40] characters`);
-        }
         for (const next of validationModules) {
             next.validate(entity);
         }
