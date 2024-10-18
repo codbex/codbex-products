@@ -257,7 +257,7 @@
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "CATALOGUESET_PRODUCT"
+                        "name": "CATALOGUESET_PRODUCTSET"
                     },
                     {
                         "type": "INTEGER",
@@ -405,13 +405,13 @@
                 "referencedColumns": "CATALOGUE_ID"
             },
             {
-                "name": "CatalogueSet_Product",
+                "name": "CatalogueSet_ProductSet",
                 "type": "foreignKey",
                 "table": "CODBEX_CATALOGUESET",
-                "constraintName": "CatalogueSet_Product",
-                "columns": "CATALOGUESET_PRODUCT",
-                "referencedTable": "CODBEX_PRODUCT",
-                "referencedColumns": "PRODUCT_ID"
+                "constraintName": "CatalogueSet_ProductSet",
+                "columns": "CATALOGUESET_PRODUCTSET",
+                "referencedTable": "CODBEX_PRODUCTSET",
+                "referencedColumns": "PRODUCTSET_ID"
             },
             {
                 "name": "ProductSet_UoM",

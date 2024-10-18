@@ -44,29 +44,30 @@ export const trigger = (event) => {
             });
         });
 
-        const salesOrders = SalesOrderDao.findAll({
-            $filter: {
-                equals: {
-                    Store: catalogueItem.Store
-                }
-            }
-        });
+        //Availability has been removed from SalesOrdeItem
+        // const salesOrders = SalesOrderDao.findAll({
+        //     $filter: {
+        //         equals: {
+        //             Store: catalogueItem.Store
+        //         }
+        //     }
+        // });
 
-        salesOrders.forEach(function (order) {
-            let salesOrderItems = SalesOrderItemDao.findAll({
-                $filter: {
-                    equals: {
-                        SalesOrder: order.Id,
-                        Product: catalogueItem.Product
-                    }
-                }
-            });
+        // salesOrders.forEach(function (order) {
+        //     let salesOrderItems = SalesOrderItemDao.findAll({
+        //         $filter: {
+        //             equals: {
+        //                 SalesOrder: order.Id,
+        //                 Product: catalogueItem.Product
+        //             }
+        //         }
+        //     });
 
-            salesOrderItems.forEach(function (item) {
-                item.Availability = catalogueItem.Quantity;
-                SalesOrderItemDao.update(item);
-            });
-        });
+        //     salesOrderItems.forEach(function (item) {
+        //         item.Availability = catalogueItem.Quantity;
+        //         SalesOrderItemDao.update(item);
+        //     });
+        // });
     }
 
     if (operation === "update") {
@@ -88,7 +89,7 @@ export const trigger = (event) => {
             const quantityForSet = Math.floor(remainingQuantity / item.Ratio);
             remainingQuantity -= quantityForSet * item.Ratio;
 
-            const existingSet = SetDao.find({
+            const existingSet = CatalogueSetDao.findAll({
                 $filter: {
                     equals: {
                         Catalogue: catalogueItem.Id,
@@ -98,8 +99,8 @@ export const trigger = (event) => {
             });
 
             if (existingSet) {
-                existingSet.Quantity = quantityForSet;
-                CatalogueSetDao.update(existingSet);
+                existingSet[0].Quantity = quantityForSet;
+                CatalogueSetDao.update(existingSet[0]);
             } else {
                 CatalogueSetDao.create({
                     Catalogue: catalogueItem.Id,
@@ -108,30 +109,30 @@ export const trigger = (event) => {
                 });
             }
         });
+        //Availability has been removed from SalesOrdeItem
+        // const salesOrders = SalesOrderDao.findAll({
+        //     $filter: {
+        //         equals: {
+        //             Store: catalogueItem.Store
+        //         }
+        //     }
+        // });
 
-        const salesOrders = SalesOrderDao.findAll({
-            $filter: {
-                equals: {
-                    Store: catalogueItem.Store
-                }
-            }
-        });
+        // salesOrders.forEach(function (order) {
+        //     let salesOrderItems = SalesOrderItemDao.findAll({
+        //         $filter: {
+        //             equals: {
+        //                 SalesOrder: order.Id,
+        //                 Product: catalogueItem.Product
+        //             }
+        //         }
+        //     });
 
-        salesOrders.forEach(function (order) {
-            let salesOrderItems = SalesOrderItemDao.findAll({
-                $filter: {
-                    equals: {
-                        SalesOrder: order.Id,
-                        Product: catalogueItem.Product
-                    }
-                }
-            });
-
-            salesOrderItems.forEach(function (item) {
-                item.Availability = catalogueItem.Quantity;
-                SalesOrderItemDao.update(item);
-            });
-        });
+        //     salesOrderItems.forEach(function (item) {
+        //         item.Availability = catalogueItem.Quantity;
+        //         SalesOrderItemDao.update(item);
+        //     });
+        // });
     }
 }
 

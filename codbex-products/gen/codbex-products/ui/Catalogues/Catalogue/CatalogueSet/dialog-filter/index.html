@@ -29,18 +29,18 @@
                 <fd-form-group dg-header="CatalogueSet Filter" name="entityForm" class="fd-container fd-form-layout-grid-container">
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idProduct" dg-colon="true">Product</fd-form-label>
+                        	<fd-form-label for="idProductSet" dg-colon="true">ProductSet</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Product'].$valid }}">
-	                            <fd-input id="idProduct"
-	                                name="Product"
-	                                state="{{ forms.details['Product'].$valid ? '' : 'error' }}"
-	                                ng-model="entity.Product"
+	                        <fd-form-input-message-group dg-inactive="{{ forms.details['ProductSet'].$valid }}">
+	                            <fd-input id="idProductSet"
+	                                name="ProductSet"
+	                                state="{{ forms.details['ProductSet'].$valid ? '' : 'error' }}"
+	                                ng-model="entity.ProductSet"
 	                                ng-minlength="${property.minLength} || 0"
 	                                ng-maxlength="${property.maxLength} || -1"
 	                                type="text"
-	                                placeholder="Enter Product">
+	                                placeholder="Enter ProductSet">
 	                            </fd-input>
 	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
 	                        </fd-form-input-message-group>

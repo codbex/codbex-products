@@ -4461,7 +4461,7 @@ components:
         Catalogue:
           type: integer
           format: int32
-        Product:
+        ProductSet:
           type: integer
           format: int32
         Quantity:
@@ -4492,7 +4492,7 @@ components:
                       items:
                         type: integer
                         format: int32
-                Product:
+                ProductSet:
                   oneOf:
                     - type: integer
                       format: int32
@@ -4527,7 +4527,7 @@ components:
                       items:
                         type: integer
                         format: int32
-                Product:
+                ProductSet:
                   oneOf:
                     - type: integer
                       format: int32
@@ -4548,7 +4548,7 @@ components:
               properties:
                 Id:
                 Catalogue:
-                Product:
+                ProductSet:
                 Quantity:
             greaterThan:
               type: object
@@ -4559,7 +4559,7 @@ components:
                 Catalogue:
                   type: integer
                   format: int32
-                Product:
+                ProductSet:
                   type: integer
                   format: int32
                 Quantity:
@@ -4574,7 +4574,7 @@ components:
                 Catalogue:
                   type: integer
                   format: int32
-                Product:
+                ProductSet:
                   type: integer
                   format: int32
                 Quantity:
@@ -4589,7 +4589,7 @@ components:
                 Catalogue:
                   type: integer
                   format: int32
-                Product:
+                ProductSet:
                   type: integer
                   format: int32
                 Quantity:
@@ -4604,7 +4604,7 @@ components:
                 Catalogue:
                   type: integer
                   format: int32
-                Product:
+                ProductSet:
                   type: integer
                   format: int32
                 Quantity:
@@ -4612,12 +4612,12 @@ components:
                   format: int32
         $select:
           type: array
-          example: ["Id", "Catalogue", "Product", "Quantity"]
+          example: ["Id", "Catalogue", "ProductSet", "Quantity"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Catalogue,Product,Quantity"
+            example: "Id,Catalogue,ProductSet,Quantity"
         $order:
           type: string
           enum: ["asc", "desc"]

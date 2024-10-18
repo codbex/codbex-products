@@ -6,13 +6,13 @@ import { dao as daoApi } from "sdk/db";
 export interface CatalogueSetEntity {
     readonly Id: number;
     Catalogue?: number;
-    Product?: number;
+    ProductSet?: number;
     Quantity?: number;
 }
 
 export interface CatalogueSetCreateEntity {
     readonly Catalogue?: number;
-    readonly Product?: number;
+    readonly ProductSet?: number;
     readonly Quantity?: number;
 }
 
@@ -25,43 +25,43 @@ export interface CatalogueSetEntityOptions {
         equals?: {
             Id?: number | number[];
             Catalogue?: number | number[];
-            Product?: number | number[];
+            ProductSet?: number | number[];
             Quantity?: number | number[];
         };
         notEquals?: {
             Id?: number | number[];
             Catalogue?: number | number[];
-            Product?: number | number[];
+            ProductSet?: number | number[];
             Quantity?: number | number[];
         };
         contains?: {
             Id?: number;
             Catalogue?: number;
-            Product?: number;
+            ProductSet?: number;
             Quantity?: number;
         };
         greaterThan?: {
             Id?: number;
             Catalogue?: number;
-            Product?: number;
+            ProductSet?: number;
             Quantity?: number;
         };
         greaterThanOrEqual?: {
             Id?: number;
             Catalogue?: number;
-            Product?: number;
+            ProductSet?: number;
             Quantity?: number;
         };
         lessThan?: {
             Id?: number;
             Catalogue?: number;
-            Product?: number;
+            ProductSet?: number;
             Quantity?: number;
         };
         lessThanOrEqual?: {
             Id?: number;
             Catalogue?: number;
-            Product?: number;
+            ProductSet?: number;
             Quantity?: number;
         };
     },
@@ -105,8 +105,8 @@ export class CatalogueSetRepository {
                 type: "INTEGER",
             },
             {
-                name: "Product",
-                column: "CATALOGUESET_PRODUCT",
+                name: "ProductSet",
+                column: "CATALOGUESET_PRODUCTSET",
                 type: "INTEGER",
             },
             {
