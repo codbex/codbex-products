@@ -130,27 +130,6 @@ class ProductSetService {
     }
 
     private validateEntity(entity: any): void {
-        if (entity.UoM === null || entity.UoM === undefined) {
-            throw new ValidationError(`The 'UoM' property is required, provide a valid value`);
-        }
-        if (entity.Product === null || entity.Product === undefined) {
-            throw new ValidationError(`The 'Product' property is required, provide a valid value`);
-        }
-        if (entity.Weight === null || entity.Weight === undefined) {
-            throw new ValidationError(`The 'Weight' property is required, provide a valid value`);
-        }
-        if (entity.Height === null || entity.Height === undefined) {
-            throw new ValidationError(`The 'Height' property is required, provide a valid value`);
-        }
-        if (entity.Length === null || entity.Length === undefined) {
-            throw new ValidationError(`The 'Length' property is required, provide a valid value`);
-        }
-        if (entity.Width === null || entity.Width === undefined) {
-            throw new ValidationError(`The 'Width' property is required, provide a valid value`);
-        }
-        if (entity.Ratio === null || entity.Ratio === undefined) {
-            throw new ValidationError(`The 'Ratio' property is required, provide a valid value`);
-        }
         for (const next of validationModules) {
             next.validate(entity);
         }

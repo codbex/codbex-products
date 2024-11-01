@@ -14,6 +14,7 @@ tags:
   - name: Products
   - name: Products
   - name: Catalogues
+  - name: Catalogues
   - name: Products
 paths:
   /codbex-products/gen/codbex-products/api/Settings/ProductTypeService.ts:
@@ -1065,12 +1066,11 @@ paths:
                     notEquals:
                       Id: 33
                     contains:
-                      Name: "abcd"
+                      SKU: "abcd"
                       Title: "abcd"
                       Model: "abcd"
                       Batch: "abcd"
-                      BaseUnit: "abcd"
-                      SKU: "abcd"
+                      Name: "abcd"
                       UPC: "abcd"
                       EAN: "abcd"
                       JAN: "abcd"
@@ -1097,12 +1097,11 @@ paths:
                 value:
                   $filter:
                     contains:
-                      Name: "abcd"
+                      SKU: "abcd"
                       Title: "abcd"
                       Model: "abcd"
                       Batch: "abcd"
-                      BaseUnit: "abcd"
-                      SKU: "abcd"
+                      Name: "abcd"
                       UPC: "abcd"
                       EAN: "abcd"
                       JAN: "abcd"
@@ -1171,12 +1170,11 @@ paths:
                     notEquals:
                       Id: 33
                     contains:
-                      Name: "abcd"
+                      SKU: "abcd"
                       Title: "abcd"
                       Model: "abcd"
                       Batch: "abcd"
-                      BaseUnit: "abcd"
-                      SKU: "abcd"
+                      Name: "abcd"
                       UPC: "abcd"
                       EAN: "abcd"
                       JAN: "abcd"
@@ -1203,12 +1201,11 @@ paths:
                 value:
                   $filter:
                     contains:
-                      Name: "abcd"
+                      SKU: "abcd"
                       Title: "abcd"
                       Model: "abcd"
                       Batch: "abcd"
-                      BaseUnit: "abcd"
-                      SKU: "abcd"
+                      Name: "abcd"
                       UPC: "abcd"
                       EAN: "abcd"
                       JAN: "abcd"
@@ -2048,6 +2045,390 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /codbex-products/gen/codbex-products/api/Catalogues/CatalogueSetService.ts:
+    get:
+      summary: List CatalogueSet
+      parameters:
+        - in: query
+          name: $limit
+          description: The number of records to be returned _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+        - in: query
+          name: $offset
+          description: The number of records to skip _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+      tags:
+        - Catalogues
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/CatalogueSet'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create CatalogueSet
+      tags:
+        - Catalogues
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CatalogueSet'
+        required: true
+      responses:
+        201:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CatalogueSet'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-products/gen/codbex-products/api/Catalogues/CatalogueSetService.ts/{id}:
+    get:
+      summary: Get CatalogueSet by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - Catalogues
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/CatalogueSet'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Update CatalogueSet by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - Catalogues
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CatalogueSet'
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CatalogueSet'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Delete CatalogueSet by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - Catalogues
+      responses:
+        204:
+          description: Successful Request
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-products/gen/codbex-products/api/Catalogues/CatalogueSetService.ts/count:
+    get:
+      summary: Count the number of CatalogueSet
+      tags:
+        - Catalogues
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Count the number of CatalogueSet by CatalogueSetFilterOptions
+      tags:
+        - Catalogues
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CatalogueSetFilterOptions'
+            examples:
+              countWithMultipleCriteria:
+                summary: Count with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              countWithEquals:
+                summary: Count with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              countWithNotEquals:
+                summary: Count with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              countWithGreaterThan:
+                summary: Count with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              countWithGreaterThanOrEqual:
+                summary: Count with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              countWithLessThan:
+                summary: Count with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              countWithLessThanOrEqual:
+                summary: Count with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-products/gen/codbex-products/api/Catalogues/CatalogueSetService.ts/search:
+    post:
+      summary: Search CatalogueSet by CatalogueSetFilterOptions
+      tags:
+        - Catalogues
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CatalogueSetFilterOptions'
+            examples:
+              searchWithMultipleCriteria:
+                summary: Search with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              searchWithEquals:
+                summary: Search with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              searchWithNotEquals:
+                summary: Search with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              searchWithGreaterThan:
+                summary: Search with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              searchWithGreaterThanOrEqual:
+                summary: Search with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              searchWithLessThan:
+                summary: Search with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              searchWithLessThanOrEqual:
+                summary: Search with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/CatalogueSet'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
   /codbex-products/gen/codbex-products/api/Products/ProductSetService.ts:
     get:
       summary: List ProductSet
@@ -2740,15 +3121,17 @@ components:
         - Title
         - Model
         - Batch
+        - BaseUnit
+        - Price
+        - VAT
       properties:
         Id:
           type: integer
           format: int32
-        Name:
+        SKU:
           type: string
           minLength: 0
-          maxLength: 500
-          readOnly: true
+          maxLength: 64
         Title:
           type: string
           minLength: 0
@@ -2761,23 +3144,44 @@ components:
           type: string
           minLength: 0
           maxLength: 50
+        BaseUnit:
+          type: integer
+          format: int32
+        Price:
+          type: number
+          format: double
+        VAT:
+          type: number
+          format: double
         Type:
           type: integer
           format: int32
         Category:
           type: integer
           format: int32
-        BaseUnit:
+        Manufacturer:
+          type: integer
+          format: int32
+        Weight:
+          type: number
+          format: double
+        Height:
+          type: number
+          format: double
+        Length:
+          type: number
+          format: double
+        Width:
+          type: number
+          format: double
+        Name:
           type: string
           minLength: 0
-          maxLength: 20
+          maxLength: 500
+          readOnly: true
         Company:
           type: integer
           format: int32
-        SKU:
-          type: string
-          minLength: 0
-          maxLength: 64
         UPC:
           type: string
           minLength: 0
@@ -2798,24 +3202,6 @@ components:
           type: string
           minLength: 0
           maxLength: 40
-        Manufacturer:
-          type: integer
-          format: int32
-        VAT:
-          type: number
-          format: double
-        Weight:
-          type: number
-          format: double
-        Height:
-          type: number
-          format: double
-        Length:
-          type: number
-          format: double
-        Width:
-          type: number
-          format: double
         Enabled:
           type: boolean
     ProductFilterOptions:
@@ -2835,17 +3221,17 @@ components:
                       items:
                         type: integer
                         format: int32
-                Name:
+                SKU:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 500
+                      maxLength: 64
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 500
+                        maxLength: 64
                 Title:
                   oneOf:
                     - type: string
@@ -2879,6 +3265,30 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 50
+                BaseUnit:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Price:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                VAT:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
                 Type:
                   oneOf:
                     - type: integer
@@ -2895,17 +3305,57 @@ components:
                       items:
                         type: integer
                         format: int32
-                BaseUnit:
+                Manufacturer:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Weight:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Height:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Length:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Width:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Name:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 20
+                      maxLength: 500
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 20
+                        maxLength: 500
                 Company:
                   oneOf:
                     - type: integer
@@ -2914,17 +3364,6 @@ components:
                       items:
                         type: integer
                         format: int32
-                SKU:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 64
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 64
                 UPC:
                   oneOf:
                     - type: string
@@ -2980,54 +3419,6 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 40
-                Manufacturer:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                VAT:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                Weight:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                Height:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                Length:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                Width:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
                 Enabled:
                   oneOf:
                     - type: boolean
@@ -3045,17 +3436,17 @@ components:
                       items:
                         type: integer
                         format: int32
-                Name:
+                SKU:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 500
+                      maxLength: 64
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 500
+                        maxLength: 64
                 Title:
                   oneOf:
                     - type: string
@@ -3089,6 +3480,30 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 50
+                BaseUnit:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Price:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                VAT:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
                 Type:
                   oneOf:
                     - type: integer
@@ -3105,17 +3520,57 @@ components:
                       items:
                         type: integer
                         format: int32
-                BaseUnit:
+                Manufacturer:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Weight:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Height:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Length:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Width:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Name:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 20
+                      maxLength: 500
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 20
+                        maxLength: 500
                 Company:
                   oneOf:
                     - type: integer
@@ -3124,17 +3579,6 @@ components:
                       items:
                         type: integer
                         format: int32
-                SKU:
-                  oneOf:
-                    - type: string
-                      minLength: 0
-                      maxLength: 64
-                    - type: array
-                      items:
-                        type: string
-                        format: double
-                        minLength: 0
-                        maxLength: 64
                 UPC:
                   oneOf:
                     - type: string
@@ -3190,54 +3634,6 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 40
-                Manufacturer:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                VAT:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                Weight:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                Height:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                Length:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
-                Width:
-                  oneOf:
-                    - type: number
-                      format: double
-                    - type: array
-                      items:
-                        type: number
-                        format: double
                 Enabled:
                   oneOf:
                     - type: boolean
@@ -3248,10 +3644,10 @@ components:
               type: object
               properties:
                 Id:
-                Name:
+                SKU:
                   type: string
                   minLength: 0
-                  maxLength: 500
+                  maxLength: 64
                 Title:
                   type: string
                   minLength: 0
@@ -3264,17 +3660,21 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 50
+                BaseUnit:
+                Price:
+                VAT:
                 Type:
                 Category:
-                BaseUnit:
+                Manufacturer:
+                Weight:
+                Height:
+                Length:
+                Width:
+                Name:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 500
                 Company:
-                SKU:
-                  type: string
-                  minLength: 0
-                  maxLength: 64
                 UPC:
                   type: string
                   minLength: 0
@@ -3295,12 +3695,6 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 40
-                Manufacturer:
-                VAT:
-                Weight:
-                Height:
-                Length:
-                Width:
                 Enabled:
             greaterThan:
               type: object
@@ -3308,10 +3702,10 @@ components:
                 Id:
                   type: integer
                   format: int32
-                Name:
+                SKU:
                   type: string
                   minLength: 0
-                  maxLength: 500
+                  maxLength: 64
                 Title:
                   type: string
                   minLength: 0
@@ -3324,23 +3718,43 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 50
+                BaseUnit:
+                  type: integer
+                  format: int32
+                Price:
+                  type: number
+                  format: double
+                VAT:
+                  type: number
+                  format: double
                 Type:
                   type: integer
                   format: int32
                 Category:
                   type: integer
                   format: int32
-                BaseUnit:
+                Manufacturer:
+                  type: integer
+                  format: int32
+                Weight:
+                  type: number
+                  format: double
+                Height:
+                  type: number
+                  format: double
+                Length:
+                  type: number
+                  format: double
+                Width:
+                  type: number
+                  format: double
+                Name:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 500
                 Company:
                   type: integer
                   format: int32
-                SKU:
-                  type: string
-                  minLength: 0
-                  maxLength: 64
                 UPC:
                   type: string
                   minLength: 0
@@ -3361,24 +3775,6 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 40
-                Manufacturer:
-                  type: integer
-                  format: int32
-                VAT:
-                  type: number
-                  format: double
-                Weight:
-                  type: number
-                  format: double
-                Height:
-                  type: number
-                  format: double
-                Length:
-                  type: number
-                  format: double
-                Width:
-                  type: number
-                  format: double
                 Enabled:
             greaterThanOrEqual:
               type: object
@@ -3386,10 +3782,10 @@ components:
                 Id:
                   type: integer
                   format: int32
-                Name:
+                SKU:
                   type: string
                   minLength: 0
-                  maxLength: 500
+                  maxLength: 64
                 Title:
                   type: string
                   minLength: 0
@@ -3402,23 +3798,43 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 50
+                BaseUnit:
+                  type: integer
+                  format: int32
+                Price:
+                  type: number
+                  format: double
+                VAT:
+                  type: number
+                  format: double
                 Type:
                   type: integer
                   format: int32
                 Category:
                   type: integer
                   format: int32
-                BaseUnit:
+                Manufacturer:
+                  type: integer
+                  format: int32
+                Weight:
+                  type: number
+                  format: double
+                Height:
+                  type: number
+                  format: double
+                Length:
+                  type: number
+                  format: double
+                Width:
+                  type: number
+                  format: double
+                Name:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 500
                 Company:
                   type: integer
                   format: int32
-                SKU:
-                  type: string
-                  minLength: 0
-                  maxLength: 64
                 UPC:
                   type: string
                   minLength: 0
@@ -3439,24 +3855,6 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 40
-                Manufacturer:
-                  type: integer
-                  format: int32
-                VAT:
-                  type: number
-                  format: double
-                Weight:
-                  type: number
-                  format: double
-                Height:
-                  type: number
-                  format: double
-                Length:
-                  type: number
-                  format: double
-                Width:
-                  type: number
-                  format: double
                 Enabled:
             lessThan:
               type: object
@@ -3464,10 +3862,10 @@ components:
                 Id:
                   type: integer
                   format: int32
-                Name:
+                SKU:
                   type: string
                   minLength: 0
-                  maxLength: 500
+                  maxLength: 64
                 Title:
                   type: string
                   minLength: 0
@@ -3480,23 +3878,43 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 50
+                BaseUnit:
+                  type: integer
+                  format: int32
+                Price:
+                  type: number
+                  format: double
+                VAT:
+                  type: number
+                  format: double
                 Type:
                   type: integer
                   format: int32
                 Category:
                   type: integer
                   format: int32
-                BaseUnit:
+                Manufacturer:
+                  type: integer
+                  format: int32
+                Weight:
+                  type: number
+                  format: double
+                Height:
+                  type: number
+                  format: double
+                Length:
+                  type: number
+                  format: double
+                Width:
+                  type: number
+                  format: double
+                Name:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 500
                 Company:
                   type: integer
                   format: int32
-                SKU:
-                  type: string
-                  minLength: 0
-                  maxLength: 64
                 UPC:
                   type: string
                   minLength: 0
@@ -3517,24 +3935,6 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 40
-                Manufacturer:
-                  type: integer
-                  format: int32
-                VAT:
-                  type: number
-                  format: double
-                Weight:
-                  type: number
-                  format: double
-                Height:
-                  type: number
-                  format: double
-                Length:
-                  type: number
-                  format: double
-                Width:
-                  type: number
-                  format: double
                 Enabled:
             lessThanOrEqual:
               type: object
@@ -3542,10 +3942,10 @@ components:
                 Id:
                   type: integer
                   format: int32
-                Name:
+                SKU:
                   type: string
                   minLength: 0
-                  maxLength: 500
+                  maxLength: 64
                 Title:
                   type: string
                   minLength: 0
@@ -3558,23 +3958,43 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 50
+                BaseUnit:
+                  type: integer
+                  format: int32
+                Price:
+                  type: number
+                  format: double
+                VAT:
+                  type: number
+                  format: double
                 Type:
                   type: integer
                   format: int32
                 Category:
                   type: integer
                   format: int32
-                BaseUnit:
+                Manufacturer:
+                  type: integer
+                  format: int32
+                Weight:
+                  type: number
+                  format: double
+                Height:
+                  type: number
+                  format: double
+                Length:
+                  type: number
+                  format: double
+                Width:
+                  type: number
+                  format: double
+                Name:
                   type: string
                   minLength: 0
-                  maxLength: 20
+                  maxLength: 500
                 Company:
                   type: integer
                   format: int32
-                SKU:
-                  type: string
-                  minLength: 0
-                  maxLength: 64
                 UPC:
                   type: string
                   minLength: 0
@@ -3595,33 +4015,15 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 40
-                Manufacturer:
-                  type: integer
-                  format: int32
-                VAT:
-                  type: number
-                  format: double
-                Weight:
-                  type: number
-                  format: double
-                Height:
-                  type: number
-                  format: double
-                Length:
-                  type: number
-                  format: double
-                Width:
-                  type: number
-                  format: double
                 Enabled:
         $select:
           type: array
-          example: ["Id", "Name", "Title", "Model", "Batch", "Type", "Category", "BaseUnit", "Company", "SKU", "UPC", "EAN", "JAN", "ISBN", "MPN", "Manufacturer", "VAT", "Weight", "Height", "Length", "Width", "Enabled"]
+          example: ["Id", "SKU", "Title", "Model", "Batch", "BaseUnit", "Price", "VAT", "Type", "Category", "Manufacturer", "Weight", "Height", "Length", "Width", "Name", "Company", "UPC", "EAN", "JAN", "ISBN", "MPN", "Enabled"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Name,Title,Model,Batch,Type,Category,BaseUnit,Company,SKU,UPC,EAN,JAN,ISBN,MPN,Manufacturer,VAT,Weight,Height,Length,Width,Enabled"
+            example: "Id,SKU,Title,Model,Batch,BaseUnit,Price,VAT,Type,Category,Manufacturer,Weight,Height,Length,Width,Name,Company,UPC,EAN,JAN,ISBN,MPN,Enabled"
         $order:
           type: string
           enum: ["asc", "desc"]
@@ -3856,6 +4258,9 @@ components:
         Quantity:
           type: number
           format: double
+        BaseUnit:
+          type: integer
+          format: int32
     CatalogueFilterOptions:
       type: object
       properties:
@@ -3897,6 +4302,14 @@ components:
                       items:
                         type: number
                         format: double
+                BaseUnit:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
             notEquals:
               type: object
               properties:
@@ -3932,6 +4345,14 @@ components:
                       items:
                         type: number
                         format: double
+                BaseUnit:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
             contains:
               type: object
               properties:
@@ -3939,6 +4360,7 @@ components:
                 Product:
                 Store:
                 Quantity:
+                BaseUnit:
             greaterThan:
               type: object
               properties:
@@ -3954,6 +4376,9 @@ components:
                 Quantity:
                   type: number
                   format: double
+                BaseUnit:
+                  type: integer
+                  format: int32
             greaterThanOrEqual:
               type: object
               properties:
@@ -3969,6 +4394,9 @@ components:
                 Quantity:
                   type: number
                   format: double
+                BaseUnit:
+                  type: integer
+                  format: int32
             lessThan:
               type: object
               properties:
@@ -3984,6 +4412,9 @@ components:
                 Quantity:
                   type: number
                   format: double
+                BaseUnit:
+                  type: integer
+                  format: int32
             lessThanOrEqual:
               type: object
               properties:
@@ -3999,14 +4430,194 @@ components:
                 Quantity:
                   type: number
                   format: double
+                BaseUnit:
+                  type: integer
+                  format: int32
         $select:
           type: array
-          example: ["Id", "Product", "Store", "Quantity"]
+          example: ["Id", "Product", "Store", "Quantity", "BaseUnit"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Product,Store,Quantity"
+            example: "Id,Product,Store,Quantity,BaseUnit"
+        $order:
+          type: string
+          enum: ["asc", "desc"]
+          example: "asc"
+        $offset:
+          type: integer
+          example: 0
+        $limit:
+          type: integer
+          example: 10
+    CatalogueSet:
+      type: object
+      required:
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Catalogue:
+          type: integer
+          format: int32
+        ProductSet:
+          type: integer
+          format: int32
+        Quantity:
+          type: integer
+          format: int32
+    CatalogueSetFilterOptions:
+      type: object
+      properties:
+        $filter:
+          type: object
+          properties:
+            equals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Catalogue:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                ProductSet:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Quantity:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+            notEquals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Catalogue:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                ProductSet:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Quantity:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+            contains:
+              type: object
+              properties:
+                Id:
+                Catalogue:
+                ProductSet:
+                Quantity:
+            greaterThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Catalogue:
+                  type: integer
+                  format: int32
+                ProductSet:
+                  type: integer
+                  format: int32
+                Quantity:
+                  type: integer
+                  format: int32
+            greaterThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Catalogue:
+                  type: integer
+                  format: int32
+                ProductSet:
+                  type: integer
+                  format: int32
+                Quantity:
+                  type: integer
+                  format: int32
+            lessThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Catalogue:
+                  type: integer
+                  format: int32
+                ProductSet:
+                  type: integer
+                  format: int32
+                Quantity:
+                  type: integer
+                  format: int32
+            lessThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Catalogue:
+                  type: integer
+                  format: int32
+                ProductSet:
+                  type: integer
+                  format: int32
+                Quantity:
+                  type: integer
+                  format: int32
+        $select:
+          type: array
+          example: ["Id", "Catalogue", "ProductSet", "Quantity"]
+          items:
+            type: string
+        $sort:
+          - type: string
+            example: "Id,Catalogue,ProductSet,Quantity"
         $order:
           type: string
           enum: ["asc", "desc"]
@@ -4020,13 +4631,6 @@ components:
     ProductSet:
       type: object
       required:
-        - UoM
-        - Product
-        - Weight
-        - Height
-        - Length
-        - Width
-        - Ratio
       properties:
         Id:
           type: integer

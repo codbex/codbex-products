@@ -1,6 +1,6 @@
 angular.module('page', ["ideUI", "ideView"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-products.Catalogues.Catalogue';
+		messageHubProvider.eventIdPrefix = 'codbex-products.Catalogues.CatalogueSet';
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'ViewParameters', function ($scope, messageHub, ViewParameters) {
 
@@ -14,9 +14,6 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.entity = params.entity ?? {};
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
-			$scope.optionsProduct = params.optionsProduct;
-			$scope.optionsStore = params.optionsStore;
-			$scope.optionsBaseUnit = params.optionsBaseUnit;
 		}
 
 		$scope.filter = function () {
@@ -42,23 +39,19 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Id !== undefined) {
 				filter.$filter.equals.Id = entity.Id;
 			}
-			if (entity.Product !== undefined) {
-				filter.$filter.equals.Product = entity.Product;
+			if (entity.Catalogue !== undefined) {
+				filter.$filter.equals.Catalogue = entity.Catalogue;
 			}
-			if (entity.Store !== undefined) {
-				filter.$filter.equals.Store = entity.Store;
+			if (entity.ProductSet !== undefined) {
+				filter.$filter.equals.ProductSet = entity.ProductSet;
 			}
 			if (entity.Quantity !== undefined) {
 				filter.$filter.equals.Quantity = entity.Quantity;
-			}
-			if (entity.BaseUnit !== undefined) {
-				filter.$filter.equals.BaseUnit = entity.BaseUnit;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,
 				filter: filter
 			});
-			messageHub.postMessage("clearDetails");
 			$scope.cancel();
 		};
 
@@ -68,7 +61,7 @@ angular.module('page', ["ideUI", "ideView"])
 		};
 
 		$scope.cancel = function () {
-			messageHub.closeDialogWindow("Catalogue-filter");
+			messageHub.closeDialogWindow("CatalogueSet-filter");
 		};
 
 		$scope.clearErrorMessage = function () {

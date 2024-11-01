@@ -19,25 +19,29 @@
         <fd-scrollbar class="dg-full-height">
             <fd-fieldset ng-form="forms.details">
                 <fd-form-group dg-header="{{formHeaders[action]}}" name="entityForm" class="fd-container fd-form-layout-grid-container">
-					<fd-form-item class="fd-row">
-						<div class="fd-col fd-col-md--2">
-							<fd-form-label for="idName" dg-required="false" dg-colon="true">Name</fd-form-label>
-						</div>
-						<div class="fd-col  fd-col-md--8 ">
-							<fd-textarea id="idName"
-								name="Name"
-								state="{{ forms.details['Name'].$valid ? '' : 'error' }}"
-								ng-required="false"
-								ng-model="entity.Name"
-	                            ng-readonly="true"
-								ng-minlength="0.0 || 0"
-								ng-maxlength="500.0 || -1"
-								dg-input-rules="{ patterns: [''] }"
-								placeholder="Enter Name">
-							</fd-textarea>
-							<fd-form-message dg-type="error" ng-show="!forms.details['Name'].$valid">The value doesn't match the required pattern ''</fd-form-message>
-						</div>
-					</fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idSKU" dg-required="false" dg-colon="true">SKU</fd-form-label>
+                        </div>
+                        <div class="fd-col  fd-col-md--8 ">
+	                        <fd-form-input-message-group dg-inactive="{{ forms.details['SKU'].$valid }}">
+	                            <fd-input id="idSKU"
+	                                name="SKU"
+	                                state="{{ forms.details['SKU'].$valid ? '' : 'error' }}"
+									ng-required="false"
+	                                ng-model="entity.SKU"
+	                                ng-readonly="action === 'select'"
+	                                ng-minlength="0.0 || 0"
+	                                ng-maxlength="64.0 || -1"
+	                                dg-input-rules="{ patterns: [''] }"
+	                                type="text"
+	                                placeholder="Enter SKU">
+	                            </fd-input>
+	                            <fd-form-message dg-type="error">The value doesn't match the required pattern ''</fd-form-message>
+	                        </fd-form-input-message-group>
+	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
+	                    </div>
+                    </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idTitle" dg-required="true" dg-colon="true">Title</fd-form-label>
@@ -58,6 +62,7 @@
 	                            </fd-input>
 	                            <fd-form-message dg-type="error">The value doesn't match the required pattern ''</fd-form-message>
 	                        </fd-form-input-message-group>
+	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
 	                    </div>
                     </fd-form-item>
                     <fd-form-item class="fd-row">
@@ -80,6 +85,7 @@
 	                            </fd-input>
 	                            <fd-form-message dg-type="error">The value doesn't match the required pattern ''</fd-form-message>
 	                        </fd-form-input-message-group>
+	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
 	                    </div>
                     </fd-form-item>
                     <fd-form-item class="fd-row">
@@ -102,6 +108,64 @@
 	                            </fd-input>
 	                            <fd-form-message dg-type="error">The value doesn't match the required pattern ''</fd-form-message>
 	                        </fd-form-input-message-group>
+	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idBaseUnit" dg-required="true" dg-colon="true">BaseUnit</fd-form-label>
+                        </div>
+                        <div class="fd-col  fd-col-md--8 ">
+	                        <fd-combobox-input id="idBaseUnit"
+	                            name="BaseUnit"
+	                            state="{{ forms.details['BaseUnit'].$valid ? '' : 'error' }}"
+	                            ng-required="true"
+	                            ng-model="entity.BaseUnit"
+	                            dg-disabled="action === 'select'"
+	                            dropdown-items="optionsBaseUnit"
+	                            dg-placeholder="Search BaseUnit ...">
+	                        </fd-combobox-input>
+	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idPrice" dg-required="true" dg-colon="true">Price</fd-form-label>
+                        </div>
+                        <div class="fd-col  fd-col-md--8 ">
+	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Price'].$valid }}">
+	                            <fd-input id="idPrice"
+	                                name="Price"
+	                                state="{{ forms.details['Price'].$valid ? '' : 'error' }}"
+									ng-required="true"
+	                                ng-model="entity.Price"
+	                                ng-readonly="action === 'select'"
+	                                ng-minlength="${property.minLength} || 0"
+	                                ng-maxlength="${property.maxLength} || -1"
+	                                dg-input-rules="{ patterns: [''] }"
+	                                type="text"
+	                                placeholder="Enter Price">
+	                            </fd-input>
+	                            <fd-form-message dg-type="error">The value doesn't match the required pattern ''</fd-form-message>
+	                        </fd-form-input-message-group>
+	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idVAT" dg-required="true" dg-colon="true">VAT</fd-form-label>
+                        </div>
+                        <div class="fd-col  fd-col-md--4 ">
+							<fd-step-input dg-id="idVAT"
+								name="VAT"
+								state="{{ forms.details['VAT'].$valid ? '' : 'error' }}"
+								dg-required="true"
+								ng-model="entity.VAT"
+								is-readonly="action === 'select'"
+								placeholder="Enter VAT"
+								>
+							</fd-step-input>
+							<i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
 	                    </div>
                     </fd-form-item>
                     <fd-form-item class="fd-row">
@@ -118,6 +182,7 @@
 	                            dropdown-items="optionsType"
 	                            dg-placeholder="Search Type ...">
 	                        </fd-combobox-input>
+	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
 	                    </div>
                     </fd-form-item>
                     <fd-form-item class="fd-row">
@@ -134,24 +199,117 @@
 	                            dropdown-items="optionsCategory"
 	                            dg-placeholder="Search Category ...">
 	                        </fd-combobox-input>
+	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
 	                    </div>
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idBaseUnit" dg-required="false" dg-colon="true">BaseUnit</fd-form-label>
+                        	<fd-form-label for="idManufacturer" dg-required="false" dg-colon="true">Manufacturer</fd-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
-	                        <fd-combobox-input id="idBaseUnit"
-	                            name="BaseUnit"
-	                            state="{{ forms.details['BaseUnit'].$valid ? '' : 'error' }}"
+	                        <fd-combobox-input id="idManufacturer"
+	                            name="Manufacturer"
+	                            state="{{ forms.details['Manufacturer'].$valid ? '' : 'error' }}"
 	                            ng-required="false"
-	                            ng-model="entity.BaseUnit"
+	                            ng-model="entity.Manufacturer"
 	                            dg-disabled="action === 'select'"
-	                            dropdown-items="optionsBaseUnit"
-	                            dg-placeholder="Search BaseUnit ...">
+	                            dropdown-items="optionsManufacturer"
+	                            dg-placeholder="Search Manufacturer ...">
 	                        </fd-combobox-input>
+	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
 	                    </div>
                     </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idWeight" dg-required="false" dg-colon="true">Weight</fd-form-label>
+                        </div>
+                        <div class="fd-col  fd-col-md--4 ">
+							<fd-step-input dg-id="idWeight"
+								name="Weight"
+								state="{{ forms.details['Weight'].$valid ? '' : 'error' }}"
+								dg-required="false"
+								ng-model="entity.Weight"
+								is-readonly="action === 'select'"
+								placeholder="Enter Weight"
+								>
+							</fd-step-input>
+							<i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idHeight" dg-required="false" dg-colon="true">Height</fd-form-label>
+                        </div>
+                        <div class="fd-col  fd-col-md--4 ">
+							<fd-step-input dg-id="idHeight"
+								name="Height"
+								state="{{ forms.details['Height'].$valid ? '' : 'error' }}"
+								dg-required="false"
+								ng-model="entity.Height"
+								is-readonly="action === 'select'"
+								placeholder="Enter Height"
+								>
+							</fd-step-input>
+							<i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idLength" dg-required="false" dg-colon="true">Length</fd-form-label>
+                        </div>
+                        <div class="fd-col  fd-col-md--4 ">
+							<fd-step-input dg-id="idLength"
+								name="Length"
+								state="{{ forms.details['Length'].$valid ? '' : 'error' }}"
+								dg-required="false"
+								ng-model="entity.Length"
+								is-readonly="action === 'select'"
+								placeholder="Enter Length"
+								>
+							</fd-step-input>
+							<i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
+	                    </div>
+                    </fd-form-item>
+                    <fd-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<fd-form-label for="idWidth" dg-required="false" dg-colon="true">Width</fd-form-label>
+                        </div>
+                        <div class="fd-col  fd-col-md--4 ">
+							<fd-step-input dg-id="idWidth"
+								name="Width"
+								state="{{ forms.details['Width'].$valid ? '' : 'error' }}"
+								dg-required="false"
+								ng-model="entity.Width"
+								is-readonly="action === 'select'"
+								placeholder="Enter Width"
+								>
+							</fd-step-input>
+							<i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
+	                    </div>
+                    </fd-form-item>
+					<fd-form-item class="fd-row">
+						<div class="fd-col fd-col-md--2">
+							<fd-form-label for="idName" dg-required="false" dg-colon="true">Name</fd-form-label>
+						</div>
+						<div class="fd-col  fd-col-md--8 ">
+							<fd-textarea id="idName"
+								name="Name"
+								state="{{ forms.details['Name'].$valid ? '' : 'error' }}"
+								ng-required="false"
+								ng-model="entity.Name"
+	                            ng-readonly="true"
+								ng-minlength="0.0 || 0"
+								ng-maxlength="500.0 || -1"
+								dg-input-rules="{ patterns: [''] }"
+								placeholder="Enter Name">
+							</fd-textarea>
+							<fd-form-message dg-type="error" ng-show="!forms.details['Name'].$valid">The value doesn't match the required pattern ''</fd-form-message>
+						</div>
+						<div class="fd-col fd-col-md--1">
+							<i class="sap-icon--information" role="presentation"
+								onclick="javascript:alert('')"></i>
+						</div>
+					</fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
                         	<fd-form-label for="idCompany" dg-required="false" dg-colon="true">Company</fd-form-label>
@@ -166,28 +324,7 @@
 	                            dropdown-items="optionsCompany"
 	                            dg-placeholder="Search Company ...">
 	                        </fd-combobox-input>
-	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
-                    	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idSKU" dg-required="false" dg-colon="true">SKU</fd-form-label>
-                        </div>
-                        <div class="fd-col  fd-col-md--8 ">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['SKU'].$valid }}">
-	                            <fd-input id="idSKU"
-	                                name="SKU"
-	                                state="{{ forms.details['SKU'].$valid ? '' : 'error' }}"
-									ng-required="false"
-	                                ng-model="entity.SKU"
-	                                ng-readonly="action === 'select'"
-	                                ng-minlength="0.0 || 0"
-	                                ng-maxlength="64.0 || -1"
-	                                dg-input-rules="{ patterns: [''] }"
-	                                type="text"
-	                                placeholder="Enter SKU">
-	                            </fd-input>
-	                            <fd-form-message dg-type="error">The value doesn't match the required pattern ''</fd-form-message>
-	                        </fd-form-input-message-group>
+	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
 	                    </div>
                     </fd-form-item>
                     <fd-form-item class="fd-row">
@@ -210,6 +347,7 @@
 	                            </fd-input>
 	                            <fd-form-message dg-type="error">The value doesn't match the required pattern ''</fd-form-message>
 	                        </fd-form-input-message-group>
+	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
 	                    </div>
                     </fd-form-item>
                     <fd-form-item class="fd-row">
@@ -232,6 +370,7 @@
 	                            </fd-input>
 	                            <fd-form-message dg-type="error">The value doesn't match the required pattern ''</fd-form-message>
 	                        </fd-form-input-message-group>
+	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
 	                    </div>
                     </fd-form-item>
                     <fd-form-item class="fd-row">
@@ -254,6 +393,7 @@
 	                            </fd-input>
 	                            <fd-form-message dg-type="error">The value doesn't match the required pattern ''</fd-form-message>
 	                        </fd-form-input-message-group>
+	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
 	                    </div>
                     </fd-form-item>
                     <fd-form-item class="fd-row">
@@ -276,6 +416,7 @@
 	                            </fd-input>
 	                            <fd-form-message dg-type="error">The value doesn't match the required pattern ''</fd-form-message>
 	                        </fd-form-input-message-group>
+	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
 	                    </div>
                     </fd-form-item>
                     <fd-form-item class="fd-row">
@@ -298,107 +439,12 @@
 	                            </fd-input>
 	                            <fd-form-message dg-type="error">The value doesn't match the required pattern ''</fd-form-message>
 	                        </fd-form-input-message-group>
-	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
-                    	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idManufacturer" dg-required="false" dg-colon="true">Manufacturer</fd-form-label>
-                        </div>
-                        <div class="fd-col  fd-col-md--8 ">
-	                        <fd-combobox-input id="idManufacturer"
-	                            name="Manufacturer"
-	                            state="{{ forms.details['Manufacturer'].$valid ? '' : 'error' }}"
-	                            ng-required="false"
-	                            ng-model="entity.Manufacturer"
-	                            dg-disabled="action === 'select'"
-	                            dropdown-items="optionsManufacturer"
-	                            dg-placeholder="Search Manufacturer ...">
-	                        </fd-combobox-input>
-	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
-                    	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idVAT" dg-required="false" dg-colon="true">VAT</fd-form-label>
-                        </div>
-                        <div class="fd-col  fd-col-md--4 ">
-							<fd-step-input dg-id="idVAT"
-								name="VAT"
-								state="{{ forms.details['VAT'].$valid ? '' : 'error' }}"
-								dg-required="false"
-								ng-model="entity.VAT"
-								is-readonly="action === 'select'"
-								placeholder="Enter VAT"
-								>
-							</fd-step-input>
-	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
-                    	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idWeight" dg-required="false" dg-colon="true">Weight</fd-form-label>
-                        </div>
-                        <div class="fd-col  fd-col-md--4 ">
-							<fd-step-input dg-id="idWeight"
-								name="Weight"
-								state="{{ forms.details['Weight'].$valid ? '' : 'error' }}"
-								dg-required="false"
-								ng-model="entity.Weight"
-								is-readonly="action === 'select'"
-								placeholder="Enter Weight"
-								>
-							</fd-step-input>
-	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
-                    	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idHeight" dg-required="false" dg-colon="true">Height</fd-form-label>
-                        </div>
-                        <div class="fd-col  fd-col-md--4 ">
-							<fd-step-input dg-id="idHeight"
-								name="Height"
-								state="{{ forms.details['Height'].$valid ? '' : 'error' }}"
-								dg-required="false"
-								ng-model="entity.Height"
-								is-readonly="action === 'select'"
-								placeholder="Enter Height"
-								>
-							</fd-step-input>
-	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
-                    	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idLength" dg-required="false" dg-colon="true">Length</fd-form-label>
-                        </div>
-                        <div class="fd-col  fd-col-md--4 ">
-							<fd-step-input dg-id="idLength"
-								name="Length"
-								state="{{ forms.details['Length'].$valid ? '' : 'error' }}"
-								dg-required="false"
-								ng-model="entity.Length"
-								is-readonly="action === 'select'"
-								placeholder="Enter Length"
-								>
-							</fd-step-input>
-	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
-                    	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idWidth" dg-required="false" dg-colon="true">Width</fd-form-label>
-                        </div>
-                        <div class="fd-col  fd-col-md--4 ">
-							<fd-step-input dg-id="idWidth"
-								name="Width"
-								state="{{ forms.details['Width'].$valid ? '' : 'error' }}"
-								dg-required="false"
-								ng-model="entity.Width"
-								is-readonly="action === 'select'"
-								placeholder="Enter Width"
-								>
-							</fd-step-input>
+	                        <i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>
 	                    </div>
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2"></div>
-	                    <div class="fd-col  fd-col-md--8 ">
+	                    <div class="fd-col  fd-col-md--7 ">
 	                        <fd-checkbox id="idEnabled"
 	                            compact="false"
 	                            ng-required="false"
@@ -407,6 +453,10 @@
 	                        </fd-checkbox>
                         	<fd-checkbox-label for="idEnabled" dg-required="false">Enabled</fd-checkbox-label>
                         </div>
+                        <div class="fd-col fd-col-md--1">
+							<i class="sap-icon--information" role="presentation"
+								onclick="javascript:alert('')"></i>
+						</div>
                     </fd-form-item>
                 </fd-form-group>
             </fd-fieldset>

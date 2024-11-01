@@ -1,9 +1,9 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-products.Products.Product';
+		messageHubProvider.eventIdPrefix = 'codbex-products.Catalogues.Catalogue';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-products/gen/codbex-products/api/Products/ProductService.ts";
+		entityApiProvider.baseUrl = "/services/ts/codbex-products/gen/codbex-products/api/Catalogues/CatalogueService.ts";
 	}])
 	.controller('PageController', ['$scope', 'Extensions', 'messageHub', 'entityApi', function ($scope, Extensions, messageHub, entityApi) {
 
@@ -12,15 +12,15 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			details: {},
 		};
 		$scope.formHeaders = {
-			select: "Product Details",
-			create: "Create Product",
-			update: "Update Product"
+			select: "Catalogue Details",
+			create: "Create Catalogue",
+			update: "Update Catalogue"
 		};
 		$scope.action = 'select';
 
 		//-----------------Custom Actions-------------------//
 		Extensions.get('dialogWindow', 'codbex-products-custom-action').then(function (response) {
-			$scope.entityActions = response.filter(e => e.perspective === "Products" && e.view === "Product" && e.type === "entity");
+			$scope.entityActions = response.filter(e => e.perspective === "Catalogues" && e.view === "Catalogue" && e.type === "entity");
 		});
 
 		$scope.triggerEntityAction = function (action) {
@@ -40,11 +40,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHub.onDidReceiveMessage("clearDetails", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = {};
+				$scope.optionsProduct = [];
+				$scope.optionsStore = [];
 				$scope.optionsBaseUnit = [];
-				$scope.optionsType = [];
-				$scope.optionsCategory = [];
-				$scope.optionsManufacturer = [];
-				$scope.optionsCompany = [];
 				$scope.action = 'select';
 			});
 		});
@@ -52,11 +50,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHub.onDidReceiveMessage("entitySelected", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = msg.data.entity;
+				$scope.optionsProduct = msg.data.optionsProduct;
+				$scope.optionsStore = msg.data.optionsStore;
 				$scope.optionsBaseUnit = msg.data.optionsBaseUnit;
-				$scope.optionsType = msg.data.optionsType;
-				$scope.optionsCategory = msg.data.optionsCategory;
-				$scope.optionsManufacturer = msg.data.optionsManufacturer;
-				$scope.optionsCompany = msg.data.optionsCompany;
 				$scope.action = 'select';
 			});
 		});
@@ -64,11 +60,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHub.onDidReceiveMessage("createEntity", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = {};
+				$scope.optionsProduct = msg.data.optionsProduct;
+				$scope.optionsStore = msg.data.optionsStore;
 				$scope.optionsBaseUnit = msg.data.optionsBaseUnit;
-				$scope.optionsType = msg.data.optionsType;
-				$scope.optionsCategory = msg.data.optionsCategory;
-				$scope.optionsManufacturer = msg.data.optionsManufacturer;
-				$scope.optionsCompany = msg.data.optionsCompany;
 				$scope.action = 'create';
 			});
 		});
@@ -76,11 +70,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		messageHub.onDidReceiveMessage("updateEntity", function (msg) {
 			$scope.$apply(function () {
 				$scope.entity = msg.data.entity;
+				$scope.optionsProduct = msg.data.optionsProduct;
+				$scope.optionsStore = msg.data.optionsStore;
 				$scope.optionsBaseUnit = msg.data.optionsBaseUnit;
-				$scope.optionsType = msg.data.optionsType;
-				$scope.optionsCategory = msg.data.optionsCategory;
-				$scope.optionsManufacturer = msg.data.optionsManufacturer;
-				$scope.optionsCompany = msg.data.optionsCompany;
 				$scope.action = 'update';
 			});
 		});
@@ -89,24 +81,24 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.create = function () {
 			entityApi.create($scope.entity).then(function (response) {
 				if (response.status != 201) {
-					messageHub.showAlertError("Product", `Unable to create Product: '${response.message}'`);
+					messageHub.showAlertError("Catalogue", `Unable to create Catalogue: '${response.message}'`);
 					return;
 				}
 				messageHub.postMessage("entityCreated", response.data);
 				messageHub.postMessage("clearDetails", response.data);
-				messageHub.showAlertSuccess("Product", "Product successfully created");
+				messageHub.showAlertSuccess("Catalogue", "Catalogue successfully created");
 			});
 		};
 
 		$scope.update = function () {
 			entityApi.update($scope.entity.Id, $scope.entity).then(function (response) {
 				if (response.status != 200) {
-					messageHub.showAlertError("Product", `Unable to update Product: '${response.message}'`);
+					messageHub.showAlertError("Catalogue", `Unable to update Catalogue: '${response.message}'`);
 					return;
 				}
 				messageHub.postMessage("entityUpdated", response.data);
 				messageHub.postMessage("clearDetails", response.data);
-				messageHub.showAlertSuccess("Product", "Product successfully updated");
+				messageHub.showAlertSuccess("Catalogue", "Catalogue successfully updated");
 			});
 		};
 

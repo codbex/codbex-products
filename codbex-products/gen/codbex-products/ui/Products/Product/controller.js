@@ -112,11 +112,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.postMessage("entitySelected", {
 				entity: entity,
 				selectedMainEntityId: entity.Id,
+				optionsBaseUnit: $scope.optionsBaseUnit,
 				optionsType: $scope.optionsType,
 				optionsCategory: $scope.optionsCategory,
-				optionsBaseUnit: $scope.optionsBaseUnit,
-				optionsCompany: $scope.optionsCompany,
 				optionsManufacturer: $scope.optionsManufacturer,
+				optionsCompany: $scope.optionsCompany,
 			});
 		};
 
@@ -126,11 +126,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 			messageHub.postMessage("createEntity", {
 				entity: {},
+				optionsBaseUnit: $scope.optionsBaseUnit,
 				optionsType: $scope.optionsType,
 				optionsCategory: $scope.optionsCategory,
-				optionsBaseUnit: $scope.optionsBaseUnit,
-				optionsCompany: $scope.optionsCompany,
 				optionsManufacturer: $scope.optionsManufacturer,
+				optionsCompany: $scope.optionsCompany,
 			});
 		};
 
@@ -138,11 +138,11 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.action = "update";
 			messageHub.postMessage("updateEntity", {
 				entity: $scope.selectedEntity,
+				optionsBaseUnit: $scope.optionsBaseUnit,
 				optionsType: $scope.optionsType,
 				optionsCategory: $scope.optionsCategory,
-				optionsBaseUnit: $scope.optionsBaseUnit,
-				optionsCompany: $scope.optionsCompany,
 				optionsManufacturer: $scope.optionsManufacturer,
+				optionsCompany: $scope.optionsCompany,
 			});
 		};
 
@@ -179,21 +179,30 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.openFilter = function (entity) {
 			messageHub.showDialogWindow("Product-filter", {
 				entity: $scope.filterEntity,
+				optionsBaseUnit: $scope.optionsBaseUnit,
 				optionsType: $scope.optionsType,
 				optionsCategory: $scope.optionsCategory,
-				optionsBaseUnit: $scope.optionsBaseUnit,
-				optionsCompany: $scope.optionsCompany,
 				optionsManufacturer: $scope.optionsManufacturer,
+				optionsCompany: $scope.optionsCompany,
 			});
 		};
 
 		//----------------Dropdowns-----------------//
+		$scope.optionsBaseUnit = [];
 		$scope.optionsType = [];
 		$scope.optionsCategory = [];
-		$scope.optionsBaseUnit = [];
-		$scope.optionsCompany = [];
 		$scope.optionsManufacturer = [];
+		$scope.optionsCompany = [];
 
+
+		$http.get("/services/ts/codbex-uoms/gen/codbex-uoms/api/UnitsOfMeasures/UoMService.ts").then(function (response) {
+			$scope.optionsBaseUnit = response.data.map(e => {
+				return {
+					value: e.Id,
+					text: e.Name
+				}
+			});
+		});
 
 		$http.get("/services/ts/codbex-products/gen/codbex-products/api/Settings/ProductTypeService.ts").then(function (response) {
 			$scope.optionsType = response.data.map(e => {
@@ -213,8 +222,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/ts/codbex-uoms/gen/codbex-uoms/api/UnitsOfMeasures/UoMService.ts").then(function (response) {
-			$scope.optionsBaseUnit = response.data.map(e => {
+		$http.get("/services/ts/codbex-partners/gen/codbex-partners/api/Manufacturers/ManufacturerService.ts").then(function (response) {
+			$scope.optionsManufacturer = response.data.map(e => {
 				return {
 					value: e.Id,
 					text: e.Name
@@ -231,15 +240,14 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		});
 
-		$http.get("/services/ts/codbex-partners/gen/codbex-partners/api/Manufacturers/ManufacturerService.ts").then(function (response) {
-			$scope.optionsManufacturer = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
+		$scope.optionsBaseUnitValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsBaseUnit.length; i++) {
+				if ($scope.optionsBaseUnit[i].value === optionKey) {
+					return $scope.optionsBaseUnit[i].text;
 				}
-			});
-		});
-
+			}
+			return null;
+		};
 		$scope.optionsTypeValue = function (optionKey) {
 			for (let i = 0; i < $scope.optionsType.length; i++) {
 				if ($scope.optionsType[i].value === optionKey) {
@@ -256,10 +264,10 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			}
 			return null;
 		};
-		$scope.optionsBaseUnitValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsBaseUnit.length; i++) {
-				if ($scope.optionsBaseUnit[i].value === optionKey) {
-					return $scope.optionsBaseUnit[i].text;
+		$scope.optionsManufacturerValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsManufacturer.length; i++) {
+				if ($scope.optionsManufacturer[i].value === optionKey) {
+					return $scope.optionsManufacturer[i].text;
 				}
 			}
 			return null;
@@ -268,14 +276,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			for (let i = 0; i < $scope.optionsCompany.length; i++) {
 				if ($scope.optionsCompany[i].value === optionKey) {
 					return $scope.optionsCompany[i].text;
-				}
-			}
-			return null;
-		};
-		$scope.optionsManufacturerValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsManufacturer.length; i++) {
-				if ($scope.optionsManufacturer[i].value === optionKey) {
-					return $scope.optionsManufacturer[i].text;
 				}
 			}
 			return null;
