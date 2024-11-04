@@ -1,0 +1,5 @@
+{
+    "extensionPoint": "codbex-products-Products-ProductSet",
+    "module": "codbex-products/events/Catalogue/GenerateNameHandler.ts",
+    "description": "Catalogue update extension"
+}
