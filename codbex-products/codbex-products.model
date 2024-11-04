@@ -1591,7 +1591,7 @@
                     },
                     {
                         "calculatedPropertyExpressionCreate": "(entity[\"Title\"] + \"/\" + entity[\"Model\"] + \"/\" + entity[\"Batch\"] + \"-\" + (entity[\"Enabled\"] ? 'enabled' : 'disabled'));",
-                        "dataLength": "20",
+                        "dataLength": "500",
                         "dataName": "PRODUCTSET_NAME",
                         "dataNullable": "true",
                         "dataType": "VARCHAR",
