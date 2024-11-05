@@ -480,8 +480,11 @@
           "inputRule": ""
         },
         {
+          "dataLength": "18",
           "dataName": "PRODUCT_PRICE",
           "dataNullable": true,
+          "dataPrecision": "16",
+          "dataScale": "2",
           "dataType": "DECIMAL",
           "description": "",
           "isRequiredProperty": true,
@@ -616,9 +619,12 @@
           "inputRule": ""
         },
         {
+          "dataLength": "18",
           "dataName": "PRODUCT_WEIGHT",
           "dataNullable": true,
-          "dataType": "DOUBLE",
+          "dataPrecision": "16",
+          "dataScale": "2",
+          "dataType": "DECIMAL",
           "description": "",
           "name": "Weight",
           "tooltip": "",
@@ -639,9 +645,12 @@
           "inputRule": ""
         },
         {
+          "dataLength": "18",
           "dataName": "PRODUCT_HEIGHT",
           "dataNullable": true,
-          "dataType": "DOUBLE",
+          "dataPrecision": "16",
+          "dataScale": "2",
+          "dataType": "DECIMAL",
           "description": "",
           "name": "Height",
           "tooltip": "",
@@ -662,9 +671,12 @@
           "inputRule": ""
         },
         {
+          "dataLength": "18",
           "dataName": "PRODUCT_LENGTH",
           "dataNullable": true,
-          "dataType": "DOUBLE",
+          "dataPrecision": "16",
+          "dataScale": "2",
+          "dataType": "DECIMAL",
           "description": "",
           "name": "Length",
           "tooltip": "",
@@ -685,9 +697,12 @@
           "inputRule": ""
         },
         {
+          "dataLength": "18",
           "dataName": "PRODUCT_WIDTH",
           "dataNullable": true,
-          "dataType": "DOUBLE",
+          "dataPrecision": "16",
+          "dataScale": "2",
+          "dataType": "DECIMAL",
           "description": "",
           "name": "Width",
           "tooltip": "",
@@ -1097,8 +1112,11 @@
             "inputRule": ""
           },
           {
+            "dataLength": "18",
             "dataName": "PRODUCT_PRICE",
             "dataNullable": true,
+            "dataPrecision": "16",
+            "dataScale": "2",
             "dataType": "DECIMAL",
             "description": "",
             "isRequiredProperty": true,
@@ -1233,9 +1251,12 @@
             "inputRule": ""
           },
           {
+            "dataLength": "18",
             "dataName": "PRODUCT_WEIGHT",
             "dataNullable": true,
-            "dataType": "DOUBLE",
+            "dataPrecision": "16",
+            "dataScale": "2",
+            "dataType": "DECIMAL",
             "description": "",
             "name": "Weight",
             "tooltip": "",
@@ -1256,9 +1277,12 @@
             "inputRule": ""
           },
           {
+            "dataLength": "18",
             "dataName": "PRODUCT_HEIGHT",
             "dataNullable": true,
-            "dataType": "DOUBLE",
+            "dataPrecision": "16",
+            "dataScale": "2",
+            "dataType": "DECIMAL",
             "description": "",
             "name": "Height",
             "tooltip": "",
@@ -1279,9 +1303,12 @@
             "inputRule": ""
           },
           {
+            "dataLength": "18",
             "dataName": "PRODUCT_LENGTH",
             "dataNullable": true,
-            "dataType": "DOUBLE",
+            "dataPrecision": "16",
+            "dataScale": "2",
+            "dataType": "DECIMAL",
             "description": "",
             "name": "Length",
             "tooltip": "",
@@ -1302,9 +1329,12 @@
             "inputRule": ""
           },
           {
+            "dataLength": "18",
             "dataName": "PRODUCT_WIDTH",
             "dataNullable": true,
-            "dataType": "DOUBLE",
+            "dataPrecision": "16",
+            "dataScale": "2",
+            "dataType": "DECIMAL",
             "description": "",
             "name": "Width",
             "tooltip": "",
@@ -2926,9 +2956,12 @@
           "inputRule": ""
         },
         {
+          "dataLength": "18",
           "dataName": "CATALOGUE_QUANTITY",
           "dataNullable": false,
-          "dataType": "DOUBLE",
+          "dataPrecision": "16",
+          "dataScale": "2",
+          "dataType": "DECIMAL",
           "description": "",
           "isRequiredProperty": true,
           "name": "Quantity",
@@ -3078,9 +3111,12 @@
             "inputRule": ""
           },
           {
+            "dataLength": "18",
             "dataName": "CATALOGUE_QUANTITY",
             "dataNullable": false,
-            "dataType": "DOUBLE",
+            "dataPrecision": "16",
+            "dataScale": "2",
+            "dataType": "DECIMAL",
             "description": "",
             "isRequiredProperty": true,
             "name": "Quantity",
@@ -3360,8 +3396,11 @@
           "inputRule": ""
         },
         {
+          "dataLength": "18",
           "dataName": "PRODUCTSET_WEIGHT",
           "dataNullable": true,
+          "dataPrecision": "16",
+          "dataScale": "2",
           "dataType": "DECIMAL",
           "description": "",
           "isRequiredProperty": true,
@@ -3383,8 +3422,11 @@
           "inputRule": ""
         },
         {
+          "dataLength": "18",
           "dataName": "PRODUCTSET_HEIGHT",
           "dataNullable": true,
+          "dataPrecision": "16",
+          "dataScale": "2",
           "dataType": "DECIMAL",
           "description": "",
           "isRequiredProperty": true,
@@ -3406,8 +3448,11 @@
           "inputRule": ""
         },
         {
+          "dataLength": "18",
           "dataName": "PRODUCTSET_LENGTH",
           "dataNullable": true,
+          "dataPrecision": "16",
+          "dataScale": "2",
           "dataType": "DECIMAL",
           "description": "",
           "isRequiredProperty": true,
@@ -3429,8 +3474,11 @@
           "inputRule": ""
         },
         {
+          "dataLength": "18",
           "dataName": "PRODUCTSET_WIDTH",
           "dataNullable": true,
+          "dataPrecision": "16",
+          "dataScale": "2",
           "dataType": "DECIMAL",
           "description": "",
           "isRequiredProperty": true,
@@ -3452,8 +3500,11 @@
           "inputRule": ""
         },
         {
+          "dataLength": "18",
           "dataName": "PRODUCTSET_RATIO",
           "dataNullable": true,
+          "dataPrecision": "16",
+          "dataScale": "2",
           "dataType": "DECIMAL",
           "description": "",
           "isRequiredProperty": true,

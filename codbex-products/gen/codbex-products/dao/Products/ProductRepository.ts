@@ -326,22 +326,22 @@ export class ProductRepository {
             {
                 name: "Weight",
                 column: "PRODUCT_WEIGHT",
-                type: "DOUBLE",
+                type: "DECIMAL",
             },
             {
                 name: "Height",
                 column: "PRODUCT_HEIGHT",
-                type: "DOUBLE",
+                type: "DECIMAL",
             },
             {
                 name: "Length",
                 column: "PRODUCT_LENGTH",
-                type: "DOUBLE",
+                type: "DECIMAL",
             },
             {
                 name: "Width",
                 column: "PRODUCT_WIDTH",
-                type: "DOUBLE",
+                type: "DECIMAL",
             },
             {
                 name: "Name",

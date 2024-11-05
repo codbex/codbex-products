@@ -84,6 +84,9 @@
                     },
                     {
                         "type": "DECIMAL",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
                         "nullable": true,
                         "name": "PRODUCT_PRICE"
                     },
@@ -111,22 +114,34 @@
                         "name": "PRODUCT_MANUFACTURER"
                     },
                     {
-                        "type": "DOUBLE",
+                        "type": "DECIMAL",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
                         "nullable": true,
                         "name": "PRODUCT_WEIGHT"
                     },
                     {
-                        "type": "DOUBLE",
+                        "type": "DECIMAL",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
                         "nullable": true,
                         "name": "PRODUCT_HEIGHT"
                     },
                     {
-                        "type": "DOUBLE",
+                        "type": "DECIMAL",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
                         "nullable": true,
                         "name": "PRODUCT_LENGTH"
                     },
                     {
-                        "type": "DOUBLE",
+                        "type": "DECIMAL",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
                         "nullable": true,
                         "name": "PRODUCT_WIDTH"
                     },
@@ -227,7 +242,10 @@
                         "name": "CATALOGUE_STORE"
                     },
                     {
-                        "type": "DOUBLE",
+                        "type": "DECIMAL",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
                         "name": "CATALOGUE_QUANTITY"
                     },
                     {
@@ -289,26 +307,41 @@
                     },
                     {
                         "type": "DECIMAL",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
                         "nullable": true,
                         "name": "PRODUCTSET_WEIGHT"
                     },
                     {
                         "type": "DECIMAL",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
                         "nullable": true,
                         "name": "PRODUCTSET_HEIGHT"
                     },
                     {
                         "type": "DECIMAL",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
                         "nullable": true,
                         "name": "PRODUCTSET_LENGTH"
                     },
                     {
                         "type": "DECIMAL",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
                         "nullable": true,
                         "name": "PRODUCTSET_WIDTH"
                     },
                     {
                         "type": "DECIMAL",
+                        "length": 18,
+                        "precision": "16",
+                        "scale": "2",
                         "nullable": true,
                         "name": "PRODUCTSET_RATIO"
                     },
