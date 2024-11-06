@@ -12,11 +12,11 @@ export interface ProductEntity {
     Batch: string;
     BaseUnit?: number;
     Price?: number;
-    VAT?: number;
+    VATRate?: number;
     Type?: number;
     Category?: number;
     Manufacturer?: number;
-    Weight?: number;
+    VAT?: number;
     Height?: number;
     Length?: number;
     Width?: number;
@@ -37,11 +37,11 @@ export interface ProductCreateEntity {
     readonly Batch: string;
     readonly BaseUnit?: number;
     readonly Price?: number;
-    readonly VAT?: number;
+    readonly VATRate?: number;
     readonly Type?: number;
     readonly Category?: number;
     readonly Manufacturer?: number;
-    readonly Weight?: number;
+    readonly VAT?: number;
     readonly Height?: number;
     readonly Length?: number;
     readonly Width?: number;
@@ -68,11 +68,11 @@ export interface ProductEntityOptions {
             Batch?: string | string[];
             BaseUnit?: number | number[];
             Price?: number | number[];
-            VAT?: number | number[];
+            VATRate?: number | number[];
             Type?: number | number[];
             Category?: number | number[];
             Manufacturer?: number | number[];
-            Weight?: number | number[];
+            VAT?: number | number[];
             Height?: number | number[];
             Length?: number | number[];
             Width?: number | number[];
@@ -93,11 +93,11 @@ export interface ProductEntityOptions {
             Batch?: string | string[];
             BaseUnit?: number | number[];
             Price?: number | number[];
-            VAT?: number | number[];
+            VATRate?: number | number[];
             Type?: number | number[];
             Category?: number | number[];
             Manufacturer?: number | number[];
-            Weight?: number | number[];
+            VAT?: number | number[];
             Height?: number | number[];
             Length?: number | number[];
             Width?: number | number[];
@@ -118,11 +118,11 @@ export interface ProductEntityOptions {
             Batch?: string;
             BaseUnit?: number;
             Price?: number;
-            VAT?: number;
+            VATRate?: number;
             Type?: number;
             Category?: number;
             Manufacturer?: number;
-            Weight?: number;
+            VAT?: number;
             Height?: number;
             Length?: number;
             Width?: number;
@@ -143,11 +143,11 @@ export interface ProductEntityOptions {
             Batch?: string;
             BaseUnit?: number;
             Price?: number;
-            VAT?: number;
+            VATRate?: number;
             Type?: number;
             Category?: number;
             Manufacturer?: number;
-            Weight?: number;
+            VAT?: number;
             Height?: number;
             Length?: number;
             Width?: number;
@@ -168,11 +168,11 @@ export interface ProductEntityOptions {
             Batch?: string;
             BaseUnit?: number;
             Price?: number;
-            VAT?: number;
+            VATRate?: number;
             Type?: number;
             Category?: number;
             Manufacturer?: number;
-            Weight?: number;
+            VAT?: number;
             Height?: number;
             Length?: number;
             Width?: number;
@@ -193,11 +193,11 @@ export interface ProductEntityOptions {
             Batch?: string;
             BaseUnit?: number;
             Price?: number;
-            VAT?: number;
+            VATRate?: number;
             Type?: number;
             Category?: number;
             Manufacturer?: number;
-            Weight?: number;
+            VAT?: number;
             Height?: number;
             Length?: number;
             Width?: number;
@@ -218,11 +218,11 @@ export interface ProductEntityOptions {
             Batch?: string;
             BaseUnit?: number;
             Price?: number;
-            VAT?: number;
+            VATRate?: number;
             Type?: number;
             Category?: number;
             Manufacturer?: number;
-            Weight?: number;
+            VAT?: number;
             Height?: number;
             Length?: number;
             Width?: number;
@@ -304,7 +304,7 @@ export class ProductRepository {
                 type: "DECIMAL",
             },
             {
-                name: "VAT",
+                name: "VATRate",
                 column: "PRODUCT_VAT",
                 type: "DECIMAL",
             },
@@ -324,7 +324,7 @@ export class ProductRepository {
                 type: "INTEGER",
             },
             {
-                name: "Weight",
+                name: "VAT",
                 column: "PRODUCT_WEIGHT",
                 type: "DECIMAL",
             },

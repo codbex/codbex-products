@@ -91,6 +91,14 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.serviceManufacturer = "/services/ts/codbex-partners/gen/codbex-partners/api/Manufacturers/ManufacturerService.ts";
 		$scope.serviceCompany = "/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts";
 
+
+		$scope.$watch('entity.Product', function (newValue, oldValue) {
+			if (newValue !== undefined && newValue !== null) {
+				entityApi.$http.get($scope.serviceProduct + '/' + newValue).then(function (response) {
+					let valueFrom = response.data.VAT;
+					$scope.entity.VAT = valueFrom;
+				});
+		});
 		//-----------------Events-------------------//
 
 		$scope.create = function () {
