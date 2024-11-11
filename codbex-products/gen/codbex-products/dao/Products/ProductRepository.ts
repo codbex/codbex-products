@@ -16,7 +16,7 @@ export interface ProductEntity {
     Type?: number;
     Category?: number;
     Manufacturer?: number;
-    VAT?: number;
+    Weight?: number;
     Height?: number;
     Length?: number;
     Width?: number;
@@ -41,7 +41,7 @@ export interface ProductCreateEntity {
     readonly Type?: number;
     readonly Category?: number;
     readonly Manufacturer?: number;
-    readonly VAT?: number;
+    readonly Weight?: number;
     readonly Height?: number;
     readonly Length?: number;
     readonly Width?: number;
@@ -72,7 +72,7 @@ export interface ProductEntityOptions {
             Type?: number | number[];
             Category?: number | number[];
             Manufacturer?: number | number[];
-            VAT?: number | number[];
+            Weight?: number | number[];
             Height?: number | number[];
             Length?: number | number[];
             Width?: number | number[];
@@ -97,7 +97,7 @@ export interface ProductEntityOptions {
             Type?: number | number[];
             Category?: number | number[];
             Manufacturer?: number | number[];
-            VAT?: number | number[];
+            Weight?: number | number[];
             Height?: number | number[];
             Length?: number | number[];
             Width?: number | number[];
@@ -122,7 +122,7 @@ export interface ProductEntityOptions {
             Type?: number;
             Category?: number;
             Manufacturer?: number;
-            VAT?: number;
+            Weight?: number;
             Height?: number;
             Length?: number;
             Width?: number;
@@ -147,7 +147,7 @@ export interface ProductEntityOptions {
             Type?: number;
             Category?: number;
             Manufacturer?: number;
-            VAT?: number;
+            Weight?: number;
             Height?: number;
             Length?: number;
             Width?: number;
@@ -172,7 +172,7 @@ export interface ProductEntityOptions {
             Type?: number;
             Category?: number;
             Manufacturer?: number;
-            VAT?: number;
+            Weight?: number;
             Height?: number;
             Length?: number;
             Width?: number;
@@ -197,7 +197,7 @@ export interface ProductEntityOptions {
             Type?: number;
             Category?: number;
             Manufacturer?: number;
-            VAT?: number;
+            Weight?: number;
             Height?: number;
             Length?: number;
             Width?: number;
@@ -222,7 +222,7 @@ export interface ProductEntityOptions {
             Type?: number;
             Category?: number;
             Manufacturer?: number;
-            VAT?: number;
+            Weight?: number;
             Height?: number;
             Length?: number;
             Width?: number;
@@ -324,24 +324,24 @@ export class ProductRepository {
                 type: "INTEGER",
             },
             {
-                name: "VAT",
+                name: "Weight",
                 column: "PRODUCT_WEIGHT",
-                type: "DECIMAL",
+                type: "DOUBLE",
             },
             {
                 name: "Height",
                 column: "PRODUCT_HEIGHT",
-                type: "DECIMAL",
+                type: "DOUBLE",
             },
             {
                 name: "Length",
                 column: "PRODUCT_LENGTH",
-                type: "DECIMAL",
+                type: "DOUBLE",
             },
             {
                 name: "Width",
                 column: "PRODUCT_WIDTH",
-                type: "DECIMAL",
+                type: "DOUBLE",
             },
             {
                 name: "Name",

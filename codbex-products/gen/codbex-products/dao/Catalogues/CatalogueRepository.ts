@@ -123,7 +123,7 @@ export class CatalogueRepository {
             {
                 name: "Quantity",
                 column: "CATALOGUE_QUANTITY",
-                type: "DECIMAL",
+                type: "DOUBLE",
                 required: true
             },
             {

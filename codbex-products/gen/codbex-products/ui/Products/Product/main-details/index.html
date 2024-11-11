@@ -221,16 +221,16 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idVAT" dg-required="false" dg-colon="true">VAT</fd-form-label>
+                        	<fd-form-label for="idWeight" dg-required="false" dg-colon="true">Weight</fd-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--4 ">
-							<fd-step-input dg-id="idVAT"
-								name="VAT"
-								state="{{ forms.details['VAT'].$valid ? '' : 'error' }}"
+							<fd-step-input dg-id="idWeight"
+								name="Weight"
+								state="{{ forms.details['Weight'].$valid ? '' : 'error' }}"
 								dg-required="false"
-								ng-model="entity.VAT"
+								ng-model="entity.Weight"
 								is-readonly="action === 'select'"
-								placeholder="Enter VAT"
+								placeholder="Enter Weight"
 								>
 							</fd-step-input>
 							<i class="sap-icon--information" role="presentation" onclick="javascript:alert('')"></i>

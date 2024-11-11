@@ -61,9 +61,6 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Ratio !== undefined) {
 				filter.$filter.equals.Ratio = entity.Ratio;
 			}
-			if (entity.Name) {
-				filter.$filter.contains.Name = entity.Name;
-			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,
 				filter: filter

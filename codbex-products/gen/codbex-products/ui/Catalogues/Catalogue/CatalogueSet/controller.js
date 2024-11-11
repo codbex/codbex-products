@@ -5,7 +5,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["entityApiProvider", function (entityApiProvider) {
 		entityApiProvider.baseUrl = "/services/ts/codbex-products/gen/codbex-products/api/Catalogues/CatalogueSetService.ts";
 	}])
-	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', 'Extensions', function ($scope, $http, messageHub, entityApi, Extensions) {
+	.controller('PageController', ['$scope', 'messageHub', 'entityApi', 'Extensions', function ($scope, messageHub, entityApi, Extensions) {
 		//-----------------Custom Actions-------------------//
 		Extensions.get('dialogWindow', 'codbex-products-custom-action').then(function (response) {
 			$scope.pageActions = response.filter(e => e.perspective === "Catalogues" && e.view === "CatalogueSet" && (e.type === "page" || e.type === undefined));
@@ -125,14 +125,12 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.showDialogWindow("CatalogueSet-details", {
 				action: "select",
 				entity: entity,
-				optionsProductSet: $scope.optionsProductSet,
 			});
 		};
 
 		$scope.openFilter = function (entity) {
 			messageHub.showDialogWindow("CatalogueSet-filter", {
 				entity: $scope.filterEntity,
-				optionsProductSet: $scope.optionsProductSet,
 			});
 		};
 
@@ -143,7 +141,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: {},
 				selectedMainEntityKey: "Catalogue",
 				selectedMainEntityId: $scope.selectedMainEntityId,
-				optionsProductSet: $scope.optionsProductSet,
 			}, null, false);
 		};
 
@@ -153,7 +150,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				entity: entity,
 				selectedMainEntityKey: "Catalogue",
 				selectedMainEntityId: $scope.selectedMainEntityId,
-				optionsProductSet: $scope.optionsProductSet,
 			}, null, false);
 		};
 
@@ -185,28 +181,5 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				}
 			});
 		};
-
-		//----------------Dropdowns-----------------//
-		$scope.optionsProductSet = [];
-
-
-		$http.get("/services/ts/codbex-products/gen/codbex-products/api/Products/ProductSetService.ts").then(function (response) {
-			$scope.optionsProductSet = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
-				}
-			});
-		});
-
-		$scope.optionsProductSetValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsProductSet.length; i++) {
-				if ($scope.optionsProductSet[i].value === optionKey) {
-					return $scope.optionsProductSet[i].text;
-				}
-			}
-			return null;
-		};
-		//----------------Dropdowns-----------------//
 
 	}]);

@@ -24,7 +24,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.entity = params.entity;
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
-			$scope.optionsProductSet = params.optionsProductSet;
 		}
 
 		$scope.create = function () {
@@ -56,7 +55,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			});
 		};
 
-		$scope.serviceProductSet = "/services/ts/codbex-products/gen/codbex-products/api/Products/ProductSetService.ts";
 
 		$scope.cancel = function () {
 			$scope.entity = {};

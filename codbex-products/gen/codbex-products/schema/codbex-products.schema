@@ -84,9 +84,6 @@
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
-                        "precision": "16",
-                        "scale": "2",
                         "nullable": true,
                         "name": "PRODUCT_PRICE"
                     },
@@ -114,34 +111,22 @@
                         "name": "PRODUCT_MANUFACTURER"
                     },
                     {
-                        "type": "DECIMAL",
-                        "length": 18,
-                        "precision": "16",
-                        "scale": "2",
+                        "type": "DOUBLE",
                         "nullable": true,
                         "name": "PRODUCT_WEIGHT"
                     },
                     {
-                        "type": "DECIMAL",
-                        "length": 18,
-                        "precision": "16",
-                        "scale": "2",
+                        "type": "DOUBLE",
                         "nullable": true,
                         "name": "PRODUCT_HEIGHT"
                     },
                     {
-                        "type": "DECIMAL",
-                        "length": 18,
-                        "precision": "16",
-                        "scale": "2",
+                        "type": "DOUBLE",
                         "nullable": true,
                         "name": "PRODUCT_LENGTH"
                     },
                     {
-                        "type": "DECIMAL",
-                        "length": 18,
-                        "precision": "16",
-                        "scale": "2",
+                        "type": "DOUBLE",
                         "nullable": true,
                         "name": "PRODUCT_WIDTH"
                     },
@@ -242,10 +227,7 @@
                         "name": "CATALOGUE_STORE"
                     },
                     {
-                        "type": "DECIMAL",
-                        "length": 18,
-                        "precision": "16",
-                        "scale": "2",
+                        "type": "DOUBLE",
                         "name": "CATALOGUE_QUANTITY"
                     },
                     {
@@ -307,49 +289,28 @@
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
-                        "precision": "16",
-                        "scale": "2",
                         "nullable": true,
                         "name": "PRODUCTSET_WEIGHT"
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
-                        "precision": "16",
-                        "scale": "2",
                         "nullable": true,
                         "name": "PRODUCTSET_HEIGHT"
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
-                        "precision": "16",
-                        "scale": "2",
                         "nullable": true,
                         "name": "PRODUCTSET_LENGTH"
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
-                        "precision": "16",
-                        "scale": "2",
                         "nullable": true,
                         "name": "PRODUCTSET_WIDTH"
                     },
                     {
                         "type": "DECIMAL",
-                        "length": 18,
-                        "precision": "16",
-                        "scale": "2",
                         "nullable": true,
                         "name": "PRODUCTSET_RATIO"
-                    },
-                    {
-                        "type": "VARCHAR",
-                        "length": 500,
-                        "nullable": true,
-                        "name": "PRODUCTSET_NAME"
                     }
                 ]
             },
