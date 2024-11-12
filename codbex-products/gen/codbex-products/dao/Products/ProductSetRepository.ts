@@ -12,6 +12,7 @@ export interface ProductSetEntity {
     Length?: number;
     Width?: number;
     Ratio?: number;
+    Name?: string;
 }
 
 export interface ProductSetCreateEntity {
@@ -22,6 +23,7 @@ export interface ProductSetCreateEntity {
     readonly Length?: number;
     readonly Width?: number;
     readonly Ratio?: number;
+    readonly Name?: string;
 }
 
 export interface ProductSetUpdateEntity extends ProductSetCreateEntity {
@@ -39,6 +41,7 @@ export interface ProductSetEntityOptions {
             Length?: number | number[];
             Width?: number | number[];
             Ratio?: number | number[];
+            Name?: string | string[];
         };
         notEquals?: {
             Id?: number | number[];
@@ -49,6 +52,7 @@ export interface ProductSetEntityOptions {
             Length?: number | number[];
             Width?: number | number[];
             Ratio?: number | number[];
+            Name?: string | string[];
         };
         contains?: {
             Id?: number;
@@ -59,6 +63,7 @@ export interface ProductSetEntityOptions {
             Length?: number;
             Width?: number;
             Ratio?: number;
+            Name?: string;
         };
         greaterThan?: {
             Id?: number;
@@ -69,6 +74,7 @@ export interface ProductSetEntityOptions {
             Length?: number;
             Width?: number;
             Ratio?: number;
+            Name?: string;
         };
         greaterThanOrEqual?: {
             Id?: number;
@@ -79,6 +85,7 @@ export interface ProductSetEntityOptions {
             Length?: number;
             Width?: number;
             Ratio?: number;
+            Name?: string;
         };
         lessThan?: {
             Id?: number;
@@ -89,6 +96,7 @@ export interface ProductSetEntityOptions {
             Length?: number;
             Width?: number;
             Ratio?: number;
+            Name?: string;
         };
         lessThanOrEqual?: {
             Id?: number;
@@ -99,6 +107,7 @@ export interface ProductSetEntityOptions {
             Length?: number;
             Width?: number;
             Ratio?: number;
+            Name?: string;
         };
     },
     $select?: (keyof ProductSetEntity)[],
@@ -169,6 +178,11 @@ export class ProductSetRepository {
                 name: "Ratio",
                 column: "PRODUCTSET_RATIO",
                 type: "DECIMAL",
+            },
+            {
+                name: "Name",
+                column: "PRODUCTSET_NAME",
+                type: "VARCHAR",
             }
         ]
     };

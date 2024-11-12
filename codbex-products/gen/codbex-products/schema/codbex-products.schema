@@ -311,6 +311,12 @@
                         "type": "DECIMAL",
                         "nullable": true,
                         "name": "PRODUCTSET_RATIO"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 500,
+                        "nullable": true,
+                        "name": "PRODUCTSET_NAME"
                     }
                 ]
             },

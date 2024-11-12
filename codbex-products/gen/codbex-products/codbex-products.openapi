@@ -2673,6 +2673,8 @@ paths:
                   $filter:
                     notEquals:
                       Id: 33
+                    contains:
+                      Name: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -2689,6 +2691,12 @@ paths:
                   $filter:
                     notEquals:
                       Id: 0
+              countWithContains:
+                summary: Count with Contains
+                value:
+                  $filter:
+                    contains:
+                      Name: "abcd"
               countWithGreaterThan:
                 summary: Count with Greater Than
                 value:
@@ -2751,6 +2759,8 @@ paths:
                   $filter:
                     notEquals:
                       Id: 33
+                    contains:
+                      Name: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -2767,6 +2777,12 @@ paths:
                   $filter:
                     notEquals:
                       Id: 0
+              searchWithContains:
+                summary: Search with Contains
+                value:
+                  $filter:
+                    contains:
+                      Name: "abcd"
               searchWithGreaterThan:
                 summary: Search with Greater Than
                 value:
@@ -3123,7 +3139,7 @@ components:
         - Batch
         - BaseUnit
         - Price
-        - VAT
+        - VATRate
       properties:
         Id:
           type: integer
@@ -3150,7 +3166,7 @@ components:
         Price:
           type: number
           format: double
-        VAT:
+        VATRate:
           type: number
           format: double
         Type:
@@ -3281,7 +3297,7 @@ components:
                       items:
                         type: number
                         format: double
-                VAT:
+                VATRate:
                   oneOf:
                     - type: number
                       format: double
@@ -3496,7 +3512,7 @@ components:
                       items:
                         type: number
                         format: double
-                VAT:
+                VATRate:
                   oneOf:
                     - type: number
                       format: double
@@ -3662,7 +3678,7 @@ components:
                   maxLength: 50
                 BaseUnit:
                 Price:
-                VAT:
+                VATRate:
                 Type:
                 Category:
                 Manufacturer:
@@ -3724,7 +3740,7 @@ components:
                 Price:
                   type: number
                   format: double
-                VAT:
+                VATRate:
                   type: number
                   format: double
                 Type:
@@ -3804,7 +3820,7 @@ components:
                 Price:
                   type: number
                   format: double
-                VAT:
+                VATRate:
                   type: number
                   format: double
                 Type:
@@ -3884,7 +3900,7 @@ components:
                 Price:
                   type: number
                   format: double
-                VAT:
+                VATRate:
                   type: number
                   format: double
                 Type:
@@ -3964,7 +3980,7 @@ components:
                 Price:
                   type: number
                   format: double
-                VAT:
+                VATRate:
                   type: number
                   format: double
                 Type:
@@ -4018,12 +4034,12 @@ components:
                 Enabled:
         $select:
           type: array
-          example: ["Id", "SKU", "Title", "Model", "Batch", "BaseUnit", "Price", "VAT", "Type", "Category", "Manufacturer", "Weight", "Height", "Length", "Width", "Name", "Company", "UPC", "EAN", "JAN", "ISBN", "MPN", "Enabled"]
+          example: ["Id", "SKU", "Title", "Model", "Batch", "BaseUnit", "Price", "VATRate", "Type", "Category", "Manufacturer", "Weight", "Height", "Length", "Width", "Name", "Company", "UPC", "EAN", "JAN", "ISBN", "MPN", "Enabled"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,SKU,Title,Model,Batch,BaseUnit,Price,VAT,Type,Category,Manufacturer,Weight,Height,Length,Width,Name,Company,UPC,EAN,JAN,ISBN,MPN,Enabled"
+            example: "Id,SKU,Title,Model,Batch,BaseUnit,Price,VATRate,Type,Category,Manufacturer,Weight,Height,Length,Width,Name,Company,UPC,EAN,JAN,ISBN,MPN,Enabled"
         $order:
           type: string
           enum: ["asc", "desc"]
@@ -4631,6 +4647,13 @@ components:
     ProductSet:
       type: object
       required:
+        - UoM
+        - Product
+        - Weight
+        - Height
+        - Length
+        - Width
+        - Ratio
       properties:
         Id:
           type: integer
@@ -4656,6 +4679,10 @@ components:
         Ratio:
           type: number
           format: double
+        Name:
+          type: string
+          minLength: 0
+          maxLength: 500
     ProductSetFilterOptions:
       type: object
       properties:
@@ -4729,6 +4756,17 @@ components:
                       items:
                         type: number
                         format: double
+                Name:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 500
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 500
             notEquals:
               type: object
               properties:
@@ -4796,6 +4834,17 @@ components:
                       items:
                         type: number
                         format: double
+                Name:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 500
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 500
             contains:
               type: object
               properties:
@@ -4807,6 +4856,10 @@ components:
                 Length:
                 Width:
                 Ratio:
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 500
             greaterThan:
               type: object
               properties:
@@ -4834,6 +4887,10 @@ components:
                 Ratio:
                   type: number
                   format: double
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 500
             greaterThanOrEqual:
               type: object
               properties:
@@ -4861,6 +4918,10 @@ components:
                 Ratio:
                   type: number
                   format: double
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 500
             lessThan:
               type: object
               properties:
@@ -4888,6 +4949,10 @@ components:
                 Ratio:
                   type: number
                   format: double
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 500
             lessThanOrEqual:
               type: object
               properties:
@@ -4915,14 +4980,18 @@ components:
                 Ratio:
                   type: number
                   format: double
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 500
         $select:
           type: array
-          example: ["Id", "UoM", "Product", "Weight", "Height", "Length", "Width", "Ratio"]
+          example: ["Id", "UoM", "Product", "Weight", "Height", "Length", "Width", "Ratio", "Name"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,UoM,Product,Weight,Height,Length,Width,Ratio"
+            example: "Id,UoM,Product,Weight,Height,Length,Width,Ratio,Name"
         $order:
           type: string
           enum: ["asc", "desc"]
