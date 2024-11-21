@@ -12,7 +12,7 @@ export interface ProductEntity {
     Batch: string;
     BaseUnit?: number;
     Price?: number;
-    VAT?: number;
+    VATRate?: number;
     Type?: number;
     Category?: number;
     Manufacturer?: number;
@@ -37,7 +37,7 @@ export interface ProductCreateEntity {
     readonly Batch: string;
     readonly BaseUnit?: number;
     readonly Price?: number;
-    readonly VAT?: number;
+    readonly VATRate?: number;
     readonly Type?: number;
     readonly Category?: number;
     readonly Manufacturer?: number;
@@ -68,7 +68,7 @@ export interface ProductEntityOptions {
             Batch?: string | string[];
             BaseUnit?: number | number[];
             Price?: number | number[];
-            VAT?: number | number[];
+            VATRate?: number | number[];
             Type?: number | number[];
             Category?: number | number[];
             Manufacturer?: number | number[];
@@ -93,7 +93,7 @@ export interface ProductEntityOptions {
             Batch?: string | string[];
             BaseUnit?: number | number[];
             Price?: number | number[];
-            VAT?: number | number[];
+            VATRate?: number | number[];
             Type?: number | number[];
             Category?: number | number[];
             Manufacturer?: number | number[];
@@ -118,7 +118,7 @@ export interface ProductEntityOptions {
             Batch?: string;
             BaseUnit?: number;
             Price?: number;
-            VAT?: number;
+            VATRate?: number;
             Type?: number;
             Category?: number;
             Manufacturer?: number;
@@ -143,7 +143,7 @@ export interface ProductEntityOptions {
             Batch?: string;
             BaseUnit?: number;
             Price?: number;
-            VAT?: number;
+            VATRate?: number;
             Type?: number;
             Category?: number;
             Manufacturer?: number;
@@ -168,7 +168,7 @@ export interface ProductEntityOptions {
             Batch?: string;
             BaseUnit?: number;
             Price?: number;
-            VAT?: number;
+            VATRate?: number;
             Type?: number;
             Category?: number;
             Manufacturer?: number;
@@ -193,7 +193,7 @@ export interface ProductEntityOptions {
             Batch?: string;
             BaseUnit?: number;
             Price?: number;
-            VAT?: number;
+            VATRate?: number;
             Type?: number;
             Category?: number;
             Manufacturer?: number;
@@ -218,7 +218,7 @@ export interface ProductEntityOptions {
             Batch?: string;
             BaseUnit?: number;
             Price?: number;
-            VAT?: number;
+            VATRate?: number;
             Type?: number;
             Category?: number;
             Manufacturer?: number;
@@ -304,7 +304,7 @@ export class ProductRepository {
                 type: "DECIMAL",
             },
             {
-                name: "VAT",
+                name: "VATRate",
                 column: "PRODUCT_VAT",
                 type: "DECIMAL",
             },

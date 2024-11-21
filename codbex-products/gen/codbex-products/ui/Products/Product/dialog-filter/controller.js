@@ -62,8 +62,8 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Price !== undefined) {
 				filter.$filter.equals.Price = entity.Price;
 			}
-			if (entity.VAT !== undefined) {
-				filter.$filter.equals.VAT = entity.VAT;
+			if (entity.VATRate !== undefined) {
+				filter.$filter.equals.VATRate = entity.VATRate;
 			}
 			if (entity.Type !== undefined) {
 				filter.$filter.equals.Type = entity.Type;

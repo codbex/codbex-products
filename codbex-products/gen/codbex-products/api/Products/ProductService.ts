@@ -146,8 +146,8 @@ class ProductService {
         if (entity.Price === null || entity.Price === undefined) {
             throw new ValidationError(`The 'Price' property is required, provide a valid value`);
         }
-        if (entity.VAT === null || entity.VAT === undefined) {
-            throw new ValidationError(`The 'VAT' property is required, provide a valid value`);
+        if (entity.VATRate === null || entity.VATRate === undefined) {
+            throw new ValidationError(`The 'VATRate' property is required, provide a valid value`);
         }
         if (entity.Name?.length > 500) {
             throw new ValidationError(`The 'Name' exceeds the maximum length of [500] characters`);
