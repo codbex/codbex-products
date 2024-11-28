@@ -21,52 +21,59 @@
                 min-height: auto;
                 height: auto;
                 width: auto;
-                max-width: 100%;
+                max-width: 99%;
+                margin: 1px;
+            }
+
+            .overflow-h {
+                overflow: hidden;
+            }
+
+            .noborder {
+                border: none;
             }
 
         </style>
     </head>
 
-    <body fd-scrollbar class="fd-padding-begin-end--tiny">
-        <fd-panel expanded="true" class="fd-col fd-col--12">
+    <body fd-scrollbar>
+        <fd-panel expanded="true">
 
-            <fd-panel-content aria-label="Products Content">
+            <fd-panel-content aria-label="Products Content" class="noborder tile-auto-layout">
 
-                <div class="fd-row" style="margin: 0.5em">
-                    <div class="fd-col fd-col--12 fd-col-md--6 fd-col-lg--6 fd-col-xl--6">
-                        <fd-card card-type="table">
-                            <fd-card-header ng-click="openPerspective('products')">
-                                <fd-card-title>Top Products</fd-card-title>
-                            </fd-card-header>
-                            <fd-card-content>
-                                <table class="fd-table fd-table--no-horizontal-borders fd-table--no-vertical-borders">
-                                    <thead class="fd-table__header">
-                                        <tr class="fd-table__row">
-                                            <th class="fd-table__cell">Product</th>
-                                            <th class="fd-table__cell">
-                                                <button class="fd-button fd-button--compact"
-                                                    ng-click="displayByUnits()">By Units</button>
-                                            </th>
-                                            <th class="fd-table__cell">
-                                                <button class="fd-button fd-button--compact"
-                                                    ng-click="displayByRevenue()">By Revenue</button>
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="fd-table__body" id="top_products">
-                                        <tr ng-repeat="next in displayedProducts">
-                                            <td class="fd-table__cell">
-                                                <a class="fd-link"><span
-                                                        class="fd-link__content">{{next.productName}}</span></a>
-                                            </td>
-                                            <td class="fd-table__cell">{{next.unitCount}}</td>
-                                            <td class="fd-table__cell">{{next.revenue}}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </fd-card-content>
-                        </fd-card>
-                    </div>
+                <div>
+                    <fd-card card-type="table">
+                        <fd-card-header ng-click="openPerspective('products')">
+                            <fd-card-title>Top Products</fd-card-title>
+                        </fd-card-header>
+                        <fd-card-content class="">
+                            <table class="fd-table fd-table--no-horizontal-borders fd-table--no-vertical-borders">
+                                <thead class="fd-table__header">
+                                    <tr class="fd-table__row">
+                                        <th class="fd-table__cell">Product</th>
+                                        <th class="fd-table__cell">
+                                            <button class="fd-button fd-button--compact" ng-click="displayByUnits()">By
+                                                Units</button>
+                                        </th>
+                                        <th class="fd-table__cell">
+                                            <button class="fd-button fd-button--compact"
+                                                ng-click="displayByRevenue()">By Revenue</button>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="fd-table__body" id="top_products">
+                                    <tr ng-repeat="next in displayedProducts">
+                                        <td class="fd-table__cell">
+                                            <a class="fd-link"><span
+                                                    class="fd-link__content">{{next.productName}}</span></a>
+                                        </td>
+                                        <td class="fd-table__cell">{{next.unitCount}}</td>
+                                        <td class="fd-table__cell">{{next.revenue}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </fd-card-content>
+                    </fd-card>
                 </div>
             </fd-panel-content>
         </fd-panel>

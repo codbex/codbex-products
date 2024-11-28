@@ -4,7 +4,7 @@ const widgetData = {
     link: '/services/web/codbex-products/widgets/subviews/product-details.html',
     lazyLoad: true,
     order: 14,
-    size: "medium"
+    size: "large"
 };
 
 export function getWidget() {

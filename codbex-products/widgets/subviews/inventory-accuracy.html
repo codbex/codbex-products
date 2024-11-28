@@ -22,14 +22,19 @@
                 min-height: auto;
                 height: auto;
                 width: auto;
-                max-width: 100%;
+                max-width: 99%;
+                margin: 1px;
+            }
+
+            .overflow-h {
+                overflow: hidden;
             }
 
         </style>
     </head>
 
-    <body fd-scrollbar class="fd-padding-begin-end--tiny">
-        <fd-panel expanded="true" class="fd-col fd-col--12">
+    <body fd-scrollbar class="overflow-h">
+        <fd-panel expanded="true" class="tile-auto-layout">
 
             <fd-panel-content aria-label="Products Content">
 
