@@ -1,11 +1,9 @@
 const navigationData = {
-    id: 'products-navigation',
-    label: "Products",
-    view: "products",
+    id: 'catalogues-navigation',
+    label: "Catalogues",
     group: "products",
-    orderNumber: 1000,
-    lazyLoad: true,
-    link: "/services/web/codbex-products/gen/codbex-products/ui/Products/index.html?embedded"
+    order: 300,
+    link: "/services/web/codbex-products/gen/codbex-products/ui/Catalogues/index.html?embedded"
 };
 
 function getNavigation() {

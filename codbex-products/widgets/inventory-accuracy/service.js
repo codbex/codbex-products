@@ -1,10 +1,9 @@
 const widgetData = {
-    id: 'inventory-accuracy',
+    id: 'inventory-accuracy-widget',
     label: 'Inventory Accuracy',
     link: '/services/web/codbex-products/widgets/subviews/inventory-accuracy.html',
-    lazyLoad: true,
-    order: 13,
-    size: "medium"
+    redirectViewId: 'categories-navigation',
+    size: "small"
 };
 
 export function getWidget() {

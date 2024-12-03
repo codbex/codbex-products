@@ -1,10 +1,9 @@
 const widgetData = {
-    id: 'top-products',
+    id: 'top-products-widget',
     label: 'Top products',
     link: '/services/web/codbex-products/widgets/subviews/top-products.html',
-    lazyLoad: true,
-    order: 15,
-    size: "medium"
+    redirectViewId: 'products-navigation',
+    size: "large"
 };
 
 export function getWidget() {
