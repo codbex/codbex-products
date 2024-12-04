@@ -2,7 +2,7 @@ const navigationData = {
     id: 'products-navigation',
     label: "Products",
     group: "products",
-    orderNumber: 100,
+    order: 100,
     link: "/services/web/codbex-products/gen/codbex-products/ui/Products/index.html?embedded"
 };
 
