@@ -1,7 +1,7 @@
 const widgetData = {
     id: 'top-products-widget',
     label: 'Top products',
-    link: '/services/web/codbex-products/widgets/subviews/top-products.html',
+    link: '/services/web/codbex-products/widgets/top-products/index.html',
     redirectViewId: 'products-navigation',
     size: "large"
 };
