@@ -8,29 +8,42 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" sizes="any" href="data:;base64,iVBORw0KGgo=">
         <title dg-view-title></title>
-        <script type="text/javascript" src="../services/inventory-accuracy.js"></script>
+        <script type="text/javascript" src="services.js"></script>
         <theme></theme>
         <script type="text/javascript" src="/services/js/resources-core/services/loader.js?id=application-view-js">
         </script>
         <link type="text/css" rel="stylesheet"
             href="/services/js/resources-core/services/loader.js?id=application-view-css" />
         <script type="text/javascript" src="/webjars/chart.js/dist/chart.umd.js"></script>
-        <script type="text/javascript" src="../js/inventory-accuracy-controller.js"></script>
+        <script type="text/javascript" src="controller.js"></script>
 
         <style>
             .tile-auto-layout {
                 min-height: auto;
                 height: auto;
                 width: auto;
-                max-width: 100%;
+                max-width: 99%;
+                margin: 1px;
+            }
+
+            .overflow-h {
+                overflow: hidden;
+            }
+
+            .fd-numeric-content__kpi {
+                font-size: 1.5rem;
+                word-wrap: break-word;
+                text-overflow: ellipsis;
+                font-weight: 500;
+                white-space: nowrap;
+                overflow: hidden;
             }
 
         </style>
     </head>
 
-    <body fd-scrollbar class="fd-padding-begin-end--tiny">
+    <body class="overflow-h">
         <fd-panel expanded="true" class="fd-col fd-col--12">
-
             <fd-panel-content aria-label="Products Content">
 
                 <div class="fd-row" style="margin: 0.5em">
@@ -42,7 +55,6 @@
                         </div>
                     </div>
                 </div>
-
             </fd-panel-content>
         </fd-panel>
 
