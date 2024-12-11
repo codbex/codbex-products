@@ -1,6 +1,6 @@
 angular.module('page', ["ideUI", "ideView"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-products.Products.ProductSet';
+		messageHubProvider.eventIdPrefix = 'codbex-products.Products.ProductPackaging';
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'ViewParameters', function ($scope, messageHub, ViewParameters) {
 
@@ -77,7 +77,7 @@ angular.module('page', ["ideUI", "ideView"])
 		};
 
 		$scope.cancel = function () {
-			messageHub.closeDialogWindow("ProductSet-filter");
+			messageHub.closeDialogWindow("ProductPackaging-filter");
 		};
 
 		$scope.clearErrorMessage = function () {

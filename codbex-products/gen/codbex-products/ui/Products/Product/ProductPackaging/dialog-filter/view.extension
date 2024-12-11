@@ -1,5 +1,5 @@
 {
-    "module": "codbex-products/gen/codbex-products/ui/Products/Product/ProductSet/dialog-filter/view.js",
+    "module": "codbex-products/gen/codbex-products/ui/Products/Product/ProductPackaging/dialog-filter/view.js",
     "extensionPoint": "codbex-products-dialog-window",
     "description": "codbex-products - Application Dialog Window"
 }

@@ -1,20 +1,20 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { ProductSetRepository, ProductSetEntityOptions } from "../../dao/Products/ProductSetRepository";
+import { ProductPackagingRepository, ProductPackagingEntityOptions } from "../../dao/Products/ProductPackagingRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-products-Products-ProductSet", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-products-Products-ProductPackaging", ["validate"]);
 
 @Controller
-class ProductSetService {
+class ProductPackagingService {
 
-    private readonly repository = new ProductSetRepository();
+    private readonly repository = new ProductPackagingRepository();
 
     @Get("/")
     public getAll(_: any, ctx: any) {
         try {
-            const options: ProductSetEntityOptions = {
+            const options: ProductPackagingEntityOptions = {
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
@@ -41,7 +41,7 @@ class ProductSetService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-products/gen/codbex-products/api/Products/ProductSetService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-products/gen/codbex-products/api/Products/ProductPackagingService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
@@ -84,7 +84,7 @@ class ProductSetService {
             if (entity) {
                 return entity;
             } else {
-                HttpUtils.sendResponseNotFound("ProductSet not found");
+                HttpUtils.sendResponseNotFound("ProductPackaging not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -112,7 +112,7 @@ class ProductSetService {
                 this.repository.deleteById(id);
                 HttpUtils.sendResponseNoContent();
             } else {
-                HttpUtils.sendResponseNotFound("ProductSet not found");
+                HttpUtils.sendResponseNotFound("ProductPackaging not found");
             }
         } catch (error: any) {
             this.handleError(error);

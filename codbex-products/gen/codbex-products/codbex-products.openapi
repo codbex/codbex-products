@@ -2044,9 +2044,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/Products/ProductSetService.ts:
+  /codbex-products/gen/codbex-products/api/Products/ProductPackagingService.ts:
     get:
-      summary: List ProductSet
+      summary: List ProductPackaging
       parameters:
         - in: query
           name: $limit
@@ -2074,7 +2074,7 @@ paths:
               schema:
                 type: array
                 items:
-                    $ref: '#/components/schemas/ProductSet'
+                    $ref: '#/components/schemas/ProductPackaging'
         400:
           description: Bad Request Error
           content:
@@ -2094,14 +2094,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     post:
-      summary: Create ProductSet
+      summary: Create ProductPackaging
       tags:
         - Products
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ProductSet'
+              $ref: '#/components/schemas/ProductPackaging'
         required: true
       responses:
         201:
@@ -2109,7 +2109,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProductSet'
+                $ref: '#/components/schemas/ProductPackaging'
         400:
           description: Bad Request Error
           content:
@@ -2128,9 +2128,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/Products/ProductSetService.ts/{id}:
+  /codbex-products/gen/codbex-products/api/Products/ProductPackagingService.ts/{id}:
     get:
-      summary: Get ProductSet by Id
+      summary: Get ProductPackaging by Id
       parameters:
         - in: path
           name: id
@@ -2148,7 +2148,7 @@ paths:
               schema:
                 type: array
                 items:
-                    $ref: '#/components/schemas/ProductSet'
+                    $ref: '#/components/schemas/ProductPackaging'
         404:
           description: Entity Not Found
           content:
@@ -2168,7 +2168,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     put:
-      summary: Update ProductSet by Id
+      summary: Update ProductPackaging by Id
       parameters:
         - in: path
           name: id
@@ -2182,7 +2182,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ProductSet'
+              $ref: '#/components/schemas/ProductPackaging'
         required: true
       responses:
         200:
@@ -2190,7 +2190,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProductSet'
+                $ref: '#/components/schemas/ProductPackaging'
         400:
           description: Bad Request Error
           content:
@@ -2216,7 +2216,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     delete:
-      summary: Delete ProductSet by Id
+      summary: Delete ProductPackaging by Id
       parameters:
         - in: path
           name: id
@@ -2247,9 +2247,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/Products/ProductSetService.ts/count:
+  /codbex-products/gen/codbex-products/api/Products/ProductPackagingService.ts/count:
     get:
-      summary: Count the number of ProductSet
+      summary: Count the number of ProductPackaging
       tags:
         - Products
       responses:
@@ -2273,14 +2273,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     post:
-      summary: Count the number of ProductSet by ProductSetFilterOptions
+      summary: Count the number of ProductPackaging by ProductPackagingFilterOptions
       tags:
         - Products
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ProductSetFilterOptions'
+              $ref: '#/components/schemas/ProductPackagingFilterOptions'
             examples:
               countWithMultipleCriteria:
                 summary: Count with multiple criteria
@@ -2357,16 +2357,16 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/Products/ProductSetService.ts/search:
+  /codbex-products/gen/codbex-products/api/Products/ProductPackagingService.ts/search:
     post:
-      summary: Search ProductSet by ProductSetFilterOptions
+      summary: Search ProductPackaging by ProductPackagingFilterOptions
       tags:
         - Products
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ProductSetFilterOptions'
+              $ref: '#/components/schemas/ProductPackagingFilterOptions'
             examples:
               searchWithMultipleCriteria:
                 summary: Search with multiple criteria
@@ -2431,7 +2431,7 @@ paths:
               schema:
                 type: array
                 items:
-                    $ref: '#/components/schemas/ProductSet'
+                    $ref: '#/components/schemas/ProductPackaging'
         403:
           description: Forbidden Error
           content:
@@ -4082,7 +4082,7 @@ components:
         $limit:
           type: integer
           example: 10
-    ProductSet:
+    ProductPackaging:
       type: object
       required:
         - UoM
@@ -4121,7 +4121,7 @@ components:
           type: string
           minLength: 0
           maxLength: 500
-    ProductSetFilterOptions:
+    ProductPackagingFilterOptions:
       type: object
       properties:
         $filter:

@@ -3,7 +3,7 @@ import { producer } from "sdk/messaging";
 import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
 
-export interface ProductSetEntity {
+export interface ProductPackagingEntity {
     readonly Id: number;
     UoM?: number;
     Product?: number;
@@ -15,7 +15,7 @@ export interface ProductSetEntity {
     Name?: string;
 }
 
-export interface ProductSetCreateEntity {
+export interface ProductPackagingCreateEntity {
     readonly UoM?: number;
     readonly Product?: number;
     readonly Weight?: number;
@@ -26,11 +26,11 @@ export interface ProductSetCreateEntity {
     readonly Name?: string;
 }
 
-export interface ProductSetUpdateEntity extends ProductSetCreateEntity {
+export interface ProductPackagingUpdateEntity extends ProductPackagingCreateEntity {
     readonly Id: number;
 }
 
-export interface ProductSetEntityOptions {
+export interface ProductPackagingEntityOptions {
     $filter?: {
         equals?: {
             Id?: number | number[];
@@ -110,17 +110,17 @@ export interface ProductSetEntityOptions {
             Name?: string;
         };
     },
-    $select?: (keyof ProductSetEntity)[],
-    $sort?: string | (keyof ProductSetEntity)[],
+    $select?: (keyof ProductPackagingEntity)[],
+    $sort?: string | (keyof ProductPackagingEntity)[],
     $order?: 'asc' | 'desc',
     $offset?: number,
     $limit?: number,
 }
 
-interface ProductSetEntityEvent {
+interface ProductPackagingEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
-    readonly entity: Partial<ProductSetEntity>;
+    readonly entity: Partial<ProductPackagingEntity>;
     readonly key: {
         name: string;
         column: string;
@@ -128,14 +128,14 @@ interface ProductSetEntityEvent {
     }
 }
 
-interface ProductSetUpdateEntityEvent extends ProductSetEntityEvent {
-    readonly previousEntity: ProductSetEntity;
+interface ProductPackagingUpdateEntityEvent extends ProductPackagingEntityEvent {
+    readonly previousEntity: ProductPackagingEntity;
 }
 
-export class ProductSetRepository {
+export class ProductPackagingRepository {
 
     private static readonly DEFINITION = {
-        table: "CODBEX_PRODUCTSET",
+        table: "CODBEX_PRODUCTPACKAGING",
         properties: [
             {
                 name: "Id",
@@ -190,23 +190,23 @@ export class ProductSetRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(ProductSetRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(ProductPackagingRepository.DEFINITION, null, dataSource);
     }
 
-    public findAll(options?: ProductSetEntityOptions): ProductSetEntity[] {
+    public findAll(options?: ProductPackagingEntityOptions): ProductPackagingEntity[] {
         return this.dao.list(options);
     }
 
-    public findById(id: number): ProductSetEntity | undefined {
+    public findById(id: number): ProductPackagingEntity | undefined {
         const entity = this.dao.find(id);
         return entity ?? undefined;
     }
 
-    public create(entity: ProductSetCreateEntity): number {
+    public create(entity: ProductPackagingCreateEntity): number {
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
-            table: "CODBEX_PRODUCTSET",
+            table: "CODBEX_PRODUCTPACKAGING",
             entity: entity,
             key: {
                 name: "Id",
@@ -217,12 +217,12 @@ export class ProductSetRepository {
         return id;
     }
 
-    public update(entity: ProductSetUpdateEntity): void {
+    public update(entity: ProductPackagingUpdateEntity): void {
         const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
-            table: "CODBEX_PRODUCTSET",
+            table: "CODBEX_PRODUCTPACKAGING",
             entity: entity,
             previousEntity: previousEntity,
             key: {
@@ -233,15 +233,15 @@ export class ProductSetRepository {
         });
     }
 
-    public upsert(entity: ProductSetCreateEntity | ProductSetUpdateEntity): number {
-        const id = (entity as ProductSetUpdateEntity).Id;
+    public upsert(entity: ProductPackagingCreateEntity | ProductPackagingUpdateEntity): number {
+        const id = (entity as ProductPackagingUpdateEntity).Id;
         if (!id) {
             return this.create(entity);
         }
 
         const existingEntity = this.findById(id);
         if (existingEntity) {
-            this.update(entity as ProductSetUpdateEntity);
+            this.update(entity as ProductPackagingUpdateEntity);
             return id;
         } else {
             return this.create(entity);
@@ -253,7 +253,7 @@ export class ProductSetRepository {
         this.dao.remove(id);
         this.triggerEvent({
             operation: "delete",
-            table: "CODBEX_PRODUCTSET",
+            table: "CODBEX_PRODUCTPACKAGING",
             entity: entity,
             key: {
                 name: "Id",
@@ -263,12 +263,12 @@ export class ProductSetRepository {
         });
     }
 
-    public count(options?: ProductSetEntityOptions): number {
+    public count(options?: ProductPackagingEntityOptions): number {
         return this.dao.count(options);
     }
 
     public customDataCount(): number {
-        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_PRODUCTSET"');
+        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_PRODUCTPACKAGING"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
                 return resultSet[0].COUNT;
@@ -279,8 +279,8 @@ export class ProductSetRepository {
         return 0;
     }
 
-    private async triggerEvent(data: ProductSetEntityEvent | ProductSetUpdateEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-products-Products-ProductSet", ["trigger"]);
+    private async triggerEvent(data: ProductPackagingEntityEvent | ProductPackagingUpdateEntityEvent) {
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-products-Products-ProductPackaging", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -288,6 +288,6 @@ export class ProductSetRepository {
                 console.error(error);
             }            
         });
-        producer.topic("codbex-products-Products-ProductSet").send(JSON.stringify(data));
+        producer.topic("codbex-products-Products-ProductPackaging").send(JSON.stringify(data));
     }
 }
