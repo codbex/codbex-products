@@ -239,35 +239,7 @@
                 ]
             },
             {
-                "name": "CODBEX_CATALOGUESET",
-                "type": "TABLE",
-                "columns": [
-                    {
-                        "type": "INTEGER",
-                        "primaryKey": true,
-                        "identity": true,
-                        "nullable": true,
-                        "name": "CATALOGUESET_ID"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "CATALOGUESET_CATALOGUE"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "CATALOGUESET_PRODUCTSET"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "CATALOGUESET_QUANTITY"
-                    }
-                ]
-            },
-            {
-                "name": "CODBEX_PRODUCTSET",
+                "name": "CODBEX_PRODUCTPACKAGING",
                 "type": "TABLE",
                 "columns": [
                     {
@@ -402,37 +374,19 @@
                 "referencedColumns": "UOM_ID"
             },
             {
-                "name": "CatalogueSet_Catalogue",
+                "name": "ProductPackaging_UoM",
                 "type": "foreignKey",
-                "table": "CODBEX_CATALOGUESET",
-                "constraintName": "CatalogueSet_Catalogue",
-                "columns": "CATALOGUESET_CATALOGUE",
-                "referencedTable": "CODBEX_CATALOGUE",
-                "referencedColumns": "CATALOGUE_ID"
-            },
-            {
-                "name": "CatalogueSet_ProductSet",
-                "type": "foreignKey",
-                "table": "CODBEX_CATALOGUESET",
-                "constraintName": "CatalogueSet_ProductSet",
-                "columns": "CATALOGUESET_PRODUCTSET",
-                "referencedTable": "CODBEX_PRODUCTSET",
-                "referencedColumns": "PRODUCTSET_ID"
-            },
-            {
-                "name": "ProductSet_UoM",
-                "type": "foreignKey",
-                "table": "CODBEX_PRODUCTSET",
-                "constraintName": "ProductSet_UoM",
+                "table": "CODBEX_PRODUCTPACKAGING",
+                "constraintName": "ProductPackaging_UoM",
                 "columns": "PRODUCTSET_UOM",
                 "referencedTable": "CODBEX_UOM",
                 "referencedColumns": "UOM_ID"
             },
             {
-                "name": "ProductSet_Product",
+                "name": "ProductPackaging_Product",
                 "type": "foreignKey",
-                "table": "CODBEX_PRODUCTSET",
-                "constraintName": "ProductSet_Product",
+                "table": "CODBEX_PRODUCTPACKAGING",
+                "constraintName": "ProductPackaging_Product",
                 "columns": "PRODUCTSET_PRODUCT",
                 "referencedTable": "CODBEX_PRODUCT",
                 "referencedColumns": "PRODUCT_ID"

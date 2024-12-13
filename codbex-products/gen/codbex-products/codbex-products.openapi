@@ -14,7 +14,6 @@ tags:
   - name: Products
   - name: Products
   - name: Catalogues
-  - name: Catalogues
   - name: Products
 paths:
   /codbex-products/gen/codbex-products/api/Settings/ProductTypeService.ts:
@@ -2045,393 +2044,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/Catalogues/CatalogueSetService.ts:
+  /codbex-products/gen/codbex-products/api/Products/ProductPackagingService.ts:
     get:
-      summary: List CatalogueSet
-      parameters:
-        - in: query
-          name: $limit
-          description: The number of records to be returned _(both `$limit` and `$offset` should be provided)_.
-          required: false
-          allowReserved: true
-          schema:
-            type: integer
-            allowEmptyValue: true
-        - in: query
-          name: $offset
-          description: The number of records to skip _(both `$limit` and `$offset` should be provided)_.
-          required: false
-          allowReserved: true
-          schema:
-            type: integer
-            allowEmptyValue: true
-      tags:
-        - Catalogues
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                    $ref: '#/components/schemas/CatalogueSet'
-        400:
-          description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-    post:
-      summary: Create CatalogueSet
-      tags:
-        - Catalogues
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CatalogueSet'
-        required: true
-      responses:
-        201:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CatalogueSet'
-        400:
-          description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/Catalogues/CatalogueSetService.ts/{id}:
-    get:
-      summary: Get CatalogueSet by Id
-      parameters:
-        - in: path
-          name: id
-          description: The Id of the entity.
-          required: true
-          schema:
-            type: string
-      tags:
-        - Catalogues
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                    $ref: '#/components/schemas/CatalogueSet'
-        404:
-          description: Entity Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-    put:
-      summary: Update CatalogueSet by Id
-      parameters:
-        - in: path
-          name: id
-          description: The Id of the entity.
-          required: true
-          schema:
-            type: string
-      tags:
-        - Catalogues
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CatalogueSet'
-        required: true
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CatalogueSet'
-        400:
-          description: Bad Request Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        404:
-          description: Entity Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-    delete:
-      summary: Delete CatalogueSet by Id
-      parameters:
-        - in: path
-          name: id
-          description: The Id of the entity.
-          required: true
-          schema:
-            type: string
-      tags:
-        - Catalogues
-      responses:
-        204:
-          description: Successful Request
-        404:
-          description: Entity Not Found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/Catalogues/CatalogueSetService.ts/count:
-    get:
-      summary: Count the number of CatalogueSet
-      tags:
-        - Catalogues
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: integer
-                example: 100
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-    post:
-      summary: Count the number of CatalogueSet by CatalogueSetFilterOptions
-      tags:
-        - Catalogues
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CatalogueSetFilterOptions'
-            examples:
-              countWithMultipleCriteria:
-                summary: Count with multiple criteria
-                value:
-                  $filter:
-                    notEquals:
-                      Id: 33
-                    greaterThan:
-                      Id: 0
-                    lessThanOrEqual:
-                      Id: 100
-              countWithEquals:
-                summary: Count with Equals
-                value:
-                  $filter:
-                    equals:
-                      Id: 0
-              countWithNotEquals:
-                summary: Count with Not Equals
-                value:
-                  $filter:
-                    notEquals:
-                      Id: 0
-              countWithGreaterThan:
-                summary: Count with Greater Than
-                value:
-                  $filter:
-                    greaterThan:
-                      Id: 0
-              countWithGreaterThanOrEqual:
-                summary: Count with Greater Than Or Equal
-                value:
-                  $filter:
-                    greaterThanOrEqual:
-                      Id: 0
-              countWithLessThan:
-                summary: Count with Less Than
-                value:
-                  $filter:
-                    lessThan:
-                      Id: 0
-              countWithLessThanOrEqual:
-                summary: Count with Less Than Or Equal
-                value:
-                  $filter:
-                    lessThanOrEqual:
-                      Id: 0
-        required: true
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: integer
-                example: 100
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/Catalogues/CatalogueSetService.ts/search:
-    post:
-      summary: Search CatalogueSet by CatalogueSetFilterOptions
-      tags:
-        - Catalogues
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CatalogueSetFilterOptions'
-            examples:
-              searchWithMultipleCriteria:
-                summary: Search with multiple criteria
-                value:
-                  $filter:
-                    notEquals:
-                      Id: 33
-                    greaterThan:
-                      Id: 0
-                    lessThanOrEqual:
-                      Id: 100
-              searchWithEquals:
-                summary: Search with Equals
-                value:
-                  $filter:
-                    equals:
-                      Id: 0
-              searchWithNotEquals:
-                summary: Search with Not Equals
-                value:
-                  $filter:
-                    notEquals:
-                      Id: 0
-              searchWithGreaterThan:
-                summary: Search with Greater Than
-                value:
-                  $filter:
-                    greaterThan:
-                      Id: 0
-              searchWithGreaterThanOrEqual:
-                summary: Search with Greater Than Or Equal
-                value:
-                  $filter:
-                    greaterThanOrEqual:
-                      Id: 0
-              searchWithLessThan:
-                summary: Search with Less Than
-                value:
-                  $filter:
-                    lessThan:
-                      Id: 0
-              searchWithLessThanOrEqual:
-                summary: Search with Less Than Or Equal
-                value:
-                  $filter:
-                    lessThanOrEqual:
-                      Id: 0
-        required: true
-      responses:
-        200:
-          description: Successful Request
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                    $ref: '#/components/schemas/CatalogueSet'
-        403:
-          description: Forbidden Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-        500:
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/Products/ProductSetService.ts:
-    get:
-      summary: List ProductSet
+      summary: List ProductPackaging
       parameters:
         - in: query
           name: $limit
@@ -2459,7 +2074,7 @@ paths:
               schema:
                 type: array
                 items:
-                    $ref: '#/components/schemas/ProductSet'
+                    $ref: '#/components/schemas/ProductPackaging'
         400:
           description: Bad Request Error
           content:
@@ -2479,14 +2094,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     post:
-      summary: Create ProductSet
+      summary: Create ProductPackaging
       tags:
         - Products
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ProductSet'
+              $ref: '#/components/schemas/ProductPackaging'
         required: true
       responses:
         201:
@@ -2494,7 +2109,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProductSet'
+                $ref: '#/components/schemas/ProductPackaging'
         400:
           description: Bad Request Error
           content:
@@ -2513,9 +2128,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/Products/ProductSetService.ts/{id}:
+  /codbex-products/gen/codbex-products/api/Products/ProductPackagingService.ts/{id}:
     get:
-      summary: Get ProductSet by Id
+      summary: Get ProductPackaging by Id
       parameters:
         - in: path
           name: id
@@ -2533,7 +2148,7 @@ paths:
               schema:
                 type: array
                 items:
-                    $ref: '#/components/schemas/ProductSet'
+                    $ref: '#/components/schemas/ProductPackaging'
         404:
           description: Entity Not Found
           content:
@@ -2553,7 +2168,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     put:
-      summary: Update ProductSet by Id
+      summary: Update ProductPackaging by Id
       parameters:
         - in: path
           name: id
@@ -2567,7 +2182,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ProductSet'
+              $ref: '#/components/schemas/ProductPackaging'
         required: true
       responses:
         200:
@@ -2575,7 +2190,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProductSet'
+                $ref: '#/components/schemas/ProductPackaging'
         400:
           description: Bad Request Error
           content:
@@ -2601,7 +2216,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     delete:
-      summary: Delete ProductSet by Id
+      summary: Delete ProductPackaging by Id
       parameters:
         - in: path
           name: id
@@ -2632,9 +2247,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/Products/ProductSetService.ts/count:
+  /codbex-products/gen/codbex-products/api/Products/ProductPackagingService.ts/count:
     get:
-      summary: Count the number of ProductSet
+      summary: Count the number of ProductPackaging
       tags:
         - Products
       responses:
@@ -2658,14 +2273,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     post:
-      summary: Count the number of ProductSet by ProductSetFilterOptions
+      summary: Count the number of ProductPackaging by ProductPackagingFilterOptions
       tags:
         - Products
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ProductSetFilterOptions'
+              $ref: '#/components/schemas/ProductPackagingFilterOptions'
             examples:
               countWithMultipleCriteria:
                 summary: Count with multiple criteria
@@ -2742,16 +2357,16 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/Products/ProductSetService.ts/search:
+  /codbex-products/gen/codbex-products/api/Products/ProductPackagingService.ts/search:
     post:
-      summary: Search ProductSet by ProductSetFilterOptions
+      summary: Search ProductPackaging by ProductPackagingFilterOptions
       tags:
         - Products
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ProductSetFilterOptions'
+              $ref: '#/components/schemas/ProductPackagingFilterOptions'
             examples:
               searchWithMultipleCriteria:
                 summary: Search with multiple criteria
@@ -2816,7 +2431,7 @@ paths:
               schema:
                 type: array
                 items:
-                    $ref: '#/components/schemas/ProductSet'
+                    $ref: '#/components/schemas/ProductPackaging'
         403:
           description: Forbidden Error
           content:
@@ -4467,184 +4082,7 @@ components:
         $limit:
           type: integer
           example: 10
-    CatalogueSet:
-      type: object
-      required:
-      properties:
-        Id:
-          type: integer
-          format: int32
-        Catalogue:
-          type: integer
-          format: int32
-        ProductSet:
-          type: integer
-          format: int32
-        Quantity:
-          type: integer
-          format: int32
-    CatalogueSetFilterOptions:
-      type: object
-      properties:
-        $filter:
-          type: object
-          properties:
-            equals:
-              type: object
-              properties:
-                Id:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Catalogue:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                ProductSet:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Quantity:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-            notEquals:
-              type: object
-              properties:
-                Id:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Catalogue:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                ProductSet:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-                Quantity:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
-            contains:
-              type: object
-              properties:
-                Id:
-                Catalogue:
-                ProductSet:
-                Quantity:
-            greaterThan:
-              type: object
-              properties:
-                Id:
-                  type: integer
-                  format: int32
-                Catalogue:
-                  type: integer
-                  format: int32
-                ProductSet:
-                  type: integer
-                  format: int32
-                Quantity:
-                  type: integer
-                  format: int32
-            greaterThanOrEqual:
-              type: object
-              properties:
-                Id:
-                  type: integer
-                  format: int32
-                Catalogue:
-                  type: integer
-                  format: int32
-                ProductSet:
-                  type: integer
-                  format: int32
-                Quantity:
-                  type: integer
-                  format: int32
-            lessThan:
-              type: object
-              properties:
-                Id:
-                  type: integer
-                  format: int32
-                Catalogue:
-                  type: integer
-                  format: int32
-                ProductSet:
-                  type: integer
-                  format: int32
-                Quantity:
-                  type: integer
-                  format: int32
-            lessThanOrEqual:
-              type: object
-              properties:
-                Id:
-                  type: integer
-                  format: int32
-                Catalogue:
-                  type: integer
-                  format: int32
-                ProductSet:
-                  type: integer
-                  format: int32
-                Quantity:
-                  type: integer
-                  format: int32
-        $select:
-          type: array
-          example: ["Id", "Catalogue", "ProductSet", "Quantity"]
-          items:
-            type: string
-        $sort:
-          - type: string
-            example: "Id,Catalogue,ProductSet,Quantity"
-        $order:
-          type: string
-          enum: ["asc", "desc"]
-          example: "asc"
-        $offset:
-          type: integer
-          example: 0
-        $limit:
-          type: integer
-          example: 10
-    ProductSet:
+    ProductPackaging:
       type: object
       required:
         - UoM
@@ -4683,7 +4121,7 @@ components:
           type: string
           minLength: 0
           maxLength: 500
-    ProductSetFilterOptions:
+    ProductPackagingFilterOptions:
       type: object
       properties:
         $filter:

@@ -1,15 +1,15 @@
 angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-products.Products.ProductSet';
+		messageHubProvider.eventIdPrefix = 'codbex-products.Products.ProductPackaging';
 	}])
 	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-products/gen/codbex-products/api/Products/ProductSetService.ts";
+		entityApiProvider.baseUrl = "/services/ts/codbex-products/gen/codbex-products/api/Products/ProductPackagingService.ts";
 	}])
 	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', 'Extensions', function ($scope, $http, messageHub, entityApi, Extensions) {
 		//-----------------Custom Actions-------------------//
 		Extensions.get('dialogWindow', 'codbex-products-custom-action').then(function (response) {
-			$scope.pageActions = response.filter(e => e.perspective === "Products" && e.view === "ProductSet" && (e.type === "page" || e.type === undefined));
-			$scope.entityActions = response.filter(e => e.perspective === "Products" && e.view === "ProductSet" && e.type === "entity");
+			$scope.pageActions = response.filter(e => e.perspective === "Products" && e.view === "ProductPackaging" && (e.type === "page" || e.type === undefined));
+			$scope.entityActions = response.filter(e => e.perspective === "Products" && e.view === "ProductPackaging" && e.type === "entity");
 		});
 
 		$scope.triggerPageAction = function (action) {
@@ -98,7 +98,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			filter.$filter.equals.Product = Product;
 			entityApi.count(filter).then(function (response) {
 				if (response.status != 200) {
-					messageHub.showAlertError("ProductSet", `Unable to count ProductSet: '${response.message}'`);
+					messageHub.showAlertError("ProductPackaging", `Unable to count ProductPackaging: '${response.message}'`);
 					return;
 				}
 				if (response.data) {
@@ -108,7 +108,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				filter.$limit = $scope.dataLimit;
 				entityApi.search(filter).then(function (response) {
 					if (response.status != 200) {
-						messageHub.showAlertError("ProductSet", `Unable to list/filter ProductSet: '${response.message}'`);
+						messageHub.showAlertError("ProductPackaging", `Unable to list/filter ProductPackaging: '${response.message}'`);
 						return;
 					}
 					$scope.data = response.data;
@@ -122,7 +122,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		$scope.openDetails = function (entity) {
 			$scope.selectedEntity = entity;
-			messageHub.showDialogWindow("ProductSet-details", {
+			messageHub.showDialogWindow("ProductPackaging-details", {
 				action: "select",
 				entity: entity,
 				optionsUoM: $scope.optionsUoM,
@@ -130,7 +130,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		};
 
 		$scope.openFilter = function (entity) {
-			messageHub.showDialogWindow("ProductSet-filter", {
+			messageHub.showDialogWindow("ProductPackaging-filter", {
 				entity: $scope.filterEntity,
 				optionsUoM: $scope.optionsUoM,
 			});
@@ -138,7 +138,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		$scope.createEntity = function () {
 			$scope.selectedEntity = null;
-			messageHub.showDialogWindow("ProductSet-details", {
+			messageHub.showDialogWindow("ProductPackaging-details", {
 				action: "create",
 				entity: {},
 				selectedMainEntityKey: "Product",
@@ -148,7 +148,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		};
 
 		$scope.updateEntity = function (entity) {
-			messageHub.showDialogWindow("ProductSet-details", {
+			messageHub.showDialogWindow("ProductPackaging-details", {
 				action: "update",
 				entity: entity,
 				selectedMainEntityKey: "Product",
@@ -160,8 +160,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.deleteEntity = function (entity) {
 			let id = entity.Id;
 			messageHub.showDialogAsync(
-				'Delete ProductSet?',
-				`Are you sure you want to delete ProductSet? This action cannot be undone.`,
+				'Delete ProductPackaging?',
+				`Are you sure you want to delete ProductPackaging? This action cannot be undone.`,
 				[{
 					id: "delete-btn-yes",
 					type: "emphasized",
@@ -176,7 +176,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				if (msg.data === "delete-btn-yes") {
 					entityApi.delete(id).then(function (response) {
 						if (response.status != 204) {
-							messageHub.showAlertError("ProductSet", `Unable to delete ProductSet: '${response.message}'`);
+							messageHub.showAlertError("ProductPackaging", `Unable to delete ProductPackaging: '${response.message}'`);
 							return;
 						}
 						$scope.loadPage($scope.dataPage, $scope.filter);

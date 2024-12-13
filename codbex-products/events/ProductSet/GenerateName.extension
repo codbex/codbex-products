@@ -1,5 +1,0 @@
-{
-    "extensionPoint": "codbex-products-Products-ProductSet",
-    "module": "codbex-products/events/ProductSet/GenerateNameHandler.ts",
-    "description": "Generate Name extension"
-}

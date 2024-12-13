@@ -1,6 +1,6 @@
 angular.module('page', ["ideUI", "ideView"])
 	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-products.Catalogues.CatalogueSet';
+		messageHubProvider.eventIdPrefix = 'codbex-products.Products.ProductPackaging';
 	}])
 	.controller('PageController', ['$scope', 'messageHub', 'ViewParameters', function ($scope, messageHub, ViewParameters) {
 
@@ -14,7 +14,7 @@ angular.module('page', ["ideUI", "ideView"])
 			$scope.entity = params.entity ?? {};
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
-			$scope.optionsProductSet = params.optionsProductSet;
+			$scope.optionsUoM = params.optionsUoM;
 		}
 
 		$scope.filter = function () {
@@ -40,14 +40,29 @@ angular.module('page', ["ideUI", "ideView"])
 			if (entity.Id !== undefined) {
 				filter.$filter.equals.Id = entity.Id;
 			}
-			if (entity.Catalogue !== undefined) {
-				filter.$filter.equals.Catalogue = entity.Catalogue;
+			if (entity.UoM !== undefined) {
+				filter.$filter.equals.UoM = entity.UoM;
 			}
-			if (entity.ProductSet !== undefined) {
-				filter.$filter.equals.ProductSet = entity.ProductSet;
+			if (entity.Product !== undefined) {
+				filter.$filter.equals.Product = entity.Product;
 			}
-			if (entity.Quantity !== undefined) {
-				filter.$filter.equals.Quantity = entity.Quantity;
+			if (entity.Weight !== undefined) {
+				filter.$filter.equals.Weight = entity.Weight;
+			}
+			if (entity.Height !== undefined) {
+				filter.$filter.equals.Height = entity.Height;
+			}
+			if (entity.Length !== undefined) {
+				filter.$filter.equals.Length = entity.Length;
+			}
+			if (entity.Width !== undefined) {
+				filter.$filter.equals.Width = entity.Width;
+			}
+			if (entity.Ratio !== undefined) {
+				filter.$filter.equals.Ratio = entity.Ratio;
+			}
+			if (entity.Name) {
+				filter.$filter.contains.Name = entity.Name;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,
@@ -62,7 +77,7 @@ angular.module('page', ["ideUI", "ideView"])
 		};
 
 		$scope.cancel = function () {
-			messageHub.closeDialogWindow("CatalogueSet-filter");
+			messageHub.closeDialogWindow("ProductPackaging-filter");
 		};
 
 		$scope.clearErrorMessage = function () {
