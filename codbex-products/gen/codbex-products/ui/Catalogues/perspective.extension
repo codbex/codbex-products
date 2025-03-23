@@ -1,1 +1,5 @@
-{"module":"codbex-products/gen/codbex-products/ui/Catalogues/perspective.js","extensionPoint":"codbex-products","description":"codbex-products - Perspective - Catalogues"}
+{
+    "module": "codbex-products/gen/codbex-products/ui/Catalogues/perspective.js",
+    "extensionPoint": "codbex-products",
+    "description": "codbex-products - Perspective - Catalogues"
+}

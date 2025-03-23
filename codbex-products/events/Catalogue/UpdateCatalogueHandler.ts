@@ -1,5 +1,3 @@
-import { SalesOrderItemRepository } from "codbex-orders/gen/codbex-orders/dao/SalesOrder/SalesOrderItemRepository";
-import { SalesOrderRepository } from "codbex-orders/gen/codbex-orders/dao/SalesOrder/SalesOrderRepository";
 import { ProductRepository } from "../../gen/codbex-products/dao/Products/ProductRepository";
 import { ProductSetRepository } from "../../gen/codbex-products/dao/Products/ProductSetRepository";
 import { CatalogueSetRepository } from "../../gen/codbex-products/dao/Catalogues/CatalogueSetRepository";
@@ -8,8 +6,6 @@ import { CatalogueRepository } from "../../gen/codbex-products/dao/Catalogues/Ca
 
 export const trigger = (event) => {
 
-    const SalesOrderItemDao = new SalesOrderItemRepository();
-    const SalesOrderDao = new SalesOrderRepository();
     const ProductDao = new ProductRepository();
     const ProductSetDao = new ProductSetRepository();
     const CatalogueSetDao = new CatalogueSetRepository();
@@ -43,31 +39,6 @@ export const trigger = (event) => {
                 Quantity: quantityForSet
             });
         });
-
-        //Availability has been removed from SalesOrdeItem
-        // const salesOrders = SalesOrderDao.findAll({
-        //     $filter: {
-        //         equals: {
-        //             Store: catalogueItem.Store
-        //         }
-        //     }
-        // });
-
-        // salesOrders.forEach(function (order) {
-        //     let salesOrderItems = SalesOrderItemDao.findAll({
-        //         $filter: {
-        //             equals: {
-        //                 SalesOrder: order.Id,
-        //                 Product: catalogueItem.Product
-        //             }
-        //         }
-        //     });
-
-        //     salesOrderItems.forEach(function (item) {
-        //         item.Availability = catalogueItem.Quantity;
-        //         SalesOrderItemDao.update(item);
-        //     });
-        // });
     }
 
     if (operation === "update") {
@@ -109,30 +80,6 @@ export const trigger = (event) => {
                 });
             }
         });
-        //Availability has been removed from SalesOrdeItem
-        // const salesOrders = SalesOrderDao.findAll({
-        //     $filter: {
-        //         equals: {
-        //             Store: catalogueItem.Store
-        //         }
-        //     }
-        // });
-
-        // salesOrders.forEach(function (order) {
-        //     let salesOrderItems = SalesOrderItemDao.findAll({
-        //         $filter: {
-        //             equals: {
-        //                 SalesOrder: order.Id,
-        //                 Product: catalogueItem.Product
-        //             }
-        //         }
-        //     });
-
-        //     salesOrderItems.forEach(function (item) {
-        //         item.Availability = catalogueItem.Quantity;
-        //         SalesOrderItemDao.update(item);
-        //     });
-        // });
     }
 }
 

@@ -55,6 +55,10 @@
         "Product-details",
         "Product-details",
         "Product-details",
+        "Product-details",
+        "Product-details",
+        "Product-details",
+        "Product-details",
         "Product-details"
       ],
       "name": "Products",
@@ -124,6 +128,10 @@
         "Catalogue-details",
         "Catalogue-details",
         "Catalogue-details",
+        "Catalogue-details",
+        "Catalogue-details",
+        "Catalogue-details",
+        "Catalogue-details",
         "Catalogue-details"
       ],
       "name": "Catalogues",
@@ -133,6 +141,38 @@
       "role": ""
     }
   },
+  "roles": [
+    {
+      "entityName": "ProductType",
+      "roleRead": "codbex-products.Settings.ProductTypeReadOnly",
+      "roleWrite": "codbex-products.Settings.ProductTypeFullAccess"
+    },
+    {
+      "entityName": "ProductCategory",
+      "roleRead": "codbex-products.Categories.ProductCategoryReadOnly",
+      "roleWrite": "codbex-products.Categories.ProductCategoryFullAccess"
+    },
+    {
+      "entityName": "Product",
+      "roleRead": "codbex-products.Products.ProductReadOnly",
+      "roleWrite": "codbex-products.Products.ProductFullAccess"
+    },
+    {
+      "entityName": "ProductAttribute",
+      "roleRead": "codbex-products.Products.ProductAttributeReadOnly",
+      "roleWrite": "codbex-products.Products.ProductAttributeFullAccess"
+    },
+    {
+      "entityName": "Catalogue",
+      "roleRead": "codbex-products.Catalogues.CatalogueReadOnly",
+      "roleWrite": "codbex-products.Catalogues.CatalogueFullAccess"
+    },
+    {
+      "entityName": "ProductPackaging",
+      "roleRead": "codbex-products.Products.ProductPackagingReadOnly",
+      "roleWrite": "codbex-products.Products.ProductPackagingFullAccess"
+    }
+  ],
   "models": [
     {
       "properties": [
@@ -191,6 +231,7 @@
       "dataName": "PRODUCTTYPE",
       "dataQuery": "",
       "description": "Manage entity ProductType",
+      "generateDefaultRoles": "true",
       "generateReport": "false",
       "icon": "/services/web/resources/unicons/file.svg",
       "layoutType": "MANAGE",
@@ -204,6 +245,8 @@
       "perspectiveName": "Settings",
       "perspectiveOrder": "999",
       "perspectiveRole": "",
+      "roleRead": "codbex-products.Settings.ProductTypeReadOnly",
+      "roleWrite": "codbex-products.Settings.ProductTypeFullAccess",
       "title": "ProductType",
       "tooltip": "ProductType",
       "type": "SETTING",
@@ -297,6 +340,7 @@
       "dataName": "PRODUCTCATEGORY",
       "dataQuery": "",
       "description": "Manage entity ProductCategory",
+      "generateDefaultRoles": "true",
       "generateReport": "false",
       "icon": "/services/web/resources/unicons/file.svg",
       "layoutType": "MANAGE",
@@ -310,6 +354,8 @@
       "perspectiveName": "Categories",
       "perspectiveOrder": "200",
       "perspectiveRole": "",
+      "roleRead": "codbex-products.Categories.ProductCategoryReadOnly",
+      "roleWrite": "codbex-products.Categories.ProductCategoryFullAccess",
       "title": "ProductCategory",
       "tooltip": "ProductCategory",
       "type": "SETTING",
@@ -922,6 +968,7 @@
       "dataName": "PRODUCT",
       "dataQuery": "",
       "description": "Manage entity Product",
+      "generateDefaultRoles": "true",
       "generateReport": "false",
       "icon": "/services/web/resources/unicons/file.svg",
       "layoutType": "MANAGE_MASTER",
@@ -935,6 +982,8 @@
       "perspectiveName": "Products",
       "perspectiveOrder": "100",
       "perspectiveRole": "",
+      "roleRead": "codbex-products.Products.ProductReadOnly",
+      "roleWrite": "codbex-products.Products.ProductFullAccess",
       "title": "Product",
       "tooltip": "Product",
       "type": "PRIMARY",
@@ -1651,6 +1700,7 @@
       "dataName": "PRODUCTDETAILS",
       "dataQuery": "",
       "description": "Manage entity ProductAttribute",
+      "generateDefaultRoles": "true",
       "generateReport": "false",
       "icon": "/services/web/resources/unicons/file.svg",
       "layoutType": "MANAGE_DETAILS",
@@ -1664,6 +1714,8 @@
       "perspectiveName": "Products",
       "perspectiveOrder": "100",
       "perspectiveRole": "",
+      "roleRead": "codbex-products.Products.ProductAttributeReadOnly",
+      "roleWrite": "codbex-products.Products.ProductAttributeFullAccess",
       "title": "ProductDetails",
       "tooltip": "ProductDetails",
       "type": "DEPENDENT",
@@ -1796,6 +1848,7 @@
       "dataName": "MANUFACTURER",
       "dataQuery": "",
       "description": "Manage entity Manufacturer",
+      "generateDefaultRoles": "false",
       "generateReport": "false",
       "icon": "/services/web/resources/unicons/file.svg",
       "layoutType": "MANAGE",
@@ -2137,6 +2190,7 @@
       "dataName": "COMPANY",
       "dataQuery": "",
       "description": "Manage entity Company",
+      "generateDefaultRoles": "false",
       "generateReport": "false",
       "icon": "/services/web/resources/unicons/file.svg",
       "layoutType": "MANAGE",
@@ -2413,6 +2467,7 @@
       "dataName": "UOM",
       "dataQuery": "",
       "description": "Manage entity UoM",
+      "generateDefaultRoles": "false",
       "generateReport": "false",
       "icon": "/services/web/resources/unicons/file.svg",
       "layoutType": "MANAGE",
@@ -2815,6 +2870,7 @@
       "dataName": "STORE",
       "dataQuery": "",
       "description": "Manage entity Store",
+      "generateDefaultRoles": "false",
       "generateReport": "false",
       "icon": "/services/web/resources/unicons/file.svg",
       "layoutType": "MANAGE",
@@ -2983,6 +3039,7 @@
       "dataName": "CATALOGUE",
       "dataQuery": "",
       "description": "Manage entity Catalogue",
+      "generateDefaultRoles": "true",
       "generateReport": "false",
       "icon": "/services/web/resources/unicons/file.svg",
       "layoutType": "MANAGE_MASTER",
@@ -2996,6 +3053,8 @@
       "perspectiveName": "Catalogues",
       "perspectiveOrder": "300",
       "perspectiveRole": "",
+      "roleRead": "codbex-products.Catalogues.CatalogueReadOnly",
+      "roleWrite": "codbex-products.Catalogues.CatalogueFullAccess",
       "title": "Catalogue",
       "tooltip": "Catalogue",
       "type": "PRIMARY",
@@ -3363,6 +3422,7 @@
       "dataName": "PRODUCTPACKAGING",
       "dataQuery": "",
       "description": "Manage entity ProductPackaging",
+      "generateDefaultRoles": "true",
       "generateReport": "false",
       "icon": "/services/web/resources/unicons/file.svg",
       "layoutType": "MANAGE_DETAILS",
@@ -3376,6 +3436,8 @@
       "perspectiveName": "Products",
       "perspectiveOrder": "100",
       "perspectiveRole": "",
+      "roleRead": "codbex-products.Products.ProductPackagingReadOnly",
+      "roleWrite": "codbex-products.Products.ProductPackagingFullAccess",
       "title": "ProductPackaging",
       "tooltip": "ProductPackaging",
       "type": "DEPENDENT",

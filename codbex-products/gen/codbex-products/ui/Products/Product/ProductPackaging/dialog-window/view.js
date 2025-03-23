@@ -7,7 +7,7 @@ const viewData = {
     id: "ProductPackaging-details",
     label: "ProductPackaging",
     link: "/services/web/codbex-products/gen/codbex-products/ui/Products/Product/ProductPackaging/dialog-window/index.html",
-    perspectiveName: "Products",
+    perspectiveName: "Products"
 };
 
 if (typeof exports !== 'undefined') {

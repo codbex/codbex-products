@@ -1,1 +1,6 @@
-{"module":"codbex-products/gen/codbex-products/ui/Catalogues/Catalogue/main-details/view.js","extensionPoint":"codbex-products-view","description":"codbex-products - Application View - Main Details"}
+{
+    "module": "codbex-products/gen/codbex-products/ui/Catalogues/Catalogue/main-details/view.js",
+    "extensionPoint": "codbex-products-view",
+    "description": "codbex-products - Application View - Main Details",
+    "role": "codbex-products.Catalogues.CatalogueReadOnly,codbex-products.Catalogues.CatalogueFullAccess"
+}

@@ -7,7 +7,7 @@ const viewData = {
     id: "ProductCategory-details",
     label: "ProductCategory",
     link: "/services/web/codbex-products/gen/codbex-products/ui/Categories/ProductCategory/dialog-window/index.html",
-    perspectiveName: "Categories",
+    perspectiveName: "Categories"
 };
 
 if (typeof exports !== 'undefined') {
