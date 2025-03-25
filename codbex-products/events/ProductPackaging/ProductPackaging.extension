@@ -2,5 +2,5 @@
     "extensionPoint": "codbex-products-Products-ProductPackaging",
     "module": "codbex-products/events/ProductPackaging/ProductPackagingHandler.ts",
     "description": "Generate Name extension",
-    "role": "codbex-products.Products.ProductPackagingFullAccess,codbex-products.Products.ProductPackagingReadOnly"
+    "role": ""
 }
