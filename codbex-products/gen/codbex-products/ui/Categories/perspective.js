@@ -7,8 +7,8 @@ const perspectiveData = {
 	id: 'Categories',
 	name: 'Categories',
 	link: '/services/web/codbex-products/gen/codbex-products/ui/Categories/index.html',
-	order: 200,
-	icon: '/services/web/resources/unicons/align-right-justify.svg',
+	order: '200',
+	icon: '/services/web/resources/unicons/align-right-justify.svg'
 };
 
 if (typeof exports !== 'undefined') {

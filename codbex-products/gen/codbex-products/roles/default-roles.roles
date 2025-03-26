@@ -1,0 +1,50 @@
+[
+    {
+        "name": "codbex-products.Settings.ProductTypeReadOnly",
+        "description": "A role that grants read only permission for ProductType."
+    },
+    {
+        "name": "codbex-products.Settings.ProductTypeFullAccess",
+        "description": "A role that grants full access for ProductType."
+    },
+    {
+        "name": "codbex-products.Categories.ProductCategoryReadOnly",
+        "description": "A role that grants read only permission for ProductCategory."
+    },
+    {
+        "name": "codbex-products.Categories.ProductCategoryFullAccess",
+        "description": "A role that grants full access for ProductCategory."
+    },
+    {
+        "name": "codbex-products.Products.ProductReadOnly",
+        "description": "A role that grants read only permission for Product."
+    },
+    {
+        "name": "codbex-products.Products.ProductFullAccess",
+        "description": "A role that grants full access for Product."
+    },
+    {
+        "name": "codbex-products.Products.ProductAttributeReadOnly",
+        "description": "A role that grants read only permission for ProductAttribute."
+    },
+    {
+        "name": "codbex-products.Products.ProductAttributeFullAccess",
+        "description": "A role that grants full access for ProductAttribute."
+    },
+    {
+        "name": "codbex-products.Catalogues.CatalogueReadOnly",
+        "description": "A role that grants read only permission for Catalogue."
+    },
+    {
+        "name": "codbex-products.Catalogues.CatalogueFullAccess",
+        "description": "A role that grants full access for Catalogue."
+    },
+    {
+        "name": "codbex-products.Products.ProductPackagingReadOnly",
+        "description": "A role that grants read only permission for ProductPackaging."
+    },
+    {
+        "name": "codbex-products.Products.ProductPackagingFullAccess",
+        "description": "A role that grants full access for ProductPackaging."
+    }
+]

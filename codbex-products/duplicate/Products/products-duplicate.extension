@@ -1,5 +1,6 @@
 {
     "module": "codbex-products/duplicate/Products/products-duplicate.js",
     "extensionPoint": "codbex-products-custom-action",
-    "description": "Duplicate Product Custom Action"
+    "description": "Duplicate Product Custom Action",
+    "role": "codbex-products.Products.ProductReadOnly,codbex-products.Products.ProductFullAccess"
 }

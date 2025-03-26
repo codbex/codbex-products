@@ -5,7 +5,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 	.config(["entityApiProvider", function (entityApiProvider) {
 		entityApiProvider.baseUrl = "/services/ts/codbex-products/gen/codbex-products/api/Products/ProductService.ts";
 	}])
-	.controller('PageController', ['$scope', 'Extensions', 'messageHub', 'entityApi', function ($scope, Extensions, messageHub, entityApi) {
+	.controller('PageController', ['$scope',  '$http', 'Extensions', 'messageHub', 'entityApi', function ($scope,  $http, Extensions, messageHub, entityApi) {
 
 		$scope.entity = {};
 		$scope.forms = {
@@ -120,5 +120,103 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.cancel = function () {
 			messageHub.postMessage("clearDetails");
 		};
+		
+		//-----------------Dialogs-------------------//
+		
+		$scope.createBaseUnit = function () {
+			messageHub.showDialogWindow("UoM-details", {
+				action: "create",
+				entity: {},
+			}, null, false);
+		};
+		$scope.createType = function () {
+			messageHub.showDialogWindow("ProductType-details", {
+				action: "create",
+				entity: {},
+			}, null, false);
+		};
+		$scope.createCategory = function () {
+			messageHub.showDialogWindow("ProductCategory-details", {
+				action: "create",
+				entity: {},
+			}, null, false);
+		};
+		$scope.createManufacturer = function () {
+			messageHub.showDialogWindow("Manufacturer-details", {
+				action: "create",
+				entity: {},
+			}, null, false);
+		};
+		$scope.createCompany = function () {
+			messageHub.showDialogWindow("Company-details", {
+				action: "create",
+				entity: {},
+			}, null, false);
+		};
+
+		//-----------------Dialogs-------------------//
+
+
+
+		//----------------Dropdowns-----------------//
+
+		$scope.refreshBaseUnit = function () {
+			$scope.optionsBaseUnit = [];
+			$http.get("/services/ts/codbex-uoms/gen/codbex-uoms/api/UnitsOfMeasures/UoMService.ts").then(function (response) {
+				$scope.optionsBaseUnit = response.data.map(e => {
+					return {
+						value: e.Id,
+						text: e.Name
+					}
+				});
+			});
+		};
+		$scope.refreshType = function () {
+			$scope.optionsType = [];
+			$http.get("/services/ts/codbex-products/gen/codbex-products/api/Settings/ProductTypeService.ts").then(function (response) {
+				$scope.optionsType = response.data.map(e => {
+					return {
+						value: e.Id,
+						text: e.Name
+					}
+				});
+			});
+		};
+		$scope.refreshCategory = function () {
+			$scope.optionsCategory = [];
+			$http.get("/services/ts/codbex-products/gen/codbex-products/api/Categories/ProductCategoryService.ts").then(function (response) {
+				$scope.optionsCategory = response.data.map(e => {
+					return {
+						value: e.Id,
+						text: e.Name
+					}
+				});
+			});
+		};
+		$scope.refreshManufacturer = function () {
+			$scope.optionsManufacturer = [];
+			$http.get("/services/ts/codbex-partners/gen/codbex-partners/api/Manufacturers/ManufacturerService.ts").then(function (response) {
+				$scope.optionsManufacturer = response.data.map(e => {
+					return {
+						value: e.Id,
+						text: e.Name
+					}
+				});
+			});
+		};
+		$scope.refreshCompany = function () {
+			$scope.optionsCompany = [];
+			$http.get("/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts").then(function (response) {
+				$scope.optionsCompany = response.data.map(e => {
+					return {
+						value: e.Id,
+						text: e.Name
+					}
+				});
+			});
+		};
+
+		//----------------Dropdowns-----------------//	
+		
 
 	}]);

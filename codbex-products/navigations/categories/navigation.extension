@@ -1,5 +1,6 @@
 {
     "extensionPoint": "dashboard-navigations",
     "module": "codbex-products/navigations/categories/service.js",
-    "description": "Categories Navigation"
+    "description": "Categories Navigation",
+    "role": "codbex-products.Categories.ProductCategoryReadOnly,codbex-products.Categories.ProductCategoryFullAccess"
 }

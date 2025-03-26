@@ -1,1 +1,6 @@
-{"module":"codbex-products/gen/codbex-products/ui/Categories/ProductCategory/tile.js","extensionPoint":"portal-tile","description":"codbex-products - Application Tile"}
+{
+    "module": "codbex-products/gen/codbex-products/ui/Categories/ProductCategory/tile.js",
+    "extensionPoint": "portal-tile",
+    "description": "codbex-products - Application Tile",
+    "role": "codbex-products.Categories.ProductCategoryReadOnly,codbex-products.Categories.ProductCategoryFullAccess"
+}

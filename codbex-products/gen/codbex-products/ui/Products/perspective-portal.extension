@@ -1,1 +1,5 @@
-{"module":"codbex-products/gen/codbex-products/ui/Products/perspective.js","extensionPoint":"portal","description":"codbex-products - Perspective - Products"}
+{
+    "module": "codbex-products/gen/codbex-products/ui/Products/perspective.js",
+    "extensionPoint": "portal",
+    "description": "codbex-products - Perspective - Products"
+}

@@ -3,7 +3,6 @@ import { ProductCategoryRepository as CategoryDao } from "codbex-products/gen/co
 
 import { Controller, Get } from "sdk/http";
 import { query } from "sdk/db";
-import { response } from "sdk/http";
 
 @Controller
 class ProductService {
@@ -22,14 +21,16 @@ class ProductService {
         currentDate.setHours(0, 0, 0, 0);
 
         const allProducts = this.productDao.findAll();
-        let activeProducts = this.productDao.findAll({
+
+        const activeProducts = this.productDao.findAll({
             $filter: {
                 equals: {
                     Enabled: true
                 }
             }
         }).length;
-        let inactiveProducts = this.productDao.findAll({
+
+        const inactiveProducts = this.productDao.findAll({
             $filter: {
                 equals: {
                     Enabled: false

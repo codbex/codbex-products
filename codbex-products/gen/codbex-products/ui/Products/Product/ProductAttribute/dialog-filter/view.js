@@ -7,7 +7,7 @@ const viewData = {
     id: "ProductAttribute-filter",
     label: "ProductAttribute Filter",
     link: "/services/web/codbex-products/gen/codbex-products/ui/Products/Product/ProductAttribute/dialog-filter/index.html",
-    perspectiveName: "Products",
+    perspectiveName: "Products"
 };
 
 if (typeof exports !== 'undefined') {
