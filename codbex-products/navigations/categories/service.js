@@ -2,7 +2,7 @@ const navigationData = {
     id: 'categories-navigation',
     label: "Product Categories",
     group: "reference data",
-    order: 200,
+    order: 1500,
     link: "/services/web/codbex-products/gen/codbex-products/ui/Categories/index.html?embedded"
 };
 
