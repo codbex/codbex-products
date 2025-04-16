@@ -1,44 +1,41 @@
-angular.module('page', ["ideUI", "ideView", "entityApi"])
-	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-products.Products.Product';
+angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
+	.config(["EntityServiceProvider", (EntityServiceProvider) => {
+		EntityServiceProvider.baseUrl = '/services/ts/codbex-products/gen/codbex-products/api/Products/ProductService.ts';
 	}])
-	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-products/gen/codbex-products/api/Products/ProductService.ts";
-	}])
-	.controller('PageController', ['$scope',  '$http', 'Extensions', 'messageHub', 'entityApi', function ($scope,  $http, Extensions, messageHub, entityApi) {
-
+	.controller('PageController', ($scope, $http, Extensions, EntityService) => {
+		const Dialogs = new DialogHub();
 		$scope.entity = {};
 		$scope.forms = {
 			details: {},
 		};
 		$scope.formHeaders = {
-			select: "Product Details",
-			create: "Create Product",
-			update: "Update Product"
+			select: 'Product Details',
+			create: 'Create Product',
+			update: 'Update Product'
 		};
 		$scope.action = 'select';
 
 		//-----------------Custom Actions-------------------//
-		Extensions.get('dialogWindow', 'codbex-products-custom-action').then(function (response) {
-			$scope.entityActions = response.filter(e => e.perspective === "Products" && e.view === "Product" && e.type === "entity");
+		Extensions.getWindows(['codbex-products-custom-action']).then((response) => {
+			$scope.entityActions = response.data.filter(e => e.perspective === 'Products' && e.view === 'Product' && e.type === 'entity');
 		});
 
-		$scope.triggerEntityAction = function (action) {
-			messageHub.showDialogWindow(
-				action.id,
-				{
+		$scope.triggerEntityAction = (action) => {
+			Dialogs.showWindow({
+				hasHeader: true,
+        		title: action.label,
+				path: action.path,
+				params: {
 					id: $scope.entity.Id
 				},
-				null,
-				true,
-				action
-			);
+				closeButton: true
+			});
 		};
 		//-----------------Custom Actions-------------------//
 
 		//-----------------Events-------------------//
-		messageHub.onDidReceiveMessage("clearDetails", function (msg) {
-			$scope.$apply(function () {
+		Dialogs.addMessageListener({ topic: 'codbex-products.Products.Product.clearDetails', handler: () => {
+			$scope.$evalAsync(() => {
 				$scope.entity = {};
 				$scope.optionsBaseUnit = [];
 				$scope.optionsType = [];
@@ -47,111 +44,152 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.optionsCompany = [];
 				$scope.action = 'select';
 			});
-		});
-
-		messageHub.onDidReceiveMessage("entitySelected", function (msg) {
-			$scope.$apply(function () {
-				$scope.entity = msg.data.entity;
-				$scope.optionsBaseUnit = msg.data.optionsBaseUnit;
-				$scope.optionsType = msg.data.optionsType;
-				$scope.optionsCategory = msg.data.optionsCategory;
-				$scope.optionsManufacturer = msg.data.optionsManufacturer;
-				$scope.optionsCompany = msg.data.optionsCompany;
+		}});
+		Dialogs.addMessageListener({ topic: 'codbex-products.Products.Product.entitySelected', handler: (data) => {
+			$scope.$evalAsync(() => {
+				$scope.entity = data.entity;
+				$scope.optionsBaseUnit = data.optionsBaseUnit;
+				$scope.optionsType = data.optionsType;
+				$scope.optionsCategory = data.optionsCategory;
+				$scope.optionsManufacturer = data.optionsManufacturer;
+				$scope.optionsCompany = data.optionsCompany;
 				$scope.action = 'select';
 			});
-		});
-
-		messageHub.onDidReceiveMessage("createEntity", function (msg) {
-			$scope.$apply(function () {
+		}});
+		Dialogs.addMessageListener({ topic: 'codbex-products.Products.Product.createEntity', handler: (data) => {
+			$scope.$evalAsync(() => {
 				$scope.entity = {};
-				$scope.optionsBaseUnit = msg.data.optionsBaseUnit;
-				$scope.optionsType = msg.data.optionsType;
-				$scope.optionsCategory = msg.data.optionsCategory;
-				$scope.optionsManufacturer = msg.data.optionsManufacturer;
-				$scope.optionsCompany = msg.data.optionsCompany;
+				$scope.optionsBaseUnit = data.optionsBaseUnit;
+				$scope.optionsType = data.optionsType;
+				$scope.optionsCategory = data.optionsCategory;
+				$scope.optionsManufacturer = data.optionsManufacturer;
+				$scope.optionsCompany = data.optionsCompany;
 				$scope.action = 'create';
 			});
-		});
-
-		messageHub.onDidReceiveMessage("updateEntity", function (msg) {
-			$scope.$apply(function () {
-				$scope.entity = msg.data.entity;
-				$scope.optionsBaseUnit = msg.data.optionsBaseUnit;
-				$scope.optionsType = msg.data.optionsType;
-				$scope.optionsCategory = msg.data.optionsCategory;
-				$scope.optionsManufacturer = msg.data.optionsManufacturer;
-				$scope.optionsCompany = msg.data.optionsCompany;
+		}});
+		Dialogs.addMessageListener({ topic: 'codbex-products.Products.Product.updateEntity', handler: (data) => {
+			$scope.$evalAsync(() => {
+				$scope.entity = data.entity;
+				$scope.optionsBaseUnit = data.optionsBaseUnit;
+				$scope.optionsType = data.optionsType;
+				$scope.optionsCategory = data.optionsCategory;
+				$scope.optionsManufacturer = data.optionsManufacturer;
+				$scope.optionsCompany = data.optionsCompany;
 				$scope.action = 'update';
 			});
-		});
+		}});
 
-		$scope.serviceBaseUnit = "/services/ts/codbex-uoms/gen/codbex-uoms/api/UnitsOfMeasures/UoMService.ts";
-		$scope.serviceType = "/services/ts/codbex-products/gen/codbex-products/api/Settings/ProductTypeService.ts";
-		$scope.serviceCategory = "/services/ts/codbex-products/gen/codbex-products/api/Categories/ProductCategoryService.ts";
-		$scope.serviceManufacturer = "/services/ts/codbex-partners/gen/codbex-partners/api/Manufacturers/ManufacturerService.ts";
-		$scope.serviceCompany = "/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts";
+		$scope.serviceBaseUnit = '/services/ts/codbex-uoms/gen/codbex-uoms/api/Settings/UoMService.ts';
+		$scope.serviceType = '/services/ts/codbex-products/gen/codbex-products/api/Settings/ProductTypeService.ts';
+		$scope.serviceCategory = '/services/ts/codbex-products/gen/codbex-products/api/Settings/ProductCategoryService.ts';
+		$scope.serviceManufacturer = '/services/ts/codbex-partners/gen/codbex-partners/api/Manufacturers/ManufacturerService.ts';
+		$scope.serviceCompany = '/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts';
 
 		//-----------------Events-------------------//
 
-		$scope.create = function () {
-			entityApi.create($scope.entity).then(function (response) {
-				if (response.status != 201) {
-					messageHub.showAlertError("Product", `Unable to create Product: '${response.message}'`);
-					return;
-				}
-				messageHub.postMessage("entityCreated", response.data);
-				messageHub.postMessage("clearDetails", response.data);
-				messageHub.showAlertSuccess("Product", "Product successfully created");
+		$scope.create = () => {
+			EntityService.create($scope.entity).then((response) => {
+				Dialogs.postMessage({ topic: 'codbex-products.Products.Product.entityCreated', data: response.data });
+				Dialogs.postMessage({ topic: 'codbex-products.Products.Product.clearDetails' , data: response.data });
+				Dialogs.showAlert({
+					title: 'Product',
+					message: 'Product successfully created',
+					type: AlertTypes.Success
+				});
+			}, (error) => {
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'Product',
+					message: `Unable to create Product: '${message}'`,
+					type: AlertTypes.Error
+				});
+				console.error('EntityService:', error);
 			});
 		};
 
-		$scope.update = function () {
-			entityApi.update($scope.entity.Id, $scope.entity).then(function (response) {
-				if (response.status != 200) {
-					messageHub.showAlertError("Product", `Unable to update Product: '${response.message}'`);
-					return;
-				}
-				messageHub.postMessage("entityUpdated", response.data);
-				messageHub.postMessage("clearDetails", response.data);
-				messageHub.showAlertSuccess("Product", "Product successfully updated");
+		$scope.update = () => {
+			EntityService.update($scope.entity.Id, $scope.entity).then((response) => {
+				Dialogs.postMessage({ topic: 'codbex-products.Products.Product.entityUpdated', data: response.data });
+				Dialogs.postMessage({ topic: 'codbex-products.Products.Product.clearDetails', data: response.data });
+				Dialogs.showAlert({
+					title: 'Product',
+					message: 'Product successfully updated',
+					type: AlertTypes.Success
+				});
+			}, (error) => {
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'Product',
+					message: `Unable to create Product: '${message}'`,
+					type: AlertTypes.Error
+				});
+				console.error('EntityService:', error);
 			});
 		};
 
-		$scope.cancel = function () {
-			messageHub.postMessage("clearDetails");
+		$scope.cancel = () => {
+			Dialogs.triggerEvent('codbex-products.Products.Product.clearDetails');
 		};
 		
 		//-----------------Dialogs-------------------//
+		$scope.alert = (message) => {
+			if (message) Dialogs.showAlert({
+				title: 'Description',
+				message: message,
+				type: AlertTypes.Information,
+				preformatted: true,
+			});
+		};
 		
-		$scope.createBaseUnit = function () {
-			messageHub.showDialogWindow("UoM-details", {
-				action: "create",
-				entity: {},
-			}, null, false);
+		$scope.createBaseUnit = () => {
+			Dialogs.showWindow({
+				id: 'UoM-details',
+				params: {
+					action: 'create',
+					entity: {},
+				},
+				closeButton: false
+			});
 		};
-		$scope.createType = function () {
-			messageHub.showDialogWindow("ProductType-details", {
-				action: "create",
-				entity: {},
-			}, null, false);
+		$scope.createType = () => {
+			Dialogs.showWindow({
+				id: 'ProductType-details',
+				params: {
+					action: 'create',
+					entity: {},
+				},
+				closeButton: false
+			});
 		};
-		$scope.createCategory = function () {
-			messageHub.showDialogWindow("ProductCategory-details", {
-				action: "create",
-				entity: {},
-			}, null, false);
+		$scope.createCategory = () => {
+			Dialogs.showWindow({
+				id: 'ProductCategory-details',
+				params: {
+					action: 'create',
+					entity: {},
+				},
+				closeButton: false
+			});
 		};
-		$scope.createManufacturer = function () {
-			messageHub.showDialogWindow("Manufacturer-details", {
-				action: "create",
-				entity: {},
-			}, null, false);
+		$scope.createManufacturer = () => {
+			Dialogs.showWindow({
+				id: 'Manufacturer-details',
+				params: {
+					action: 'create',
+					entity: {},
+				},
+				closeButton: false
+			});
 		};
-		$scope.createCompany = function () {
-			messageHub.showDialogWindow("Company-details", {
-				action: "create",
-				entity: {},
-			}, null, false);
+		$scope.createCompany = () => {
+			Dialogs.showWindow({
+				id: 'Company-details',
+				params: {
+					action: 'create',
+					entity: {},
+				},
+				closeButton: false
+			});
 		};
 
 		//-----------------Dialogs-------------------//
@@ -160,63 +198,91 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		//----------------Dropdowns-----------------//
 
-		$scope.refreshBaseUnit = function () {
+		$scope.refreshBaseUnit = () => {
 			$scope.optionsBaseUnit = [];
-			$http.get("/services/ts/codbex-uoms/gen/codbex-uoms/api/UnitsOfMeasures/UoMService.ts").then(function (response) {
-				$scope.optionsBaseUnit = response.data.map(e => {
-					return {
-						value: e.Id,
-						text: e.Name
-					}
+			$http.get('/services/ts/codbex-uoms/gen/codbex-uoms/api/Settings/UoMService.ts').then((response) => {
+				$scope.optionsBaseUnit = response.data.map(e => ({
+					value: e.Id,
+					text: e.Name
+				}));
+			}, (error) => {
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'BaseUnit',
+					message: `Unable to load data: '${message}'`,
+					type: AlertTypes.Error
 				});
 			});
 		};
-		$scope.refreshType = function () {
+		$scope.refreshType = () => {
 			$scope.optionsType = [];
-			$http.get("/services/ts/codbex-products/gen/codbex-products/api/Settings/ProductTypeService.ts").then(function (response) {
-				$scope.optionsType = response.data.map(e => {
-					return {
-						value: e.Id,
-						text: e.Name
-					}
+			$http.get('/services/ts/codbex-products/gen/codbex-products/api/Settings/ProductTypeService.ts').then((response) => {
+				$scope.optionsType = response.data.map(e => ({
+					value: e.Id,
+					text: e.Name
+				}));
+			}, (error) => {
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'Type',
+					message: `Unable to load data: '${message}'`,
+					type: AlertTypes.Error
 				});
 			});
 		};
-		$scope.refreshCategory = function () {
+		$scope.refreshCategory = () => {
 			$scope.optionsCategory = [];
-			$http.get("/services/ts/codbex-products/gen/codbex-products/api/Categories/ProductCategoryService.ts").then(function (response) {
-				$scope.optionsCategory = response.data.map(e => {
-					return {
-						value: e.Id,
-						text: e.Name
-					}
+			$http.get('/services/ts/codbex-products/gen/codbex-products/api/Settings/ProductCategoryService.ts').then((response) => {
+				$scope.optionsCategory = response.data.map(e => ({
+					value: e.Id,
+					text: e.Name
+				}));
+			}, (error) => {
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'Category',
+					message: `Unable to load data: '${message}'`,
+					type: AlertTypes.Error
 				});
 			});
 		};
-		$scope.refreshManufacturer = function () {
+		$scope.refreshManufacturer = () => {
 			$scope.optionsManufacturer = [];
-			$http.get("/services/ts/codbex-partners/gen/codbex-partners/api/Manufacturers/ManufacturerService.ts").then(function (response) {
-				$scope.optionsManufacturer = response.data.map(e => {
-					return {
-						value: e.Id,
-						text: e.Name
-					}
+			$http.get('/services/ts/codbex-partners/gen/codbex-partners/api/Manufacturers/ManufacturerService.ts').then((response) => {
+				$scope.optionsManufacturer = response.data.map(e => ({
+					value: e.Id,
+					text: e.Name
+				}));
+			}, (error) => {
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'Manufacturer',
+					message: `Unable to load data: '${message}'`,
+					type: AlertTypes.Error
 				});
 			});
 		};
-		$scope.refreshCompany = function () {
+		$scope.refreshCompany = () => {
 			$scope.optionsCompany = [];
-			$http.get("/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts").then(function (response) {
-				$scope.optionsCompany = response.data.map(e => {
-					return {
-						value: e.Id,
-						text: e.Name
-					}
+			$http.get('/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts').then((response) => {
+				$scope.optionsCompany = response.data.map(e => ({
+					value: e.Id,
+					text: e.Name
+				}));
+			}, (error) => {
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'Company',
+					message: `Unable to load data: '${message}'`,
+					type: AlertTypes.Error
 				});
 			});
 		};
 
 		//----------------Dropdowns-----------------//	
-		
-
-	}]);
+	});

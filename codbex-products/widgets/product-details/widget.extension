@@ -1,6 +1,6 @@
 {
     "extensionPoint": "dashboard-widgets",
-    "module": "codbex-products/widgets/product-details/service.js",
+    "module": "codbex-products/widgets/product-details/config.js",
     "description": "Product details",
     "role": "codbex-products.Products.ProductFullAccess,codbex-products.Products.ProductReadOnly"
 }

@@ -5,14 +5,12 @@
  */
 const perspectiveData = {
 	id: 'Catalogues',
-	name: 'Catalogues',
-	link: '/services/web/codbex-products/gen/codbex-products/ui/Catalogues/index.html',
-	order: '300',
+	label: 'Catalogues',
+	path: '/services/web/codbex-products/gen/codbex-products/ui/Catalogues/index.html',
+	groupId: 'products-navigation-group',
+	order: 300,
 	icon: '/services/web/resources/unicons/book-open.svg'
 };
-
 if (typeof exports !== 'undefined') {
-	exports.getPerspective = function () {
-		return perspectiveData;
-	}
+	exports.getPerspective = () => perspectiveData;
 }

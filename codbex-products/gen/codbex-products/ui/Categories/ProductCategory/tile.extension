@@ -1,6 +1,0 @@
-{
-    "module": "codbex-products/gen/codbex-products/ui/Categories/ProductCategory/tile.js",
-    "extensionPoint": "codbex-products-tile",
-    "description": "codbex-products - Application Tile",
-    "role": "codbex-products.Categories.ProductCategoryReadOnly,codbex-products.Categories.ProductCategoryFullAccess"
-}

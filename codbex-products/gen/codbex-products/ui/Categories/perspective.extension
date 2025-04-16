@@ -1,5 +1,0 @@
-{
-    "module": "codbex-products/gen/codbex-products/ui/Categories/perspective.js",
-    "extensionPoint": "codbex-products",
-    "description": "codbex-products - Perspective - Categories"
-}

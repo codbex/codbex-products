@@ -1,6 +1,6 @@
 {
     "module": "codbex-products/gen/codbex-products/ui/Settings/ProductType/view.js",
-    "extensionPoint": "codbex-products-view",
+    "extensionPoint": "application-settings",
     "description": "codbex-products - Application View",
     "role": "codbex-products.Settings.ProductTypeReadOnly,codbex-products.Settings.ProductTypeFullAccess"
 }

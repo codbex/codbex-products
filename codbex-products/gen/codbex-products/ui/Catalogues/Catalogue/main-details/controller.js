@@ -1,135 +1,165 @@
-angular.module('page', ["ideUI", "ideView", "entityApi"])
-	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-products.Catalogues.Catalogue';
+angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
+	.config(["EntityServiceProvider", (EntityServiceProvider) => {
+		EntityServiceProvider.baseUrl = '/services/ts/codbex-products/gen/codbex-products/api/Catalogues/CatalogueService.ts';
 	}])
-	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-products/gen/codbex-products/api/Catalogues/CatalogueService.ts";
-	}])
-	.controller('PageController', ['$scope',  '$http', 'Extensions', 'messageHub', 'entityApi', function ($scope,  $http, Extensions, messageHub, entityApi) {
-
+	.controller('PageController', ($scope, $http, Extensions, EntityService) => {
+		const Dialogs = new DialogHub();
 		$scope.entity = {};
 		$scope.forms = {
 			details: {},
 		};
 		$scope.formHeaders = {
-			select: "Catalogue Details",
-			create: "Create Catalogue",
-			update: "Update Catalogue"
+			select: 'Catalogue Details',
+			create: 'Create Catalogue',
+			update: 'Update Catalogue'
 		};
 		$scope.action = 'select';
 
 		//-----------------Custom Actions-------------------//
-		Extensions.get('dialogWindow', 'codbex-products-custom-action').then(function (response) {
-			$scope.entityActions = response.filter(e => e.perspective === "Catalogues" && e.view === "Catalogue" && e.type === "entity");
+		Extensions.getWindows(['codbex-products-custom-action']).then((response) => {
+			$scope.entityActions = response.data.filter(e => e.perspective === 'Catalogues' && e.view === 'Catalogue' && e.type === 'entity');
 		});
 
-		$scope.triggerEntityAction = function (action) {
-			messageHub.showDialogWindow(
-				action.id,
-				{
+		$scope.triggerEntityAction = (action) => {
+			Dialogs.showWindow({
+				hasHeader: true,
+        		title: action.label,
+				path: action.path,
+				params: {
 					id: $scope.entity.Id
 				},
-				null,
-				true,
-				action
-			);
+				closeButton: true
+			});
 		};
 		//-----------------Custom Actions-------------------//
 
 		//-----------------Events-------------------//
-		messageHub.onDidReceiveMessage("clearDetails", function (msg) {
-			$scope.$apply(function () {
+		Dialogs.addMessageListener({ topic: 'codbex-products.Catalogues.Catalogue.clearDetails', handler: () => {
+			$scope.$evalAsync(() => {
 				$scope.entity = {};
 				$scope.optionsProduct = [];
 				$scope.optionsStore = [];
 				$scope.optionsBaseUnit = [];
 				$scope.action = 'select';
 			});
-		});
-
-		messageHub.onDidReceiveMessage("entitySelected", function (msg) {
-			$scope.$apply(function () {
-				$scope.entity = msg.data.entity;
-				$scope.optionsProduct = msg.data.optionsProduct;
-				$scope.optionsStore = msg.data.optionsStore;
-				$scope.optionsBaseUnit = msg.data.optionsBaseUnit;
+		}});
+		Dialogs.addMessageListener({ topic: 'codbex-products.Catalogues.Catalogue.entitySelected', handler: (data) => {
+			$scope.$evalAsync(() => {
+				$scope.entity = data.entity;
+				$scope.optionsProduct = data.optionsProduct;
+				$scope.optionsStore = data.optionsStore;
+				$scope.optionsBaseUnit = data.optionsBaseUnit;
 				$scope.action = 'select';
 			});
-		});
-
-		messageHub.onDidReceiveMessage("createEntity", function (msg) {
-			$scope.$apply(function () {
+		}});
+		Dialogs.addMessageListener({ topic: 'codbex-products.Catalogues.Catalogue.createEntity', handler: (data) => {
+			$scope.$evalAsync(() => {
 				$scope.entity = {};
-				$scope.optionsProduct = msg.data.optionsProduct;
-				$scope.optionsStore = msg.data.optionsStore;
-				$scope.optionsBaseUnit = msg.data.optionsBaseUnit;
+				$scope.optionsProduct = data.optionsProduct;
+				$scope.optionsStore = data.optionsStore;
+				$scope.optionsBaseUnit = data.optionsBaseUnit;
 				$scope.action = 'create';
 			});
-		});
-
-		messageHub.onDidReceiveMessage("updateEntity", function (msg) {
-			$scope.$apply(function () {
-				$scope.entity = msg.data.entity;
-				$scope.optionsProduct = msg.data.optionsProduct;
-				$scope.optionsStore = msg.data.optionsStore;
-				$scope.optionsBaseUnit = msg.data.optionsBaseUnit;
+		}});
+		Dialogs.addMessageListener({ topic: 'codbex-products.Catalogues.Catalogue.updateEntity', handler: (data) => {
+			$scope.$evalAsync(() => {
+				$scope.entity = data.entity;
+				$scope.optionsProduct = data.optionsProduct;
+				$scope.optionsStore = data.optionsStore;
+				$scope.optionsBaseUnit = data.optionsBaseUnit;
 				$scope.action = 'update';
 			});
-		});
+		}});
 
-		$scope.serviceProduct = "/services/ts/codbex-products/gen/codbex-products/api/Products/ProductService.ts";
-		$scope.serviceStore = "/services/ts/codbex-inventory/gen/codbex-inventory/api/Stores/StoreService.ts";
-		$scope.serviceBaseUnit = "/services/ts/codbex-uoms/gen/codbex-uoms/api/UnitsOfMeasures/UoMService.ts";
+		$scope.serviceProduct = '/services/ts/codbex-products/gen/codbex-products/api/Products/ProductService.ts';
+		$scope.serviceStore = '/services/ts/codbex-inventory/gen/codbex-inventory/api/Stores/StoreService.ts';
+		$scope.serviceBaseUnit = '/services/ts/codbex-uoms/gen/codbex-uoms/api/Settings/UoMService.ts';
 
 		//-----------------Events-------------------//
 
-		$scope.create = function () {
-			entityApi.create($scope.entity).then(function (response) {
-				if (response.status != 201) {
-					messageHub.showAlertError("Catalogue", `Unable to create Catalogue: '${response.message}'`);
-					return;
-				}
-				messageHub.postMessage("entityCreated", response.data);
-				messageHub.postMessage("clearDetails", response.data);
-				messageHub.showAlertSuccess("Catalogue", "Catalogue successfully created");
+		$scope.create = () => {
+			EntityService.create($scope.entity).then((response) => {
+				Dialogs.postMessage({ topic: 'codbex-products.Catalogues.Catalogue.entityCreated', data: response.data });
+				Dialogs.postMessage({ topic: 'codbex-products.Catalogues.Catalogue.clearDetails' , data: response.data });
+				Dialogs.showAlert({
+					title: 'Catalogue',
+					message: 'Catalogue successfully created',
+					type: AlertTypes.Success
+				});
+			}, (error) => {
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'Catalogue',
+					message: `Unable to create Catalogue: '${message}'`,
+					type: AlertTypes.Error
+				});
+				console.error('EntityService:', error);
 			});
 		};
 
-		$scope.update = function () {
-			entityApi.update($scope.entity.Id, $scope.entity).then(function (response) {
-				if (response.status != 200) {
-					messageHub.showAlertError("Catalogue", `Unable to update Catalogue: '${response.message}'`);
-					return;
-				}
-				messageHub.postMessage("entityUpdated", response.data);
-				messageHub.postMessage("clearDetails", response.data);
-				messageHub.showAlertSuccess("Catalogue", "Catalogue successfully updated");
+		$scope.update = () => {
+			EntityService.update($scope.entity.Id, $scope.entity).then((response) => {
+				Dialogs.postMessage({ topic: 'codbex-products.Catalogues.Catalogue.entityUpdated', data: response.data });
+				Dialogs.postMessage({ topic: 'codbex-products.Catalogues.Catalogue.clearDetails', data: response.data });
+				Dialogs.showAlert({
+					title: 'Catalogue',
+					message: 'Catalogue successfully updated',
+					type: AlertTypes.Success
+				});
+			}, (error) => {
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'Catalogue',
+					message: `Unable to create Catalogue: '${message}'`,
+					type: AlertTypes.Error
+				});
+				console.error('EntityService:', error);
 			});
 		};
 
-		$scope.cancel = function () {
-			messageHub.postMessage("clearDetails");
+		$scope.cancel = () => {
+			Dialogs.triggerEvent('codbex-products.Catalogues.Catalogue.clearDetails');
 		};
 		
 		//-----------------Dialogs-------------------//
+		$scope.alert = (message) => {
+			if (message) Dialogs.showAlert({
+				title: 'Description',
+				message: message,
+				type: AlertTypes.Information,
+				preformatted: true,
+			});
+		};
 		
-		$scope.createProduct = function () {
-			messageHub.showDialogWindow("Product-details", {
-				action: "create",
-				entity: {},
-			}, null, false);
+		$scope.createProduct = () => {
+			Dialogs.showWindow({
+				id: 'Product-details',
+				params: {
+					action: 'create',
+					entity: {},
+				},
+				closeButton: false
+			});
 		};
-		$scope.createStore = function () {
-			messageHub.showDialogWindow("Store-details", {
-				action: "create",
-				entity: {},
-			}, null, false);
+		$scope.createStore = () => {
+			Dialogs.showWindow({
+				id: 'Store-details',
+				params: {
+					action: 'create',
+					entity: {},
+				},
+				closeButton: false
+			});
 		};
-		$scope.createBaseUnit = function () {
-			messageHub.showDialogWindow("UoM-details", {
-				action: "create",
-				entity: {},
-			}, null, false);
+		$scope.createBaseUnit = () => {
+			Dialogs.showWindow({
+				id: 'UoM-details',
+				params: {
+					action: 'create',
+					entity: {},
+				},
+				closeButton: false
+			});
 		};
 
 		//-----------------Dialogs-------------------//
@@ -138,41 +168,57 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 
 		//----------------Dropdowns-----------------//
 
-		$scope.refreshProduct = function () {
+		$scope.refreshProduct = () => {
 			$scope.optionsProduct = [];
-			$http.get("/services/ts/codbex-products/gen/codbex-products/api/Products/ProductService.ts").then(function (response) {
-				$scope.optionsProduct = response.data.map(e => {
-					return {
-						value: e.Id,
-						text: e.Name
-					}
+			$http.get('/services/ts/codbex-products/gen/codbex-products/api/Products/ProductService.ts').then((response) => {
+				$scope.optionsProduct = response.data.map(e => ({
+					value: e.Id,
+					text: e.Name
+				}));
+			}, (error) => {
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'Product',
+					message: `Unable to load data: '${message}'`,
+					type: AlertTypes.Error
 				});
 			});
 		};
-		$scope.refreshStore = function () {
+		$scope.refreshStore = () => {
 			$scope.optionsStore = [];
-			$http.get("/services/ts/codbex-inventory/gen/codbex-inventory/api/Stores/StoreService.ts").then(function (response) {
-				$scope.optionsStore = response.data.map(e => {
-					return {
-						value: e.Id,
-						text: e.Name
-					}
+			$http.get('/services/ts/codbex-inventory/gen/codbex-inventory/api/Stores/StoreService.ts').then((response) => {
+				$scope.optionsStore = response.data.map(e => ({
+					value: e.Id,
+					text: e.Name
+				}));
+			}, (error) => {
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'Store',
+					message: `Unable to load data: '${message}'`,
+					type: AlertTypes.Error
 				});
 			});
 		};
-		$scope.refreshBaseUnit = function () {
+		$scope.refreshBaseUnit = () => {
 			$scope.optionsBaseUnit = [];
-			$http.get("/services/ts/codbex-uoms/gen/codbex-uoms/api/UnitsOfMeasures/UoMService.ts").then(function (response) {
-				$scope.optionsBaseUnit = response.data.map(e => {
-					return {
-						value: e.Id,
-						text: e.Name
-					}
+			$http.get('/services/ts/codbex-uoms/gen/codbex-uoms/api/Settings/UoMService.ts').then((response) => {
+				$scope.optionsBaseUnit = response.data.map(e => ({
+					value: e.Id,
+					text: e.Name
+				}));
+			}, (error) => {
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'BaseUnit',
+					message: `Unable to load data: '${message}'`,
+					type: AlertTypes.Error
 				});
 			});
 		};
 
 		//----------------Dropdowns-----------------//	
-		
-
-	}]);
+	});

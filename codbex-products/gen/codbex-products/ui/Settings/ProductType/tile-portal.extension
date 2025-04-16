@@ -1,6 +1,0 @@
-{
-    "module": "codbex-products/gen/codbex-products/ui/Settings/ProductType/tile.js",
-    "extensionPoint": "portal-tile",
-    "description": "codbex-products - Application Tile",
-    "role": "codbex-products.Settings.ProductTypeReadOnly,codbex-products.Settings.ProductTypeFullAccess"
-}

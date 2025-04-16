@@ -1,5 +1,5 @@
 {
     "module": "codbex-products/gen/codbex-products/ui/Products/perspective.js",
-    "extensionPoint": "codbex-products",
+    "extensionPoint": "application-perspectives",
     "description": "codbex-products - Perspective - Products"
 }
