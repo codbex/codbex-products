@@ -1,5 +1,5 @@
 import { ProductPackagingRepository } from "../../gen/codbex-products/dao/Products/ProductPackagingRepository";
-import { UoMRepository } from "codbex-uoms/gen/codbex-uoms/dao/UnitsOfMeasures/UoMRepository"
+import { UoMRepository } from "codbex-uoms/gen/codbex-uoms/dao/Settings/UoMRepository"
 
 export const trigger = (event) => {
 

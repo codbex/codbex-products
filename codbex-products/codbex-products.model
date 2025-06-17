@@ -39,14 +39,14 @@
                 "generateDefaultRoles": "true",
                 "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "",
+                "layoutType": "MANAGE",
                 "menuIndex": "100",
                 "menuKey": "producttype",
                 "menuLabel": "ProductType",
                 "name": "ProductType",
                 "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
-                "perspectiveLabel": "",
+                "perspectiveLabel": "Entities",
                 "perspectiveName": "Settings",
                 "perspectiveNavId": "",
                 "perspectiveOrder": "100",
@@ -108,14 +108,14 @@
                 "generateDefaultRoles": "true",
                 "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "",
+                "layoutType": "MANAGE",
                 "menuIndex": "100",
                 "menuKey": "productcategory",
                 "menuLabel": "ProductCategory",
                 "name": "ProductCategory",
                 "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
-                "perspectiveLabel": "",
+                "perspectiveLabel": "Entities",
                 "perspectiveName": "Settings",
                 "perspectiveNavId": "",
                 "perspectiveOrder": "100",
@@ -233,7 +233,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "dataLength": "18",
+                        "dataLength": "16",
                         "dataName": "PRODUCT_VAT",
                         "dataNullable": "true",
                         "dataPrecision": "16",
@@ -264,7 +264,7 @@
                         "relationshipName": "Product_ProductType",
                         "relationshipEntityName": "ProductType",
                         "relationshipEntityPerspectiveName": "Settings",
-                        "relationshipEntityPerspectiveLabel": ""
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "dataName": "PRODUCT_CATEGORY",
@@ -282,7 +282,7 @@
                         "relationshipName": "Product_ProductCategory",
                         "relationshipEntityName": "ProductCategory",
                         "relationshipEntityPerspectiveName": "Settings",
-                        "relationshipEntityPerspectiveLabel": ""
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
                         "dataName": "PRODUCT_MANUFACTURER",

@@ -4,6 +4,7 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 	}])
 	.controller('PageController', ($scope, $http, ViewParameters, EntityService) => {
 		const Dialogs = new DialogHub();
+		const Notifications = new NotificationHub();
 		$scope.entity = {};
 		$scope.forms = {
 			details: {},
@@ -29,10 +30,10 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			entity[$scope.selectedMainEntityKey] = $scope.selectedMainEntityId;
 			EntityService.create(entity).then((response) => {
 				Dialogs.postMessage({ topic: 'codbex-products.Products.ProductPackaging.entityCreated', data: response.data });
-				Dialogs.showAlert({
+				Notifications.show({
 					title: 'ProductPackaging',
-					message: 'ProductPackaging successfully created',
-					type: AlertTypes.Success
+					description: 'ProductPackaging successfully created',
+					type: 'positive'
 				});
 				$scope.cancel();
 			}, (error) => {
@@ -52,10 +53,10 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			entity[$scope.selectedMainEntityKey] = $scope.selectedMainEntityId;
 			EntityService.update(id, entity).then((response) => {
 				Dialogs.postMessage({ topic: 'codbex-products.Products.ProductPackaging.entityUpdated', data: response.data });
-				Dialogs.showAlert({
+				Notifications.show({
 					title: 'ProductPackaging',
-					message: 'ProductPackaging successfully updated',
-					type: AlertTypes.Success
+					description: 'ProductPackaging successfully updated',
+					type: 'positive'
 				});
 				$scope.cancel();
 			}, (error) => {

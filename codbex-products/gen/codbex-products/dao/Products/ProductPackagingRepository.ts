@@ -112,7 +112,7 @@ export interface ProductPackagingEntityOptions {
     },
     $select?: (keyof ProductPackagingEntity)[],
     $sort?: string | (keyof ProductPackagingEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
 }
@@ -190,10 +190,10 @@ export class ProductPackagingRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(ProductPackagingRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(ProductPackagingRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: ProductPackagingEntityOptions): ProductPackagingEntity[] {
+    public findAll(options: ProductPackagingEntityOptions = {}): ProductPackagingEntity[] {
         return this.dao.list(options);
     }
 
