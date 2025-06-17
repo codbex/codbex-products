@@ -1,6 +1,6 @@
 {
     "extensionPoint": "dashboard-widgets",
-    "module": "codbex-products/widgets/inventory-accuracy/service.js",
+    "module": "codbex-products/widgets/inventory-accuracy/config.js",
     "description": "Inventory accuracy",
     "role": "codbex-products.Catalogues.CatalogueReadOnly,codbex-products.Catalogues.CatalogueFullAccess"
 }

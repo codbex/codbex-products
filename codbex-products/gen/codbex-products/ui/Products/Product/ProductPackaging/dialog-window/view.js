@@ -4,14 +4,11 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "ProductPackaging-details",
-    label: "ProductPackaging",
-    link: "/services/web/codbex-products/gen/codbex-products/ui/Products/Product/ProductPackaging/dialog-window/index.html",
-    perspectiveName: "Products"
+    id: 'ProductPackaging-details',
+    label: 'ProductPackaging',
+    path: '/services/web/codbex-products/gen/codbex-products/ui/Products/Product/ProductPackaging/dialog-window/index.html',
+    perspectiveName: 'Products'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

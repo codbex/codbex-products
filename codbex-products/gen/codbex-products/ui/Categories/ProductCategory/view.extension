@@ -1,6 +1,0 @@
-{
-    "module": "codbex-products/gen/codbex-products/ui/Categories/ProductCategory/view.js",
-    "extensionPoint": "codbex-products-view",
-    "description": "codbex-products - Application View",
-    "role": "codbex-products.Categories.ProductCategoryReadOnly,codbex-products.Categories.ProductCategoryFullAccess"
-}

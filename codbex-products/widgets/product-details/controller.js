@@ -1,57 +1,49 @@
-angular.module('product-details', ['ideUI', 'ideView'])
-    .controller('ProductDetailsController', ['$scope', '$http', '$document', function ($scope, $http, $document) {
-        angular.element($document[0]).ready(async function () {
-            const productData = await getProductData();
-            // Doughnut Chart Data
-            const doughnutData = {
-                labels: ['Active Products', 'Inactive Products'],
-                datasets: [{
-                    data: [productData.ActiveProducts, productData.InactiveProducts],
-                    backgroundColor: ['#36a2eb', '#ff6384']
-                }]
-            };
+angular.module('product-details', ['blimpKit', 'platformView']).controller('ProductDetailsController', ($scope, $http, $window, $document) => {
+    const Shell = new ShellHub();
 
-            // Doughnut Chart Configuration
-            const doughnutOptions = {
-                responsive: true,
-                maintainAspectRatio: false,
-                legend: {
-                    position: 'bottom'
-                },
-                title: {
-                    display: true,
-                    text: 'Product Status'
-                },
-                animation: {
-                    animateScale: true,
-                    animateRotate: true
-                }
-            };
-            // Initialize Doughnut Chart
-            const doughnutChartCtx = $document[0].getElementById('doughnutChart').getContext('2d');
-            const doughnutChart = new Chart(doughnutChartCtx, {
-                type: 'doughnut',
-                data: doughnutData,
-                options: doughnutOptions
-            });
-            $scope.$apply(function () {
-                $scope.state.isBusy = false;
-            });
-        });
+    $scope.openPerspective = () => {
+        if (viewData && viewData.perspectiveId) Shell.showPerspective({ id: viewData.perspectiveId });
+    };
 
-        const productServiceUrl = "/services/ts/codbex-products/widgets/api/ProductService.ts/productData";
-        $http.get(productServiceUrl)
-            .then(function (response) {
-                $scope.ProductData = response.data;
-            });
+    $http.get('/services/ts/codbex-products/widgets/api/ProductService.ts/productData').then((response) => {
+        const doughnutData = {
+            labels: ['Active Products', 'Inactive Products'],
+            datasets: [{
+                data: [response.data.ActiveProducts, response.data.InactiveProducts],
+                backgroundColor: [
+                    $window.getComputedStyle($document[0].documentElement).getPropertyValue('--sapInformativeColor') || '#36a2eb',
+                    $window.getComputedStyle($document[0].documentElement).getPropertyValue('--sapNegativeColor') || '#ff6384'
+                ]
+            }]
+        };
 
-        async function getProductData() {
-            try {
-                const response = await $http.get("/services/ts/codbex-products/widgets/api/ProductService.ts/productData");
-                return response.data;
-            } catch (error) {
-                console.error('Error fetching product data:', error);
+        // Doughnut Chart Configuration
+        const doughnutOptions = {
+            responsive: true,
+            aspectRatio: 1,
+            maintainAspectRatio: true,
+            legend: {
+                position: 'bottom'
+            },
+            animation: {
+                animateScale: true,
+                animateRotate: true
             }
-        }
+        };
+        // Initialize Doughnut Chart
+        const doughnutChartCtx = $document[0].getElementById('doughnutChart').getContext('2d');
+        Chart.defaults.color = $window.getComputedStyle($document[0].documentElement).getPropertyValue('--sapTextColor') || '#666';
+        new Chart(doughnutChartCtx, {
+            type: 'doughnut',
+            data: doughnutData,
+            options: doughnutOptions
+        });
+        $scope.$evalAsync(() => {
+            $scope.ActiveCategories = response.data.ActiveCategories;
+            $scope.AllProducts = response.data.AllProducts;
+        });
+    }, (error) => {
+        console.error(error);
+    });
 
-    }]);
+});

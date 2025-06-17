@@ -10,7 +10,7 @@ servers:
   - url: /services/ts
 tags:
   - name: Settings
-  - name: Categories
+  - name: Settings
   - name: Products
   - name: Products
   - name: Catalogues
@@ -416,7 +416,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/Categories/ProductCategoryService.ts:
+  /codbex-products/gen/codbex-products/api/Settings/ProductCategoryService.ts:
     get:
       summary: List ProductCategory
       parameters:
@@ -437,7 +437,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - Categories
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -468,7 +468,7 @@ paths:
     post:
       summary: Create ProductCategory
       tags:
-        - Categories
+        - Settings
       requestBody:
         content:
           application/json:
@@ -500,7 +500,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/Categories/ProductCategoryService.ts/{id}:
+  /codbex-products/gen/codbex-products/api/Settings/ProductCategoryService.ts/{id}:
     get:
       summary: Get ProductCategory by Id
       parameters:
@@ -511,7 +511,7 @@ paths:
           schema:
             type: string
       tags:
-        - Categories
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -549,7 +549,7 @@ paths:
           schema:
             type: string
       tags:
-        - Categories
+        - Settings
       requestBody:
         content:
           application/json:
@@ -597,7 +597,7 @@ paths:
           schema:
             type: string
       tags:
-        - Categories
+        - Settings
       responses:
         204:
           description: Successful Request
@@ -619,11 +619,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/Categories/ProductCategoryService.ts/count:
+  /codbex-products/gen/codbex-products/api/Settings/ProductCategoryService.ts/count:
     get:
       summary: Count the number of ProductCategory
       tags:
-        - Categories
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -647,7 +647,7 @@ paths:
     post:
       summary: Count the number of ProductCategory by ProductCategoryFilterOptions
       tags:
-        - Categories
+        - Settings
       requestBody:
         content:
           application/json:
@@ -731,11 +731,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/Categories/ProductCategoryService.ts/search:
+  /codbex-products/gen/codbex-products/api/Settings/ProductCategoryService.ts/search:
     post:
       summary: Search ProductCategory by ProductCategoryFilterOptions
       tags:
-        - Categories
+        - Settings
       requestBody:
         content:
           application/json:

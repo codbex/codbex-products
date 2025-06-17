@@ -1,27 +1,28 @@
-angular.module('top-products', ['ideUI', 'ideView'])
-    .controller('TopProductsController', ['$scope', '$http', '$document', function ($scope, $http, $document) {
-        async function getProductData() {
-            try {
-                const response = await $http.get("/services/ts/codbex-products/widgets/api/ProductService.ts/productData");
-                return response.data;
-            } catch (error) {
-                console.error('Error fetching product data:', error);
-            }
-        }
-        angular.element($document[0]).ready(async function () {
-            const productData = await getProductData();
-            $scope.$apply(function () {
-                $scope.topProductsByUnits = productData.TopProductsByUnits;
-                $scope.topProductsByRevenue = productData.TopProductsByRevenue;
-                $scope.displayedProducts = $scope.topProductsByUnits; // Default display
-            });
+angular.module('top-products', ['blimpKit', 'platformView']).controller('TopProductsController', ($scope, $http) => {
+    const Shell = new ShellHub();
+    let topProductsByUnits;
+    let topProductsByRevenue;
+
+    $scope.openPerspective = () => {
+        if (viewData && viewData.perspectiveId) Shell.showPerspective({ id: viewData.perspectiveId });
+    };
+
+    $http.get('/services/ts/codbex-products/widgets/api/ProductService.ts/productData').then((response) => {
+        console.log(response)
+        topProductsByUnits = response.data.TopProductsByUnits;
+        topProductsByRevenue = response.data.TopProductsByRevenue;
+        $scope.$evalAsync(() => {
+            $scope.displayedProducts = topProductsByUnits;
         });
+    }, (error) => {
+        console.error(error);
+    });
 
-        $scope.displayByUnits = function () {
-            $scope.displayedProducts = $scope.topProductsByUnits;
-        };
+    $scope.displayByUnits = () => {
+        $scope.displayedProducts = topProductsByUnits;
+    };
 
-        $scope.displayByRevenue = function () {
-            $scope.displayedProducts = $scope.topProductsByRevenue;
-        };
-    }]);
+    $scope.displayByRevenue = () => {
+        $scope.displayedProducts = topProductsByRevenue;
+    };
+});

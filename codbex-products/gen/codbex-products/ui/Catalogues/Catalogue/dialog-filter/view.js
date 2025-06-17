@@ -4,14 +4,11 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: "Catalogue-filter",
-    label: "Catalogue Filter",
-    link: "/services/web/codbex-products/gen/codbex-products/ui/Catalogues/Catalogue/dialog-filter/index.html",
-    perspectiveName: "Catalogues"
+    id: 'Catalogue-filter',
+    label: 'Catalogue Filter',
+    path: '/services/web/codbex-products/gen/codbex-products/ui/Catalogues/Catalogue/dialog-filter/index.html',
+    perspectiveName: 'Catalogues'
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

@@ -1,5 +1,5 @@
 import { ProductRepository as ProductDao } from "codbex-products/gen/codbex-products/dao/Products/ProductRepository";
-import { ProductCategoryRepository as CategoryDao } from "codbex-products/gen/codbex-products/dao/Categories/ProductCategoryRepository";
+import { ProductCategoryRepository as CategoryDao } from "codbex-products/gen/codbex-products/dao/Settings/ProductCategoryRepository";
 
 import { Controller, Get } from "sdk/http";
 import { query } from "sdk/db";

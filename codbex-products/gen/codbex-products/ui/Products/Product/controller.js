@@ -1,31 +1,27 @@
-angular.module('page', ["ideUI", "ideView", "entityApi"])
-	.config(["messageHubProvider", function (messageHubProvider) {
-		messageHubProvider.eventIdPrefix = 'codbex-products.Products.Product';
+angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
+	.config(['EntityServiceProvider', (EntityServiceProvider) => {
+		EntityServiceProvider.baseUrl = '/services/ts/codbex-products/gen/codbex-products/api/Products/ProductService.ts';
 	}])
-	.config(["entityApiProvider", function (entityApiProvider) {
-		entityApiProvider.baseUrl = "/services/ts/codbex-products/gen/codbex-products/api/Products/ProductService.ts";
-	}])
-	.controller('PageController', ['$scope', '$http', 'messageHub', 'entityApi', 'Extensions', function ($scope, $http, messageHub, entityApi, Extensions) {
-
+	.controller('PageController', ($scope, $http, EntityService, Extensions, ButtonStates) => {
+		const Dialogs = new DialogHub();
 		$scope.dataPage = 1;
 		$scope.dataCount = 0;
 		$scope.dataOffset = 0;
 		$scope.dataLimit = 10;
-		$scope.action = "select";
+		$scope.action = 'select';
 
 		//-----------------Custom Actions-------------------//
-		Extensions.get('dialogWindow', 'codbex-products-custom-action').then(function (response) {
-			$scope.pageActions = response.filter(e => e.perspective === "Products" && e.view === "Product" && (e.type === "page" || e.type === undefined));
+		Extensions.getWindows(['codbex-products-custom-action']).then((response) => {
+			$scope.pageActions = response.data.filter(e => e.perspective === 'Products' && e.view === 'Product' && (e.type === 'page' || e.type === undefined));
 		});
 
-		$scope.triggerPageAction = function (action) {
-			messageHub.showDialogWindow(
-				action.id,
-				{},
-				null,
-				true,
-				action
-			);
+		$scope.triggerPageAction = (action) => {
+			Dialogs.showWindow({
+				hasHeader: true,
+        		title: action.label,
+				path: action.path,
+				closeButton: true
+			});
 		};
 		//-----------------Custom Actions-------------------//
 
@@ -42,32 +38,29 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		}
 
 		//-----------------Events-------------------//
-		messageHub.onDidReceiveMessage("clearDetails", function (msg) {
-			$scope.$apply(function () {
+		Dialogs.addMessageListener({ topic: 'codbex-products.Products.Product.clearDetails', handler: () => {
+			$scope.$evalAsync(() => {
 				$scope.selectedEntity = null;
-				$scope.action = "select";
+				$scope.action = 'select';
 			});
-		});
-
-		messageHub.onDidReceiveMessage("entityCreated", function (msg) {
+		}});
+		Dialogs.addMessageListener({ topic: 'codbex-products.Products.Product.entityCreated', handler: () => {
 			refreshData();
 			$scope.loadPage($scope.dataPage, $scope.filter);
-		});
-
-		messageHub.onDidReceiveMessage("entityUpdated", function (msg) {
+		}});
+		Dialogs.addMessageListener({ topic: 'codbex-products.Products.Product.entityUpdated', handler: () => {
 			refreshData();
 			$scope.loadPage($scope.dataPage, $scope.filter);
-		});
-
-		messageHub.onDidReceiveMessage("entitySearch", function (msg) {
+		}});
+		Dialogs.addMessageListener({ topic: 'codbex-products.Products.Product.entitySearch', handler: () => {
 			resetPagination();
-			$scope.filter = msg.data.filter;
-			$scope.filterEntity = msg.data.entity;
+			$scope.filter = data.filter;
+			$scope.filterEntity = data.entity;
 			$scope.loadPage($scope.dataPage, $scope.filter);
-		});
+		}});
 		//-----------------Events-------------------//
 
-		$scope.loadPage = function (pageNumber, filter) {
+		$scope.loadPage = (pageNumber, filter) => {
 			if (!filter && $scope.filter) {
 				filter = $scope.filter;
 			}
@@ -75,13 +68,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				filter = {};
 			}
 			$scope.selectedEntity = null;
-			entityApi.count(filter).then(function (response) {
-				if (response.status != 200) {
-					messageHub.showAlertError("Product", `Unable to count Product: '${response.message}'`);
-					return;
-				}
-				if (response.data) {
-					$scope.dataCount = response.data;
+			EntityService.count(filter).then((resp) => {
+				if (resp.data) {
+					$scope.dataCount = resp.data.count;
 				}
 				$scope.dataPages = Math.ceil($scope.dataCount / $scope.dataLimit);
 				filter.$offset = ($scope.dataPage - 1) * $scope.dataLimit;
@@ -91,25 +80,37 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 					filter.$limit = $scope.dataPage * $scope.dataLimit;
 				}
 
-				entityApi.search(filter).then(function (response) {
-					if (response.status != 200) {
-						messageHub.showAlertError("Product", `Unable to list/filter Product: '${response.message}'`);
-						return;
-					}
+				EntityService.search(filter).then((response) => {
 					if ($scope.data == null || $scope.dataReset) {
 						$scope.data = [];
 						$scope.dataReset = false;
 					}
 					$scope.data = $scope.data.concat(response.data);
 					$scope.dataPage++;
+				}, (error) => {
+					const message = error.data ? error.data.message : '';
+					Dialogs.showAlert({
+						title: 'Product',
+						message: `Unable to list/filter Product: '${message}'`,
+						type: AlertTypes.Error
+					});
+					console.error('EntityService:', error);
 				});
+			}, (error) => {
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'Product',
+					message: `Unable to count Product: '${message}'`,
+					type: AlertTypes.Error
+				});
+				console.error('EntityService:', error);
 			});
 		};
 		$scope.loadPage($scope.dataPage, $scope.filter);
 
-		$scope.selectEntity = function (entity) {
+		$scope.selectEntity = (entity) => {
 			$scope.selectedEntity = entity;
-			messageHub.postMessage("entitySelected", {
+			Dialogs.postMessage({ topic: 'codbex-products.Products.Product.entitySelected', data: {
 				entity: entity,
 				selectedMainEntityId: entity.Id,
 				optionsBaseUnit: $scope.optionsBaseUnit,
@@ -117,73 +118,79 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				optionsCategory: $scope.optionsCategory,
 				optionsManufacturer: $scope.optionsManufacturer,
 				optionsCompany: $scope.optionsCompany,
-			});
+			}});
 		};
 
-		$scope.createEntity = function () {
+		$scope.createEntity = () => {
 			$scope.selectedEntity = null;
-			$scope.action = "create";
+			$scope.action = 'create';
 
-			messageHub.postMessage("createEntity", {
+			Dialogs.postMessage({ topic: 'codbex-products.Products.Product.createEntity', data: {
 				entity: {},
 				optionsBaseUnit: $scope.optionsBaseUnit,
 				optionsType: $scope.optionsType,
 				optionsCategory: $scope.optionsCategory,
 				optionsManufacturer: $scope.optionsManufacturer,
 				optionsCompany: $scope.optionsCompany,
-			});
+			}});
 		};
 
-		$scope.updateEntity = function () {
-			$scope.action = "update";
-			messageHub.postMessage("updateEntity", {
+		$scope.updateEntity = () => {
+			$scope.action = 'update';
+			Dialogs.postMessage({ topic: 'codbex-products.Products.Product.updateEntity', data: {
 				entity: $scope.selectedEntity,
 				optionsBaseUnit: $scope.optionsBaseUnit,
 				optionsType: $scope.optionsType,
 				optionsCategory: $scope.optionsCategory,
 				optionsManufacturer: $scope.optionsManufacturer,
 				optionsCompany: $scope.optionsCompany,
-			});
+			}});
 		};
 
-		$scope.deleteEntity = function () {
+		$scope.deleteEntity = () => {
 			let id = $scope.selectedEntity.Id;
-			messageHub.showDialogAsync(
-				'Delete Product?',
-				`Are you sure you want to delete Product? This action cannot be undone.`,
-				[{
-					id: "delete-btn-yes",
-					type: "emphasized",
-					label: "Yes",
-				},
-				{
-					id: "delete-btn-no",
-					type: "normal",
-					label: "No",
+			Dialogs.showDialog({
+				title: 'Delete Product?',
+				message: `Are you sure you want to delete Product? This action cannot be undone.`,
+				buttons: [{
+					id: 'delete-btn-yes',
+					state: ButtonStates.Emphasized,
+					label: 'Yes',
+				}, {
+					id: 'delete-btn-no',
+					label: 'No',
 				}],
-			).then(function (msg) {
-				if (msg.data === "delete-btn-yes") {
-					entityApi.delete(id).then(function (response) {
-						if (response.status != 204) {
-							messageHub.showAlertError("Product", `Unable to delete Product: '${response.message}'`);
-							return;
-						}
+				closeButton: false
+			}).then((buttonId) => {
+				if (buttonId === 'delete-btn-yes') {
+					EntityService.delete(id).then(() => {
 						refreshData();
 						$scope.loadPage($scope.dataPage, $scope.filter);
-						messageHub.postMessage("clearDetails");
+						Dialogs.triggerEvent('codbex-products.Products.Product.clearDetails');
+					}, (error) => {
+						const message = error.data ? error.data.message : '';
+						Dialogs.showAlert({
+							title: 'Product',
+							message: `Unable to delete Product: '${message}'`,
+							type: AlertTypes.Error
+						});
+						console.error('EntityService:', error);
 					});
 				}
 			});
 		};
 
-		$scope.openFilter = function (entity) {
-			messageHub.showDialogWindow("Product-filter", {
-				entity: $scope.filterEntity,
-				optionsBaseUnit: $scope.optionsBaseUnit,
-				optionsType: $scope.optionsType,
-				optionsCategory: $scope.optionsCategory,
-				optionsManufacturer: $scope.optionsManufacturer,
-				optionsCompany: $scope.optionsCompany,
+		$scope.openFilter = () => {
+			Dialogs.showWindow({
+				id: 'Product-filter',
+				params: {
+					entity: $scope.filterEntity,
+					optionsBaseUnit: $scope.optionsBaseUnit,
+					optionsType: $scope.optionsType,
+					optionsCategory: $scope.optionsCategory,
+					optionsManufacturer: $scope.optionsManufacturer,
+					optionsCompany: $scope.optionsCompany,
+				},
 			});
 		};
 
@@ -195,52 +202,82 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.optionsCompany = [];
 
 
-		$http.get("/services/ts/codbex-uoms/gen/codbex-uoms/api/UnitsOfMeasures/UoMService.ts").then(function (response) {
-			$scope.optionsBaseUnit = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
-				}
+		$http.get('/services/ts/codbex-uoms/gen/codbex-uoms/api/Settings/UoMService.ts').then((response) => {
+			$scope.optionsBaseUnit = response.data.map(e => ({
+				value: e.Id,
+				text: e.Name
+			}));
+		}, (error) => {
+			console.error(error);
+			const message = error.data ? error.data.message : '';
+			Dialogs.showAlert({
+				title: 'BaseUnit',
+				message: `Unable to load data: '${message}'`,
+				type: AlertTypes.Error
 			});
 		});
 
-		$http.get("/services/ts/codbex-products/gen/codbex-products/api/Settings/ProductTypeService.ts").then(function (response) {
-			$scope.optionsType = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
-				}
+		$http.get('/services/ts/codbex-products/gen/codbex-products/api/Settings/ProductTypeService.ts').then((response) => {
+			$scope.optionsType = response.data.map(e => ({
+				value: e.Id,
+				text: e.Name
+			}));
+		}, (error) => {
+			console.error(error);
+			const message = error.data ? error.data.message : '';
+			Dialogs.showAlert({
+				title: 'Type',
+				message: `Unable to load data: '${message}'`,
+				type: AlertTypes.Error
 			});
 		});
 
-		$http.get("/services/ts/codbex-products/gen/codbex-products/api/Categories/ProductCategoryService.ts").then(function (response) {
-			$scope.optionsCategory = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
-				}
+		$http.get('/services/ts/codbex-products/gen/codbex-products/api/Settings/ProductCategoryService.ts').then((response) => {
+			$scope.optionsCategory = response.data.map(e => ({
+				value: e.Id,
+				text: e.Name
+			}));
+		}, (error) => {
+			console.error(error);
+			const message = error.data ? error.data.message : '';
+			Dialogs.showAlert({
+				title: 'Category',
+				message: `Unable to load data: '${message}'`,
+				type: AlertTypes.Error
 			});
 		});
 
-		$http.get("/services/ts/codbex-partners/gen/codbex-partners/api/Manufacturers/ManufacturerService.ts").then(function (response) {
-			$scope.optionsManufacturer = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
-				}
+		$http.get('/services/ts/codbex-partners/gen/codbex-partners/api/Manufacturers/ManufacturerService.ts').then((response) => {
+			$scope.optionsManufacturer = response.data.map(e => ({
+				value: e.Id,
+				text: e.Name
+			}));
+		}, (error) => {
+			console.error(error);
+			const message = error.data ? error.data.message : '';
+			Dialogs.showAlert({
+				title: 'Manufacturer',
+				message: `Unable to load data: '${message}'`,
+				type: AlertTypes.Error
 			});
 		});
 
-		$http.get("/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts").then(function (response) {
-			$scope.optionsCompany = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
-				}
+		$http.get('/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts').then((response) => {
+			$scope.optionsCompany = response.data.map(e => ({
+				value: e.Id,
+				text: e.Name
+			}));
+		}, (error) => {
+			console.error(error);
+			const message = error.data ? error.data.message : '';
+			Dialogs.showAlert({
+				title: 'Company',
+				message: `Unable to load data: '${message}'`,
+				type: AlertTypes.Error
 			});
 		});
 
-		$scope.optionsBaseUnitValue = function (optionKey) {
+		$scope.optionsBaseUnitValue = (optionKey) => {
 			for (let i = 0; i < $scope.optionsBaseUnit.length; i++) {
 				if ($scope.optionsBaseUnit[i].value === optionKey) {
 					return $scope.optionsBaseUnit[i].text;
@@ -248,7 +285,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			}
 			return null;
 		};
-		$scope.optionsTypeValue = function (optionKey) {
+		$scope.optionsTypeValue = (optionKey) => {
 			for (let i = 0; i < $scope.optionsType.length; i++) {
 				if ($scope.optionsType[i].value === optionKey) {
 					return $scope.optionsType[i].text;
@@ -256,7 +293,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			}
 			return null;
 		};
-		$scope.optionsCategoryValue = function (optionKey) {
+		$scope.optionsCategoryValue = (optionKey) => {
 			for (let i = 0; i < $scope.optionsCategory.length; i++) {
 				if ($scope.optionsCategory[i].value === optionKey) {
 					return $scope.optionsCategory[i].text;
@@ -264,7 +301,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			}
 			return null;
 		};
-		$scope.optionsManufacturerValue = function (optionKey) {
+		$scope.optionsManufacturerValue = (optionKey) => {
 			for (let i = 0; i < $scope.optionsManufacturer.length; i++) {
 				if ($scope.optionsManufacturer[i].value === optionKey) {
 					return $scope.optionsManufacturer[i].text;
@@ -272,7 +309,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			}
 			return null;
 		};
-		$scope.optionsCompanyValue = function (optionKey) {
+		$scope.optionsCompanyValue = (optionKey) => {
 			for (let i = 0; i < $scope.optionsCompany.length; i++) {
 				if ($scope.optionsCompany[i].value === optionKey) {
 					return $scope.optionsCompany[i].text;
@@ -281,5 +318,4 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			return null;
 		};
 		//----------------Dropdowns-----------------//
-
-	}]);
+	});

@@ -3,78 +3,42 @@
 
     <head>
         <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" sizes="any" href="data:;base64,iVBORw0KGgo=">
-        <title dg-view-title></title>
-        <script type="text/javascript" src="service.js"></script>
-        <theme></theme>
-        <script type="text/javascript" src="/services/js/resources-core/services/loader.js?id=application-view-js">
-        </script>
-        <link type="text/css" rel="stylesheet"
-            href="/services/js/resources-core/services/loader.js?id=application-view-css" />
+        <title config-title></title>
+        <script type="text/javascript" src="./config.js"></script>
+        <script type="text/javascript" src="/services/js/platform-core/services/loader.js?id=view-js"></script>
         <script type="text/javascript" src="/webjars/chart.js/dist/chart.umd.js"></script>
-        <script type="text/javascript" src="controller.js"></script>
-
+        <link type="text/css" rel="stylesheet" href="/services/js/platform-core/services/loader.js?id=view-css" />
+        <script src="./controller.js" type="text/javascript"></script>
         <style>
-            .tile-auto-layout {
-                max-width: 99%;
-                min-height: 335px;
-                max-height: 335px;
-                height: 335px;
-                margin: 1px;
-            }
-
-            .overflow-h {
-                overflow: hidden;
-            }
-
-            .fd-numeric-content__kpi {
-                font-size: 1.5rem;
-                word-wrap: break-word;
-                text-overflow: ellipsis;
-                font-weight: 500;
-                white-space: nowrap;
-                overflow: hidden;
+            body {
+                background: var(--sapTile_Background);
             }
 
         </style>
     </head>
 
-    <body class="overflow-h">
-        <fd-card class="tile-auto-layout" card-type="table">
-            <fd-card-header ng-click="openPerspective('products')">
-                <fd-card-title>Product Details</fd-card-title>
-            </fd-card-header>
-            <fd-card-content>
-                <table fd-table inner-borders="horizontal" outer-borders="none" style="min-height:12.5rem">
-                    <tbody fd-table-body>
-                        <tr fd-table-row>
-                            <td fd-table-cell class="fd-padding--none" width="50%">
-                                <fd-list>
-                                    <fd-list-item>
-                                        <div class="dg-hbox dg-full-width">
-                                            <span style="flex:1">Product Categories</span>
-                                            <span>{{ProductData.ActiveCategories}}</span>
-                                        </div>
-                                    </fd-list-item>
-                                    <fd-list-item class="dg-no-border-bottom">
-                                        <div class="dg-hbox dg-full-width">
-                                            <span style="flex:1">All Products</span>
-                                            <span>{{ProductData.AllProducts}}</span>
-                                        </div>
-                                    </fd-list-item>
-                                </fd-list>
-                            </td>
-                            <td fd-table-cell width="50%">
-                                <!-- Right section for doughnut chart -->
-                                <canvas id="doughnutChart" width="200" height="200"></canvas>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </fd-card-content>
-        </fd-card>
+    <body class="bk-vbox">
+        <div class="bk-border--bottom fd-padding bk-pointer" ng-click="openPerspective()">
+            <h5 bk-title wrap="true" header-size="5" aria-label="widget title">Product Details</h5>
+        </div>
+        <div class="bk-hbox" bk-scrollbar style="flex:1">
+            <bk-list class="bk-border--right" no-border="true" style="flex:1">
+                <bk-list-item>
+                    <bk-list-title>Product Categories</bk-list-title>
+                    <bk-list-secondary>{{::ActiveCategories}}</bk-list-secondary>
+                </bk-list-item>
+                <bk-list-item>
+                    <bk-list-title>All Products</bk-list-title>
+                    <bk-list-secondary>{{::AllProducts}}</bk-list-secondary>
+                </bk-list-item>
+            </bk-list>
+            <div class="bk-center--horizontal bk-padding--tiny" style="flex:1">
+                <canvas id="doughnutChart" ng-non-bindable></canvas>
+            </div>
+        </div>
+        <theme></theme>
     </body>
 
 </html>

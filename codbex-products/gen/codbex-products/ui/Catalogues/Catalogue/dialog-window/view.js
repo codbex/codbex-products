@@ -6,15 +6,12 @@
 const viewData = {
     id: "Catalogue-details",
     label: "Catalogue",
-    link: "/services/web/codbex-products/gen/codbex-products/ui/Catalogues/Catalogue/dialog-window/index.html",
+    path: "/services/web/codbex-products/gen/codbex-products/ui/Catalogues/Catalogue/dialog-window/index.html",
     perspectiveName: "Catalogues",
     roles: [
         "codbex-products.Catalogues.CatalogueReadOnly",
     ]
 };
-
 if (typeof exports !== 'undefined') {
-    exports.getDialogWindow = function () {
-        return viewData;
-    }
+    exports.getView = () => viewData;
 }

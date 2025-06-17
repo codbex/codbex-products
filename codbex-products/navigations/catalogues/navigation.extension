@@ -1,6 +1,0 @@
-{
-    "extensionPoint": "dashboard-navigations",
-    "module": "codbex-products/navigations/catalogues/service.js",
-    "description": "Catalogues Navigation",
-    "role": "codbex-products.Catalogues.CatalogueReadOnly,codbex-products.Catalogues.CatalogueFullAccess"
-}
