@@ -2758,8 +2758,6 @@ components:
       type: object
       required:
         - Title
-        - Description
-        - Image
         - Model
         - Batch
         - BaseUnit
