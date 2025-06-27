@@ -14,7 +14,6 @@ angular.module('page', ['blimpKit', 'platformView']).controller('PageController'
 		$scope.optionsType = params.optionsType;
 		$scope.optionsCategory = params.optionsCategory;
 		$scope.optionsManufacturer = params.optionsManufacturer;
-		$scope.optionsCompany = params.optionsCompany;
 	}
 
 	$scope.filter = () => {
@@ -45,6 +44,12 @@ angular.module('page', ['blimpKit', 'platformView']).controller('PageController'
 		}
 		if (entity.Title) {
 			filter.$filter.contains.Title = entity.Title;
+		}
+		if (entity.Description) {
+			filter.$filter.contains.Description = entity.Description;
+		}
+		if (entity.Image) {
+			filter.$filter.contains.Image = entity.Image;
 		}
 		if (entity.Model) {
 			filter.$filter.contains.Model = entity.Model;
@@ -84,9 +89,6 @@ angular.module('page', ['blimpKit', 'platformView']).controller('PageController'
 		}
 		if (entity.Name) {
 			filter.$filter.contains.Name = entity.Name;
-		}
-		if (entity.Company !== undefined) {
-			filter.$filter.equals.Company = entity.Company;
 		}
 		if (entity.UPC) {
 			filter.$filter.contains.UPC = entity.UPC;

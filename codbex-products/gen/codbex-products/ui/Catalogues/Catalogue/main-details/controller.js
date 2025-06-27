@@ -4,6 +4,7 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 	}])
 	.controller('PageController', ($scope, $http, Extensions, EntityService) => {
 		const Dialogs = new DialogHub();
+		const Notifications = new NotificationHub();
 		$scope.entity = {};
 		$scope.forms = {
 			details: {},
@@ -81,10 +82,10 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			EntityService.create($scope.entity).then((response) => {
 				Dialogs.postMessage({ topic: 'codbex-products.Catalogues.Catalogue.entityCreated', data: response.data });
 				Dialogs.postMessage({ topic: 'codbex-products.Catalogues.Catalogue.clearDetails' , data: response.data });
-				Dialogs.showAlert({
+				Notifications.show({
 					title: 'Catalogue',
-					message: 'Catalogue successfully created',
-					type: AlertTypes.Success
+					description: 'Catalogue successfully created',
+					type: 'positive'
 				});
 			}, (error) => {
 				const message = error.data ? error.data.message : '';
@@ -101,10 +102,10 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			EntityService.update($scope.entity.Id, $scope.entity).then((response) => {
 				Dialogs.postMessage({ topic: 'codbex-products.Catalogues.Catalogue.entityUpdated', data: response.data });
 				Dialogs.postMessage({ topic: 'codbex-products.Catalogues.Catalogue.clearDetails', data: response.data });
-				Dialogs.showAlert({
+				Notifications.show({
 					title: 'Catalogue',
-					message: 'Catalogue successfully updated',
-					type: AlertTypes.Success
+					description: 'Catalogue successfully updated',
+					type: 'positive'
 				});
 			}, (error) => {
 				const message = error.data ? error.data.message : '';

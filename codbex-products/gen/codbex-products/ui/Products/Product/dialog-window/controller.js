@@ -4,6 +4,7 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 	}])
 	.controller('PageController', ($scope, $http, ViewParameters, EntityService) => {
 		const Dialogs = new DialogHub();
+		const Notifications = new NotificationHub();
 		$scope.entity = {};
 		$scope.forms = {
 			details: {},
@@ -25,7 +26,6 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			$scope.optionsType = params.optionsType;
 			$scope.optionsCategory = params.optionsCategory;
 			$scope.optionsManufacturer = params.optionsManufacturer;
-			$scope.optionsCompany = params.optionsCompany;
 		}
 
 		$scope.create = () => {
@@ -33,10 +33,10 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			entity[$scope.selectedMainEntityKey] = $scope.selectedMainEntityId;
 			EntityService.create(entity).then((response) => {
 				Dialogs.postMessage({ topic: 'codbex-products.Products.Product.entityCreated', data: response.data });
-				Dialogs.showAlert({
+				Notifications.show({
 					title: 'Product',
-					message: 'Product successfully created',
-					type: AlertTypes.Success
+					description: 'Product successfully created',
+					type: 'positive'
 				});
 				$scope.cancel();
 			}, (error) => {
@@ -55,10 +55,10 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			EntityService.update(id, entity).then((response) => {
 				Dialogs.postMessage({ topic: 'codbex-products.Products.Product.entityUpdated', data: response.data });
 				$scope.cancel();
-				Dialogs.showAlert({
+				Notifications.show({
 					title: 'Product',
-					message: 'Product successfully updated',
-					type: AlertTypes.Success
+					description: 'Product successfully updated',
+					type: 'positive'
 				});
 			}, (error) => {
 				const message = error.data ? error.data.message : '';
@@ -137,24 +137,6 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			const message = error.data ? error.data.message : '';
 			Dialogs.showAlert({
 				title: 'Manufacturer',
-				message: `Unable to load data: '${message}'`,
-				type: AlertTypes.Error
-			});
-		});
-		$scope.serviceCompany = '/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts';
-		
-		$scope.optionsCompany = [];
-		
-		$http.get('/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts').then((response) => {
-			$scope.optionsCompany = response.data.map(e => ({
-				value: e.Id,
-				text: e.Name
-			}));
-		}, (error) => {
-			console.error(error);
-			const message = error.data ? error.data.message : '';
-			Dialogs.showAlert({
-				title: 'Company',
 				message: `Unable to load data: '${message}'`,
 				type: AlertTypes.Error
 			});

@@ -42,6 +42,8 @@
 							item-title="{{next.SKU}}">
 							<bk-list-byline align="left">
 								{{next.Title}} |
+								{{next.Description}} |
+								<bk-link href="{{next.Image}}" target="_blank">{{next.Image}}</bk-link> |
 								{{next.Model}} |
 								{{next.Batch}} |
 								{{optionsBaseUnitValue(next.BaseUnit)}} |
@@ -55,7 +57,6 @@
 								{{next.Length}} |
 								{{next.Width}} |
 								{{next.Name}} |
-								{{optionsCompanyValue(next.Company)}} |
 								{{next.UPC}} |
 								{{next.EAN}} |
 								{{next.JAN}} |

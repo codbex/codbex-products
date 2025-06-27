@@ -15,6 +15,12 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 				hasHeader: true,
         		title: action.label,
 				path: action.path,
+				params: {
+					selectedMainEntityKey: 'Product',
+					selectedMainEntityId: $scope.selectedMainEntityId,
+				},
+				maxWidth: action.maxWidth,
+				maxHeight: action.maxHeight,
 				closeButton: true
 			});
 		};
@@ -25,7 +31,9 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
         		title: action.label,
 				path: action.path,
 				params: {
-					id: $scope.entity.Id
+					id: $scope.entity.Id,
+					selectedMainEntityKey: 'Product',
+					selectedMainEntityId: $scope.selectedMainEntityId,
 				},
 				closeButton: true
 			});
@@ -132,7 +140,7 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			});
 		};
 
-		$scope.openFilter = (entity) => {
+		$scope.openFilter = () => {
 			Dialogs.showWindow({
 				id: 'ProductAttribute-filter',
 				params: {

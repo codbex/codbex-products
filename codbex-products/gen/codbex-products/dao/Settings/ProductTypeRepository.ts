@@ -49,7 +49,7 @@ export interface ProductTypeEntityOptions {
     },
     $select?: (keyof ProductTypeEntity)[],
     $sort?: string | (keyof ProductTypeEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
 }
@@ -92,10 +92,10 @@ export class ProductTypeRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(ProductTypeRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(ProductTypeRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: ProductTypeEntityOptions): ProductTypeEntity[] {
+    public findAll(options: ProductTypeEntityOptions = {}): ProductTypeEntity[] {
         return this.dao.list(options);
     }
 

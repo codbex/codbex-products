@@ -42,7 +42,6 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 				$scope.optionsType = [];
 				$scope.optionsCategory = [];
 				$scope.optionsManufacturer = [];
-				$scope.optionsCompany = [];
 				$scope.action = 'select';
 			});
 		}});
@@ -53,7 +52,6 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 				$scope.optionsType = data.optionsType;
 				$scope.optionsCategory = data.optionsCategory;
 				$scope.optionsManufacturer = data.optionsManufacturer;
-				$scope.optionsCompany = data.optionsCompany;
 				$scope.action = 'select';
 			});
 		}});
@@ -64,7 +62,6 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 				$scope.optionsType = data.optionsType;
 				$scope.optionsCategory = data.optionsCategory;
 				$scope.optionsManufacturer = data.optionsManufacturer;
-				$scope.optionsCompany = data.optionsCompany;
 				$scope.action = 'create';
 			});
 		}});
@@ -75,7 +72,6 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 				$scope.optionsType = data.optionsType;
 				$scope.optionsCategory = data.optionsCategory;
 				$scope.optionsManufacturer = data.optionsManufacturer;
-				$scope.optionsCompany = data.optionsCompany;
 				$scope.action = 'update';
 			});
 		}});
@@ -84,7 +80,6 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 		$scope.serviceType = '/services/ts/codbex-products/gen/codbex-products/api/Settings/ProductTypeService.ts';
 		$scope.serviceCategory = '/services/ts/codbex-products/gen/codbex-products/api/Settings/ProductCategoryService.ts';
 		$scope.serviceManufacturer = '/services/ts/codbex-partners/gen/codbex-partners/api/Manufacturers/ManufacturerService.ts';
-		$scope.serviceCompany = '/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts';
 
 		//-----------------Events-------------------//
 
@@ -182,16 +177,6 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 				closeButton: false
 			});
 		};
-		$scope.createCompany = () => {
-			Dialogs.showWindow({
-				id: 'Company-details',
-				params: {
-					action: 'create',
-					entity: {},
-				},
-				closeButton: false
-			});
-		};
 
 		//-----------------Dialogs-------------------//
 
@@ -262,23 +247,6 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 				const message = error.data ? error.data.message : '';
 				Dialogs.showAlert({
 					title: 'Manufacturer',
-					message: `Unable to load data: '${message}'`,
-					type: AlertTypes.Error
-				});
-			});
-		};
-		$scope.refreshCompany = () => {
-			$scope.optionsCompany = [];
-			$http.get('/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts').then((response) => {
-				$scope.optionsCompany = response.data.map(e => ({
-					value: e.Id,
-					text: e.Name
-				}));
-			}, (error) => {
-				console.error(error);
-				const message = error.data ? error.data.message : '';
-				Dialogs.showAlert({
-					title: 'Company',
 					message: `Unable to load data: '${message}'`,
 					type: AlertTypes.Error
 				});

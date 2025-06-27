@@ -20,6 +20,8 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 				hasHeader: true,
         		title: action.label,
 				path: action.path,
+				maxWidth: action.maxWidth,
+				maxHeight: action.maxHeight,
 				closeButton: true
 			});
 		};
@@ -52,7 +54,7 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			refreshData();
 			$scope.loadPage($scope.dataPage, $scope.filter);
 		}});
-		Dialogs.addMessageListener({ topic: 'codbex-products.Products.Product.entitySearch', handler: () => {
+		Dialogs.addMessageListener({ topic: 'codbex-products.Products.Product.entitySearch', handler: (data) => {
 			resetPagination();
 			$scope.filter = data.filter;
 			$scope.filterEntity = data.entity;
@@ -117,7 +119,6 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 				optionsType: $scope.optionsType,
 				optionsCategory: $scope.optionsCategory,
 				optionsManufacturer: $scope.optionsManufacturer,
-				optionsCompany: $scope.optionsCompany,
 			}});
 		};
 
@@ -131,7 +132,6 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 				optionsType: $scope.optionsType,
 				optionsCategory: $scope.optionsCategory,
 				optionsManufacturer: $scope.optionsManufacturer,
-				optionsCompany: $scope.optionsCompany,
 			}});
 		};
 
@@ -143,7 +143,6 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 				optionsType: $scope.optionsType,
 				optionsCategory: $scope.optionsCategory,
 				optionsManufacturer: $scope.optionsManufacturer,
-				optionsCompany: $scope.optionsCompany,
 			}});
 		};
 
@@ -189,7 +188,6 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 					optionsType: $scope.optionsType,
 					optionsCategory: $scope.optionsCategory,
 					optionsManufacturer: $scope.optionsManufacturer,
-					optionsCompany: $scope.optionsCompany,
 				},
 			});
 		};
@@ -199,7 +197,6 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 		$scope.optionsType = [];
 		$scope.optionsCategory = [];
 		$scope.optionsManufacturer = [];
-		$scope.optionsCompany = [];
 
 
 		$http.get('/services/ts/codbex-uoms/gen/codbex-uoms/api/Settings/UoMService.ts').then((response) => {
@@ -262,21 +259,6 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			});
 		});
 
-		$http.get('/services/ts/codbex-companies/gen/codbex-companies/api/Companies/CompanyService.ts').then((response) => {
-			$scope.optionsCompany = response.data.map(e => ({
-				value: e.Id,
-				text: e.Name
-			}));
-		}, (error) => {
-			console.error(error);
-			const message = error.data ? error.data.message : '';
-			Dialogs.showAlert({
-				title: 'Company',
-				message: `Unable to load data: '${message}'`,
-				type: AlertTypes.Error
-			});
-		});
-
 		$scope.optionsBaseUnitValue = (optionKey) => {
 			for (let i = 0; i < $scope.optionsBaseUnit.length; i++) {
 				if ($scope.optionsBaseUnit[i].value === optionKey) {
@@ -305,14 +287,6 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			for (let i = 0; i < $scope.optionsManufacturer.length; i++) {
 				if ($scope.optionsManufacturer[i].value === optionKey) {
 					return $scope.optionsManufacturer[i].text;
-				}
-			}
-			return null;
-		};
-		$scope.optionsCompanyValue = (optionKey) => {
-			for (let i = 0; i < $scope.optionsCompany.length; i++) {
-				if ($scope.optionsCompany[i].value === optionKey) {
-					return $scope.optionsCompany[i].text;
 				}
 			}
 			return null;
