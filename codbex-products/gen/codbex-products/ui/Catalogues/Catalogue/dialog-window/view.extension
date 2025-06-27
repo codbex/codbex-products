@@ -1,6 +1,0 @@
-{
-    "module": "codbex-products/gen/codbex-products/ui/Catalogues/Catalogue/dialog-window/view.js",
-    "extensionPoint": "application-windows",
-    "description": "codbex-products - Application Dialog Window",
-    "role": "codbex-products.Catalogues.CatalogueReadOnly,codbex-products.Catalogues.CatalogueFullAccess"
-}
