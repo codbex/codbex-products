@@ -76,7 +76,7 @@ export interface CatalogueEntityOptions {
     },
     $select?: (keyof CatalogueEntity)[],
     $sort?: string | (keyof CatalogueEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
 }
@@ -137,10 +137,10 @@ export class CatalogueRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(CatalogueRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(CatalogueRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: CatalogueEntityOptions): CatalogueEntity[] {
+    public findAll(options: CatalogueEntityOptions = {}): CatalogueEntity[] {
         return this.dao.list(options);
     }
 

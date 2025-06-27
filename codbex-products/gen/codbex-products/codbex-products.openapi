@@ -1067,6 +1067,8 @@ paths:
                     contains:
                       SKU: "abcd"
                       Title: "abcd"
+                      Description: "abcd"
+                      Image: "abcd"
                       Model: "abcd"
                       Batch: "abcd"
                       Name: "abcd"
@@ -1098,6 +1100,8 @@ paths:
                     contains:
                       SKU: "abcd"
                       Title: "abcd"
+                      Description: "abcd"
+                      Image: "abcd"
                       Model: "abcd"
                       Batch: "abcd"
                       Name: "abcd"
@@ -1171,6 +1175,8 @@ paths:
                     contains:
                       SKU: "abcd"
                       Title: "abcd"
+                      Description: "abcd"
+                      Image: "abcd"
                       Model: "abcd"
                       Batch: "abcd"
                       Name: "abcd"
@@ -1202,6 +1208,8 @@ paths:
                     contains:
                       SKU: "abcd"
                       Title: "abcd"
+                      Description: "abcd"
+                      Image: "abcd"
                       Model: "abcd"
                       Batch: "abcd"
                       Name: "abcd"
@@ -2750,6 +2758,8 @@ components:
       type: object
       required:
         - Title
+        - Description
+        - Image
         - Model
         - Batch
         - BaseUnit
@@ -2767,6 +2777,14 @@ components:
           type: string
           minLength: 0
           maxLength: 200
+        Description:
+          type: string
+          minLength: 0
+          maxLength: 500
+        Image:
+          type: string
+          minLength: 0
+          maxLength: 500
         Model:
           type: string
           minLength: 0
@@ -2810,9 +2828,6 @@ components:
           minLength: 0
           maxLength: 500
           readOnly: true
-        Company:
-          type: integer
-          format: int32
         UPC:
           type: string
           minLength: 0
@@ -2874,6 +2889,28 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 200
+                Description:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 500
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 500
+                Image:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 500
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 500
                 Model:
                   oneOf:
                     - type: string
@@ -2987,14 +3024,6 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 500
-                Company:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
                 UPC:
                   oneOf:
                     - type: string
@@ -3089,6 +3118,28 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 200
+                Description:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 500
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 500
+                Image:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 500
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 500
                 Model:
                   oneOf:
                     - type: string
@@ -3202,14 +3253,6 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 500
-                Company:
-                  oneOf:
-                    - type: integer
-                      format: int32
-                    - type: array
-                      items:
-                        type: integer
-                        format: int32
                 UPC:
                   oneOf:
                     - type: string
@@ -3283,6 +3326,14 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 200
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 500
+                Image:
+                  type: string
+                  minLength: 0
+                  maxLength: 500
                 Model:
                   type: string
                   minLength: 0
@@ -3305,7 +3356,6 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 500
-                Company:
                 UPC:
                   type: string
                   minLength: 0
@@ -3341,6 +3391,14 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 200
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 500
+                Image:
+                  type: string
+                  minLength: 0
+                  maxLength: 500
                 Model:
                   type: string
                   minLength: 0
@@ -3383,9 +3441,6 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 500
-                Company:
-                  type: integer
-                  format: int32
                 UPC:
                   type: string
                   minLength: 0
@@ -3421,6 +3476,14 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 200
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 500
+                Image:
+                  type: string
+                  minLength: 0
+                  maxLength: 500
                 Model:
                   type: string
                   minLength: 0
@@ -3463,9 +3526,6 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 500
-                Company:
-                  type: integer
-                  format: int32
                 UPC:
                   type: string
                   minLength: 0
@@ -3501,6 +3561,14 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 200
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 500
+                Image:
+                  type: string
+                  minLength: 0
+                  maxLength: 500
                 Model:
                   type: string
                   minLength: 0
@@ -3543,9 +3611,6 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 500
-                Company:
-                  type: integer
-                  format: int32
                 UPC:
                   type: string
                   minLength: 0
@@ -3581,6 +3646,14 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 200
+                Description:
+                  type: string
+                  minLength: 0
+                  maxLength: 500
+                Image:
+                  type: string
+                  minLength: 0
+                  maxLength: 500
                 Model:
                   type: string
                   minLength: 0
@@ -3623,9 +3696,6 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 500
-                Company:
-                  type: integer
-                  format: int32
                 UPC:
                   type: string
                   minLength: 0
@@ -3649,12 +3719,12 @@ components:
                 Enabled:
         $select:
           type: array
-          example: ["Id", "SKU", "Title", "Model", "Batch", "BaseUnit", "Price", "VATRate", "Type", "Category", "Manufacturer", "Weight", "Height", "Length", "Width", "Name", "Company", "UPC", "EAN", "JAN", "ISBN", "MPN", "Enabled"]
+          example: ["Id", "SKU", "Title", "Description", "Image", "Model", "Batch", "BaseUnit", "Price", "VATRate", "Type", "Category", "Manufacturer", "Weight", "Height", "Length", "Width", "Name", "UPC", "EAN", "JAN", "ISBN", "MPN", "Enabled"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,SKU,Title,Model,Batch,BaseUnit,Price,VATRate,Type,Category,Manufacturer,Weight,Height,Length,Width,Name,Company,UPC,EAN,JAN,ISBN,MPN,Enabled"
+            example: "Id,SKU,Title,Description,Image,Model,Batch,BaseUnit,Price,VATRate,Type,Category,Manufacturer,Weight,Height,Length,Width,Name,UPC,EAN,JAN,ISBN,MPN,Enabled"
         $order:
           type: string
           enum: ["asc", "desc"]

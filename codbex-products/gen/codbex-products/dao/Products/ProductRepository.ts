@@ -8,6 +8,8 @@ export interface ProductEntity {
     readonly Id: number;
     SKU?: string;
     Title: string;
+    Description?: string;
+    Image?: string;
     Model: string;
     Batch: string;
     BaseUnit?: number;
@@ -21,7 +23,6 @@ export interface ProductEntity {
     Length?: number;
     Width?: number;
     Name: string;
-    Company?: number;
     UPC?: string;
     EAN?: string;
     JAN?: string;
@@ -33,6 +34,8 @@ export interface ProductEntity {
 export interface ProductCreateEntity {
     readonly SKU?: string;
     readonly Title: string;
+    readonly Description?: string;
+    readonly Image?: string;
     readonly Model: string;
     readonly Batch: string;
     readonly BaseUnit?: number;
@@ -45,7 +48,6 @@ export interface ProductCreateEntity {
     readonly Height?: number;
     readonly Length?: number;
     readonly Width?: number;
-    readonly Company?: number;
     readonly UPC?: string;
     readonly EAN?: string;
     readonly JAN?: string;
@@ -64,6 +66,8 @@ export interface ProductEntityOptions {
             Id?: number | number[];
             SKU?: string | string[];
             Title?: string | string[];
+            Description?: string | string[];
+            Image?: string | string[];
             Model?: string | string[];
             Batch?: string | string[];
             BaseUnit?: number | number[];
@@ -77,7 +81,6 @@ export interface ProductEntityOptions {
             Length?: number | number[];
             Width?: number | number[];
             Name?: string | string[];
-            Company?: number | number[];
             UPC?: string | string[];
             EAN?: string | string[];
             JAN?: string | string[];
@@ -89,6 +92,8 @@ export interface ProductEntityOptions {
             Id?: number | number[];
             SKU?: string | string[];
             Title?: string | string[];
+            Description?: string | string[];
+            Image?: string | string[];
             Model?: string | string[];
             Batch?: string | string[];
             BaseUnit?: number | number[];
@@ -102,7 +107,6 @@ export interface ProductEntityOptions {
             Length?: number | number[];
             Width?: number | number[];
             Name?: string | string[];
-            Company?: number | number[];
             UPC?: string | string[];
             EAN?: string | string[];
             JAN?: string | string[];
@@ -114,6 +118,8 @@ export interface ProductEntityOptions {
             Id?: number;
             SKU?: string;
             Title?: string;
+            Description?: string;
+            Image?: string;
             Model?: string;
             Batch?: string;
             BaseUnit?: number;
@@ -127,7 +133,6 @@ export interface ProductEntityOptions {
             Length?: number;
             Width?: number;
             Name?: string;
-            Company?: number;
             UPC?: string;
             EAN?: string;
             JAN?: string;
@@ -139,6 +144,8 @@ export interface ProductEntityOptions {
             Id?: number;
             SKU?: string;
             Title?: string;
+            Description?: string;
+            Image?: string;
             Model?: string;
             Batch?: string;
             BaseUnit?: number;
@@ -152,7 +159,6 @@ export interface ProductEntityOptions {
             Length?: number;
             Width?: number;
             Name?: string;
-            Company?: number;
             UPC?: string;
             EAN?: string;
             JAN?: string;
@@ -164,6 +170,8 @@ export interface ProductEntityOptions {
             Id?: number;
             SKU?: string;
             Title?: string;
+            Description?: string;
+            Image?: string;
             Model?: string;
             Batch?: string;
             BaseUnit?: number;
@@ -177,7 +185,6 @@ export interface ProductEntityOptions {
             Length?: number;
             Width?: number;
             Name?: string;
-            Company?: number;
             UPC?: string;
             EAN?: string;
             JAN?: string;
@@ -189,6 +196,8 @@ export interface ProductEntityOptions {
             Id?: number;
             SKU?: string;
             Title?: string;
+            Description?: string;
+            Image?: string;
             Model?: string;
             Batch?: string;
             BaseUnit?: number;
@@ -202,7 +211,6 @@ export interface ProductEntityOptions {
             Length?: number;
             Width?: number;
             Name?: string;
-            Company?: number;
             UPC?: string;
             EAN?: string;
             JAN?: string;
@@ -214,6 +222,8 @@ export interface ProductEntityOptions {
             Id?: number;
             SKU?: string;
             Title?: string;
+            Description?: string;
+            Image?: string;
             Model?: string;
             Batch?: string;
             BaseUnit?: number;
@@ -227,7 +237,6 @@ export interface ProductEntityOptions {
             Length?: number;
             Width?: number;
             Name?: string;
-            Company?: number;
             UPC?: string;
             EAN?: string;
             JAN?: string;
@@ -238,7 +247,7 @@ export interface ProductEntityOptions {
     },
     $select?: (keyof ProductEntity)[],
     $sort?: string | (keyof ProductEntity)[],
-    $order?: 'asc' | 'desc',
+    $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
 }
@@ -280,6 +289,16 @@ export class ProductRepository {
                 column: "PRODUCT_TITLE",
                 type: "VARCHAR",
                 required: true
+            },
+            {
+                name: "Description",
+                column: "PRODUCT_DESCRIPTION",
+                type: "VARCHAR",
+            },
+            {
+                name: "Image",
+                column: "PRODUCT_IMAGE",
+                type: "VARCHAR",
             },
             {
                 name: "Model",
@@ -350,11 +369,6 @@ export class ProductRepository {
                 required: true
             },
             {
-                name: "Company",
-                column: "PRODUCT_COMPANY",
-                type: "INTEGER",
-            },
-            {
                 name: "UPC",
                 column: "PRODUCT_UPC",
                 type: "VARCHAR",
@@ -390,10 +404,10 @@ export class ProductRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(ProductRepository.DEFINITION, null, dataSource);
+        this.dao = daoApi.create(ProductRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options?: ProductEntityOptions): ProductEntity[] {
+    public findAll(options: ProductEntityOptions = {}): ProductEntity[] {
         return this.dao.list(options).map((e: ProductEntity) => {
             EntityUtils.setBoolean(e, "Enabled");
             return e;

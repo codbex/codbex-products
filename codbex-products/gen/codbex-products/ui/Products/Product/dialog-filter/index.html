@@ -54,6 +54,40 @@
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
+                        	<bk-form-label for="idDescription" colon="true">Description</bk-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--8">
+							<bk-form-input-message state="{{ forms.details['Description'].$valid ? '' : 'error' }}" message="'Incorrect Input'">
+								<bk-input id="idDescription"
+	                                name="Description"
+	                                state="{{ forms.details['Description'].$valid ? '' : 'error' }}"
+	                                ng-model="entity.Description"
+									ng-maxlength="500.0"
+	                                type="text"
+	                                placeholder="Enter Description">
+	                            </bk-input>
+							</bk-form-input-message>
+	                    </div>
+                    </bk-form-item>
+                    <bk-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
+                        	<bk-form-label for="idImage" colon="true">Image</bk-form-label>
+                        </div>
+                        <div class="fd-col fd-col-md--8">
+							<bk-form-input-message state="{{ forms.details['Image'].$valid ? '' : 'error' }}" message="'Incorrect Input'">
+								<bk-input id="idImage"
+	                                name="Image"
+	                                state="{{ forms.details['Image'].$valid ? '' : 'error' }}"
+	                                ng-model="entity.Image"
+									ng-maxlength="500.0"
+	                                type="url"
+	                                placeholder="Enter Image">
+	                            </bk-input>
+							</bk-form-input-message>
+	                    </div>
+                    </bk-form-item>
+                    <bk-form-item class="fd-row">
+                    	<div class="fd-col fd-col-md--2">
                         	<bk-form-label for="idModel" colon="true">Model</bk-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
@@ -243,21 +277,6 @@
 							</bk-form-input-message>
 						</div>
 					</bk-form-item>
-                    <bk-form-item class="fd-row">
-                    	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idCompany" colon="true">Company</bk-form-label>
-                        </div>
-                        <div class="fd-col fd-col-md--8">
-	                        <bk-combobox-input input-id="idCompany"
-	                            name="Company"
-	                            state="{{ forms.details['Company'].$valid ? '' : 'error' }}"
-	                            ng-model="entity.Company"
-	                            dropdown-items="optionsCompany"
-	                            placeholder="Search Company ..."
-								btn-aria-label="show/hide Company options" list-aria-label="Company options">
-	                        </bk-combobox-input>
-	                    </div>
-                    </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
                         	<bk-form-label for="idUPC" colon="true">UPC</bk-form-label>

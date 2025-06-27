@@ -69,6 +69,18 @@
                     },
                     {
                         "type": "VARCHAR",
+                        "length": 500,
+                        "nullable": true,
+                        "name": "PRODUCT_DESCRIPTION"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 500,
+                        "nullable": true,
+                        "name": "PRODUCT_IMAGE"
+                    },
+                    {
+                        "type": "VARCHAR",
                         "length": 200,
                         "name": "PRODUCT_MODEL"
                     },
@@ -134,11 +146,6 @@
                         "type": "VARCHAR",
                         "length": 500,
                         "name": "PRODUCT_NAME"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "PRODUCT_COMPANY"
                     },
                     {
                         "type": "VARCHAR",
@@ -327,15 +334,6 @@
                 "columns": "PRODUCT_MANUFACTURER",
                 "referencedTable": "CODBEX_MANUFACTURER",
                 "referencedColumns": "ENTITY5_ENTITY5ID"
-            },
-            {
-                "name": "Product_Company",
-                "type": "foreignKey",
-                "table": "CODBEX_PRODUCT",
-                "constraintName": "Product_Company",
-                "columns": "PRODUCT_COMPANY",
-                "referencedTable": "CODBEX_COMPANY",
-                "referencedColumns": "COMPANY_ID"
             },
             {
                 "name": "ProductAttribute_Product",

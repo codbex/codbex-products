@@ -147,6 +147,18 @@ class ProductService {
         if (entity.Title?.length > 200) {
             throw new ValidationError(`The 'Title' exceeds the maximum length of [200] characters`);
         }
+        if (entity.Description === null || entity.Description === undefined) {
+            throw new ValidationError(`The 'Description' property is required, provide a valid value`);
+        }
+        if (entity.Description?.length > 500) {
+            throw new ValidationError(`The 'Description' exceeds the maximum length of [500] characters`);
+        }
+        if (entity.Image === null || entity.Image === undefined) {
+            throw new ValidationError(`The 'Image' property is required, provide a valid value`);
+        }
+        if (entity.Image?.length > 500) {
+            throw new ValidationError(`The 'Image' exceeds the maximum length of [500] characters`);
+        }
         if (entity.Model === null || entity.Model === undefined) {
             throw new ValidationError(`The 'Model' property is required, provide a valid value`);
         }
