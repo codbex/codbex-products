@@ -269,6 +269,35 @@
                 ]
             },
             {
+                "name": "CODBEX_PRODUCTIMAGE",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "PRODUCTIMAGE_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 500,
+                        "nullable": true,
+                        "name": "PRODUCTIMAGE_IMAGELINK"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "PRODUCTIMAGE_PRODUCT"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "nullable": true,
+                        "name": "PRODUCTIMAGE_ISFEATURE"
+                    }
+                ]
+            },
+            {
                 "name": "Product_UoM",
                 "type": "foreignKey",
                 "table": "CODBEX_PRODUCT",
@@ -328,6 +357,15 @@
                 "table": "CODBEX_PRODUCTPACKAGING",
                 "constraintName": "ProductPackaging_Product",
                 "columns": "PRODUCTSET_PRODUCT",
+                "referencedTable": "CODBEX_PRODUCT",
+                "referencedColumns": "PRODUCT_ID"
+            },
+            {
+                "name": "ProductImage_Product",
+                "type": "foreignKey",
+                "table": "CODBEX_PRODUCTIMAGE",
+                "constraintName": "ProductImage_Product",
+                "columns": "PRODUCTIMAGE_PRODUCT",
                 "referencedTable": "CODBEX_PRODUCT",
                 "referencedColumns": "PRODUCT_ID"
             }
