@@ -1,6 +1,8 @@
 import { ProductPackagingRepository } from "../../gen/codbex-products/dao/Products/ProductPackagingRepository";
 import { UoMRepository } from "codbex-uoms/gen/codbex-uoms/dao/Settings/UoMRepository"
 
+const validate = () => { };
+
 export const trigger = (event) => {
 
     const ProductPackagingDao = new ProductPackagingRepository();
@@ -20,3 +22,4 @@ export const trigger = (event) => {
     }
 
 }
+
