@@ -12,8 +12,8 @@ export interface ProductEntity {
     Image?: string;
     Model: string;
     Batch: string;
-    BaseUnit?: number;
     Price?: number;
+    BaseUnit?: number;
     VATRate?: number;
     Type?: number;
     Category?: number;
@@ -38,8 +38,8 @@ export interface ProductCreateEntity {
     readonly Image?: string;
     readonly Model: string;
     readonly Batch: string;
-    readonly BaseUnit?: number;
     readonly Price?: number;
+    readonly BaseUnit?: number;
     readonly VATRate?: number;
     readonly Type?: number;
     readonly Category?: number;
@@ -70,8 +70,8 @@ export interface ProductEntityOptions {
             Image?: string | string[];
             Model?: string | string[];
             Batch?: string | string[];
-            BaseUnit?: number | number[];
             Price?: number | number[];
+            BaseUnit?: number | number[];
             VATRate?: number | number[];
             Type?: number | number[];
             Category?: number | number[];
@@ -96,8 +96,8 @@ export interface ProductEntityOptions {
             Image?: string | string[];
             Model?: string | string[];
             Batch?: string | string[];
-            BaseUnit?: number | number[];
             Price?: number | number[];
+            BaseUnit?: number | number[];
             VATRate?: number | number[];
             Type?: number | number[];
             Category?: number | number[];
@@ -122,8 +122,8 @@ export interface ProductEntityOptions {
             Image?: string;
             Model?: string;
             Batch?: string;
-            BaseUnit?: number;
             Price?: number;
+            BaseUnit?: number;
             VATRate?: number;
             Type?: number;
             Category?: number;
@@ -148,8 +148,8 @@ export interface ProductEntityOptions {
             Image?: string;
             Model?: string;
             Batch?: string;
-            BaseUnit?: number;
             Price?: number;
+            BaseUnit?: number;
             VATRate?: number;
             Type?: number;
             Category?: number;
@@ -174,8 +174,8 @@ export interface ProductEntityOptions {
             Image?: string;
             Model?: string;
             Batch?: string;
-            BaseUnit?: number;
             Price?: number;
+            BaseUnit?: number;
             VATRate?: number;
             Type?: number;
             Category?: number;
@@ -200,8 +200,8 @@ export interface ProductEntityOptions {
             Image?: string;
             Model?: string;
             Batch?: string;
-            BaseUnit?: number;
             Price?: number;
+            BaseUnit?: number;
             VATRate?: number;
             Type?: number;
             Category?: number;
@@ -226,8 +226,8 @@ export interface ProductEntityOptions {
             Image?: string;
             Model?: string;
             Batch?: string;
-            BaseUnit?: number;
             Price?: number;
+            BaseUnit?: number;
             VATRate?: number;
             Type?: number;
             Category?: number;
@@ -313,14 +313,14 @@ export class ProductRepository {
                 required: true
             },
             {
-                name: "BaseUnit",
-                column: "PRODUCT_BASEUNIT",
-                type: "INTEGER",
-            },
-            {
                 name: "Price",
                 column: "PRODUCT_PRICE",
                 type: "DECIMAL",
+            },
+            {
+                name: "BaseUnit",
+                column: "PRODUCT_BASEUNIT",
+                type: "INTEGER",
             },
             {
                 name: "VATRate",

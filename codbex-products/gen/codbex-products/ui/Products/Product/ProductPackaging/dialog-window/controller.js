@@ -22,7 +22,6 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			$scope.entity = params.entity;
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
-			$scope.optionsUoM = params.optionsUoM;
 		}
 
 		$scope.create = () => {
@@ -70,7 +69,6 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			});
 		};
 
-		$scope.serviceUoM = '/services/ts/codbex-uoms/gen/codbex-uoms/api/Settings/UoMService.ts';
 
 		$scope.alert = (message) => {
 			if (message) Dialogs.showAlert({

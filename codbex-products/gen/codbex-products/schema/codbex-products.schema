@@ -90,14 +90,14 @@
                         "name": "PRODUCT_BATCH"
                     },
                     {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "PRODUCT_BASEUNIT"
-                    },
-                    {
                         "type": "DECIMAL",
                         "nullable": true,
                         "name": "PRODUCT_PRICE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "PRODUCT_BASEUNIT"
                     },
                     {
                         "type": "DECIMAL",
@@ -228,11 +228,6 @@
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "PRODUCTSET_UOM"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
                         "name": "PRODUCTSET_PRODUCT"
                     },
                     {
@@ -341,15 +336,6 @@
                 "columns": "PRODUCTDETAILS_PRODUCTID",
                 "referencedTable": "CODBEX_PRODUCT",
                 "referencedColumns": "PRODUCT_ID"
-            },
-            {
-                "name": "ProductPackaging_UoM",
-                "type": "foreignKey",
-                "table": "CODBEX_PRODUCTPACKAGING",
-                "constraintName": "ProductPackaging_UoM",
-                "columns": "PRODUCTSET_UOM",
-                "referencedTable": "CODBEX_UOM",
-                "referencedColumns": "UOM_ID"
             },
             {
                 "name": "ProductPackaging_Product",

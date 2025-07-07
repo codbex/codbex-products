@@ -2,7 +2,7 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 	.config(['EntityServiceProvider', (EntityServiceProvider) => {
 		EntityServiceProvider.baseUrl = '/services/ts/codbex-products/gen/codbex-products/api/Products/ProductPackagingService.ts';
 	}])
-	.controller('PageController', ($scope, $http, EntityService, Extensions, ButtonStates) => {
+	.controller('PageController', ($scope, EntityService, Extensions, ButtonStates) => {
 		const Dialogs = new DialogHub();
 		//-----------------Custom Actions-------------------//
 		Extensions.getWindows(['codbex-products-custom-action']).then((response) => {
@@ -135,7 +135,6 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 				params: {
 					action: 'select',
 					entity: entity,
-					optionsUoM: $scope.optionsUoM,
 				},
 			});
 		};
@@ -145,7 +144,6 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 				id: 'ProductPackaging-filter',
 				params: {
 					entity: $scope.filterEntity,
-					optionsUoM: $scope.optionsUoM,
 				},
 			});
 		};
@@ -159,7 +157,6 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 					entity: {},
 					selectedMainEntityKey: 'Product',
 					selectedMainEntityId: $scope.selectedMainEntityId,
-					optionsUoM: $scope.optionsUoM,
 				},
 				closeButton: false
 			});
@@ -173,7 +170,6 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 					entity: entity,
 					selectedMainEntityKey: 'Product',
 					selectedMainEntityId: $scope.selectedMainEntityId,
-					optionsUoM: $scope.optionsUoM,
 			},
 				closeButton: false
 			});
@@ -210,33 +206,4 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 				}
 			});
 		};
-
-		//----------------Dropdowns-----------------//
-		$scope.optionsUoM = [];
-
-
-		$http.get('/services/ts/codbex-uoms/gen/codbex-uoms/api/Settings/UoMService.ts').then((response) => {
-			$scope.optionsUoM = response.data.map(e => ({
-				value: e.Id,
-				text: e.Name
-			}));
-		}, (error) => {
-			console.error(error);
-			const message = error.data ? error.data.message : '';
-			Dialogs.showAlert({
-				title: 'UoM',
-				message: `Unable to load data: '${message}'`,
-				type: AlertTypes.Error
-			});
-		});
-
-		$scope.optionsUoMValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsUoM.length; i++) {
-				if ($scope.optionsUoM[i].value === optionKey) {
-					return $scope.optionsUoM[i].text;
-				}
-			}
-			return null;
-		};
-		//----------------Dropdowns-----------------//
 	});

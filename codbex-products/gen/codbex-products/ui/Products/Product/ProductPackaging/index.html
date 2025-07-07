@@ -29,7 +29,6 @@
 			<table bk-table display-mode="compact" inner-borders="top" outer-borders="none">
 				<thead bk-table-header sticky="true">
 					<tr bk-table-row>
-						<th bk-table-header-cell>UoM</th>
 						<th bk-table-header-cell>Weight</th>
 						<th bk-table-header-cell>Height</th>
 						<th bk-table-header-cell>Length</th>
@@ -44,9 +43,6 @@
 						<td bk-table-cell no-data="true">No data available.</td>
 					</tr>
 					<tr bk-table-row hoverable="true" ng-repeat="next in data track by $index" selected="next.Id === selectedEntity.Id" ng-click="selectEntity(next)">
-						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
-							{{optionsUoMValue(next.UoM)}}
-						</td>
 						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Weight}}</td>
 						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Height}}</td>
 						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Length}}</td>

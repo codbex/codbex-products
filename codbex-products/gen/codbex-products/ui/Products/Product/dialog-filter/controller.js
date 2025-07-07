@@ -57,11 +57,11 @@ angular.module('page', ['blimpKit', 'platformView']).controller('PageController'
 		if (entity.Batch) {
 			filter.$filter.contains.Batch = entity.Batch;
 		}
-		if (entity.BaseUnit !== undefined) {
-			filter.$filter.equals.BaseUnit = entity.BaseUnit;
-		}
 		if (entity.Price !== undefined) {
 			filter.$filter.equals.Price = entity.Price;
+		}
+		if (entity.BaseUnit !== undefined) {
+			filter.$filter.equals.BaseUnit = entity.BaseUnit;
 		}
 		if (entity.VATRate !== undefined) {
 			filter.$filter.equals.VATRate = entity.VATRate;

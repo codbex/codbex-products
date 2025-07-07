@@ -165,11 +165,11 @@ class ProductService {
         if (entity.Batch?.length > 50) {
             throw new ValidationError(`The 'Batch' exceeds the maximum length of [50] characters`);
         }
-        if (entity.BaseUnit === null || entity.BaseUnit === undefined) {
-            throw new ValidationError(`The 'BaseUnit' property is required, provide a valid value`);
-        }
         if (entity.Price === null || entity.Price === undefined) {
             throw new ValidationError(`The 'Price' property is required, provide a valid value`);
+        }
+        if (entity.BaseUnit === null || entity.BaseUnit === undefined) {
+            throw new ValidationError(`The 'BaseUnit' property is required, provide a valid value`);
         }
         if (entity.VATRate === null || entity.VATRate === undefined) {
             throw new ValidationError(`The 'VATRate' property is required, provide a valid value`);

@@ -10,7 +10,6 @@ angular.module('page', ['blimpKit', 'platformView']).controller('PageController'
 		$scope.entity = params.entity ?? {};
 		$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 		$scope.selectedMainEntityId = params.selectedMainEntityId;
-		$scope.optionsUoM = params.optionsUoM;
 	}
 
 	$scope.filter = () => {
@@ -35,9 +34,6 @@ angular.module('page', ['blimpKit', 'platformView']).controller('PageController'
 		};
 		if (entity.Id !== undefined) {
 			filter.$filter.equals.Id = entity.Id;
-		}
-		if (entity.UoM !== undefined) {
-			filter.$filter.equals.UoM = entity.UoM;
 		}
 		if (entity.Product !== undefined) {
 			filter.$filter.equals.Product = entity.Product;

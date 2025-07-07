@@ -5,7 +5,6 @@ import { dao as daoApi } from "sdk/db";
 
 export interface ProductPackagingEntity {
     readonly Id: number;
-    UoM?: number;
     Product?: number;
     Weight?: number;
     Height?: number;
@@ -16,7 +15,6 @@ export interface ProductPackagingEntity {
 }
 
 export interface ProductPackagingCreateEntity {
-    readonly UoM?: number;
     readonly Product?: number;
     readonly Weight?: number;
     readonly Height?: number;
@@ -34,7 +32,6 @@ export interface ProductPackagingEntityOptions {
     $filter?: {
         equals?: {
             Id?: number | number[];
-            UoM?: number | number[];
             Product?: number | number[];
             Weight?: number | number[];
             Height?: number | number[];
@@ -45,7 +42,6 @@ export interface ProductPackagingEntityOptions {
         };
         notEquals?: {
             Id?: number | number[];
-            UoM?: number | number[];
             Product?: number | number[];
             Weight?: number | number[];
             Height?: number | number[];
@@ -56,7 +52,6 @@ export interface ProductPackagingEntityOptions {
         };
         contains?: {
             Id?: number;
-            UoM?: number;
             Product?: number;
             Weight?: number;
             Height?: number;
@@ -67,7 +62,6 @@ export interface ProductPackagingEntityOptions {
         };
         greaterThan?: {
             Id?: number;
-            UoM?: number;
             Product?: number;
             Weight?: number;
             Height?: number;
@@ -78,7 +72,6 @@ export interface ProductPackagingEntityOptions {
         };
         greaterThanOrEqual?: {
             Id?: number;
-            UoM?: number;
             Product?: number;
             Weight?: number;
             Height?: number;
@@ -89,7 +82,6 @@ export interface ProductPackagingEntityOptions {
         };
         lessThan?: {
             Id?: number;
-            UoM?: number;
             Product?: number;
             Weight?: number;
             Height?: number;
@@ -100,7 +92,6 @@ export interface ProductPackagingEntityOptions {
         };
         lessThanOrEqual?: {
             Id?: number;
-            UoM?: number;
             Product?: number;
             Weight?: number;
             Height?: number;
@@ -143,11 +134,6 @@ export class ProductPackagingRepository {
                 type: "INTEGER",
                 id: true,
                 autoIncrement: true,
-            },
-            {
-                name: "UoM",
-                column: "PRODUCTSET_UOM",
-                type: "INTEGER",
             },
             {
                 name: "Product",
