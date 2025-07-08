@@ -1,23 +1,20 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { ProductPackagingRepository, ProductPackagingEntityOptions } from "../../dao/Products/ProductPackagingRepository";
-import { user } from "sdk/security"
-import { ForbiddenError } from "../utils/ForbiddenError";
+import { ProductImageRepository, ProductImageEntityOptions } from "../../dao/Products/ProductImageRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-products-Products-ProductPackaging", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-products-Products-ProductImage", ["validate"]);
 
 @Controller
-class ProductPackagingService {
+class ProductImageService {
 
-    private readonly repository = new ProductPackagingRepository();
+    private readonly repository = new ProductImageRepository();
 
     @Get("/")
     public getAll(_: any, ctx: any) {
         try {
-            this.checkPermissions("read");
-            const options: ProductPackagingEntityOptions = {
+            const options: ProductImageEntityOptions = {
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
             };
@@ -42,10 +39,9 @@ class ProductPackagingService {
     @Post("/")
     public create(entity: any) {
         try {
-            this.checkPermissions("write");
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-products/gen/codbex-products/api/Products/ProductPackagingService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-products/gen/codbex-products/api/Products/ProductImageService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
@@ -56,7 +52,6 @@ class ProductPackagingService {
     @Get("/count")
     public count() {
         try {
-            this.checkPermissions("read");
             return { count: this.repository.count() };
         } catch (error: any) {
             this.handleError(error);
@@ -66,7 +61,6 @@ class ProductPackagingService {
     @Post("/count")
     public countWithFilter(filter: any) {
         try {
-            this.checkPermissions("read");
             return { count: this.repository.count(filter) };
         } catch (error: any) {
             this.handleError(error);
@@ -76,7 +70,6 @@ class ProductPackagingService {
     @Post("/search")
     public search(filter: any) {
         try {
-            this.checkPermissions("read");
             return this.repository.findAll(filter);
         } catch (error: any) {
             this.handleError(error);
@@ -86,13 +79,12 @@ class ProductPackagingService {
     @Get("/:id")
     public getById(_: any, ctx: any) {
         try {
-            this.checkPermissions("read");
             const id = parseInt(ctx.pathParameters.id);
             const entity = this.repository.findById(id);
             if (entity) {
                 return entity;
             } else {
-                HttpUtils.sendResponseNotFound("ProductPackaging not found");
+                HttpUtils.sendResponseNotFound("ProductImage not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -102,7 +94,6 @@ class ProductPackagingService {
     @Put("/:id")
     public update(entity: any, ctx: any) {
         try {
-            this.checkPermissions("write");
             entity.Id = ctx.pathParameters.id;
             this.validateEntity(entity);
             this.repository.update(entity);
@@ -115,14 +106,13 @@ class ProductPackagingService {
     @Delete("/:id")
     public deleteById(_: any, ctx: any) {
         try {
-            this.checkPermissions("write");
             const id = ctx.pathParameters.id;
             const entity = this.repository.findById(id);
             if (entity) {
                 this.repository.deleteById(id);
                 HttpUtils.sendResponseNoContent();
             } else {
-                HttpUtils.sendResponseNotFound("ProductPackaging not found");
+                HttpUtils.sendResponseNotFound("ProductImage not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -139,36 +129,9 @@ class ProductPackagingService {
         }
     }
 
-    private checkPermissions(operationType: string) {
-        if (operationType === "read" && !(user.isInRole("codbex-products.Products.ProductPackagingReadOnly") || user.isInRole("codbex-products.Products.ProductPackagingFullAccess"))) {
-            throw new ForbiddenError();
-        }
-        if (operationType === "write" && !user.isInRole("codbex-products.Products.ProductPackagingFullAccess")) {
-            throw new ForbiddenError();
-        }
-    }
-
     private validateEntity(entity: any): void {
-        if (entity.Product === null || entity.Product === undefined) {
-            throw new ValidationError(`The 'Product' property is required, provide a valid value`);
-        }
-        if (entity.Weight === null || entity.Weight === undefined) {
-            throw new ValidationError(`The 'Weight' property is required, provide a valid value`);
-        }
-        if (entity.Height === null || entity.Height === undefined) {
-            throw new ValidationError(`The 'Height' property is required, provide a valid value`);
-        }
-        if (entity.Length === null || entity.Length === undefined) {
-            throw new ValidationError(`The 'Length' property is required, provide a valid value`);
-        }
-        if (entity.Width === null || entity.Width === undefined) {
-            throw new ValidationError(`The 'Width' property is required, provide a valid value`);
-        }
-        if (entity.Ratio === null || entity.Ratio === undefined) {
-            throw new ValidationError(`The 'Ratio' property is required, provide a valid value`);
-        }
-        if (entity.Name?.length > 500) {
-            throw new ValidationError(`The 'Name' exceeds the maximum length of [500] characters`);
+        if (entity.ImageLink?.length > 500) {
+            throw new ValidationError(`The 'ImageLink' exceeds the maximum length of [500] characters`);
         }
         for (const next of validationModules) {
             next.validate(entity);

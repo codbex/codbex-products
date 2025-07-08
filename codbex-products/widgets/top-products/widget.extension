@@ -1,6 +1,0 @@
-{
-    "extensionPoint": "dashboard-widgets",
-    "module": "codbex-products/widgets/top-products/config.js",
-    "description": "Top products",
-    "role": "codbex-products.Products.ProductFullAccess,codbex-products.Products.ProductReadOnly"
-}

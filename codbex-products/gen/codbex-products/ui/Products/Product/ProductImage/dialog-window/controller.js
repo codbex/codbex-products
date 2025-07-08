@@ -1,6 +1,6 @@
 angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 	.config(['EntityServiceProvider', (EntityServiceProvider) => {
-		EntityServiceProvider.baseUrl = '/services/ts/codbex-products/gen/codbex-products/api/Products/ProductPackagingService.ts';
+		EntityServiceProvider.baseUrl = '/services/ts/codbex-products/gen/codbex-products/api/Products/ProductImageService.ts';
 	}])
 	.controller('PageController', ($scope, $http, ViewParameters, EntityService) => {
 		const Dialogs = new DialogHub();
@@ -10,9 +10,9 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			details: {},
 		};
 		$scope.formHeaders = {
-			select: 'ProductPackaging Details',
-			create: 'Create ProductPackaging',
-			update: 'Update ProductPackaging'
+			select: 'ProductImage Details',
+			create: 'Create ProductImage',
+			update: 'Update ProductImage'
 		};
 		$scope.action = 'select';
 
@@ -28,18 +28,18 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			let entity = $scope.entity;
 			entity[$scope.selectedMainEntityKey] = $scope.selectedMainEntityId;
 			EntityService.create(entity).then((response) => {
-				Dialogs.postMessage({ topic: 'codbex-products.Products.ProductPackaging.entityCreated', data: response.data });
+				Dialogs.postMessage({ topic: 'codbex-products.Products.ProductImage.entityCreated', data: response.data });
 				Notifications.show({
-					title: 'ProductPackaging',
-					description: 'ProductPackaging successfully created',
+					title: 'ProductImage',
+					description: 'ProductImage successfully created',
 					type: 'positive'
 				});
 				$scope.cancel();
 			}, (error) => {
 				const message = error.data ? error.data.message : '';
 				Dialogs.showAlert({
-					title: 'ProductPackaging',
-					message: `Unable to create ProductPackaging: '${message}'`,
+					title: 'ProductImage',
+					message: `Unable to create ProductImage: '${message}'`,
 					type: AlertTypes.Error
 				});
 				console.error('EntityService:', error);
@@ -51,18 +51,18 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			let entity = $scope.entity;
 			entity[$scope.selectedMainEntityKey] = $scope.selectedMainEntityId;
 			EntityService.update(id, entity).then((response) => {
-				Dialogs.postMessage({ topic: 'codbex-products.Products.ProductPackaging.entityUpdated', data: response.data });
+				Dialogs.postMessage({ topic: 'codbex-products.Products.ProductImage.entityUpdated', data: response.data });
 				Notifications.show({
-					title: 'ProductPackaging',
-					description: 'ProductPackaging successfully updated',
+					title: 'ProductImage',
+					description: 'ProductImage successfully updated',
 					type: 'positive'
 				});
 				$scope.cancel();
 			}, (error) => {
 				const message = error.data ? error.data.message : '';
 				Dialogs.showAlert({
-					title: 'ProductPackaging',
-					message: `Unable to update ProductPackaging: '${message}'`,
+					title: 'ProductImage',
+					message: `Unable to update ProductImage: '${message}'`,
 					type: AlertTypes.Error
 				});
 				console.error('EntityService:', error);
@@ -82,6 +82,6 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 		$scope.cancel = () => {
 			$scope.entity = {};
 			$scope.action = 'select';
-			Dialogs.closeWindow({ id: 'ProductPackaging-details' });
+			Dialogs.closeWindow({ id: 'ProductImage-details' });
 		};
 	});

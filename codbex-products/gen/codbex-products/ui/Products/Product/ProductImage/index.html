@@ -29,12 +29,8 @@
 			<table bk-table display-mode="compact" inner-borders="top" outer-borders="none">
 				<thead bk-table-header sticky="true">
 					<tr bk-table-row>
-						<th bk-table-header-cell>Weight</th>
-						<th bk-table-header-cell>Height</th>
-						<th bk-table-header-cell>Length</th>
-						<th bk-table-header-cell>Width</th>
-						<th bk-table-header-cell>Ratio</th>
-						<th bk-table-header-cell>Name</th>
+						<th bk-table-header-cell>ImageLink</th>
+						<th bk-table-header-cell>IsFeature</th>
 						<th bk-table-header-cell></th>
 					</tr>
 				</thead>
@@ -43,12 +39,13 @@
 						<td bk-table-cell no-data="true">No data available.</td>
 					</tr>
 					<tr bk-table-row hoverable="true" ng-repeat="next in data track by $index" selected="next.Id === selectedEntity.Id" ng-click="selectEntity(next)">
-						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Weight}}</td>
-						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Height}}</td>
-						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Length}}</td>
-						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Width}}</td>
-						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Ratio}}</td>
-						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Name}}</td>
+						<td bk-table-cell>
+							<bk-link href="{{next.ImageLink}}" target="_blank">{{next.ImageLink}}</bk-link>
+						</td>
+						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
+							<bk-checkbox id="idIsFeature" compact="false" ng-readonly="true" ng-model="next.IsFeature"></bk-checkbox>
+							<bk-checkbox-label for="idIsFeature" empty="true"></bk-checkbox-label>
+						</td>
 						<td bk-table-cell fit-content="true">
 							<bk-popover>
 								<bk-popover-control>

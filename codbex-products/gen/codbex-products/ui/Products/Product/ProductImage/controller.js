@@ -1,13 +1,13 @@
 angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 	.config(['EntityServiceProvider', (EntityServiceProvider) => {
-		EntityServiceProvider.baseUrl = '/services/ts/codbex-products/gen/codbex-products/api/Products/ProductPackagingService.ts';
+		EntityServiceProvider.baseUrl = '/services/ts/codbex-products/gen/codbex-products/api/Products/ProductImageService.ts';
 	}])
 	.controller('PageController', ($scope, EntityService, Extensions, ButtonStates) => {
 		const Dialogs = new DialogHub();
 		//-----------------Custom Actions-------------------//
 		Extensions.getWindows(['codbex-products-custom-action']).then((response) => {
-			$scope.pageActions = response.data.filter(e => e.perspective === 'Products' && e.view === 'ProductPackaging' && (e.type === 'page' || e.type === undefined));
-			$scope.entityActions = response.data.filter(e => e.perspective === 'Products' && e.view === 'ProductPackaging' && e.type === 'entity');
+			$scope.pageActions = response.data.filter(e => e.perspective === 'Products' && e.view === 'ProductImage' && (e.type === 'page' || e.type === undefined));
+			$scope.entityActions = response.data.filter(e => e.perspective === 'Products' && e.view === 'ProductImage' && e.type === 'entity');
 		});
 
 		$scope.triggerPageAction = (action) => {
@@ -60,19 +60,19 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 				$scope.data = null;
 			});
 		}});
-		Dialogs.addMessageListener({ topic: 'codbex-products.Products.ProductPackaging.clearDetails', handler: () => {
+		Dialogs.addMessageListener({ topic: 'codbex-products.Products.ProductImage.clearDetails', handler: () => {
 			$scope.$evalAsync(() => {
 				$scope.entity = {};
 				$scope.action = 'select';
 			});
 		}});
-		Dialogs.addMessageListener({ topic: 'codbex-products.Products.ProductPackaging.entityCreated', handler: () => {
+		Dialogs.addMessageListener({ topic: 'codbex-products.Products.ProductImage.entityCreated', handler: () => {
 			$scope.loadPage($scope.dataPage, $scope.filter);
 		}});
-		Dialogs.addMessageListener({ topic: 'codbex-products.Products.ProductPackaging.entityUpdated', handler: () => {
+		Dialogs.addMessageListener({ topic: 'codbex-products.Products.ProductImage.entityUpdated', handler: () => {
 			$scope.loadPage($scope.dataPage, $scope.filter);
 		}});
-		Dialogs.addMessageListener({ topic: 'codbex-products.Products.ProductPackaging.entitySearch', handler: (data) => {
+		Dialogs.addMessageListener({ topic: 'codbex-products.Products.ProductImage.entitySearch', handler: (data) => {
 			resetPagination();
 			$scope.filter = data.filter;
 			$scope.filterEntity = data.entity;
@@ -107,8 +107,8 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 				}, (error) => {
 					const message = error.data ? error.data.message : '';
 					Dialogs.showAlert({
-						title: 'ProductPackaging',
-						message: `Unable to list/filter ProductPackaging: '${message}'`,
+						title: 'ProductImage',
+						message: `Unable to list/filter ProductImage: '${message}'`,
 						type: AlertTypes.Error
 					});
 					console.error('EntityService:', error);
@@ -116,8 +116,8 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 			}, (error) => {
 				const message = error.data ? error.data.message : '';
 				Dialogs.showAlert({
-					title: 'ProductPackaging',
-					message: `Unable to count ProductPackaging: '${message}'`,
+					title: 'ProductImage',
+					message: `Unable to count ProductImage: '${message}'`,
 					type: AlertTypes.Error
 				});
 				console.error('EntityService:', error);
@@ -131,7 +131,7 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 		$scope.openDetails = (entity) => {
 			$scope.selectedEntity = entity;
 			Dialogs.showWindow({
-				id: 'ProductPackaging-details',
+				id: 'ProductImage-details',
 				params: {
 					action: 'select',
 					entity: entity,
@@ -141,7 +141,7 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 
 		$scope.openFilter = () => {
 			Dialogs.showWindow({
-				id: 'ProductPackaging-filter',
+				id: 'ProductImage-filter',
 				params: {
 					entity: $scope.filterEntity,
 				},
@@ -151,7 +151,7 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 		$scope.createEntity = () => {
 			$scope.selectedEntity = null;
 			Dialogs.showWindow({
-				id: 'ProductPackaging-details',
+				id: 'ProductImage-details',
 				params: {
 					action: 'create',
 					entity: {},
@@ -164,7 +164,7 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 
 		$scope.updateEntity = (entity) => {
 			Dialogs.showWindow({
-				id: 'ProductPackaging-details',
+				id: 'ProductImage-details',
 				params: {
 					action: 'update',
 					entity: entity,
@@ -178,8 +178,8 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 		$scope.deleteEntity = (entity) => {
 			let id = entity.Id;
 			Dialogs.showDialog({
-				title: 'Delete ProductPackaging?',
-				message: `Are you sure you want to delete ProductPackaging? This action cannot be undone.`,
+				title: 'Delete ProductImage?',
+				message: `Are you sure you want to delete ProductImage? This action cannot be undone.`,
 				buttons: [{
 					id: 'delete-btn-yes',
 					state: ButtonStates.Emphasized,
@@ -193,12 +193,12 @@ angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 				if (buttonId === 'delete-btn-yes') {
 					EntityService.delete(id).then(() => {
 						$scope.loadPage($scope.dataPage, $scope.filter);
-						Dialogs.triggerEvent('codbex-products.Products.ProductPackaging.clearDetails');
+						Dialogs.triggerEvent('codbex-products.Products.ProductImage.clearDetails');
 					}, (error) => {
 						const message = error.data ? error.data.message : '';
 						Dialogs.showAlert({
-							title: 'ProductPackaging',
-							message: `Unable to delete ProductPackaging: '${message}'`,
+							title: 'ProductImage',
+							message: `Unable to delete ProductImage: '${message}'`,
 							type: AlertTypes.Error,
 						});
 						console.error('EntityService:', error);

@@ -90,14 +90,14 @@
                         "name": "PRODUCT_BATCH"
                     },
                     {
-                        "type": "INTEGER",
-                        "nullable": true,
-                        "name": "PRODUCT_BASEUNIT"
-                    },
-                    {
                         "type": "DECIMAL",
                         "nullable": true,
                         "name": "PRODUCT_PRICE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "PRODUCT_BASEUNIT"
                     },
                     {
                         "type": "DECIMAL",
@@ -228,11 +228,6 @@
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "PRODUCTSET_UOM"
-                    },
-                    {
-                        "type": "INTEGER",
-                        "nullable": true,
                         "name": "PRODUCTSET_PRODUCT"
                     },
                     {
@@ -265,6 +260,35 @@
                         "length": 500,
                         "nullable": true,
                         "name": "PRODUCTSET_NAME"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_PRODUCTIMAGE",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "PRODUCTIMAGE_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 500,
+                        "nullable": true,
+                        "name": "PRODUCTIMAGE_IMAGELINK"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "PRODUCTIMAGE_PRODUCT"
+                    },
+                    {
+                        "type": "BOOLEAN",
+                        "nullable": true,
+                        "name": "PRODUCTIMAGE_ISFEATURE"
                     }
                 ]
             },
@@ -314,20 +338,20 @@
                 "referencedColumns": "PRODUCT_ID"
             },
             {
-                "name": "ProductPackaging_UoM",
-                "type": "foreignKey",
-                "table": "CODBEX_PRODUCTPACKAGING",
-                "constraintName": "ProductPackaging_UoM",
-                "columns": "PRODUCTSET_UOM",
-                "referencedTable": "CODBEX_UOM",
-                "referencedColumns": "UOM_ID"
-            },
-            {
                 "name": "ProductPackaging_Product",
                 "type": "foreignKey",
                 "table": "CODBEX_PRODUCTPACKAGING",
                 "constraintName": "ProductPackaging_Product",
                 "columns": "PRODUCTSET_PRODUCT",
+                "referencedTable": "CODBEX_PRODUCT",
+                "referencedColumns": "PRODUCT_ID"
+            },
+            {
+                "name": "ProductImage_Product",
+                "type": "foreignKey",
+                "table": "CODBEX_PRODUCTIMAGE",
+                "constraintName": "ProductImage_Product",
+                "columns": "PRODUCTIMAGE_PRODUCT",
                 "referencedTable": "CODBEX_PRODUCT",
                 "referencedColumns": "PRODUCT_ID"
             }
