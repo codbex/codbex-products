@@ -50,6 +50,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		Dialogs.addMessageListener({ topic: 'codbex-products.Products.Product.clearDetails', handler: () => {
 			$scope.$evalAsync(() => {
 				$scope.entity = {};
+				$scope.optionsCurrency = [];
 				$scope.optionsBaseUnit = [];
 				$scope.optionsType = [];
 				$scope.optionsCategory = [];
@@ -60,6 +61,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		Dialogs.addMessageListener({ topic: 'codbex-products.Products.Product.entitySelected', handler: (data) => {
 			$scope.$evalAsync(() => {
 				$scope.entity = data.entity;
+				$scope.optionsCurrency = data.optionsCurrency;
 				$scope.optionsBaseUnit = data.optionsBaseUnit;
 				$scope.optionsType = data.optionsType;
 				$scope.optionsCategory = data.optionsCategory;
@@ -70,6 +72,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		Dialogs.addMessageListener({ topic: 'codbex-products.Products.Product.createEntity', handler: (data) => {
 			$scope.$evalAsync(() => {
 				$scope.entity = {};
+				$scope.optionsCurrency = data.optionsCurrency;
 				$scope.optionsBaseUnit = data.optionsBaseUnit;
 				$scope.optionsType = data.optionsType;
 				$scope.optionsCategory = data.optionsCategory;
@@ -80,6 +83,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		Dialogs.addMessageListener({ topic: 'codbex-products.Products.Product.updateEntity', handler: (data) => {
 			$scope.$evalAsync(() => {
 				$scope.entity = data.entity;
+				$scope.optionsCurrency = data.optionsCurrency;
 				$scope.optionsBaseUnit = data.optionsBaseUnit;
 				$scope.optionsType = data.optionsType;
 				$scope.optionsCategory = data.optionsCategory;
@@ -88,6 +92,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			});
 		}});
 
+		$scope.serviceCurrency = '/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyService.ts';
 		$scope.serviceBaseUnit = '/services/ts/codbex-uoms/gen/codbex-uoms/api/Settings/UoMService.ts';
 		$scope.serviceType = '/services/ts/codbex-products/gen/codbex-products/api/Settings/ProductTypeService.ts';
 		$scope.serviceCategory = '/services/ts/codbex-products/gen/codbex-products/api/Settings/ProductCategoryService.ts';
@@ -149,6 +154,16 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			});
 		};
 		
+		$scope.createCurrency = () => {
+			Dialogs.showWindow({
+				id: 'Currency-details',
+				params: {
+					action: 'create',
+					entity: {},
+				},
+				closeButton: false
+			});
+		};
 		$scope.createBaseUnit = () => {
 			Dialogs.showWindow({
 				id: 'UoM-details',
@@ -196,6 +211,23 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 
 		//----------------Dropdowns-----------------//
 
+		$scope.refreshCurrency = () => {
+			$scope.optionsCurrency = [];
+			$http.get('/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyService.ts').then((response) => {
+				$scope.optionsCurrency = response.data.map(e => ({
+					value: e.Id,
+					text: e.Code
+				}));
+			}, (error) => {
+				console.error(error);
+				const message = error.data ? error.data.message : '';
+				Dialogs.showAlert({
+					title: 'Currency',
+					message: LocaleService.t('codbex-products:messages.error.unableToLoad', { message: message }),
+					type: AlertTypes.Error
+				});
+			});
+		};
 		$scope.refreshBaseUnit = () => {
 			$scope.optionsBaseUnit = [];
 			$http.get('/services/ts/codbex-uoms/gen/codbex-uoms/api/Settings/UoMService.ts').then((response) => {

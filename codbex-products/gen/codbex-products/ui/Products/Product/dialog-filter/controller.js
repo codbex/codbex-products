@@ -10,6 +10,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 		$scope.entity = params.entity ?? {};
 		$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 		$scope.selectedMainEntityId = params.selectedMainEntityId;
+		$scope.optionsCurrency = params.optionsCurrency;
 		$scope.optionsBaseUnit = params.optionsBaseUnit;
 		$scope.optionsType = params.optionsType;
 		$scope.optionsCategory = params.optionsCategory;
@@ -62,6 +63,9 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 		}
 		if (entity.Price !== undefined) {
 			filter.$filter.equals.Price = entity.Price;
+		}
+		if (entity.Currency !== undefined) {
+			filter.$filter.equals.Currency = entity.Currency;
 		}
 		if (entity.BaseUnit !== undefined) {
 			filter.$filter.equals.BaseUnit = entity.BaseUnit;

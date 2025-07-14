@@ -128,6 +128,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			Dialogs.postMessage({ topic: 'codbex-products.Products.Product.entitySelected', data: {
 				entity: entity,
 				selectedMainEntityId: entity.Id,
+				optionsCurrency: $scope.optionsCurrency,
 				optionsBaseUnit: $scope.optionsBaseUnit,
 				optionsType: $scope.optionsType,
 				optionsCategory: $scope.optionsCategory,
@@ -141,6 +142,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 
 			Dialogs.postMessage({ topic: 'codbex-products.Products.Product.createEntity', data: {
 				entity: {},
+				optionsCurrency: $scope.optionsCurrency,
 				optionsBaseUnit: $scope.optionsBaseUnit,
 				optionsType: $scope.optionsType,
 				optionsCategory: $scope.optionsCategory,
@@ -152,6 +154,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			$scope.action = 'update';
 			Dialogs.postMessage({ topic: 'codbex-products.Products.Product.updateEntity', data: {
 				entity: $scope.selectedEntity,
+				optionsCurrency: $scope.optionsCurrency,
 				optionsBaseUnit: $scope.optionsBaseUnit,
 				optionsType: $scope.optionsType,
 				optionsCategory: $scope.optionsCategory,
@@ -197,6 +200,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				id: 'Product-filter',
 				params: {
 					entity: $scope.filterEntity,
+					optionsCurrency: $scope.optionsCurrency,
 					optionsBaseUnit: $scope.optionsBaseUnit,
 					optionsType: $scope.optionsType,
 					optionsCategory: $scope.optionsCategory,
@@ -206,11 +210,27 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		};
 
 		//----------------Dropdowns-----------------//
+		$scope.optionsCurrency = [];
 		$scope.optionsBaseUnit = [];
 		$scope.optionsType = [];
 		$scope.optionsCategory = [];
 		$scope.optionsManufacturer = [];
 
+
+		$http.get('/services/ts/codbex-currencies/gen/codbex-currencies/api/Settings/CurrencyService.ts').then((response) => {
+			$scope.optionsCurrency = response.data.map(e => ({
+				value: e.Id,
+				text: e.Code
+			}));
+		}, (error) => {
+			console.error(error);
+			const message = error.data ? error.data.message : '';
+			Dialogs.showAlert({
+				title: 'Currency',
+				message: LocaleService.t('codbex-products:messages.error.unableToLoad', { message: message }),
+				type: AlertTypes.Error
+			});
+		});
 
 		$http.get('/services/ts/codbex-uoms/gen/codbex-uoms/api/Settings/UoMService.ts').then((response) => {
 			$scope.optionsBaseUnit = response.data.map(e => ({
@@ -272,6 +292,14 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			});
 		});
 
+		$scope.optionsCurrencyValue = (optionKey) => {
+			for (let i = 0; i < $scope.optionsCurrency.length; i++) {
+				if ($scope.optionsCurrency[i].value === optionKey) {
+					return $scope.optionsCurrency[i].text;
+				}
+			}
+			return null;
+		};
 		$scope.optionsBaseUnitValue = (optionKey) => {
 			for (let i = 0; i < $scope.optionsBaseUnit.length; i++) {
 				if ($scope.optionsBaseUnit[i].value === optionKey) {
