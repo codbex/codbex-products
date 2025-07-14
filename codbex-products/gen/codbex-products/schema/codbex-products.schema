@@ -103,6 +103,11 @@
                     {
                         "type": "INTEGER",
                         "nullable": true,
+                        "name": "PRODUCT_CURRENCY"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
                         "name": "PRODUCT_BASEUNIT"
                     },
                     {
@@ -297,6 +302,15 @@
                         "name": "PRODUCTIMAGE_ISFEATURE"
                     }
                 ]
+            },
+            {
+                "name": "Product_Currency",
+                "type": "foreignKey",
+                "table": "CODBEX_PRODUCT",
+                "constraintName": "Product_Currency",
+                "columns": "PRODUCT_CURRENCY",
+                "referencedTable": "CODBEX_CURRENCY",
+                "referencedColumns": "CURRENCY_ID"
             },
             {
                 "name": "Product_UoM",

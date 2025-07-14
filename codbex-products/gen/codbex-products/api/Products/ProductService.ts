@@ -171,6 +171,9 @@ class ProductService {
         if (entity.Price === null || entity.Price === undefined) {
             throw new ValidationError(`The 'Price' property is required, provide a valid value`);
         }
+        if (entity.Currency === null || entity.Currency === undefined) {
+            throw new ValidationError(`The 'Currency' property is required, provide a valid value`);
+        }
         if (entity.BaseUnit === null || entity.BaseUnit === undefined) {
             throw new ValidationError(`The 'BaseUnit' property is required, provide a valid value`);
         }

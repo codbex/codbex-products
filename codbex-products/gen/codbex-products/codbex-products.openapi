@@ -2781,6 +2781,7 @@ components:
         - Model
         - Batch
         - Price
+        - Currency
         - BaseUnit
         - VATRate
       properties:
@@ -2818,6 +2819,9 @@ components:
         Price:
           type: number
           format: double
+        Currency:
+          type: integer
+          format: int32
         BaseUnit:
           type: integer
           format: int32
@@ -2974,6 +2978,14 @@ components:
                       items:
                         type: number
                         format: double
+                Currency:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 BaseUnit:
                   oneOf:
                     - type: integer
@@ -3214,6 +3226,14 @@ components:
                       items:
                         type: number
                         format: double
+                Currency:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 BaseUnit:
                   oneOf:
                     - type: integer
@@ -3391,6 +3411,7 @@ components:
                   minLength: 0
                   maxLength: 50
                 Price:
+                Currency:
                 BaseUnit:
                 VATRate:
                 Type:
@@ -3462,6 +3483,9 @@ components:
                 Price:
                   type: number
                   format: double
+                Currency:
+                  type: integer
+                  format: int32
                 BaseUnit:
                   type: integer
                   format: int32
@@ -3551,6 +3575,9 @@ components:
                 Price:
                   type: number
                   format: double
+                Currency:
+                  type: integer
+                  format: int32
                 BaseUnit:
                   type: integer
                   format: int32
@@ -3640,6 +3667,9 @@ components:
                 Price:
                   type: number
                   format: double
+                Currency:
+                  type: integer
+                  format: int32
                 BaseUnit:
                   type: integer
                   format: int32
@@ -3729,6 +3759,9 @@ components:
                 Price:
                   type: number
                   format: double
+                Currency:
+                  type: integer
+                  format: int32
                 BaseUnit:
                   type: integer
                   format: int32
@@ -3783,12 +3816,12 @@ components:
                 Enabled:
         $select:
           type: array
-          example: ["Id", "SKU", "Title", "Description", "ShortDescription", "Image", "Model", "Batch", "Price", "BaseUnit", "VATRate", "Type", "Category", "Manufacturer", "Weight", "Height", "Length", "Width", "Name", "UPC", "EAN", "JAN", "ISBN", "MPN", "Enabled"]
+          example: ["Id", "SKU", "Title", "Description", "ShortDescription", "Image", "Model", "Batch", "Price", "Currency", "BaseUnit", "VATRate", "Type", "Category", "Manufacturer", "Weight", "Height", "Length", "Width", "Name", "UPC", "EAN", "JAN", "ISBN", "MPN", "Enabled"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,SKU,Title,Description,ShortDescription,Image,Model,Batch,Price,BaseUnit,VATRate,Type,Category,Manufacturer,Weight,Height,Length,Width,Name,UPC,EAN,JAN,ISBN,MPN,Enabled"
+            example: "Id,SKU,Title,Description,ShortDescription,Image,Model,Batch,Price,Currency,BaseUnit,VATRate,Type,Category,Manufacturer,Weight,Height,Length,Width,Name,UPC,EAN,JAN,ISBN,MPN,Enabled"
         $order:
           type: string
           enum: ["asc", "desc"]
