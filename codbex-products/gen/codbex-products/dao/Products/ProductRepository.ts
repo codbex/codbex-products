@@ -9,6 +9,7 @@ export interface ProductEntity {
     SKU?: string;
     Title: string;
     Description?: string;
+    ShortDescription?: string;
     Image?: string;
     Model: string;
     Batch: string;
@@ -35,6 +36,7 @@ export interface ProductCreateEntity {
     readonly SKU?: string;
     readonly Title: string;
     readonly Description?: string;
+    readonly ShortDescription?: string;
     readonly Image?: string;
     readonly Model: string;
     readonly Batch: string;
@@ -67,6 +69,7 @@ export interface ProductEntityOptions {
             SKU?: string | string[];
             Title?: string | string[];
             Description?: string | string[];
+            ShortDescription?: string | string[];
             Image?: string | string[];
             Model?: string | string[];
             Batch?: string | string[];
@@ -93,6 +96,7 @@ export interface ProductEntityOptions {
             SKU?: string | string[];
             Title?: string | string[];
             Description?: string | string[];
+            ShortDescription?: string | string[];
             Image?: string | string[];
             Model?: string | string[];
             Batch?: string | string[];
@@ -119,6 +123,7 @@ export interface ProductEntityOptions {
             SKU?: string;
             Title?: string;
             Description?: string;
+            ShortDescription?: string;
             Image?: string;
             Model?: string;
             Batch?: string;
@@ -145,6 +150,7 @@ export interface ProductEntityOptions {
             SKU?: string;
             Title?: string;
             Description?: string;
+            ShortDescription?: string;
             Image?: string;
             Model?: string;
             Batch?: string;
@@ -171,6 +177,7 @@ export interface ProductEntityOptions {
             SKU?: string;
             Title?: string;
             Description?: string;
+            ShortDescription?: string;
             Image?: string;
             Model?: string;
             Batch?: string;
@@ -197,6 +204,7 @@ export interface ProductEntityOptions {
             SKU?: string;
             Title?: string;
             Description?: string;
+            ShortDescription?: string;
             Image?: string;
             Model?: string;
             Batch?: string;
@@ -223,6 +231,7 @@ export interface ProductEntityOptions {
             SKU?: string;
             Title?: string;
             Description?: string;
+            ShortDescription?: string;
             Image?: string;
             Model?: string;
             Batch?: string;
@@ -293,6 +302,11 @@ export class ProductRepository {
             {
                 name: "Description",
                 column: "PRODUCT_DESCRIPTION",
+                type: "VARCHAR",
+            },
+            {
+                name: "ShortDescription",
+                column: "PRODUCT_SHORTDESCRIPTION",
                 type: "VARCHAR",
             },
             {

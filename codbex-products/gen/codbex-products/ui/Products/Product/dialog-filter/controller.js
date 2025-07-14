@@ -1,4 +1,4 @@
-angular.module('page', ['blimpKit', 'platformView']).controller('PageController', ($scope, ViewParameters) => {
+angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controller('PageController', ($scope, ViewParameters) => {
 	const Dialogs = new DialogHub();
 	$scope.entity = {};
 	$scope.forms = {
@@ -47,6 +47,9 @@ angular.module('page', ['blimpKit', 'platformView']).controller('PageController'
 		}
 		if (entity.Description) {
 			filter.$filter.contains.Description = entity.Description;
+		}
+		if (entity.ShortDescription) {
+			filter.$filter.contains.ShortDescription = entity.ShortDescription;
 		}
 		if (entity.Image) {
 			filter.$filter.contains.Image = entity.Image;

@@ -69,9 +69,15 @@
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 500,
+                        "length": 2000,
                         "nullable": true,
                         "name": "PRODUCT_DESCRIPTION"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "nullable": true,
+                        "name": "PRODUCT_SHORTDESCRIPTION"
                     },
                     {
                         "type": "VARCHAR",
