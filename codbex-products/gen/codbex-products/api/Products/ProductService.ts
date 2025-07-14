@@ -147,8 +147,11 @@ class ProductService {
         if (entity.Title?.length > 200) {
             throw new ValidationError(`The 'Title' exceeds the maximum length of [200] characters`);
         }
-        if (entity.Description?.length > 500) {
-            throw new ValidationError(`The 'Description' exceeds the maximum length of [500] characters`);
+        if (entity.Description?.length > 2000) {
+            throw new ValidationError(`The 'Description' exceeds the maximum length of [2000] characters`);
+        }
+        if (entity.ShortDescription?.length > 200) {
+            throw new ValidationError(`The 'ShortDescription' exceeds the maximum length of [200] characters`);
         }
         if (entity.Image?.length > 500) {
             throw new ValidationError(`The 'Image' exceeds the maximum length of [500] characters`);

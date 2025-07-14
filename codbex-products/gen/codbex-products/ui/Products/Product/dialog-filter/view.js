@@ -6,6 +6,12 @@
 const viewData = {
     id: 'Product-filter',
     label: 'Product Filter',
+    translation: {
+        key: 'codbex-products:extName',
+        options: {
+            content: '$t(codbex-products:t.PRODUCT) $t(codbex-products:defaults.filter)',
+        }
+    },
     path: '/services/web/codbex-products/gen/codbex-products/ui/Products/Product/dialog-filter/index.html',
     perspectiveName: 'Products'
 };

@@ -170,7 +170,7 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "dataLength": "500",
+                        "dataLength": "2000",
                         "dataName": "PRODUCT_DESCRIPTION",
                         "dataNullable": "true",
                         "dataType": "VARCHAR",
@@ -178,7 +178,20 @@
                         "name": "Description",
                         "tooltip": "",
                         "widgetIsMajor": "true",
-                        "widgetLength": "500",
+                        "widgetLength": "2000",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "dataLength": "200",
+                        "dataName": "PRODUCT_SHORTDESCRIPTION",
+                        "dataNullable": "true",
+                        "dataType": "VARCHAR",
+                        "description": "",
+                        "name": "ShortDescription",
+                        "tooltip": "",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "200",
                         "widgetSize": "",
                         "widgetType": "TEXTBOX"
                     },
