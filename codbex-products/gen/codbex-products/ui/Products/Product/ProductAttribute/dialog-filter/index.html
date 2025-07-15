@@ -17,10 +17,10 @@
 			<bk-message-strip class="fd-margin--md" ng-show="errorMessage" glyph="sap-icon--message-error" state="error" on-dismiss="clearErrorMessage()">{{ errorMessage }}</bk-message-strip>
 
             <bk-fieldset class="fd-padding-begin-end--sm" ng-form="forms.details">
-                <bk-form-group label="{{ 'codbex-products:defaults.formGrpFilter' | t:{'name':'$t(codbex-products:t.PRODUCTDETAILS)'} }}" name="entityForm" transclude-classes="fd-container fd-form-layout-grid-container">
+                <bk-form-group label="{{ 'codbex-products:defaults.formGrpFilter' | t:{'name':'$t(codbex-products:t.PRODUCTATTRIBUTE)'} }}" name="entityForm" transclude-classes="fd-container fd-form-layout-grid-container">
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idName" colon="true">{{ 'codbex-products:t.PRODUCTDETAILS_NAME' | t }}</bk-form-label>
+                        	<bk-form-label for="idName" colon="true">{{ 'codbex-products:t.PRODUCTATTRIBUTE_NAME' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
 							<bk-form-input-message state="{{ forms.details['Name'].$valid ? '' : 'error' }}" text="{{'codbex-products:messages.error.incorrectInput' | t}}">
@@ -30,14 +30,14 @@
 	                                ng-model="entity.Name"
 									ng-maxlength="200.0"
 	                                type="text"
-	                                placeholder="{{ 'codbex-products:messages.inputEnter' | t:{'name':'$t(codbex-products:t.PRODUCTDETAILS_NAME)'} }}">
+	                                placeholder="{{ 'codbex-products:messages.inputEnter' | t:{'name':'$t(codbex-products:t.PRODUCTATTRIBUTE_NAME)'} }}">
 	                            </bk-input>
 							</bk-form-input-message>
 	                    </div>
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idValue" colon="true">{{ 'codbex-products:t.PRODUCTDETAILS_VALUE' | t }}</bk-form-label>
+                        	<bk-form-label for="idValue" colon="true">{{ 'codbex-products:t.PRODUCTATTRIBUTE_VALUE' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
 							<bk-form-input-message state="{{ forms.details['Value'].$valid ? '' : 'error' }}" text="{{'codbex-products:messages.error.incorrectInput' | t}}">
@@ -47,14 +47,14 @@
 	                                ng-model="entity.Value"
 									ng-maxlength="2000.0"
 	                                type="text"
-	                                placeholder="{{ 'codbex-products:messages.inputEnter' | t:{'name':'$t(codbex-products:t.PRODUCTDETAILS_VALUE)'} }}">
+	                                placeholder="{{ 'codbex-products:messages.inputEnter' | t:{'name':'$t(codbex-products:t.PRODUCTATTRIBUTE_VALUE)'} }}">
 	                            </bk-input>
 							</bk-form-input-message>
 	                    </div>
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idGroup" colon="true">{{ 'codbex-products:t.PRODUCTDETAILS_GROUP' | t }}</bk-form-label>
+                        	<bk-form-label for="idGroup" colon="true">{{ 'codbex-products:t.PRODUCTATTRIBUTE_GROUP' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
 	                        <bk-combobox-input input-id="idGroup"
@@ -62,7 +62,7 @@
 	                            state="{{ forms.details['Group'].$valid ? '' : 'error' }}"
 	                            ng-model="entity.Group"
 	                            dropdown-items="optionsGroup"
-	                            placeholder="{{ 'codbex-products:messages.inputSearch' | t:{'name':'$t(codbex-products:t.PRODUCTDETAILS_GROUP)'} }}"
+	                            placeholder="{{ 'codbex-products:messages.inputSearch' | t:{'name':'$t(codbex-products:t.PRODUCTATTRIBUTE_GROUP)'} }}"
 								btn-aria-label="{{ 'codbex-products:aria.showHide' | t:{'name':'Group'} }}" list-aria-label="{{ 'codbex-products:aria.options' | t:{'name':'Group'} }}">
 	                        </bk-combobox-input>
 	                    </div>

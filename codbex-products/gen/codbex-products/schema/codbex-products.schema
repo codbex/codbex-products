@@ -196,7 +196,7 @@
                 ]
             },
             {
-                "name": "CODBEX_PRODUCTDETAILS",
+                "name": "CODBEX_PRODUCTATTRIBUTE",
                 "type": "TABLE",
                 "columns": [
                     {
@@ -204,29 +204,29 @@
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
-                        "name": "PRODUCTDETAILS_ID"
+                        "name": "PRODUCTATTRIBUTE_ID"
                     },
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "PRODUCTDETAILS_PRODUCTID"
+                        "name": "PRODUCTATTRIBUTE_PRODUCTID"
                     },
                     {
                         "type": "VARCHAR",
                         "length": 200,
                         "nullable": true,
-                        "name": "PRODUCTDETAILS_NAME"
+                        "name": "PRODUCTATTRIBUTE_NAME"
                     },
                     {
                         "type": "VARCHAR",
                         "length": 2000,
                         "nullable": true,
-                        "name": "PRODUCTDETAILS_VALUE"
+                        "name": "PRODUCTATTRIBUTE_VALUE"
                     },
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "PRODUCTDETAILS_GROUP"
+                        "name": "PRODUCTATTRIBUTE_GROUP"
                     }
                 ]
             },
@@ -375,18 +375,18 @@
             {
                 "name": "ProductAttribute_Product",
                 "type": "foreignKey",
-                "table": "CODBEX_PRODUCTDETAILS",
+                "table": "CODBEX_PRODUCTATTRIBUTE",
                 "constraintName": "ProductAttribute_Product",
-                "columns": "PRODUCTDETAILS_PRODUCTID",
+                "columns": "PRODUCTATTRIBUTE_PRODUCTID",
                 "referencedTable": "CODBEX_PRODUCT",
                 "referencedColumns": "PRODUCT_ID"
             },
             {
                 "name": "ProductAttribute_ProductAttributeGroup",
                 "type": "foreignKey",
-                "table": "CODBEX_PRODUCTDETAILS",
+                "table": "CODBEX_PRODUCTATTRIBUTE",
                 "constraintName": "ProductAttribute_ProductAttributeGroup",
-                "columns": "PRODUCTDETAILS_GROUP",
+                "columns": "PRODUCTATTRIBUTE_GROUP",
                 "referencedTable": "CODBEX_PRODUCTATTRIBUTEGROUP",
                 "referencedColumns": "PRODUCTATTRIBUTEGROUP_ID"
             },

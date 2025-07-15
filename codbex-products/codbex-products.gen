@@ -1685,7 +1685,7 @@
       "properties": [
         {
           "dataAutoIncrement": true,
-          "dataName": "PRODUCTDETAILS_ID",
+          "dataName": "PRODUCTATTRIBUTE_ID",
           "dataNullable": true,
           "dataPrimaryKey": true,
           "dataType": "INTEGER",
@@ -1707,7 +1707,7 @@
           "inputRule": ""
         },
         {
-          "dataName": "PRODUCTDETAILS_PRODUCTID",
+          "dataName": "PRODUCTATTRIBUTE_PRODUCTID",
           "dataNullable": true,
           "dataType": "INTEGER",
           "description": "",
@@ -1739,7 +1739,7 @@
         },
         {
           "dataLength": "200",
-          "dataName": "PRODUCTDETAILS_NAME",
+          "dataName": "PRODUCTATTRIBUTE_NAME",
           "dataNullable": true,
           "dataType": "VARCHAR",
           "description": "",
@@ -1765,7 +1765,7 @@
         },
         {
           "dataLength": "2000",
-          "dataName": "PRODUCTDETAILS_VALUE",
+          "dataName": "PRODUCTATTRIBUTE_VALUE",
           "dataNullable": true,
           "dataType": "VARCHAR",
           "description": "",
@@ -1790,7 +1790,7 @@
           "inputRule": ""
         },
         {
-          "dataName": "PRODUCTDETAILS_GROUP",
+          "dataName": "PRODUCTATTRIBUTE_GROUP",
           "dataNullable": true,
           "dataType": "INTEGER",
           "description": "",
@@ -1819,18 +1819,20 @@
           "inputRule": ""
         }
       ],
-      "caption": "Manage entity ProductDetails",
-      "dataCount": "SELECT COUNT(*) AS COUNT FROM \"CODBEX__PRODUCTDETAILS\"",
-      "dataName": "PRODUCTDETAILS",
+      "caption": "Manage entity ProductAttribute",
+      "dataCount": "SELECT COUNT(*) AS COUNT FROM \"CODBEX__PRODUCTATTRIBUTE\"",
+      "dataName": "PRODUCTATTRIBUTE",
       "dataQuery": "",
       "description": "Manage entity ProductAttribute",
+      "feedPassword": "YWRtaW4=",
+      "feedUsername": "YWRtaW4=",
       "generateDefaultRoles": "true",
       "generateReport": "false",
       "icon": "/services/web/resources/unicons/file.svg",
       "layoutType": "MANAGE_DETAILS",
       "menuIndex": "100",
-      "menuKey": "productdetails",
-      "menuLabel": "ProductDetails",
+      "menuKey": "productattribute",
+      "menuLabel": "ProductAttribute",
       "name": "ProductAttribute",
       "perspectiveHeader": "",
       "perspectiveIcon": "/services/web/resources/unicons/cube.svg",
@@ -1841,8 +1843,8 @@
       "perspectiveRole": "",
       "roleRead": "codbex-products.Products.ProductAttributeReadOnly",
       "roleWrite": "codbex-products.Products.ProductAttributeFullAccess",
-      "title": "ProductDetails",
-      "tooltip": "ProductDetails",
+      "title": "ProductAttribute",
+      "tooltip": "ProductAttribute",
       "type": "DEPENDENT",
       "dataSource": "DefaultDB",
       "referencedProjections": [],

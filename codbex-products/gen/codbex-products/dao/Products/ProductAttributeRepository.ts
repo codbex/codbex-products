@@ -99,33 +99,33 @@ interface ProductAttributeUpdateEntityEvent extends ProductAttributeEntityEvent 
 export class ProductAttributeRepository {
 
     private static readonly DEFINITION = {
-        table: "CODBEX_PRODUCTDETAILS",
+        table: "CODBEX_PRODUCTATTRIBUTE",
         properties: [
             {
                 name: "Id",
-                column: "PRODUCTDETAILS_ID",
+                column: "PRODUCTATTRIBUTE_ID",
                 type: "INTEGER",
                 id: true,
                 autoIncrement: true,
             },
             {
                 name: "Product",
-                column: "PRODUCTDETAILS_PRODUCTID",
+                column: "PRODUCTATTRIBUTE_PRODUCTID",
                 type: "INTEGER",
             },
             {
                 name: "Name",
-                column: "PRODUCTDETAILS_NAME",
+                column: "PRODUCTATTRIBUTE_NAME",
                 type: "VARCHAR",
             },
             {
                 name: "Value",
-                column: "PRODUCTDETAILS_VALUE",
+                column: "PRODUCTATTRIBUTE_VALUE",
                 type: "VARCHAR",
             },
             {
                 name: "Group",
-                column: "PRODUCTDETAILS_GROUP",
+                column: "PRODUCTATTRIBUTE_GROUP",
                 type: "INTEGER",
             }
         ]
@@ -150,11 +150,11 @@ export class ProductAttributeRepository {
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
-            table: "CODBEX_PRODUCTDETAILS",
+            table: "CODBEX_PRODUCTATTRIBUTE",
             entity: entity,
             key: {
                 name: "Id",
-                column: "PRODUCTDETAILS_ID",
+                column: "PRODUCTATTRIBUTE_ID",
                 value: id
             }
         });
@@ -166,12 +166,12 @@ export class ProductAttributeRepository {
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
-            table: "CODBEX_PRODUCTDETAILS",
+            table: "CODBEX_PRODUCTATTRIBUTE",
             entity: entity,
             previousEntity: previousEntity,
             key: {
                 name: "Id",
-                column: "PRODUCTDETAILS_ID",
+                column: "PRODUCTATTRIBUTE_ID",
                 value: entity.Id
             }
         });
@@ -197,11 +197,11 @@ export class ProductAttributeRepository {
         this.dao.remove(id);
         this.triggerEvent({
             operation: "delete",
-            table: "CODBEX_PRODUCTDETAILS",
+            table: "CODBEX_PRODUCTATTRIBUTE",
             entity: entity,
             key: {
                 name: "Id",
-                column: "PRODUCTDETAILS_ID",
+                column: "PRODUCTATTRIBUTE_ID",
                 value: id
             }
         });
@@ -212,7 +212,7 @@ export class ProductAttributeRepository {
     }
 
     public customDataCount(): number {
-        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX__PRODUCTDETAILS"');
+        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX__PRODUCTATTRIBUTE"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
                 return resultSet[0].COUNT;
