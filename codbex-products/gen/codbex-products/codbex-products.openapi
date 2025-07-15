@@ -15,6 +15,7 @@ tags:
   - name: Products
   - name: Products
   - name: Products
+  - name: entities
 paths:
   /codbex-products/gen/codbex-products/api/Settings/ProductTypeService.ts:
     get:
@@ -2472,6 +2473,406 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+  /codbex-products/gen/codbex-products/api/entities/ProductAttributeGroupService.ts:
+    get:
+      summary: List ProductAttributeGroup
+      parameters:
+        - in: query
+          name: $limit
+          description: The number of records to be returned _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+        - in: query
+          name: $offset
+          description: The number of records to skip _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+      tags:
+        - entities
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/ProductAttributeGroup'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create ProductAttributeGroup
+      tags:
+        - entities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductAttributeGroup'
+        required: true
+      responses:
+        201:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductAttributeGroup'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-products/gen/codbex-products/api/entities/ProductAttributeGroupService.ts/{id}:
+    get:
+      summary: Get ProductAttributeGroup by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - entities
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/ProductAttributeGroup'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Update ProductAttributeGroup by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - entities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductAttributeGroup'
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductAttributeGroup'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Delete ProductAttributeGroup by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - entities
+      responses:
+        204:
+          description: Successful Request
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-products/gen/codbex-products/api/entities/ProductAttributeGroupService.ts/count:
+    get:
+      summary: Count the number of ProductAttributeGroup
+      tags:
+        - entities
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Count the number of ProductAttributeGroup by ProductAttributeGroupFilterOptions
+      tags:
+        - entities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductAttributeGroupFilterOptions'
+            examples:
+              countWithMultipleCriteria:
+                summary: Count with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    contains:
+                      Name: "abcd"
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              countWithEquals:
+                summary: Count with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              countWithNotEquals:
+                summary: Count with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              countWithContains:
+                summary: Count with Contains
+                value:
+                  $filter:
+                    contains:
+                      Name: "abcd"
+              countWithGreaterThan:
+                summary: Count with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              countWithGreaterThanOrEqual:
+                summary: Count with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              countWithLessThan:
+                summary: Count with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              countWithLessThanOrEqual:
+                summary: Count with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-products/gen/codbex-products/api/entities/ProductAttributeGroupService.ts/search:
+    post:
+      summary: Search ProductAttributeGroup by ProductAttributeGroupFilterOptions
+      tags:
+        - entities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductAttributeGroupFilterOptions'
+            examples:
+              searchWithMultipleCriteria:
+                summary: Search with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    contains:
+                      Name: "abcd"
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              searchWithEquals:
+                summary: Search with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              searchWithNotEquals:
+                summary: Search with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              searchWithContains:
+                summary: Search with Contains
+                value:
+                  $filter:
+                    contains:
+                      Name: "abcd"
+              searchWithGreaterThan:
+                summary: Search with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              searchWithGreaterThanOrEqual:
+                summary: Search with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              searchWithLessThan:
+                summary: Search with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              searchWithLessThanOrEqual:
+                summary: Search with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/ProductAttributeGroup'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 components:
   schemas:
     ProductType:
@@ -3850,6 +4251,9 @@ components:
           type: string
           minLength: 0
           maxLength: 2000
+        Group:
+          type: integer
+          format: int32
     ProductAttributeFilterOptions:
       type: object
       properties:
@@ -3897,6 +4301,14 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 2000
+                Group:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
             notEquals:
               type: object
               properties:
@@ -3938,6 +4350,14 @@ components:
                         format: double
                         minLength: 0
                         maxLength: 2000
+                Group:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
             contains:
               type: object
               properties:
@@ -3951,6 +4371,7 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 2000
+                Group:
             greaterThan:
               type: object
               properties:
@@ -3968,6 +4389,9 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 2000
+                Group:
+                  type: integer
+                  format: int32
             greaterThanOrEqual:
               type: object
               properties:
@@ -3985,6 +4409,9 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 2000
+                Group:
+                  type: integer
+                  format: int32
             lessThan:
               type: object
               properties:
@@ -4002,6 +4429,9 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 2000
+                Group:
+                  type: integer
+                  format: int32
             lessThanOrEqual:
               type: object
               properties:
@@ -4019,14 +4449,17 @@ components:
                   type: string
                   minLength: 0
                   maxLength: 2000
+                Group:
+                  type: integer
+                  format: int32
         $select:
           type: array
-          example: ["Id", "Product", "Name", "Value"]
+          example: ["Id", "Product", "Name", "Value", "Group"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Product,Name,Value"
+            example: "Id,Product,Name,Value,Group"
         $order:
           type: string
           enum: ["asc", "desc"]
@@ -4530,6 +4963,134 @@ components:
         $sort:
           - type: string
             example: "Id,ImageLink,Product,IsFeature"
+        $order:
+          type: string
+          enum: ["asc", "desc"]
+          example: "asc"
+        $offset:
+          type: integer
+          example: 0
+        $limit:
+          type: integer
+          example: 10
+    ProductAttributeGroup:
+      type: object
+      required:
+        - Name
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type: string
+          minLength: 0
+          maxLength: 100
+    ProductAttributeGroupFilterOptions:
+      type: object
+      properties:
+        $filter:
+          type: object
+          properties:
+            equals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Name:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 100
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 100
+            notEquals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Name:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 100
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 100
+            contains:
+              type: object
+              properties:
+                Id:
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+            greaterThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+            greaterThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+            lessThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+            lessThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+        $select:
+          type: array
+          example: ["Id", "Name"]
+          items:
+            type: string
+        $sort:
+          - type: string
+            example: "Id,Name"
         $order:
           type: string
           enum: ["asc", "desc"]
