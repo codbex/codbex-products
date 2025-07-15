@@ -1707,7 +1707,7 @@
           "inputRule": ""
         },
         {
-          "dataName": "PRODUCTATTRIBUTE_PRODUCTID",
+          "dataName": "PRODUCTATTRIBUTE_PRODUCT",
           "dataNullable": true,
           "dataType": "INTEGER",
           "description": "",

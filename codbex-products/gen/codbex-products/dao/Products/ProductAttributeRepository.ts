@@ -110,7 +110,7 @@ export class ProductAttributeRepository {
             },
             {
                 name: "Product",
-                column: "PRODUCTATTRIBUTE_PRODUCTID",
+                column: "PRODUCTATTRIBUTE_PRODUCT",
                 type: "INTEGER",
             },
             {

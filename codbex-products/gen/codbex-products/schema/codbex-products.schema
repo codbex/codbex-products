@@ -209,7 +209,7 @@
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "PRODUCTATTRIBUTE_PRODUCTID"
+                        "name": "PRODUCTATTRIBUTE_PRODUCT"
                     },
                     {
                         "type": "VARCHAR",
@@ -377,7 +377,7 @@
                 "type": "foreignKey",
                 "table": "CODBEX_PRODUCTATTRIBUTE",
                 "constraintName": "ProductAttribute_Product",
-                "columns": "PRODUCTATTRIBUTE_PRODUCTID",
+                "columns": "PRODUCTATTRIBUTE_PRODUCT",
                 "referencedTable": "CODBEX_PRODUCT",
                 "referencedColumns": "PRODUCT_ID"
             },
