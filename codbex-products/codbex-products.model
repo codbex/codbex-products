@@ -589,6 +589,24 @@
                         "widgetLength": "2000",
                         "widgetSize": "",
                         "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "dataName": "PRODUCTDETAILS_GROUP",
+                        "dataNullable": "true",
+                        "dataType": "INTEGER",
+                        "description": "",
+                        "name": "Group",
+                        "tooltip": "",
+                        "widgetDropDownKey": "Id",
+                        "widgetDropDownValue": "Name",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "DROPDOWN",
+                        "relationshipName": "ProductAttribute_ProductAttributeGroup",
+                        "relationshipEntityName": "ProductAttributeGroup",
+                        "relationshipEntityPerspectiveName": "entities",
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     }
                 ],
                 "caption": "Manage entity ProductDetails",
@@ -1220,6 +1238,61 @@
                 "title": "Currency",
                 "tooltip": "Currency",
                 "type": "PROJECTION"
+            },
+            {
+                "properties": [
+                    {
+                        "dataAutoIncrement": "true",
+                        "dataName": "PRODUCTATTRIBUTEGROUP_ID",
+                        "dataNullable": "true",
+                        "dataPrimaryKey": "true",
+                        "dataType": "INTEGER",
+                        "description": "",
+                        "name": "Id",
+                        "tooltip": "",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
+                        "dataLength": "100",
+                        "dataName": "PRODUCTATTRIBUTEGROUP_NAME",
+                        "dataNullable": "true",
+                        "dataType": "VARCHAR",
+                        "description": "",
+                        "isRequiredProperty": "true",
+                        "name": "Name",
+                        "tooltip": "",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "100",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    }
+                ],
+                "caption": "Manage entity ProductAttributeGroup",
+                "dataCount": "SELECT COUNT(*) AS COUNT FROM \"${tablePrefix}PRODUCTATTRIBUTEGROUP\"",
+                "dataName": "PRODUCTATTRIBUTEGROUP",
+                "dataQuery": "",
+                "description": "Manage entity ProductAttributeGroup",
+                "generateDefaultRoles": "false",
+                "generateReport": "false",
+                "icon": "/services/web/resources/unicons/file.svg",
+                "layoutType": "MANAGE",
+                "menuIndex": "100",
+                "menuKey": "productattributegroup",
+                "menuLabel": "ProductAttributeGroup",
+                "name": "ProductAttributeGroup",
+                "perspectiveHeader": "",
+                "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
+                "perspectiveLabel": "Entities",
+                "perspectiveName": "entities",
+                "perspectiveNavId": "",
+                "perspectiveOrder": "100",
+                "perspectiveRole": "",
+                "title": "ProductAttributeGroup",
+                "tooltip": "ProductAttributeGroup",
+                "type": "PRIMARY"
             }
         ],
         "perspectives": [

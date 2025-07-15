@@ -35,6 +35,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 			$scope.selectedMainEntityId = params.selectedMainEntityId;
 			$scope.optionsProduct = params.optionsProduct;
+			$scope.optionsGroup = params.optionsGroup;
 		}
 
 		$scope.create = () => {
@@ -83,6 +84,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		};
 
 		$scope.serviceProduct = '/services/ts/codbex-products/gen/codbex-products/api/Products/ProductService.ts';
+		$scope.serviceGroup = '/services/ts/codbex-products/gen/codbex-products/api/entities/ProductAttributeGroupService.ts';
 
 		$scope.alert = (message) => {
 			if (message) Dialogs.showAlert({

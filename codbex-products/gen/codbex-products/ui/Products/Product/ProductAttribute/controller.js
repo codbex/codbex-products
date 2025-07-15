@@ -149,6 +149,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					action: 'select',
 					entity: entity,
 					optionsProduct: $scope.optionsProduct,
+					optionsGroup: $scope.optionsGroup,
 				},
 			});
 		};
@@ -159,6 +160,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				params: {
 					entity: $scope.filterEntity,
 					optionsProduct: $scope.optionsProduct,
+					optionsGroup: $scope.optionsGroup,
 				},
 			});
 		};
@@ -175,6 +177,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					selectedMainEntityKey: 'Product',
 					selectedMainEntityId: $scope.selectedMainEntityId,
 					optionsProduct: $scope.optionsProduct,
+					optionsGroup: $scope.optionsGroup,
 				},
 				closeButton: false
 			});
@@ -189,6 +192,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					selectedMainEntityKey: 'Product',
 					selectedMainEntityId: $scope.selectedMainEntityId,
 					optionsProduct: $scope.optionsProduct,
+					optionsGroup: $scope.optionsGroup,
 			},
 				closeButton: false
 			});
@@ -228,6 +232,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 
 		//----------------Dropdowns-----------------//
 		$scope.optionsProduct = [];
+		$scope.optionsGroup = [];
 
 
 		$http.get('/services/ts/codbex-products/gen/codbex-products/api/Products/ProductService.ts').then((response) => {
@@ -245,10 +250,33 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			});
 		});
 
+		$http.get('/services/ts/codbex-products/gen/codbex-products/api/entities/ProductAttributeGroupService.ts').then((response) => {
+			$scope.optionsGroup = response.data.map(e => ({
+				value: e.Id,
+				text: e.Name
+			}));
+		}, (error) => {
+			console.error(error);
+			const message = error.data ? error.data.message : '';
+			Dialogs.showAlert({
+				title: 'Group',
+				message: LocaleService.t('codbex-products:messages.error.unableToLoad', { message: message }),
+				type: AlertTypes.Error
+			});
+		});
+
 		$scope.optionsProductValue = function (optionKey) {
 			for (let i = 0; i < $scope.optionsProduct.length; i++) {
 				if ($scope.optionsProduct[i].value === optionKey) {
 					return $scope.optionsProduct[i].text;
+				}
+			}
+			return null;
+		};
+		$scope.optionsGroupValue = function (optionKey) {
+			for (let i = 0; i < $scope.optionsGroup.length; i++) {
+				if ($scope.optionsGroup[i].value === optionKey) {
+					return $scope.optionsGroup[i].text;
 				}
 			}
 			return null;

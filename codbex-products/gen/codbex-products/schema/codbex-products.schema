@@ -222,6 +222,11 @@
                         "length": 2000,
                         "nullable": true,
                         "name": "PRODUCTDETAILS_VALUE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "PRODUCTDETAILS_GROUP"
                     }
                 ]
             },
@@ -304,6 +309,25 @@
                 ]
             },
             {
+                "name": "CODBEX_PRODUCTATTRIBUTEGROUP",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "PRODUCTATTRIBUTEGROUP_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "nullable": true,
+                        "name": "PRODUCTATTRIBUTEGROUP_NAME"
+                    }
+                ]
+            },
+            {
                 "name": "Product_Currency",
                 "type": "foreignKey",
                 "table": "CODBEX_PRODUCT",
@@ -356,6 +380,15 @@
                 "columns": "PRODUCTDETAILS_PRODUCTID",
                 "referencedTable": "CODBEX_PRODUCT",
                 "referencedColumns": "PRODUCT_ID"
+            },
+            {
+                "name": "ProductAttribute_ProductAttributeGroup",
+                "type": "foreignKey",
+                "table": "CODBEX_PRODUCTDETAILS",
+                "constraintName": "ProductAttribute_ProductAttributeGroup",
+                "columns": "PRODUCTDETAILS_GROUP",
+                "referencedTable": "CODBEX_PRODUCTATTRIBUTEGROUP",
+                "referencedColumns": "PRODUCTATTRIBUTEGROUP_ID"
             },
             {
                 "name": "ProductPackaging_Product",

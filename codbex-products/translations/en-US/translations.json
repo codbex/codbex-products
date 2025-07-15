@@ -101,6 +101,7 @@
     "PRODUCTDETAILS_PRODUCTID": "Product",
     "PRODUCTDETAILS_NAME": "Name",
     "PRODUCTDETAILS_VALUE": "Value",
+    "PRODUCTDETAILS_GROUP": "Group",
     "MANUFACTURER": "Manufacturer",
     "ENTITY5_ENTITY5ID": "Id",
     "ENTITY5_NAME": "Name",
@@ -138,6 +139,9 @@
     "CURRENCY_ROUNDING": "Rounding",
     "CURRENCY_BASE": "Base",
     "CURRENCY_RATE": "Rate",
+    "PRODUCTATTRIBUTEGROUP": "ProductAttributeGroup",
+    "PRODUCTATTRIBUTEGROUP_ID": "Id",
+    "PRODUCTATTRIBUTEGROUP_NAME": "Name",
     "Products": "Products",
     "Categories": "Categories",
     "Catalogues": "Catalogues"
