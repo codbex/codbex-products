@@ -6,9 +6,6 @@
 const viewData = {
     id: 'ProductAttributeGroup',
     label: 'ProductAttributeGroup',
-    translation: {
-        key: 'codbex-products:t.PRODUCTATTRIBUTEGROUP',
-    },
     region: 'center',
     lazyLoad: false,
 	autoFocusTab: true,

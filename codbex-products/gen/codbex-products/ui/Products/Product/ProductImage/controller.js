@@ -1,22 +1,9 @@
-angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
+angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 	.config(['EntityServiceProvider', (EntityServiceProvider) => {
 		EntityServiceProvider.baseUrl = '/services/ts/codbex-products/gen/codbex-products/api/Products/ProductImageService.ts';
 	}])
-	.controller('PageController', ($scope, EntityService, Extensions, LocaleService, ButtonStates) => {
+	.controller('PageController', ($scope, EntityService, Extensions, ButtonStates) => {
 		const Dialogs = new DialogHub();
-		let translated = {
-			yes: 'Yes',
-			no: 'No',
-			deleteConfirm: 'Are you sure you want to delete ProductImage? This action cannot be undone.',
-			deleteTitle: 'Delete ProductImage?'
-		};
-
-		LocaleService.onInit(() => {
-			translated.yes = LocaleService.t('codbex-products:defaults.yes');
-			translated.no = LocaleService.t('codbex-products:defaults.no');
-			translated.deleteTitle = LocaleService.t('codbex-products:defaults.deleteTitle', { name: '$t(codbex-products:t.PRODUCTIMAGE)' });
-			translated.deleteConfirm = LocaleService.t('codbex-products:messages.deleteConfirm', { name: '$t(codbex-products:t.PRODUCTIMAGE)' });
-		});
 		//-----------------Custom Actions-------------------//
 		Extensions.getWindows(['codbex-products-custom-action']).then((response) => {
 			$scope.pageActions = response.data.filter(e => e.perspective === 'Products' && e.view === 'ProductImage' && (e.type === 'page' || e.type === undefined));
@@ -26,7 +13,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.triggerPageAction = (action) => {
 			Dialogs.showWindow({
 				hasHeader: true,
-        		title: LocaleService.t(action.translation.key, action.translation.options, action.label),
+        		title: action.label,
 				path: action.path,
 				params: {
 					selectedMainEntityKey: 'Product',
@@ -41,7 +28,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.triggerEntityAction = (action) => {
 			Dialogs.showWindow({
 				hasHeader: true,
-        		title: LocaleService.t(action.translation.key, action.translation.options, action.label),
+        		title: action.label,
 				path: action.path,
 				params: {
 					id: $scope.entity.Id,
@@ -120,8 +107,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				}, (error) => {
 					const message = error.data ? error.data.message : '';
 					Dialogs.showAlert({
-						title: LocaleService.t('codbex-products:t.PRODUCTIMAGE'),
-						message: LocaleService.t('codbex-products:messages.error.unableToLF', { name: '$t(codbex-products:t.PRODUCTIMAGE)', message: message }),
+						title: 'ProductImage',
+						message: `Unable to list/filter ProductImage: '${message}'`,
 						type: AlertTypes.Error
 					});
 					console.error('EntityService:', error);
@@ -129,8 +116,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			}, (error) => {
 				const message = error.data ? error.data.message : '';
 				Dialogs.showAlert({
-					title: LocaleService.t('codbex-products:t.PRODUCTIMAGE'),
-					message: LocaleService.t('codbex-products:messages.error.unableToCount', { name: '$t(codbex-products:t.PRODUCTIMAGE)', message: message }),
+					title: 'ProductImage',
+					message: `Unable to count ProductImage: '${message}'`,
 					type: AlertTypes.Error
 				});
 				console.error('EntityService:', error);
@@ -167,9 +154,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				id: 'ProductImage-details',
 				params: {
 					action: 'create',
-					entity: {
-						'Product': $scope.selectedMainEntityId
-					},
+					entity: {},
 					selectedMainEntityKey: 'Product',
 					selectedMainEntityId: $scope.selectedMainEntityId,
 				},
@@ -193,15 +178,15 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.deleteEntity = (entity) => {
 			let id = entity.Id;
 			Dialogs.showDialog({
-				title: translated.deleteTitle,
-				message: translated.deleteConfirm,
+				title: 'Delete ProductImage?',
+				message: `Are you sure you want to delete ProductImage? This action cannot be undone.`,
 				buttons: [{
 					id: 'delete-btn-yes',
 					state: ButtonStates.Emphasized,
-					label: translated.yes,
+					label: 'Yes',
 				}, {
 					id: 'delete-btn-no',
-					label: translated.no,
+					label: 'No',
 				}],
 				closeButton: false
 			}).then((buttonId) => {
@@ -212,8 +197,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					}, (error) => {
 						const message = error.data ? error.data.message : '';
 						Dialogs.showAlert({
-							title: LocaleService.t('codbex-products:t.PRODUCTIMAGE'),
-							message: LocaleService.t('codbex-products:messages.error.unableToDelete', { name: '$t(codbex-products:t.PRODUCTIMAGE)', message: message }),
+							title: 'ProductImage',
+							message: `Unable to delete ProductImage: '${message}'`,
 							type: AlertTypes.Error,
 						});
 						console.error('EntityService:', error);

@@ -6,9 +6,6 @@
 const viewData = {
     id: 'ProductAttributeGroup-details',
     label: 'ProductAttributeGroup',
-    translation: {
-        key: 'codbex-products:t.PRODUCTATTRIBUTEGROUP',
-    },
     path: '/services/web/codbex-products/gen/codbex-products/ui/entities/ProductAttributeGroup/dialog-window/index.html',
     perspectiveName: 'entities'
 };

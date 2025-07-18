@@ -6,9 +6,6 @@
 const viewData = {
     id: 'ProductPackaging-details',
     label: 'ProductPackaging',
-    translation: {
-        key: 'codbex-products:t.PRODUCTPACKAGING',
-    },
     path: '/services/web/codbex-products/gen/codbex-products/ui/Products/Product/ProductPackaging/dialog-window/index.html',
     perspectiveName: 'Products'
 };

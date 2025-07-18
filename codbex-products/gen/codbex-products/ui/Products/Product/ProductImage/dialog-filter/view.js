@@ -6,12 +6,6 @@
 const viewData = {
     id: 'ProductImage-filter',
     label: 'ProductImage Filter',
-    translation: {
-        key: 'codbex-products:extName',
-        options: {
-            content: '$t(codbex-products:t.PRODUCTIMAGE) $t(codbex-products:defaults.filter)',
-        }
-    },
     path: '/services/web/codbex-products/gen/codbex-products/ui/Products/Product/ProductImage/dialog-filter/index.html',
     perspectiveName: 'Products'
 };

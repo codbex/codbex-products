@@ -1,23 +1,9 @@
-angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
+angular.module('page', ['blimpKit', 'platformView', 'EntityService'])
 	.config(['EntityServiceProvider', (EntityServiceProvider) => {
 		EntityServiceProvider.baseUrl = '/services/ts/codbex-products/gen/codbex-products/api/Settings/ProductCategoryService.ts';
 	}])
-	.controller('PageController', ($scope, EntityService, Extensions, LocaleService, ButtonStates) => {
+	.controller('PageController', ($scope, EntityService, Extensions, ButtonStates) => {
 		const Dialogs = new DialogHub();
-		let translated = {
-			yes: 'Yes',
-			no: 'No',
-			deleteConfirm: 'Are you sure you want to delete ProductCategory? This action cannot be undone.',
-			deleteTitle: 'Delete ProductCategory?'
-		};
-
-		LocaleService.onInit(() => {
-			translated.yes = LocaleService.t('codbex-products:defaults.yes');
-			translated.no = LocaleService.t('codbex-products:defaults.no');
-			translated.deleteTitle = LocaleService.t('codbex-products:defaults.deleteTitle', { name: '$t(codbex-products:t.PRODUCTCATEGORY)' });
-			translated.deleteConfirm = LocaleService.t('codbex-products:messages.deleteConfirm', { name: '$t(codbex-products:t.PRODUCTCATEGORY)' });
-		});
-
 		$scope.dataPage = 1;
 		$scope.dataCount = 0;
 		$scope.dataLimit = 20;
@@ -31,7 +17,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.triggerPageAction = (action) => {
 			Dialogs.showWindow({
 				hasHeader: true,
-        		title: LocaleService.t(action.translation.key, action.translation.options, action.label),
+        		title: action.label,
 				path: action.path,
 				maxWidth: action.maxWidth,
 				maxHeight: action.maxHeight,
@@ -42,7 +28,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.triggerEntityAction = (action) => {
 			Dialogs.showWindow({
 				hasHeader: true,
-        		title: LocaleService.t(action.translation.key, action.translation.options, action.label),
+        		title: action.label,
 				path: action.path,
 				params: {
 					id: $scope.entity.Id
@@ -96,19 +82,17 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				request.then((response) => {
 					$scope.data = response.data;
 				}, (error) => {
-					const message = error.data ? error.data.message : '';
 					Dialogs.showAlert({
-						title: LocaleService.t('codbex-products:t.PRODUCTCATEGORY'),
-						message: LocaleService.t('codbex-products:messages.error.unableToLF', { name: '$t(codbex-products:t.PRODUCTCATEGORY)', message: message }),
+						title: 'ProductCategory',
+						message: `Unable to list/filter ProductCategory: '${error.message}'`,
 						type: AlertTypes.Error
 					});
 					console.error('EntityService:', error);
 				});
 			}, (error) => {
-				const message = error.data ? error.data.message : '';
 				Dialogs.showAlert({
-					title: LocaleService.t('codbex-products:t.PRODUCTCATEGORY'),
-					message: LocaleService.t('codbex-products:messages.error.unableToCount', { name: '$t(codbex-products:t.PRODUCTCATEGORY)', message: message }),
+					title: 'ProductCategory',
+					message: `Unable to count ProductCategory: '${error.message}'`,
 					type: AlertTypes.Error
 				});
 				console.error('EntityService:', error);
@@ -168,15 +152,15 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.deleteEntity = (entity) => {
 			let id = entity.Id;
 			Dialogs.showDialog({
-				title: translated.deleteTitle,
-				message: translated.deleteConfirm,
+				title: 'Delete ProductCategory?',
+				message: `Are you sure you want to delete ProductCategory? This action cannot be undone.`,
 				buttons: [{
 					id: 'delete-btn-yes',
 					state: ButtonStates.Emphasized,
-					label: translated.yes,
+					label: 'Yes',
 				}, {
 					id: 'delete-btn-no',
-					label: translated.no,
+					label: 'No',
 				}]
 			}).then((buttonId) => {
 				if (buttonId === 'delete-btn-yes') {
@@ -186,8 +170,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					}, (error) => {
 						const message = error.data ? error.data.message : '';
 						Dialogs.showAlert({
-							title: LocaleService.t('codbex-products:t.PRODUCTCATEGORY'),
-							message: LocaleService.t('codbex-products:messages.error.unableToDelete', { name: '$t(codbex-products:t.PRODUCTCATEGORY)', message: message }),
+							title: 'ProductCategory',
+							message: `Unable to delete ProductCategory: '${message}'`,
 							type: AlertTypes.Error
 						});
 						console.error('EntityService:', error);

@@ -6,9 +6,6 @@
 const perspectiveData = {
 	id: 'entities',
 	label: 'Entities',
-	translation: {
-        key: 'codbex-products:t.PRODUCTATTRIBUTEGROUP',
-    },
 	path: '/services/web/codbex-products/gen/codbex-products/ui/entities/index.html',
 	order: 100,
 	icon: '/services/web/resources/unicons/copy.svg'

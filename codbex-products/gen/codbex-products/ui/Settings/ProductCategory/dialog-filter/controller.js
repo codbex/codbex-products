@@ -1,14 +1,9 @@
-angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controller('PageController', ($scope, ViewParameters, LocaleService) => {
+angular.module('page', ['blimpKit', 'platformView']).controller('PageController', ($scope, ViewParameters) => {
 	const Dialogs = new DialogHub();
-	let description = 'Description';
 	$scope.entity = {};
 	$scope.forms = {
 		details: {},
 	};
-
-	LocaleService.onInit(() => {
-		description = LocaleService.t('codbex-products:defaults.description');
-	});
 
 	let params = ViewParameters.get();
 	if (Object.keys(params).length) {
@@ -60,7 +55,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 
 	$scope.alert = (message) => {
 		if (message) Dialogs.showAlert({
-			title: description,
+			title: 'Description',
 			message: message,
 			type: AlertTypes.Information,
 			preformatted: true,
