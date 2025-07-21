@@ -328,6 +328,54 @@
                 ]
             },
             {
+                "name": "CODBEX_PRODUCTFILTER",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "PRODUCTFILTER_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "nullable": true,
+                        "name": "PRODUCTFILTER_NAME"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "PRODUCTFILTER_TYPE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "PRODUCTFILTER_PRODUCT"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_PRODUCTFILTERTYPE",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "PRODUCTFILTERTYPE_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "PRODUCTFILTERTYPE_NAME"
+                    }
+                ]
+            },
+            {
                 "name": "Product_Currency",
                 "type": "foreignKey",
                 "table": "CODBEX_PRODUCT",
@@ -405,6 +453,24 @@
                 "table": "CODBEX_PRODUCTIMAGE",
                 "constraintName": "ProductImage_Product",
                 "columns": "PRODUCTIMAGE_PRODUCT",
+                "referencedTable": "CODBEX_PRODUCT",
+                "referencedColumns": "PRODUCT_ID"
+            },
+            {
+                "name": "ProductFilter_ProductFilterType",
+                "type": "foreignKey",
+                "table": "CODBEX_PRODUCTFILTER",
+                "constraintName": "ProductFilter_ProductFilterType",
+                "columns": "PRODUCTFILTER_TYPE",
+                "referencedTable": "CODBEX_PRODUCTFILTERTYPE",
+                "referencedColumns": "PRODUCTFILTERTYPE_ID"
+            },
+            {
+                "name": "ProductFilter_Product",
+                "type": "foreignKey",
+                "table": "CODBEX_PRODUCTFILTER",
+                "constraintName": "ProductFilter_Product",
+                "columns": "PRODUCTFILTER_PRODUCT",
                 "referencedTable": "CODBEX_PRODUCT",
                 "referencedColumns": "PRODUCT_ID"
             }
