@@ -328,6 +328,74 @@
                 ]
             },
             {
+                "name": "CODBEX_CAMPAIGN",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "CAMPAIGN_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "nullable": true,
+                        "name": "CAMPAIGN_NAME"
+                    },
+                    {
+                        "type": "DATE",
+                        "nullable": true,
+                        "name": "CAMPAIGN_STARTDATE"
+                    },
+                    {
+                        "type": "DATE",
+                        "nullable": true,
+                        "name": "CAMPAIGN_ENDDATE"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_CAMPAIGNENTRY",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "CAMPAIGNENTRY_ID"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "CAMPAIGNENTRY_PRODUCT"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "CAMPAIGNENTRY_CAMPAIGN"
+                    },
+                    {
+                        "type": "DOUBLE",
+                        "nullable": true,
+                        "name": "CAMPAIGNENTRY_OLDPRICE"
+                    },
+                    {
+                        "type": "DOUBLE",
+                        "nullable": true,
+                        "name": "CAMPAIGNENTRY_NEWPRICE"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "nullable": true,
+                        "name": "CAMPAIGNENTRY_GIFT"
+                    }
+                ]
+            },
+            {
                 "name": "Product_Currency",
                 "type": "foreignKey",
                 "table": "CODBEX_PRODUCT",
@@ -407,6 +475,24 @@
                 "columns": "PRODUCTIMAGE_PRODUCT",
                 "referencedTable": "CODBEX_PRODUCT",
                 "referencedColumns": "PRODUCT_ID"
+            },
+            {
+                "name": "CampaignEntry_Product",
+                "type": "foreignKey",
+                "table": "CODBEX_CAMPAIGNENTRY",
+                "constraintName": "CampaignEntry_Product",
+                "columns": "CAMPAIGNENTRY_PRODUCT",
+                "referencedTable": "CODBEX_PRODUCT",
+                "referencedColumns": "PRODUCT_ID"
+            },
+            {
+                "name": "CampaignEntry_Campaign",
+                "type": "foreignKey",
+                "table": "CODBEX_CAMPAIGNENTRY",
+                "constraintName": "CampaignEntry_Campaign",
+                "columns": "CAMPAIGNENTRY_CAMPAIGN",
+                "referencedTable": "CODBEX_CAMPAIGN",
+                "referencedColumns": "CAMPAIGN_ID"
             }
         ]
     },

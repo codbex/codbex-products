@@ -3,88 +3,97 @@ import { producer } from "sdk/messaging";
 import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
 
-export interface ProductAttributeEntity {
+export interface CampaignEntryEntity {
     readonly Id: number;
     Product?: number;
-    Name?: string;
-    Value?: string;
-    Group?: number;
+    Campaign?: number;
+    OldPrice?: number;
+    NewPrice?: number;
+    Gift?: string;
 }
 
-export interface ProductAttributeCreateEntity {
+export interface CampaignEntryCreateEntity {
     readonly Product?: number;
-    readonly Name?: string;
-    readonly Value?: string;
-    readonly Group?: number;
+    readonly Campaign?: number;
+    readonly OldPrice?: number;
+    readonly NewPrice?: number;
+    readonly Gift?: string;
 }
 
-export interface ProductAttributeUpdateEntity extends ProductAttributeCreateEntity {
+export interface CampaignEntryUpdateEntity extends CampaignEntryCreateEntity {
     readonly Id: number;
 }
 
-export interface ProductAttributeEntityOptions {
+export interface CampaignEntryEntityOptions {
     $filter?: {
         equals?: {
             Id?: number | number[];
             Product?: number | number[];
-            Name?: string | string[];
-            Value?: string | string[];
-            Group?: number | number[];
+            Campaign?: number | number[];
+            OldPrice?: number | number[];
+            NewPrice?: number | number[];
+            Gift?: string | string[];
         };
         notEquals?: {
             Id?: number | number[];
             Product?: number | number[];
-            Name?: string | string[];
-            Value?: string | string[];
-            Group?: number | number[];
+            Campaign?: number | number[];
+            OldPrice?: number | number[];
+            NewPrice?: number | number[];
+            Gift?: string | string[];
         };
         contains?: {
             Id?: number;
             Product?: number;
-            Name?: string;
-            Value?: string;
-            Group?: number;
+            Campaign?: number;
+            OldPrice?: number;
+            NewPrice?: number;
+            Gift?: string;
         };
         greaterThan?: {
             Id?: number;
             Product?: number;
-            Name?: string;
-            Value?: string;
-            Group?: number;
+            Campaign?: number;
+            OldPrice?: number;
+            NewPrice?: number;
+            Gift?: string;
         };
         greaterThanOrEqual?: {
             Id?: number;
             Product?: number;
-            Name?: string;
-            Value?: string;
-            Group?: number;
+            Campaign?: number;
+            OldPrice?: number;
+            NewPrice?: number;
+            Gift?: string;
         };
         lessThan?: {
             Id?: number;
             Product?: number;
-            Name?: string;
-            Value?: string;
-            Group?: number;
+            Campaign?: number;
+            OldPrice?: number;
+            NewPrice?: number;
+            Gift?: string;
         };
         lessThanOrEqual?: {
             Id?: number;
             Product?: number;
-            Name?: string;
-            Value?: string;
-            Group?: number;
+            Campaign?: number;
+            OldPrice?: number;
+            NewPrice?: number;
+            Gift?: string;
         };
     },
-    $select?: (keyof ProductAttributeEntity)[],
-    $sort?: string | (keyof ProductAttributeEntity)[],
+    $select?: (keyof CampaignEntryEntity)[],
+    $sort?: string | (keyof CampaignEntryEntity)[],
     $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
 }
 
-export interface ProductAttributeEntityEvent {
+export interface CampaignEntryEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
-    readonly entity: Partial<ProductAttributeEntity>;
+    readonly entity: Partial<CampaignEntryEntity>;
     readonly key: {
         name: string;
         column: string;
@@ -92,41 +101,46 @@ export interface ProductAttributeEntityEvent {
     }
 }
 
-export interface ProductAttributeUpdateEntityEvent extends ProductAttributeEntityEvent {
-    readonly previousEntity: ProductAttributeEntity;
+export interface CampaignEntryUpdateEntityEvent extends CampaignEntryEntityEvent {
+    readonly previousEntity: CampaignEntryEntity;
 }
 
-export class ProductAttributeRepository {
+export class CampaignEntryRepository {
 
     private static readonly DEFINITION = {
-        table: "CODBEX_PRODUCTATTRIBUTE",
+        table: "CODBEX_CAMPAIGNENTRY",
         properties: [
             {
                 name: "Id",
-                column: "PRODUCTATTRIBUTE_ID",
+                column: "CAMPAIGNENTRY_ID",
                 type: "INTEGER",
                 id: true,
                 autoIncrement: true,
             },
             {
                 name: "Product",
-                column: "PRODUCTATTRIBUTE_PRODUCT",
+                column: "CAMPAIGNENTRY_PRODUCT",
                 type: "INTEGER",
             },
             {
-                name: "Name",
-                column: "PRODUCTATTRIBUTE_NAME",
-                type: "VARCHAR",
-            },
-            {
-                name: "Value",
-                column: "PRODUCTATTRIBUTE_VALUE",
-                type: "VARCHAR",
-            },
-            {
-                name: "Group",
-                column: "PRODUCTATTRIBUTE_GROUP",
+                name: "Campaign",
+                column: "CAMPAIGNENTRY_CAMPAIGN",
                 type: "INTEGER",
+            },
+            {
+                name: "OldPrice",
+                column: "CAMPAIGNENTRY_OLDPRICE",
+                type: "DOUBLE",
+            },
+            {
+                name: "NewPrice",
+                column: "CAMPAIGNENTRY_NEWPRICE",
+                type: "DOUBLE",
+            },
+            {
+                name: "Gift",
+                column: "CAMPAIGNENTRY_GIFT",
+                type: "VARCHAR",
             }
         ]
     };
@@ -134,58 +148,58 @@ export class ProductAttributeRepository {
     private readonly dao;
 
     constructor(dataSource = "DefaultDB") {
-        this.dao = daoApi.create(ProductAttributeRepository.DEFINITION, undefined, dataSource);
+        this.dao = daoApi.create(CampaignEntryRepository.DEFINITION, undefined, dataSource);
     }
 
-    public findAll(options: ProductAttributeEntityOptions = {}): ProductAttributeEntity[] {
+    public findAll(options: CampaignEntryEntityOptions = {}): CampaignEntryEntity[] {
         return this.dao.list(options);
     }
 
-    public findById(id: number): ProductAttributeEntity | undefined {
+    public findById(id: number): CampaignEntryEntity | undefined {
         const entity = this.dao.find(id);
         return entity ?? undefined;
     }
 
-    public create(entity: ProductAttributeCreateEntity): number {
+    public create(entity: CampaignEntryCreateEntity): number {
         const id = this.dao.insert(entity);
         this.triggerEvent({
             operation: "create",
-            table: "CODBEX_PRODUCTATTRIBUTE",
+            table: "CODBEX_CAMPAIGNENTRY",
             entity: entity,
             key: {
                 name: "Id",
-                column: "PRODUCTATTRIBUTE_ID",
+                column: "CAMPAIGNENTRY_ID",
                 value: id
             }
         });
         return id;
     }
 
-    public update(entity: ProductAttributeUpdateEntity): void {
+    public update(entity: CampaignEntryUpdateEntity): void {
         const previousEntity = this.findById(entity.Id);
         this.dao.update(entity);
         this.triggerEvent({
             operation: "update",
-            table: "CODBEX_PRODUCTATTRIBUTE",
+            table: "CODBEX_CAMPAIGNENTRY",
             entity: entity,
             previousEntity: previousEntity,
             key: {
                 name: "Id",
-                column: "PRODUCTATTRIBUTE_ID",
+                column: "CAMPAIGNENTRY_ID",
                 value: entity.Id
             }
         });
     }
 
-    public upsert(entity: ProductAttributeCreateEntity | ProductAttributeUpdateEntity): number {
-        const id = (entity as ProductAttributeUpdateEntity).Id;
+    public upsert(entity: CampaignEntryCreateEntity | CampaignEntryUpdateEntity): number {
+        const id = (entity as CampaignEntryUpdateEntity).Id;
         if (!id) {
             return this.create(entity);
         }
 
         const existingEntity = this.findById(id);
         if (existingEntity) {
-            this.update(entity as ProductAttributeUpdateEntity);
+            this.update(entity as CampaignEntryUpdateEntity);
             return id;
         } else {
             return this.create(entity);
@@ -197,22 +211,22 @@ export class ProductAttributeRepository {
         this.dao.remove(id);
         this.triggerEvent({
             operation: "delete",
-            table: "CODBEX_PRODUCTATTRIBUTE",
+            table: "CODBEX_CAMPAIGNENTRY",
             entity: entity,
             key: {
                 name: "Id",
-                column: "PRODUCTATTRIBUTE_ID",
+                column: "CAMPAIGNENTRY_ID",
                 value: id
             }
         });
     }
 
-    public count(options?: ProductAttributeEntityOptions): number {
+    public count(options?: CampaignEntryEntityOptions): number {
         return this.dao.count(options);
     }
 
     public customDataCount(): number {
-        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX__PRODUCTATTRIBUTE"');
+        const resultSet = query.execute('SELECT COUNT(*) AS COUNT FROM "CODBEX_CAMPAIGNENTRY"');
         if (resultSet !== null && resultSet[0] !== null) {
             if (resultSet[0].COUNT !== undefined && resultSet[0].COUNT !== null) {
                 return resultSet[0].COUNT;
@@ -223,8 +237,8 @@ export class ProductAttributeRepository {
         return 0;
     }
 
-    private async triggerEvent(data: ProductAttributeEntityEvent | ProductAttributeUpdateEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-products-Products-ProductAttribute", ["trigger"]);
+    private async triggerEvent(data: CampaignEntryEntityEvent | CampaignEntryUpdateEntityEvent) {
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-products-Products-CampaignEntry", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -232,6 +246,6 @@ export class ProductAttributeRepository {
                 console.error(error);
             }            
         });
-        producer.topic("codbex-products-Products-ProductAttribute").send(JSON.stringify(data));
+        producer.topic("codbex-products-Products-CampaignEntry").send(JSON.stringify(data));
     }
 }
