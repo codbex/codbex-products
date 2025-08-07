@@ -108,7 +108,7 @@ export interface ProductPackagingEntityOptions {
     $limit?: number,
 }
 
-interface ProductPackagingEntityEvent {
+export interface ProductPackagingEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<ProductPackagingEntity>;
@@ -119,7 +119,7 @@ interface ProductPackagingEntityEvent {
     }
 }
 
-interface ProductPackagingUpdateEntityEvent extends ProductPackagingEntityEvent {
+export interface ProductPackagingUpdateEntityEvent extends ProductPackagingEntityEvent {
     readonly previousEntity: ProductPackagingEntity;
 }
 

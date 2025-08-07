@@ -142,8 +142,21 @@
     "PRODUCTATTRIBUTEGROUP": "ProductAttributeGroup",
     "PRODUCTATTRIBUTEGROUP_ID": "Id",
     "PRODUCTATTRIBUTEGROUP_NAME": "Name",
+    "CAMPAIGN": "Campaign",
+    "CAMPAIGN_ID": "Id",
+    "CAMPAIGN_NAME": "Name",
+    "CAMPAIGN_STARTDATE": "StartDate",
+    "CAMPAIGN_ENDDATE": "EndDate",
+    "CAMPAIGNENTRY": "CampaignEntry",
+    "CAMPAIGNENTRY_ID": "Id",
+    "CAMPAIGNENTRY_PRODUCT": "Product",
+    "CAMPAIGNENTRY_CAMPAIGN": "Campaign",
+    "CAMPAIGNENTRY_OLDPRICE": "OldPrice",
+    "CAMPAIGNENTRY_NEWPRICE": "NewPrice",
+    "CAMPAIGNENTRY_GIFT": "Gift",
     "Products": "Products",
     "Categories": "Categories",
-    "Catalogues": "Catalogues"
+    "Catalogues": "Catalogues",
+    "Campaign": "Campaign"
   }
 }

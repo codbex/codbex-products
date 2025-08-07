@@ -54,7 +54,7 @@ export interface ProductTypeEntityOptions {
     $limit?: number,
 }
 
-interface ProductTypeEntityEvent {
+export interface ProductTypeEntityEvent {
     readonly operation: 'create' | 'update' | 'delete';
     readonly table: string;
     readonly entity: Partial<ProductTypeEntity>;
@@ -65,7 +65,7 @@ interface ProductTypeEntityEvent {
     }
 }
 
-interface ProductTypeUpdateEntityEvent extends ProductTypeEntityEvent {
+export interface ProductTypeUpdateEntityEvent extends ProductTypeEntityEvent {
     readonly previousEntity: ProductTypeEntity;
 }
 
