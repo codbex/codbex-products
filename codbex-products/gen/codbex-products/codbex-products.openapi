@@ -6056,6 +6056,7 @@ components:
       type: object
       required:
         - Campaign
+        - Percent
         - OldPrice
         - NewPrice
       properties:
@@ -6066,6 +6067,9 @@ components:
           type: integer
           format: int32
         Campaign:
+          type: integer
+          format: int32
+        Percent:
           type: integer
           format: int32
         OldPrice:
@@ -6104,6 +6108,14 @@ components:
                         type: integer
                         format: int32
                 Campaign:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Percent:
                   oneOf:
                     - type: integer
                       format: int32
@@ -6165,6 +6177,14 @@ components:
                       items:
                         type: integer
                         format: int32
+                Percent:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
                 OldPrice:
                   oneOf:
                     - type: number
@@ -6198,6 +6218,7 @@ components:
                 Id:
                 Product:
                 Campaign:
+                Percent:
                 OldPrice:
                 NewPrice:
                 Gift:
@@ -6214,6 +6235,9 @@ components:
                   type: integer
                   format: int32
                 Campaign:
+                  type: integer
+                  format: int32
+                Percent:
                   type: integer
                   format: int32
                 OldPrice:
@@ -6238,6 +6262,9 @@ components:
                 Campaign:
                   type: integer
                   format: int32
+                Percent:
+                  type: integer
+                  format: int32
                 OldPrice:
                   type: number
                   format: double
@@ -6258,6 +6285,9 @@ components:
                   type: integer
                   format: int32
                 Campaign:
+                  type: integer
+                  format: int32
+                Percent:
                   type: integer
                   format: int32
                 OldPrice:
@@ -6282,6 +6312,9 @@ components:
                 Campaign:
                   type: integer
                   format: int32
+                Percent:
+                  type: integer
+                  format: int32
                 OldPrice:
                   type: number
                   format: double
@@ -6294,12 +6327,12 @@ components:
                   maxLength: 200
         $select:
           type: array
-          example: ["Id", "Product", "Campaign", "OldPrice", "NewPrice", "Gift"]
+          example: ["Id", "Product", "Campaign", "Percent", "OldPrice", "NewPrice", "Gift"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Product,Campaign,OldPrice,NewPrice,Gift"
+            example: "Id,Product,Campaign,Percent,OldPrice,NewPrice,Gift"
         $order:
           type: string
           enum: ["asc", "desc"]

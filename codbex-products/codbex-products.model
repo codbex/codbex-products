@@ -1430,6 +1430,19 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "dataName": "CAMPAIGNENTRY_PERCENT",
+                        "dataNullable": "true",
+                        "dataType": "INTEGER",
+                        "description": "",
+                        "isRequiredProperty": "true",
+                        "name": "Percent",
+                        "tooltip": "",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "20",
+                        "widgetSize": "",
+                        "widgetType": "NUMBER"
+                    },
+                    {
                         "dataName": "CAMPAIGNENTRY_OLDPRICE",
                         "dataNullable": "true",
                         "dataType": "DOUBLE",

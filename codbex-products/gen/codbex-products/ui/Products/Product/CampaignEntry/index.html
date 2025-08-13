@@ -30,6 +30,7 @@
 				<thead bk-table-header sticky="true">
 					<tr bk-table-row>
 						<th bk-table-header-cell>{{ 'codbex-products:t.CAMPAIGNENTRY_CAMPAIGN' | t:'Campaign' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-products:t.CAMPAIGNENTRY_PERCENT' | t:'Percent' }}</th>
 						<th bk-table-header-cell>{{ 'codbex-products:t.CAMPAIGNENTRY_OLDPRICE' | t:'OldPrice' }}</th>
 						<th bk-table-header-cell>{{ 'codbex-products:t.CAMPAIGNENTRY_NEWPRICE' | t:'NewPrice' }}</th>
 						<th bk-table-header-cell>{{ 'codbex-products:t.CAMPAIGNENTRY_GIFT' | t:'Gift' }}</th>
@@ -44,6 +45,7 @@
 						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">
 							{{optionsCampaignValue(next.Campaign)}}
 						</td>
+						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Percent}}</td>
 						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.OldPrice}}</td>
 						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.NewPrice}}</td>
 						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Gift}}</td>
