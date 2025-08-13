@@ -133,6 +133,9 @@ class CampaignEntryService {
         if (entity.Campaign === null || entity.Campaign === undefined) {
             throw new ValidationError(`The 'Campaign' property is required, provide a valid value`);
         }
+        if (entity.Percent === null || entity.Percent === undefined) {
+            throw new ValidationError(`The 'Percent' property is required, provide a valid value`);
+        }
         if (entity.OldPrice === null || entity.OldPrice === undefined) {
             throw new ValidationError(`The 'OldPrice' property is required, provide a valid value`);
         }

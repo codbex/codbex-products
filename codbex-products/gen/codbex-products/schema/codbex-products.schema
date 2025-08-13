@@ -378,6 +378,11 @@
                         "name": "CAMPAIGNENTRY_CAMPAIGN"
                     },
                     {
+                        "type": "INTEGER",
+                        "nullable": true,
+                        "name": "CAMPAIGNENTRY_PERCENT"
+                    },
+                    {
                         "type": "DOUBLE",
                         "nullable": true,
                         "name": "CAMPAIGNENTRY_OLDPRICE"

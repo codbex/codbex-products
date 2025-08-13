@@ -42,6 +42,9 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 		if (entity.Campaign !== undefined) {
 			filter.$filter.equals.Campaign = entity.Campaign;
 		}
+		if (entity.Percent !== undefined) {
+			filter.$filter.equals.Percent = entity.Percent;
+		}
 		if (entity.OldPrice !== undefined) {
 			filter.$filter.equals.OldPrice = entity.OldPrice;
 		}

@@ -7,6 +7,7 @@ export interface CampaignEntryEntity {
     readonly Id: number;
     Product?: number;
     Campaign?: number;
+    Percent?: number;
     OldPrice?: number;
     NewPrice?: number;
     Gift?: string;
@@ -15,6 +16,7 @@ export interface CampaignEntryEntity {
 export interface CampaignEntryCreateEntity {
     readonly Product?: number;
     readonly Campaign?: number;
+    readonly Percent?: number;
     readonly OldPrice?: number;
     readonly NewPrice?: number;
     readonly Gift?: string;
@@ -30,6 +32,7 @@ export interface CampaignEntryEntityOptions {
             Id?: number | number[];
             Product?: number | number[];
             Campaign?: number | number[];
+            Percent?: number | number[];
             OldPrice?: number | number[];
             NewPrice?: number | number[];
             Gift?: string | string[];
@@ -38,6 +41,7 @@ export interface CampaignEntryEntityOptions {
             Id?: number | number[];
             Product?: number | number[];
             Campaign?: number | number[];
+            Percent?: number | number[];
             OldPrice?: number | number[];
             NewPrice?: number | number[];
             Gift?: string | string[];
@@ -46,6 +50,7 @@ export interface CampaignEntryEntityOptions {
             Id?: number;
             Product?: number;
             Campaign?: number;
+            Percent?: number;
             OldPrice?: number;
             NewPrice?: number;
             Gift?: string;
@@ -54,6 +59,7 @@ export interface CampaignEntryEntityOptions {
             Id?: number;
             Product?: number;
             Campaign?: number;
+            Percent?: number;
             OldPrice?: number;
             NewPrice?: number;
             Gift?: string;
@@ -62,6 +68,7 @@ export interface CampaignEntryEntityOptions {
             Id?: number;
             Product?: number;
             Campaign?: number;
+            Percent?: number;
             OldPrice?: number;
             NewPrice?: number;
             Gift?: string;
@@ -70,6 +77,7 @@ export interface CampaignEntryEntityOptions {
             Id?: number;
             Product?: number;
             Campaign?: number;
+            Percent?: number;
             OldPrice?: number;
             NewPrice?: number;
             Gift?: string;
@@ -78,6 +86,7 @@ export interface CampaignEntryEntityOptions {
             Id?: number;
             Product?: number;
             Campaign?: number;
+            Percent?: number;
             OldPrice?: number;
             NewPrice?: number;
             Gift?: string;
@@ -125,6 +134,11 @@ export class CampaignEntryRepository {
             {
                 name: "Campaign",
                 column: "CAMPAIGNENTRY_CAMPAIGN",
+                type: "INTEGER",
+            },
+            {
+                name: "Percent",
+                column: "CAMPAIGNENTRY_PERCENT",
                 type: "INTEGER",
             },
             {
