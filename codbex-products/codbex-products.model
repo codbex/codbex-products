@@ -228,7 +228,6 @@
                         "dataNullable": "false",
                         "dataType": "VARCHAR",
                         "description": "",
-                        "isRequiredProperty": "true",
                         "name": "Batch",
                         "tooltip": "",
                         "widgetIsMajor": "true",
