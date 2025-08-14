@@ -3982,7 +3982,6 @@ components:
       required:
         - Title
         - Model
-        - Batch
         - Price
         - Currency
         - BaseUnit
