@@ -214,7 +214,6 @@
                         "dataNullable": "false",
                         "dataType": "VARCHAR",
                         "description": "",
-                        "isRequiredProperty": "true",
                         "name": "Model",
                         "tooltip": "",
                         "widgetIsMajor": "true",

@@ -3981,7 +3981,6 @@ components:
       type: object
       required:
         - Title
-        - Model
         - Price
         - Currency
         - BaseUnit

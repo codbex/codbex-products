@@ -156,9 +156,6 @@ class ProductService {
         if (entity.Image?.length > 500) {
             throw new ValidationError(`The 'Image' exceeds the maximum length of [500] characters`);
         }
-        if (entity.Model === null || entity.Model === undefined) {
-            throw new ValidationError(`The 'Model' property is required, provide a valid value`);
-        }
         if (entity.Model?.length > 200) {
             throw new ValidationError(`The 'Model' exceeds the maximum length of [200] characters`);
         }
