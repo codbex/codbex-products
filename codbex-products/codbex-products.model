@@ -214,7 +214,6 @@
                         "dataNullable": "false",
                         "dataType": "VARCHAR",
                         "description": "",
-                        "isRequiredProperty": "true",
                         "name": "Model",
                         "tooltip": "",
                         "widgetIsMajor": "true",
@@ -239,8 +238,8 @@
                         "dataLength": "NaN",
                         "dataName": "PRODUCT_PRICE",
                         "dataNullable": "true",
-                        "dataPrecision": "NaN",
-                        "dataScale": "NaN",
+                        "dataPrecision": "",
+                        "dataScale": "",
                         "dataType": "DECIMAL",
                         "description": "",
                         "isRequiredProperty": "true",
@@ -249,7 +248,7 @@
                         "widgetIsMajor": "true",
                         "widgetLength": "20",
                         "widgetSize": "",
-                        "widgetType": "TEXTBOX"
+                        "widgetType": "NUMBER"
                     },
                     {
                         "dataName": "PRODUCT_CURRENCY",
