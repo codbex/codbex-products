@@ -82,7 +82,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			});
 		};
 
-		$scope.serviceCampaign = '/services/ts/codbex-products/gen/codbex-products/api/Campaign/CampaignService.ts';
+		$scope.serviceCampaign = '/services/ts/codbex-products/gen/codbex-products/api/Campaigns/CampaignService.ts';
 
 		$scope.alert = (message) => {
 			if (message) Dialogs.showAlert({

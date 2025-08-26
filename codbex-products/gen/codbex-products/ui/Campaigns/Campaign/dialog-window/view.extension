@@ -1,5 +1,5 @@
 {
-    "module": "codbex-products/gen/codbex-products/ui/Campaign/Campaign/dialog-window/view.js",
+    "module": "codbex-products/gen/codbex-products/ui/Campaigns/Campaign/dialog-window/view.js",
     "extensionPoint": "application-windows",
     "description": "codbex-products - Application Dialog Window"
 }

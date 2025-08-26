@@ -34,6 +34,7 @@
       "roleWrite": "codbex-products.Products.ProductPackagingFullAccess"
     }
   ],
+  "tprefix": "codbex-products-model",
   "projectName": "codbex-products",
   "workspaceName": "workspace",
   "filePath": "codbex-products.model",
@@ -102,7 +103,7 @@
       "icon": "/services/web/resources/unicons/user-check.svg",
       "role": ""
     },
-    "Campaign": {
+    "Campaigns": {
       "views": [
         "Campaign",
         "Campaign-details",
@@ -125,16 +126,15 @@
         "Campaign-details",
         "Campaign-details"
       ],
-      "name": "Campaign",
-      "label": "Campaign",
+      "name": "Campaigns",
+      "label": "Campaigns",
       "header": "",
-      "order": "3100",
-      "navId": "",
+      "order": "300",
+      "navId": "products-navigation-group",
       "icon": "/services/web/resources/unicons/shopping-bag.svg",
       "role": ""
     }
   },
-  "tprefix": "codbex-products-model",
   "models": [
     {
       "properties": [
@@ -1827,7 +1827,7 @@
           "relationshipName": "ProductAttribute_ProductAttributeGroup",
           "relationshipEntityName": "ProductAttributeGroup",
           "relationshipEntityPerspectiveName": "Settings",
-          "relationshipEntityPerspectiveLabel": "",
+          "relationshipEntityPerspectiveLabel": "Entities",
           "dataNotNull": false,
           "dataAutoIncrement": false,
           "dataPrimaryKey": false,
@@ -3044,6 +3044,8 @@
       "dataName": "CAMPAIGN",
       "dataQuery": "",
       "description": "Manage entity Campaign",
+      "feedPassword": "YWRtaW4=",
+      "feedUsername": "YWRtaW4=",
       "generateDefaultRoles": "false",
       "generateReport": "false",
       "icon": "/services/web/resources/unicons/file.svg",
@@ -3054,10 +3056,10 @@
       "name": "Campaign",
       "perspectiveHeader": "",
       "perspectiveIcon": "/services/web/resources/unicons/shopping-bag.svg",
-      "perspectiveLabel": "Campaign",
-      "perspectiveName": "Campaign",
-      "perspectiveNavId": "",
-      "perspectiveOrder": "3100",
+      "perspectiveLabel": "Campaings",
+      "perspectiveName": "Campaigns",
+      "perspectiveNavId": "products-navigation-group",
+      "perspectiveOrder": "300",
       "perspectiveRole": "",
       "title": "Campaign",
       "tooltip": "Campaign",
@@ -3218,7 +3220,7 @@
           "widgetType": "DROPDOWN",
           "relationshipName": "CampaignEntry_Campaign",
           "relationshipEntityName": "Campaign",
-          "relationshipEntityPerspectiveName": "Campaign",
+          "relationshipEntityPerspectiveName": "Campaigns",
           "relationshipEntityPerspectiveLabel": "Entities",
           "dataNotNull": false,
           "dataAutoIncrement": false,
@@ -3226,7 +3228,7 @@
           "dataUnique": false,
           "isCalculatedProperty": false,
           "widgetLabel": "Campaign",
-          "widgetDropdownUrl": "/services/ts/codbex-products/gen/codbex-products/api/Campaign/CampaignService.ts",
+          "widgetDropdownUrl": "/services/ts/codbex-products/gen/codbex-products/api/Campaigns/CampaignService.ts",
           "dataTypeJava": "int",
           "dataTypeTypescript": "number",
           "inputRule": ""

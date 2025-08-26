@@ -12,8 +12,8 @@ const viewData = {
     region: 'center',
     lazyLoad: false,
 	autoFocusTab: true,
-    path: '/services/web/codbex-products/gen/codbex-products/ui/Campaign/Campaign/main-details/index.html',
-    perspectiveName: 'Campaign'
+    path: '/services/web/codbex-products/gen/codbex-products/ui/Campaigns/Campaign/main-details/index.html',
+    perspectiveName: 'Campaigns'
 };
 if (typeof exports !== 'undefined') {
 	exports.getView = () => viewData;

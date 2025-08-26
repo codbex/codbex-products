@@ -221,7 +221,7 @@ export class CampaignRepository {
     }
 
     private async triggerEvent(data: CampaignEntityEvent | CampaignUpdateEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-products-Campaign-Campaign", ["trigger"]);
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-products-Campaigns-Campaign", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -229,6 +229,6 @@ export class CampaignRepository {
                 console.error(error);
             }            
         });
-        producer.topic("codbex-products-Campaign-Campaign").send(JSON.stringify(data));
+        producer.topic("codbex-products-Campaigns-Campaign").send(JSON.stringify(data));
     }
 }

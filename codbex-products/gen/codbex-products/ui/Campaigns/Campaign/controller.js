@@ -1,6 +1,6 @@
 angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
 	.config(['EntityServiceProvider', (EntityServiceProvider) => {
-		EntityServiceProvider.baseUrl = '/services/ts/codbex-products/gen/codbex-products/api/Campaign/CampaignService.ts';
+		EntityServiceProvider.baseUrl = '/services/ts/codbex-products/gen/codbex-products/api/Campaigns/CampaignService.ts';
 	}])
 	.controller('PageController', ($scope, EntityService, Extensions, LocaleService, ButtonStates) => {
 		const Dialogs = new DialogHub();
@@ -25,7 +25,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 
 		//-----------------Custom Actions-------------------//
 		Extensions.getWindows(['codbex-products-custom-action']).then((response) => {
-			$scope.pageActions = response.data.filter(e => e.perspective === 'Campaign' && e.view === 'Campaign' && (e.type === 'page' || e.type === undefined));
+			$scope.pageActions = response.data.filter(e => e.perspective === 'Campaigns' && e.view === 'Campaign' && (e.type === 'page' || e.type === undefined));
 		});
 
 		$scope.triggerPageAction = (action) => {
@@ -53,21 +53,21 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		}
 
 		//-----------------Events-------------------//
-		Dialogs.addMessageListener({ topic: 'codbex-products.Campaign.Campaign.clearDetails', handler: () => {
+		Dialogs.addMessageListener({ topic: 'codbex-products.Campaigns.Campaign.clearDetails', handler: () => {
 			$scope.$evalAsync(() => {
 				$scope.selectedEntity = null;
 				$scope.action = 'select';
 			});
 		}});
-		Dialogs.addMessageListener({ topic: 'codbex-products.Campaign.Campaign.entityCreated', handler: () => {
+		Dialogs.addMessageListener({ topic: 'codbex-products.Campaigns.Campaign.entityCreated', handler: () => {
 			refreshData();
 			$scope.loadPage($scope.dataPage, $scope.filter);
 		}});
-		Dialogs.addMessageListener({ topic: 'codbex-products.Campaign.Campaign.entityUpdated', handler: () => {
+		Dialogs.addMessageListener({ topic: 'codbex-products.Campaigns.Campaign.entityUpdated', handler: () => {
 			refreshData();
 			$scope.loadPage($scope.dataPage, $scope.filter);
 		}});
-		Dialogs.addMessageListener({ topic: 'codbex-products.Campaign.Campaign.entitySearch', handler: (data) => {
+		Dialogs.addMessageListener({ topic: 'codbex-products.Campaigns.Campaign.entitySearch', handler: (data) => {
 			resetPagination();
 			$scope.filter = data.filter;
 			$scope.filterEntity = data.entity;
@@ -134,7 +134,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 
 		$scope.selectEntity = (entity) => {
 			$scope.selectedEntity = entity;
-			Dialogs.postMessage({ topic: 'codbex-products.Campaign.Campaign.entitySelected', data: {
+			Dialogs.postMessage({ topic: 'codbex-products.Campaigns.Campaign.entitySelected', data: {
 				entity: entity,
 				selectedMainEntityId: entity.Id,
 			}});
@@ -144,12 +144,12 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			$scope.selectedEntity = null;
 			$scope.action = 'create';
 
-			Dialogs.triggerEvent('codbex-products.Campaign.Campaign.createEntity');
+			Dialogs.triggerEvent('codbex-products.Campaigns.Campaign.createEntity');
 		};
 
 		$scope.updateEntity = () => {
 			$scope.action = 'update';
-			Dialogs.postMessage({ topic: 'codbex-products.Campaign.Campaign.updateEntity', data: {
+			Dialogs.postMessage({ topic: 'codbex-products.Campaigns.Campaign.updateEntity', data: {
 				entity: $scope.selectedEntity,
 			}});
 		};
@@ -173,7 +173,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					EntityService.delete(id).then(() => {
 						refreshData();
 						$scope.loadPage($scope.dataPage, $scope.filter);
-						Dialogs.triggerEvent('codbex-products.Campaign.Campaign.clearDetails');
+						Dialogs.triggerEvent('codbex-products.Campaigns.Campaign.clearDetails');
 					}, (error) => {
 						const message = error.data ? error.data.message : '';
 						Dialogs.showAlert({

@@ -9,8 +9,8 @@ const viewData = {
     translation: {
         key: 'codbex-products:codbex-products-model.t.CAMPAIGN',
     },
-    path: "/services/web/codbex-products/gen/codbex-products/ui/Campaign/Campaign/dialog-window/index.html",
-    perspectiveName: "Campaign",
+    path: "/services/web/codbex-products/gen/codbex-products/ui/Campaigns/Campaign/dialog-window/index.html",
+    perspectiveName: "Campaigns",
 };
 if (typeof exports !== 'undefined') {
     exports.getView = () => viewData;

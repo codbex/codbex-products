@@ -230,7 +230,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.optionsCampaign = [];
 
 
-		$http.get('/services/ts/codbex-products/gen/codbex-products/api/Campaign/CampaignService.ts').then((response) => {
+		$http.get('/services/ts/codbex-products/gen/codbex-products/api/Campaigns/CampaignService.ts').then((response) => {
 			$scope.optionsCampaign = response.data.map(e => ({
 				value: e.Id,
 				text: e.Name

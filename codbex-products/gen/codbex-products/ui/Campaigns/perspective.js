@@ -4,13 +4,14 @@
  * Do not modify the content as it may be re-generated again.
  */
 const perspectiveData = {
-	id: 'Campaign',
-	label: 'Campaign',
+	id: 'Campaigns',
+	label: 'Campaings',
 	translation: {
         key: 'codbex-products:codbex-products-model.t.CAMPAIGN',
     },
-	path: '/services/web/codbex-products/gen/codbex-products/ui/Campaign/index.html',
-	order: 3100,
+	path: '/services/web/codbex-products/gen/codbex-products/ui/Campaigns/index.html',
+	groupId: 'products-navigation-group',
+	order: 300,
 	icon: '/services/web/resources/unicons/shopping-bag.svg'
 };
 if (typeof exports !== 'undefined') {

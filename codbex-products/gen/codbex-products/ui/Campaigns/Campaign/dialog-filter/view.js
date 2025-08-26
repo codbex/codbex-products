@@ -12,8 +12,8 @@ const viewData = {
             content: '$t(codbex-products:codbex-products-model.t.CAMPAIGN) $t(codbex-products:codbex-products-model.defaults.filter)',
         }
     },
-    path: '/services/web/codbex-products/gen/codbex-products/ui/Campaign/Campaign/dialog-filter/index.html',
-    perspectiveName: 'Campaign'
+    path: '/services/web/codbex-products/gen/codbex-products/ui/Campaigns/Campaign/dialog-filter/index.html',
+    perspectiveName: 'Campaigns'
 };
 if (typeof exports !== 'undefined') {
     exports.getView = () => viewData;

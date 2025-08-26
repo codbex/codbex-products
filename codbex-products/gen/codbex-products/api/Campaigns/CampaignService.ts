@@ -1,10 +1,10 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { CampaignRepository, CampaignEntityOptions } from "../../dao/Campaign/CampaignRepository";
+import { CampaignRepository, CampaignEntityOptions } from "../../dao/Campaigns/CampaignRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-products-Campaign-Campaign", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-products-Campaigns-Campaign", ["validate"]);
 
 @Controller
 class CampaignService {
@@ -30,7 +30,7 @@ class CampaignService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-products/gen/codbex-products/api/Campaign/CampaignService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-products/gen/codbex-products/api/Campaigns/CampaignService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {

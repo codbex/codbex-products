@@ -1,6 +1,6 @@
 angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
 	.config(['EntityServiceProvider', (EntityServiceProvider) => {
-		EntityServiceProvider.baseUrl = '/services/ts/codbex-products/gen/codbex-products/api/Campaign/CampaignService.ts';
+		EntityServiceProvider.baseUrl = '/services/ts/codbex-products/gen/codbex-products/api/Campaigns/CampaignService.ts';
 	}])
 	.controller('PageController', ($scope, $http, ViewParameters, LocaleService, EntityService) => {
 		const Dialogs = new DialogHub();
@@ -46,7 +46,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			let entity = $scope.entity;
 			entity[$scope.selectedMainEntityKey] = $scope.selectedMainEntityId;
 			EntityService.create(entity).then((response) => {
-				Dialogs.postMessage({ topic: 'codbex-products.Campaign.Campaign.entityCreated', data: response.data });
+				Dialogs.postMessage({ topic: 'codbex-products.Campaigns.Campaign.entityCreated', data: response.data });
 				Notifications.show({
 					title: LocaleService.t('codbex-products:codbex-products-model.t.CAMPAIGN'),
 					description: propertySuccessfullyCreated,
@@ -67,7 +67,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			let entity = $scope.entity;
 			entity[$scope.selectedMainEntityKey] = $scope.selectedMainEntityId;
 			EntityService.update(id, entity).then((response) => {
-				Dialogs.postMessage({ topic: 'codbex-products.Campaign.Campaign.entityUpdated', data: response.data });
+				Dialogs.postMessage({ topic: 'codbex-products.Campaigns.Campaign.entityUpdated', data: response.data });
 				$scope.cancel();
 				Notifications.show({
 					title: LocaleService.t('codbex-products:codbex-products-model.t.CAMPAIGN'),

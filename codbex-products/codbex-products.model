@@ -601,7 +601,7 @@
                         "relationshipName": "ProductAttribute_ProductAttributeGroup",
                         "relationshipEntityName": "ProductAttributeGroup",
                         "relationshipEntityPerspectiveName": "Settings",
-                        "relationshipEntityPerspectiveLabel": ""
+                        "relationshipEntityPerspectiveLabel": "Entities"
                     }
                 ],
                 "caption": "Manage entity ProductAttribute",
@@ -1277,14 +1277,14 @@
                 "generateDefaultRoles": "false",
                 "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "",
+                "layoutType": "MANAGE",
                 "menuIndex": "100",
                 "menuKey": "productattributegroup",
                 "menuLabel": "ProductAttributeGroup",
                 "name": "ProductAttributeGroup",
                 "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
-                "perspectiveLabel": "",
+                "perspectiveLabel": "Entities",
                 "perspectiveName": "Settings",
                 "perspectiveNavId": "",
                 "perspectiveOrder": "100",
@@ -1354,6 +1354,8 @@
                 "dataName": "CAMPAIGN",
                 "dataQuery": "",
                 "description": "Manage entity Campaign",
+                "feedPassword": "YWRtaW4=",
+                "feedUsername": "YWRtaW4=",
                 "generateDefaultRoles": "false",
                 "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
@@ -1364,10 +1366,10 @@
                 "name": "Campaign",
                 "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/shopping-bag.svg",
-                "perspectiveLabel": "Campaign",
-                "perspectiveName": "Campaign",
-                "perspectiveNavId": "",
-                "perspectiveOrder": "3100",
+                "perspectiveLabel": "Campaings",
+                "perspectiveName": "Campaigns",
+                "perspectiveNavId": "products-navigation-group",
+                "perspectiveOrder": "300",
                 "perspectiveRole": "",
                 "title": "Campaign",
                 "tooltip": "Campaign",
@@ -1423,7 +1425,7 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "CampaignEntry_Campaign",
                         "relationshipEntityName": "Campaign",
-                        "relationshipEntityPerspectiveName": "Campaign",
+                        "relationshipEntityPerspectiveName": "Campaigns",
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
@@ -1520,17 +1522,11 @@
                 "order": "1500"
             },
             {
-                "name": "Catalogues",
-                "label": "Catalogues",
+                "name": "Campaigns",
+                "label": "Campaings",
                 "navId": "products-navigation-group",
-                "icon": "/services/web/resources/unicons/book-open.svg",
-                "order": "300"
-            },
-            {
-                "name": "Campaign",
-                "label": "Campaign",
                 "icon": "/services/web/resources/unicons/shopping-bag.svg",
-                "order": "3100"
+                "order": "300"
             }
         ],
         "navigations": []

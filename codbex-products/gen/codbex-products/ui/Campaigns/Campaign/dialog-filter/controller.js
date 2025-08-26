@@ -62,11 +62,11 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 		if (entity.EndDateTo) {
 			filter.$filter.lessThanOrEqual.EndDate = entity.EndDateTo;
 		}
-		Dialogs.postMessage({ topic: 'codbex-products.Campaign.Campaign.entitySearch', data: {
+		Dialogs.postMessage({ topic: 'codbex-products.Campaigns.Campaign.entitySearch', data: {
 			entity: entity,
 			filter: filter
 		}});
-		Dialogs.triggerEvent('codbex-products.Campaign.Campaign.clearDetails');
+		Dialogs.triggerEvent('codbex-products.Campaigns.Campaign.clearDetails');
 		$scope.cancel();
 	};
 

@@ -1,6 +1,6 @@
 angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
 	.config(["EntityServiceProvider", (EntityServiceProvider) => {
-		EntityServiceProvider.baseUrl = '/services/ts/codbex-products/gen/codbex-products/api/Campaign/CampaignService.ts';
+		EntityServiceProvider.baseUrl = '/services/ts/codbex-products/gen/codbex-products/api/Campaigns/CampaignService.ts';
 	}])
 	.controller('PageController', ($scope, $http, Extensions, LocaleService, EntityService) => {
 		const Dialogs = new DialogHub();
@@ -30,7 +30,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 
 		//-----------------Custom Actions-------------------//
 		Extensions.getWindows(['codbex-products-custom-action']).then((response) => {
-			$scope.entityActions = response.data.filter(e => e.perspective === 'Campaign' && e.view === 'Campaign' && e.type === 'entity');
+			$scope.entityActions = response.data.filter(e => e.perspective === 'Campaigns' && e.view === 'Campaign' && e.type === 'entity');
 		});
 
 		$scope.triggerEntityAction = (action) => {
@@ -47,13 +47,13 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		//-----------------Custom Actions-------------------//
 
 		//-----------------Events-------------------//
-		Dialogs.addMessageListener({ topic: 'codbex-products.Campaign.Campaign.clearDetails', handler: () => {
+		Dialogs.addMessageListener({ topic: 'codbex-products.Campaigns.Campaign.clearDetails', handler: () => {
 			$scope.$evalAsync(() => {
 				$scope.entity = {};
 				$scope.action = 'select';
 			});
 		}});
-		Dialogs.addMessageListener({ topic: 'codbex-products.Campaign.Campaign.entitySelected', handler: (data) => {
+		Dialogs.addMessageListener({ topic: 'codbex-products.Campaigns.Campaign.entitySelected', handler: (data) => {
 			$scope.$evalAsync(() => {
 				if (data.entity.StartDate) {
 					data.entity.StartDate = new Date(data.entity.StartDate);
@@ -65,13 +65,13 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				$scope.action = 'select';
 			});
 		}});
-		Dialogs.addMessageListener({ topic: 'codbex-products.Campaign.Campaign.createEntity', handler: (data) => {
+		Dialogs.addMessageListener({ topic: 'codbex-products.Campaigns.Campaign.createEntity', handler: (data) => {
 			$scope.$evalAsync(() => {
 				$scope.entity = {};
 				$scope.action = 'create';
 			});
 		}});
-		Dialogs.addMessageListener({ topic: 'codbex-products.Campaign.Campaign.updateEntity', handler: (data) => {
+		Dialogs.addMessageListener({ topic: 'codbex-products.Campaigns.Campaign.updateEntity', handler: (data) => {
 			$scope.$evalAsync(() => {
 				if (data.entity.StartDate) {
 					data.entity.StartDate = new Date(data.entity.StartDate);
@@ -89,8 +89,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 
 		$scope.create = () => {
 			EntityService.create($scope.entity).then((response) => {
-				Dialogs.postMessage({ topic: 'codbex-products.Campaign.Campaign.entityCreated', data: response.data });
-				Dialogs.postMessage({ topic: 'codbex-products.Campaign.Campaign.clearDetails' , data: response.data });
+				Dialogs.postMessage({ topic: 'codbex-products.Campaigns.Campaign.entityCreated', data: response.data });
+				Dialogs.postMessage({ topic: 'codbex-products.Campaigns.Campaign.clearDetails' , data: response.data });
 				Notifications.show({
 					title: LocaleService.t('codbex-products:codbex-products-model.t.CAMPAIGN'),
 					description: propertySuccessfullyCreated,
@@ -109,8 +109,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 
 		$scope.update = () => {
 			EntityService.update($scope.entity.Id, $scope.entity).then((response) => {
-				Dialogs.postMessage({ topic: 'codbex-products.Campaign.Campaign.entityUpdated', data: response.data });
-				Dialogs.postMessage({ topic: 'codbex-products.Campaign.Campaign.clearDetails', data: response.data });
+				Dialogs.postMessage({ topic: 'codbex-products.Campaigns.Campaign.entityUpdated', data: response.data });
+				Dialogs.postMessage({ topic: 'codbex-products.Campaigns.Campaign.clearDetails', data: response.data });
 				Notifications.show({
 					title: LocaleService.t('codbex-products:codbex-products-model.t.CAMPAIGN'),
 					description: propertySuccessfullyUpdated,
@@ -128,7 +128,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		};
 
 		$scope.cancel = () => {
-			Dialogs.triggerEvent('codbex-products.Campaign.Campaign.clearDetails');
+			Dialogs.triggerEvent('codbex-products.Campaigns.Campaign.clearDetails');
 		};
 		
 		//-----------------Dialogs-------------------//
