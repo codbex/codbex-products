@@ -7,7 +7,7 @@ const viewData = {
     id: 'ProductCategory-details',
     label: 'ProductCategory',
     translation: {
-        key: 'codbex-products:t.PRODUCTCATEGORY',
+        key: 'codbex-products:codbex-products-model.t.PRODUCTCATEGORY',
     },
     path: '/services/web/codbex-products/gen/codbex-products/ui/Settings/ProductCategory/dialog-window/index.html',
     perspectiveName: 'Settings'

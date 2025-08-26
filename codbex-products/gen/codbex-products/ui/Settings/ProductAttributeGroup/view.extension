@@ -1,0 +1,5 @@
+{
+    "module": "codbex-products/gen/codbex-products/ui/Settings/ProductAttributeGroup/view.js",
+    "extensionPoint": "application-settings",
+    "description": "codbex-products - Application View"
+}

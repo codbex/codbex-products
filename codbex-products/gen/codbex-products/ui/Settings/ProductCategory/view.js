@@ -7,7 +7,7 @@ const viewData = {
     id: 'ProductCategory',
     label: 'ProductCategory',
     translation: {
-        key: 'codbex-products:t.PRODUCTCATEGORY',
+        key: 'codbex-products:codbex-products-model.t.PRODUCTCATEGORY',
     },
     region: 'center',
     lazyLoad: true,

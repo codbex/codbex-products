@@ -19,10 +19,10 @@
                 <bk-form-group label="{{formHeaders[action]}}" name="entityForm" transclude-classes="fd-container fd-form-layout-grid-container">
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idName" ng-required="false" colon="true">{{ 'codbex-products:t.PRODUCTATTRIBUTE_NAME' | t }}</bk-form-label>
+                        	<bk-form-label for="idName" ng-required="false" colon="true">{{ 'codbex-products:codbex-products-model.t.PRODUCTATTRIBUTE_NAME' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
-							<bk-form-input-message state="{{ forms.details['Name'].$valid ? '' : 'error' }}" text="{{ 'codbex-products:messages.error.pattern' | t:{'rule':''} }}">
+							<bk-form-input-message state="{{ forms.details['Name'].$valid ? '' : 'error' }}" text="{{ 'codbex-products:codbex-products-model.messages.error.pattern' | t:{'rule':''} }}">
 								<bk-input id="idName"
 	                                name="Name"
 	                                state="{{ forms.details['Name'].$valid ? '' : 'error' }}"
@@ -32,17 +32,17 @@
 									ng-maxlength="200.0"
 	                                input-rules="{ patterns: [''] }"
 	                                type="text"
-	                                placeholder="{{ 'codbex-products:messages.inputEnter' | t:{'name':'$t(codbex-products:t.PRODUCTATTRIBUTE_NAME)'} }}">
+	                                placeholder="{{ 'codbex-products:codbex-products-model.messages.inputEnter' | t:{'name':'$t(codbex-products:codbex-products-model.t.PRODUCTATTRIBUTE_NAME)'} }}">
 	                            </bk-input>
 							</bk-form-input-message>
 	                    </div>
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idValue" ng-required="false" colon="true">{{ 'codbex-products:t.PRODUCTATTRIBUTE_VALUE' | t }}</bk-form-label>
+                        	<bk-form-label for="idValue" ng-required="false" colon="true">{{ 'codbex-products:codbex-products-model.t.PRODUCTATTRIBUTE_VALUE' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
-							<bk-form-input-message state="{{ forms.details['Value'].$valid ? '' : 'error' }}" text="{{ 'codbex-products:messages.error.pattern' | t:{'rule':''} }}">
+							<bk-form-input-message state="{{ forms.details['Value'].$valid ? '' : 'error' }}" text="{{ 'codbex-products:codbex-products-model.messages.error.pattern' | t:{'rule':''} }}">
 								<bk-input id="idValue"
 	                                name="Value"
 	                                state="{{ forms.details['Value'].$valid ? '' : 'error' }}"
@@ -52,14 +52,14 @@
 									ng-maxlength="2000.0"
 	                                input-rules="{ patterns: [''] }"
 	                                type="text"
-	                                placeholder="{{ 'codbex-products:messages.inputEnter' | t:{'name':'$t(codbex-products:t.PRODUCTATTRIBUTE_VALUE)'} }}">
+	                                placeholder="{{ 'codbex-products:codbex-products-model.messages.inputEnter' | t:{'name':'$t(codbex-products:codbex-products-model.t.PRODUCTATTRIBUTE_VALUE)'} }}">
 	                            </bk-input>
 							</bk-form-input-message>
 	                    </div>
                     </bk-form-item>
                     <bk-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<bk-form-label for="idGroup" ng-required="false" colon="true">{{ 'codbex-products:t.PRODUCTATTRIBUTE_GROUP' | t }}</bk-form-label>
+                        	<bk-form-label for="idGroup" ng-required="false" colon="true">{{ 'codbex-products:codbex-products-model.t.PRODUCTATTRIBUTE_GROUP' | t }}</bk-form-label>
                         </div>
                         <div class="fd-col  fd-col-md--8 ">
 	                        <bk-combobox-input input-id="idGroup"
@@ -69,8 +69,8 @@
 	                            ng-model="entity.Group"
 	                            is-readonly="action === 'select'"
 	                            dropdown-items="optionsGroup"
-	                            placeholder="{{ 'codbex-products:messages.inputSearch' | t:{'name':'$t(codbex-products:t.PRODUCTATTRIBUTE_GROUP)'} }}"
-								btn-aria-label="{{ 'codbex-products:aria.showHide' | t:{'name':'Group'} }}" list-aria-label="{{ 'codbex-products:aria.options' | t:{'name':'Group'} }}">
+	                            placeholder="{{ 'codbex-products:codbex-products-model.messages.inputSearch' | t:{'name':'$t(codbex-products:codbex-products-model.t.PRODUCTATTRIBUTE_GROUP)'} }}"
+								btn-aria-label="{{ 'codbex-products:codbex-products-model.aria.showHide' | t:{'name':'Group'} }}" list-aria-label="{{ 'codbex-products:codbex-products-model.aria.options' | t:{'name':'Group'} }}">
 	                        </bk-combobox-input>
 	                    </div>
                     </bk-form-item>
@@ -81,11 +81,11 @@
 		<bk-bar bar-design="footer" compact="true" ng-show="action !== 'select'">
 			<bk-bar-right>
 				<bk-bar-element>
-					<bk-button ng-if="action === 'create'" label="{{'codbex-products:defaults.create' | t}}" state="emphasized" ng-click="create()" ng-disabled="!forms.details.$valid"></bk-button>
-					<bk-button ng-if="action !== 'create'" label="{{'codbex-products:defaults.update' | t}}" state="emphasized" ng-click="update()" ng-disabled="!forms.details.$valid"></bk-button>
+					<bk-button ng-if="action === 'create'" label="{{'codbex-products:codbex-products-model.defaults.create' | t}}" state="emphasized" ng-click="create()" ng-disabled="!forms.details.$valid"></bk-button>
+					<bk-button ng-if="action !== 'create'" label="{{'codbex-products:codbex-products-model.defaults.update' | t}}" state="emphasized" ng-click="update()" ng-disabled="!forms.details.$valid"></bk-button>
 				</bk-bar-element>
 				<bk-bar-element>
-					<bk-button label="{{ 'codbex-products:defaults.cancel' | t }}" ng-click="cancel()"></bk-button>
+					<bk-button label="{{ 'codbex-products:codbex-products-model.defaults.cancel' | t }}" ng-click="cancel()"></bk-button>
 				</bk-bar-element>
 			</bk-bar-right>
 		</bk-bar>

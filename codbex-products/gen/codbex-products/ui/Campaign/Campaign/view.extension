@@ -1,5 +1,0 @@
-{
-    "module": "codbex-products/gen/codbex-products/ui/Campaign/Campaign/view.js",
-    "extensionPoint": "application-views",
-    "description": "codbex-products - Application View"
-}

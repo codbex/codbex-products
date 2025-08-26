@@ -1,5 +1,0 @@
-{
-    "module": "codbex-products/gen/codbex-products/ui/entities/ProductAttributeGroup/dialog-filter/view.js",
-    "extensionPoint": "application-windows",
-    "description": "codbex-products - Application Dialog Window"
-}

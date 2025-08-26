@@ -12,10 +12,10 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		};
 
 		LocaleService.onInit(() => {
-			translated.yes = LocaleService.t('codbex-products:defaults.yes');
-			translated.no = LocaleService.t('codbex-products:defaults.no');
-			translated.deleteTitle = LocaleService.t('codbex-products:defaults.deleteTitle', { name: '$t(codbex-products:t.CAMPAIGNENTRY)' });
-			translated.deleteConfirm = LocaleService.t('codbex-products:messages.deleteConfirm', { name: '$t(codbex-products:t.CAMPAIGNENTRY)' });
+			translated.yes = LocaleService.t('codbex-products:codbex-products-model.defaults.yes');
+			translated.no = LocaleService.t('codbex-products:codbex-products-model.defaults.no');
+			translated.deleteTitle = LocaleService.t('codbex-products:codbex-products-model.defaults.deleteTitle', { name: '$t(codbex-products:codbex-products-model.t.CAMPAIGNENTRY)' });
+			translated.deleteConfirm = LocaleService.t('codbex-products:codbex-products-model.messages.deleteConfirm', { name: '$t(codbex-products:codbex-products-model.t.CAMPAIGNENTRY)' });
 		});
 		//-----------------Custom Actions-------------------//
 		Extensions.getWindows(['codbex-products-custom-action']).then((response) => {
@@ -120,8 +120,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				}, (error) => {
 					const message = error.data ? error.data.message : '';
 					Dialogs.showAlert({
-						title: LocaleService.t('codbex-products:t.CAMPAIGNENTRY'),
-						message: LocaleService.t('codbex-products:messages.error.unableToLF', { name: '$t(codbex-products:t.CAMPAIGNENTRY)', message: message }),
+						title: LocaleService.t('codbex-products:codbex-products-model.t.CAMPAIGNENTRY'),
+						message: LocaleService.t('codbex-products:codbex-products-model.messages.error.unableToLF', { name: '$t(codbex-products:codbex-products-model.t.CAMPAIGNENTRY)', message: message }),
 						type: AlertTypes.Error
 					});
 					console.error('EntityService:', error);
@@ -129,8 +129,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			}, (error) => {
 				const message = error.data ? error.data.message : '';
 				Dialogs.showAlert({
-					title: LocaleService.t('codbex-products:t.CAMPAIGNENTRY'),
-					message: LocaleService.t('codbex-products:messages.error.unableToCount', { name: '$t(codbex-products:t.CAMPAIGNENTRY)', message: message }),
+					title: LocaleService.t('codbex-products:codbex-products-model.t.CAMPAIGNENTRY'),
+					message: LocaleService.t('codbex-products:codbex-products-model.messages.error.unableToCount', { name: '$t(codbex-products:codbex-products-model.t.CAMPAIGNENTRY)', message: message }),
 					type: AlertTypes.Error
 				});
 				console.error('EntityService:', error);
@@ -216,8 +216,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					}, (error) => {
 						const message = error.data ? error.data.message : '';
 						Dialogs.showAlert({
-							title: LocaleService.t('codbex-products:t.CAMPAIGNENTRY'),
-							message: LocaleService.t('codbex-products:messages.error.unableToDelete', { name: '$t(codbex-products:t.CAMPAIGNENTRY)', message: message }),
+							title: LocaleService.t('codbex-products:codbex-products-model.t.CAMPAIGNENTRY'),
+							message: LocaleService.t('codbex-products:codbex-products-model.messages.error.unableToDelete', { name: '$t(codbex-products:codbex-products-model.t.CAMPAIGNENTRY)', message: message }),
 							type: AlertTypes.Error,
 						});
 						console.error('EntityService:', error);
@@ -230,7 +230,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.optionsCampaign = [];
 
 
-		$http.get('/services/ts/codbex-products/gen/codbex-products/api/Campaign/CampaignService.ts').then((response) => {
+		$http.get('/services/ts/codbex-products/gen/codbex-products/api/Campaigns/CampaignService.ts').then((response) => {
 			$scope.optionsCampaign = response.data.map(e => ({
 				value: e.Id,
 				text: e.Name
@@ -240,7 +240,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			const message = error.data ? error.data.message : '';
 			Dialogs.showAlert({
 				title: 'Campaign',
-				message: LocaleService.t('codbex-products:messages.error.unableToLoad', { message: message }),
+				message: LocaleService.t('codbex-products:codbex-products-model.messages.error.unableToLoad', { message: message }),
 				type: AlertTypes.Error
 			});
 		});

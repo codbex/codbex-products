@@ -1,5 +1,0 @@
-{
-    "module": "codbex-products/gen/codbex-products/ui/Campaign/perspective.js",
-    "extensionPoint": "application-perspectives",
-    "description": "codbex-products - Perspective - Campaign"
-}

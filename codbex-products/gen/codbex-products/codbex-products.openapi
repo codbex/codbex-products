@@ -15,8 +15,8 @@ tags:
   - name: Products
   - name: Products
   - name: Products
-  - name: entities
-  - name: Campaign
+  - name: Settings
+  - name: Campaigns
   - name: Products
 paths:
   /codbex-products/gen/codbex-products/api/Settings/ProductTypeService.ts:
@@ -2475,7 +2475,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/entities/ProductAttributeGroupService.ts:
+  /codbex-products/gen/codbex-products/api/Settings/ProductAttributeGroupService.ts:
     get:
       summary: List ProductAttributeGroup
       parameters:
@@ -2496,7 +2496,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - entities
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -2527,7 +2527,7 @@ paths:
     post:
       summary: Create ProductAttributeGroup
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:
@@ -2559,7 +2559,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/entities/ProductAttributeGroupService.ts/{id}:
+  /codbex-products/gen/codbex-products/api/Settings/ProductAttributeGroupService.ts/{id}:
     get:
       summary: Get ProductAttributeGroup by Id
       parameters:
@@ -2570,7 +2570,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -2608,7 +2608,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:
@@ -2656,7 +2656,7 @@ paths:
           schema:
             type: string
       tags:
-        - entities
+        - Settings
       responses:
         204:
           description: Successful Request
@@ -2678,11 +2678,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/entities/ProductAttributeGroupService.ts/count:
+  /codbex-products/gen/codbex-products/api/Settings/ProductAttributeGroupService.ts/count:
     get:
       summary: Count the number of ProductAttributeGroup
       tags:
-        - entities
+        - Settings
       responses:
         200:
           description: Successful Request
@@ -2706,7 +2706,7 @@ paths:
     post:
       summary: Count the number of ProductAttributeGroup by ProductAttributeGroupFilterOptions
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:
@@ -2788,11 +2788,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/entities/ProductAttributeGroupService.ts/search:
+  /codbex-products/gen/codbex-products/api/Settings/ProductAttributeGroupService.ts/search:
     post:
       summary: Search ProductAttributeGroup by ProductAttributeGroupFilterOptions
       tags:
-        - entities
+        - Settings
       requestBody:
         content:
           application/json:
@@ -2875,7 +2875,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/Campaign/CampaignService.ts:
+  /codbex-products/gen/codbex-products/api/Campaigns/CampaignService.ts:
     get:
       summary: List Campaign
       parameters:
@@ -2896,7 +2896,7 @@ paths:
             type: integer
             allowEmptyValue: true
       tags:
-        - Campaign
+        - Campaigns
       responses:
         200:
           description: Successful Request
@@ -2927,7 +2927,7 @@ paths:
     post:
       summary: Create Campaign
       tags:
-        - Campaign
+        - Campaigns
       requestBody:
         content:
           application/json:
@@ -2959,7 +2959,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/Campaign/CampaignService.ts/{id}:
+  /codbex-products/gen/codbex-products/api/Campaigns/CampaignService.ts/{id}:
     get:
       summary: Get Campaign by Id
       parameters:
@@ -2970,7 +2970,7 @@ paths:
           schema:
             type: string
       tags:
-        - Campaign
+        - Campaigns
       responses:
         200:
           description: Successful Request
@@ -3008,7 +3008,7 @@ paths:
           schema:
             type: string
       tags:
-        - Campaign
+        - Campaigns
       requestBody:
         content:
           application/json:
@@ -3056,7 +3056,7 @@ paths:
           schema:
             type: string
       tags:
-        - Campaign
+        - Campaigns
       responses:
         204:
           description: Successful Request
@@ -3078,11 +3078,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/Campaign/CampaignService.ts/count:
+  /codbex-products/gen/codbex-products/api/Campaigns/CampaignService.ts/count:
     get:
       summary: Count the number of Campaign
       tags:
-        - Campaign
+        - Campaigns
       responses:
         200:
           description: Successful Request
@@ -3106,7 +3106,7 @@ paths:
     post:
       summary: Count the number of Campaign by CampaignFilterOptions
       tags:
-        - Campaign
+        - Campaigns
       requestBody:
         content:
           application/json:
@@ -3188,11 +3188,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/Campaign/CampaignService.ts/search:
+  /codbex-products/gen/codbex-products/api/Campaigns/CampaignService.ts/search:
     post:
       summary: Search Campaign by CampaignFilterOptions
       tags:
-        - Campaign
+        - Campaigns
       requestBody:
         content:
           application/json:
