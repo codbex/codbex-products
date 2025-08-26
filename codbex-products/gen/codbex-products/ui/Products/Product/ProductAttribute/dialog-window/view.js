@@ -7,7 +7,7 @@ const viewData = {
     id: 'ProductAttribute-details',
     label: 'ProductAttribute',
     translation: {
-        key: 'codbex-products:t.PRODUCTATTRIBUTE',
+        key: 'codbex-products:codbex-products-model.t.PRODUCTATTRIBUTE',
     },
     path: '/services/web/codbex-products/gen/codbex-products/ui/Products/Product/ProductAttribute/dialog-window/index.html',
     perspectiveName: 'Products'

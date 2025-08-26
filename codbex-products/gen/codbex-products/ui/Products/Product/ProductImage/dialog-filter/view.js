@@ -7,9 +7,9 @@ const viewData = {
     id: 'ProductImage-filter',
     label: 'ProductImage Filter',
     translation: {
-        key: 'codbex-products:extName',
+        key: 'codbex-products:codbex-products-model.extName',
         options: {
-            content: '$t(codbex-products:t.PRODUCTIMAGE) $t(codbex-products:defaults.filter)',
+            content: '$t(codbex-products:codbex-products-model.t.PRODUCTIMAGE) $t(codbex-products:codbex-products-model.defaults.filter)',
         }
     },
     path: '/services/web/codbex-products/gen/codbex-products/ui/Products/Product/ProductImage/dialog-filter/index.html',

@@ -7,7 +7,7 @@ const viewData = {
     id: 'CampaignEntry-details',
     label: 'CampaignEntry',
     translation: {
-        key: 'codbex-products:t.CAMPAIGNENTRY',
+        key: 'codbex-products:codbex-products-model.t.CAMPAIGNENTRY',
     },
     path: '/services/web/codbex-products/gen/codbex-products/ui/Products/Product/CampaignEntry/dialog-window/index.html',
     perspectiveName: 'Products'

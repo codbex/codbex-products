@@ -7,7 +7,7 @@ const perspectiveData = {
 	id: 'Campaign',
 	label: 'Campaign',
 	translation: {
-        key: 'codbex-products:t.CAMPAIGN',
+        key: 'codbex-products:codbex-products-model.t.CAMPAIGN',
     },
 	path: '/services/web/codbex-products/gen/codbex-products/ui/Campaign/index.html',
 	order: 3100,

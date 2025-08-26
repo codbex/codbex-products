@@ -182,7 +182,7 @@ export class ProductAttributeGroupRepository {
     }
 
     private async triggerEvent(data: ProductAttributeGroupEntityEvent | ProductAttributeGroupUpdateEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("codbex-products-entities-ProductAttributeGroup", ["trigger"]);
+        const triggerExtensions = await extensions.loadExtensionModules("codbex-products-Settings-ProductAttributeGroup", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -190,6 +190,6 @@ export class ProductAttributeGroupRepository {
                 console.error(error);
             }            
         });
-        producer.topic("codbex-products-entities-ProductAttributeGroup").send(JSON.stringify(data));
+        producer.topic("codbex-products-Settings-ProductAttributeGroup").send(JSON.stringify(data));
     }
 }

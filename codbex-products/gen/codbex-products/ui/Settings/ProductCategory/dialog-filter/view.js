@@ -7,9 +7,9 @@ const viewData = {
     id: 'ProductCategory-filter',
     label: 'ProductCategory Filter',
     translation: {
-        key: 'codbex-products:extName',
+        key: 'codbex-products:codbex-products-model.extName',
         options: {
-            content: '$t(codbex-products:t.PRODUCTCATEGORY) $t(codbex-products:defaults.filter)',
+            content: '$t(codbex-products:codbex-products-model.t.PRODUCTCATEGORY) $t(codbex-products:codbex-products-model.defaults.filter)',
         }
     },
     path: '/services/web/codbex-products/gen/codbex-products/ui/Settings/ProductCategory/dialog-filter/index.html',

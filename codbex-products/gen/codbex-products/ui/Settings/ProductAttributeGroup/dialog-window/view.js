@@ -7,10 +7,10 @@ const viewData = {
     id: 'ProductAttributeGroup-details',
     label: 'ProductAttributeGroup',
     translation: {
-        key: 'codbex-products:t.PRODUCTATTRIBUTEGROUP',
+        key: 'codbex-products:codbex-products-model.t.PRODUCTATTRIBUTEGROUP',
     },
-    path: '/services/web/codbex-products/gen/codbex-products/ui/entities/ProductAttributeGroup/dialog-window/index.html',
-    perspectiveName: 'entities'
+    path: '/services/web/codbex-products/gen/codbex-products/ui/Settings/ProductAttributeGroup/dialog-window/index.html',
+    perspectiveName: 'Settings'
 };
 if (typeof exports !== 'undefined') {
     exports.getView = () => viewData;

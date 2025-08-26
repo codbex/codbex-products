@@ -7,13 +7,13 @@ const viewData = {
     id: 'ProductAttributeGroup-filter',
     label: 'ProductAttributeGroup Filter',
     translation: {
-        key: 'codbex-products:extName',
+        key: 'codbex-products:codbex-products-model.extName',
         options: {
-            content: '$t(codbex-products:t.PRODUCTATTRIBUTEGROUP) $t(codbex-products:defaults.filter)',
+            content: '$t(codbex-products:codbex-products-model.t.PRODUCTATTRIBUTEGROUP) $t(codbex-products:codbex-products-model.defaults.filter)',
         }
     },
-    path: '/services/web/codbex-products/gen/codbex-products/ui/entities/ProductAttributeGroup/dialog-filter/index.html',
-    perspectiveName: 'entities'
+    path: '/services/web/codbex-products/gen/codbex-products/ui/Settings/ProductAttributeGroup/dialog-filter/index.html',
+    perspectiveName: 'Settings'
 };
 if (typeof exports !== 'undefined') {
     exports.getView = () => viewData;

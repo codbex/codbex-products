@@ -235,11 +235,8 @@
                         "widgetType": "TEXTBOX"
                     },
                     {
-                        "dataLength": "NaN",
                         "dataName": "PRODUCT_PRICE",
                         "dataNullable": "true",
-                        "dataPrecision": "",
-                        "dataScale": "",
                         "dataType": "DECIMAL",
                         "description": "",
                         "isRequiredProperty": "true",
@@ -603,8 +600,8 @@
                         "widgetType": "DROPDOWN",
                         "relationshipName": "ProductAttribute_ProductAttributeGroup",
                         "relationshipEntityName": "ProductAttributeGroup",
-                        "relationshipEntityPerspectiveName": "entities",
-                        "relationshipEntityPerspectiveLabel": "Entities"
+                        "relationshipEntityPerspectiveName": "Settings",
+                        "relationshipEntityPerspectiveLabel": ""
                     }
                 ],
                 "caption": "Manage entity ProductAttribute",
@@ -1275,24 +1272,26 @@
                 "dataName": "PRODUCTATTRIBUTEGROUP",
                 "dataQuery": "",
                 "description": "Manage entity ProductAttributeGroup",
+                "feedPassword": "YWRtaW4=",
+                "feedUsername": "YWRtaW4=",
                 "generateDefaultRoles": "false",
                 "generateReport": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "MANAGE",
+                "layoutType": "",
                 "menuIndex": "100",
                 "menuKey": "productattributegroup",
                 "menuLabel": "ProductAttributeGroup",
                 "name": "ProductAttributeGroup",
                 "perspectiveHeader": "",
                 "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
-                "perspectiveLabel": "Entities",
-                "perspectiveName": "entities",
+                "perspectiveLabel": "",
+                "perspectiveName": "Settings",
                 "perspectiveNavId": "",
                 "perspectiveOrder": "100",
                 "perspectiveRole": "",
                 "title": "ProductAttributeGroup",
                 "tooltip": "ProductAttributeGroup",
-                "type": "PRIMARY"
+                "type": "SETTING"
             },
             {
                 "properties": [

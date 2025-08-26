@@ -7,7 +7,7 @@ const perspectiveData = {
 	id: 'Products',
 	label: 'Products',
 	translation: {
-        key: 'codbex-products:t.PRODUCT',
+        key: 'codbex-products:codbex-products-model.t.PRODUCT',
     },
 	path: '/services/web/codbex-products/gen/codbex-products/ui/Products/index.html',
 	groupId: 'products-navigation-group',

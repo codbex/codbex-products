@@ -44,7 +44,8 @@
         "ProductType",
         "ProductCategory",
         "UoM",
-        "Currency"
+        "Currency",
+        "ProductAttributeGroup"
       ],
       "name": "Settings",
       "label": "Settings",
@@ -101,18 +102,6 @@
       "icon": "/services/web/resources/unicons/user-check.svg",
       "role": ""
     },
-    "entities": {
-      "views": [
-        "ProductAttributeGroup"
-      ],
-      "name": "entities",
-      "label": "entities",
-      "header": "",
-      "order": "100",
-      "navId": "",
-      "icon": "/services/web/resources/unicons/copy.svg",
-      "role": ""
-    },
     "Campaign": {
       "views": [
         "Campaign",
@@ -145,6 +134,7 @@
       "role": ""
     }
   },
+  "tprefix": "codbex-products-model",
   "models": [
     {
       "properties": [
@@ -546,8 +536,6 @@
         {
           "dataName": "PRODUCT_PRICE",
           "dataNullable": true,
-          "dataPrecision": "",
-          "dataScale": "",
           "dataType": "DECIMAL",
           "description": "",
           "isRequiredProperty": true,
@@ -1247,8 +1235,6 @@
           {
             "dataName": "PRODUCT_PRICE",
             "dataNullable": true,
-            "dataPrecision": "",
-            "dataScale": "",
             "dataType": "DECIMAL",
             "description": "",
             "isRequiredProperty": true,
@@ -1840,8 +1826,8 @@
           "widgetType": "DROPDOWN",
           "relationshipName": "ProductAttribute_ProductAttributeGroup",
           "relationshipEntityName": "ProductAttributeGroup",
-          "relationshipEntityPerspectiveName": "entities",
-          "relationshipEntityPerspectiveLabel": "Entities",
+          "relationshipEntityPerspectiveName": "Settings",
+          "relationshipEntityPerspectiveLabel": "",
           "dataNotNull": false,
           "dataAutoIncrement": false,
           "dataPrimaryKey": false,
@@ -1849,7 +1835,7 @@
           "isRequiredProperty": false,
           "isCalculatedProperty": false,
           "widgetLabel": "Group",
-          "widgetDropdownUrl": "/services/ts/codbex-products/gen/codbex-products/api/entities/ProductAttributeGroupService.ts",
+          "widgetDropdownUrl": "/services/ts/codbex-products/gen/codbex-products/api/Settings/ProductAttributeGroupService.ts",
           "dataTypeJava": "int",
           "dataTypeTypescript": "number",
           "inputRule": ""
@@ -2928,24 +2914,24 @@
       "dataName": "PRODUCTATTRIBUTEGROUP",
       "dataQuery": "",
       "description": "Manage entity ProductAttributeGroup",
+      "feedPassword": "YWRtaW4=",
+      "feedUsername": "YWRtaW4=",
       "generateDefaultRoles": "false",
       "generateReport": "false",
       "icon": "/services/web/resources/unicons/file.svg",
-      "layoutType": "MANAGE",
       "menuIndex": "100",
       "menuKey": "productattributegroup",
       "menuLabel": "ProductAttributeGroup",
       "name": "ProductAttributeGroup",
       "perspectiveHeader": "",
       "perspectiveIcon": "/services/web/resources/unicons/copy.svg",
-      "perspectiveLabel": "Entities",
-      "perspectiveName": "entities",
+      "perspectiveName": "Settings",
       "perspectiveNavId": "",
       "perspectiveOrder": "100",
       "perspectiveRole": "",
       "title": "ProductAttributeGroup",
       "tooltip": "ProductAttributeGroup",
-      "type": "PRIMARY",
+      "type": "SETTING",
       "dataSource": "DefaultDB",
       "referencedProjections": [],
       "primaryKeys": [

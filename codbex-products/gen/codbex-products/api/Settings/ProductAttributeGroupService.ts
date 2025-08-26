@@ -1,10 +1,10 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { ProductAttributeGroupRepository, ProductAttributeGroupEntityOptions } from "../../dao/entities/ProductAttributeGroupRepository";
+import { ProductAttributeGroupRepository, ProductAttributeGroupEntityOptions } from "../../dao/Settings/ProductAttributeGroupRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-products-entities-ProductAttributeGroup", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-products-Settings-ProductAttributeGroup", ["validate"]);
 
 @Controller
 class ProductAttributeGroupService {
@@ -30,7 +30,7 @@ class ProductAttributeGroupService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-products/gen/codbex-products/api/entities/ProductAttributeGroupService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-products/gen/codbex-products/api/Settings/ProductAttributeGroupService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {

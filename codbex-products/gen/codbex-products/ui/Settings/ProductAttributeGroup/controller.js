@@ -1,6 +1,6 @@
 angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntityService'])
 	.config(['EntityServiceProvider', (EntityServiceProvider) => {
-		EntityServiceProvider.baseUrl = '/services/ts/codbex-products/gen/codbex-products/api/entities/ProductAttributeGroupService.ts';
+		EntityServiceProvider.baseUrl = '/services/ts/codbex-products/gen/codbex-products/api/Settings/ProductAttributeGroupService.ts';
 	}])
 	.controller('PageController', ($scope, EntityService, Extensions, LocaleService, ButtonStates) => {
 		const Dialogs = new DialogHub();
@@ -12,10 +12,10 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		};
 
 		LocaleService.onInit(() => {
-			translated.yes = LocaleService.t('codbex-products:defaults.yes');
-			translated.no = LocaleService.t('codbex-products:defaults.no');
-			translated.deleteTitle = LocaleService.t('codbex-products:defaults.deleteTitle', { name: '$t(codbex-products:t.PRODUCTATTRIBUTEGROUP)' });
-			translated.deleteConfirm = LocaleService.t('codbex-products:messages.deleteConfirm', { name: '$t(codbex-products:t.PRODUCTATTRIBUTEGROUP)' });
+			translated.yes = LocaleService.t('codbex-products:codbex-products-model.defaults.yes');
+			translated.no = LocaleService.t('codbex-products:codbex-products-model.defaults.no');
+			translated.deleteTitle = LocaleService.t('codbex-products:codbex-products-model.defaults.deleteTitle', { name: '$t(codbex-products:codbex-products-model.t.PRODUCTATTRIBUTEGROUP)' });
+			translated.deleteConfirm = LocaleService.t('codbex-products:codbex-products-model.messages.deleteConfirm', { name: '$t(codbex-products:codbex-products-model.t.PRODUCTATTRIBUTEGROUP)' });
 		});
 
 		$scope.dataPage = 1;
@@ -24,8 +24,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 
 		//-----------------Custom Actions-------------------//
 		Extensions.getWindows(['codbex-products-custom-action']).then((response) => {
-			$scope.pageActions = response.data.filter(e => e.perspective === 'entities' && e.view === 'ProductAttributeGroup' && (e.type === 'page' || e.type === undefined));
-			$scope.entityActions = response.data.filter(e => e.perspective === 'entities' && e.view === 'ProductAttributeGroup' && e.type === 'entity');
+			$scope.pageActions = response.data.filter(e => e.perspective === 'Settings' && e.view === 'ProductAttributeGroup' && (e.type === 'page' || e.type === undefined));
+			$scope.entityActions = response.data.filter(e => e.perspective === 'Settings' && e.view === 'ProductAttributeGroup' && e.type === 'entity');
 		});
 
 		$scope.triggerPageAction = (action) => {
@@ -60,13 +60,13 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		resetPagination();
 
 		//-----------------Events-------------------//
-		Dialogs.addMessageListener({ topic: 'codbex-products.entities.ProductAttributeGroup.entityCreated', handler: () => {
+		Dialogs.addMessageListener({ topic: 'codbex-products.Settings.ProductAttributeGroup.entityCreated', handler: () => {
 			$scope.loadPage($scope.dataPage, $scope.filter);
 		}});
-		Dialogs.addMessageListener({ topic: 'codbex-products.entities.ProductAttributeGroup.entityUpdated', handler: () => {
+		Dialogs.addMessageListener({ topic: 'codbex-products.Settings.ProductAttributeGroup.entityUpdated', handler: () => {
 			$scope.loadPage($scope.dataPage, $scope.filter);
 		}});
-		Dialogs.addMessageListener({ topic: 'codbex-products.entities.ProductAttributeGroup.entitySearch', handler: (data) => {
+		Dialogs.addMessageListener({ topic: 'codbex-products.Settings.ProductAttributeGroup.entitySearch', handler: (data) => {
 			resetPagination();
 			$scope.filter = data.filter;
 			$scope.filterEntity = data.entity;
@@ -98,8 +98,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				}, (error) => {
 					const message = error.data ? error.data.message : '';
 					Dialogs.showAlert({
-						title: LocaleService.t('codbex-products:t.PRODUCTATTRIBUTEGROUP'),
-						message: LocaleService.t('codbex-products:messages.error.unableToLF', { name: '$t(codbex-products:t.PRODUCTATTRIBUTEGROUP)', message: message }),
+						title: LocaleService.t('codbex-products:codbex-products-model.t.PRODUCTATTRIBUTEGROUP'),
+						message: LocaleService.t('codbex-products:codbex-products-model.messages.error.unableToLF', { name: '$t(codbex-products:codbex-products-model.t.PRODUCTATTRIBUTEGROUP)', message: message }),
 						type: AlertTypes.Error
 					});
 					console.error('EntityService:', error);
@@ -107,8 +107,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			}, (error) => {
 				const message = error.data ? error.data.message : '';
 				Dialogs.showAlert({
-					title: LocaleService.t('codbex-products:t.PRODUCTATTRIBUTEGROUP'),
-					message: LocaleService.t('codbex-products:messages.error.unableToCount', { name: '$t(codbex-products:t.PRODUCTATTRIBUTEGROUP)', message: message }),
+					title: LocaleService.t('codbex-products:codbex-products-model.t.PRODUCTATTRIBUTEGROUP'),
+					message: LocaleService.t('codbex-products:codbex-products-model.messages.error.unableToCount', { name: '$t(codbex-products:codbex-products-model.t.PRODUCTATTRIBUTEGROUP)', message: message }),
 					type: AlertTypes.Error
 				});
 				console.error('EntityService:', error);
@@ -182,12 +182,12 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				if (buttonId === 'delete-btn-yes') {
 					EntityService.delete(id).then((response) => {
 						$scope.loadPage($scope.dataPage, $scope.filter);
-						Dialogs.triggerEvent('codbex-products.entities.ProductAttributeGroup.clearDetails');
+						Dialogs.triggerEvent('codbex-products.Settings.ProductAttributeGroup.clearDetails');
 					}, (error) => {
 						const message = error.data ? error.data.message : '';
 						Dialogs.showAlert({
-							title: LocaleService.t('codbex-products:t.PRODUCTATTRIBUTEGROUP'),
-							message: LocaleService.t('codbex-products:messages.error.unableToDelete', { name: '$t(codbex-products:t.PRODUCTATTRIBUTEGROUP)', message: message }),
+							title: LocaleService.t('codbex-products:codbex-products-model.t.PRODUCTATTRIBUTEGROUP'),
+							message: LocaleService.t('codbex-products:codbex-products-model.messages.error.unableToDelete', { name: '$t(codbex-products:codbex-products-model.t.PRODUCTATTRIBUTEGROUP)', message: message }),
 							type: AlertTypes.Error
 						});
 						console.error('EntityService:', error);

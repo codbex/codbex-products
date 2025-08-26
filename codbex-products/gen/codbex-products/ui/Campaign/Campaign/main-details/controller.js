@@ -20,12 +20,12 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		$scope.action = 'select';
 
 		LocaleService.onInit(() => {
-			description = LocaleService.t('codbex-products:defaults.description');
-			$scope.formHeaders.select = LocaleService.t('codbex-products:defaults.formHeadSelect', { name: '$t(codbex-products:t.CAMPAIGN)' });
-			$scope.formHeaders.create = LocaleService.t('codbex-products:defaults.formHeadCreate', { name: '$t(codbex-products:t.CAMPAIGN)' });
-			$scope.formHeaders.update = LocaleService.t('codbex-products:defaults.formHeadUpdate', { name: '$t(codbex-products:t.CAMPAIGN)' });
-			propertySuccessfullyCreated = LocaleService.t('codbex-products:messages.propertySuccessfullyCreated', { name: '$t(codbex-products:t.CAMPAIGN)' });
-			propertySuccessfullyUpdated = LocaleService.t('codbex-products:messages.propertySuccessfullyUpdated', { name: '$t(codbex-products:t.CAMPAIGN)' });
+			description = LocaleService.t('codbex-products:codbex-products-model.defaults.description');
+			$scope.formHeaders.select = LocaleService.t('codbex-products:codbex-products-model.defaults.formHeadSelect', { name: '$t(codbex-products:codbex-products-model.t.CAMPAIGN)' });
+			$scope.formHeaders.create = LocaleService.t('codbex-products:codbex-products-model.defaults.formHeadCreate', { name: '$t(codbex-products:codbex-products-model.t.CAMPAIGN)' });
+			$scope.formHeaders.update = LocaleService.t('codbex-products:codbex-products-model.defaults.formHeadUpdate', { name: '$t(codbex-products:codbex-products-model.t.CAMPAIGN)' });
+			propertySuccessfullyCreated = LocaleService.t('codbex-products:codbex-products-model.messages.propertySuccessfullyCreated', { name: '$t(codbex-products:codbex-products-model.t.CAMPAIGN)' });
+			propertySuccessfullyUpdated = LocaleService.t('codbex-products:codbex-products-model.messages.propertySuccessfullyUpdated', { name: '$t(codbex-products:codbex-products-model.t.CAMPAIGN)' });
 		});
 
 		//-----------------Custom Actions-------------------//
@@ -92,15 +92,15 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				Dialogs.postMessage({ topic: 'codbex-products.Campaign.Campaign.entityCreated', data: response.data });
 				Dialogs.postMessage({ topic: 'codbex-products.Campaign.Campaign.clearDetails' , data: response.data });
 				Notifications.show({
-					title: LocaleService.t('codbex-products:t.CAMPAIGN'),
+					title: LocaleService.t('codbex-products:codbex-products-model.t.CAMPAIGN'),
 					description: propertySuccessfullyCreated,
 					type: 'positive'
 				});
 			}, (error) => {
 				const message = error.data ? error.data.message : '';
 				Dialogs.showAlert({
-					title: LocaleService.t('codbex-products:t.CAMPAIGN'),
-					message: LocaleService.t('codbex-products:messages.error.unableToCreate', { name: '$t(codbex-products:t.CAMPAIGN)', message: message }),
+					title: LocaleService.t('codbex-products:codbex-products-model.t.CAMPAIGN'),
+					message: LocaleService.t('codbex-products:codbex-products-model.messages.error.unableToCreate', { name: '$t(codbex-products:codbex-products-model.t.CAMPAIGN)', message: message }),
 					type: AlertTypes.Error
 				});
 				console.error('EntityService:', error);
@@ -112,15 +112,15 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				Dialogs.postMessage({ topic: 'codbex-products.Campaign.Campaign.entityUpdated', data: response.data });
 				Dialogs.postMessage({ topic: 'codbex-products.Campaign.Campaign.clearDetails', data: response.data });
 				Notifications.show({
-					title: LocaleService.t('codbex-products:t.CAMPAIGN'),
+					title: LocaleService.t('codbex-products:codbex-products-model.t.CAMPAIGN'),
 					description: propertySuccessfullyUpdated,
 					type: 'positive'
 				});
 			}, (error) => {
 				const message = error.data ? error.data.message : '';
 				Dialogs.showAlert({
-					title: LocaleService.t('codbex-products:t.CAMPAIGN'),
-					message: LocaleService.t('codbex-products:messages.error.unableToCreate', { name: '$t(codbex-products:t.CAMPAIGN)', message: message }),
+					title: LocaleService.t('codbex-products:codbex-products-model.t.CAMPAIGN'),
+					message: LocaleService.t('codbex-products:codbex-products-model.messages.error.unableToCreate', { name: '$t(codbex-products:codbex-products-model.t.CAMPAIGN)', message: message }),
 					type: AlertTypes.Error
 				});
 				console.error('EntityService:', error);

@@ -12,10 +12,10 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 		};
 
 		LocaleService.onInit(() => {
-			translated.yes = LocaleService.t('codbex-products:defaults.yes');
-			translated.no = LocaleService.t('codbex-products:defaults.no');
-			translated.deleteTitle = LocaleService.t('codbex-products:defaults.deleteTitle', { name: '$t(codbex-products:t.CAMPAIGN)' });
-			translated.deleteConfirm = LocaleService.t('codbex-products:messages.deleteConfirm', { name: '$t(codbex-products:t.CAMPAIGN)' });
+			translated.yes = LocaleService.t('codbex-products:codbex-products-model.defaults.yes');
+			translated.no = LocaleService.t('codbex-products:codbex-products-model.defaults.no');
+			translated.deleteTitle = LocaleService.t('codbex-products:codbex-products-model.defaults.deleteTitle', { name: '$t(codbex-products:codbex-products-model.t.CAMPAIGN)' });
+			translated.deleteConfirm = LocaleService.t('codbex-products:codbex-products-model.messages.deleteConfirm', { name: '$t(codbex-products:codbex-products-model.t.CAMPAIGN)' });
 		});
 		$scope.dataPage = 1;
 		$scope.dataCount = 0;
@@ -114,8 +114,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 				}, (error) => {
 					const message = error.data ? error.data.message : '';
 					Dialogs.showAlert({
-						title: LocaleService.t('codbex-products:t.CAMPAIGN'),
-						message: LocaleService.t('codbex-products:messages.error.unableToLF', { name: '$t(codbex-products:t.CAMPAIGN)', message: message }),
+						title: LocaleService.t('codbex-products:codbex-products-model.t.CAMPAIGN'),
+						message: LocaleService.t('codbex-products:codbex-products-model.messages.error.unableToLF', { name: '$t(codbex-products:codbex-products-model.t.CAMPAIGN)', message: message }),
 						type: AlertTypes.Error
 					});
 					console.error('EntityService:', error);
@@ -123,8 +123,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 			}, (error) => {
 				const message = error.data ? error.data.message : '';
 				Dialogs.showAlert({
-					title: LocaleService.t('codbex-products:t.CAMPAIGN'),
-					message: LocaleService.t('codbex-products:messages.error.unableToCount', { name: '$t(codbex-products:t.CAMPAIGN)', message: message }),
+					title: LocaleService.t('codbex-products:codbex-products-model.t.CAMPAIGN'),
+					message: LocaleService.t('codbex-products:codbex-products-model.messages.error.unableToCount', { name: '$t(codbex-products:codbex-products-model.t.CAMPAIGN)', message: message }),
 					type: AlertTypes.Error
 				});
 				console.error('EntityService:', error);
@@ -177,8 +177,8 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale', 'EntitySer
 					}, (error) => {
 						const message = error.data ? error.data.message : '';
 						Dialogs.showAlert({
-							title: LocaleService.t('codbex-products:t.CAMPAIGN'),
-							message: LocaleService.t('codbex-products:messages.error.unableToDelete', { name: '$t(codbex-products:t.CAMPAIGN)', message: message }),
+							title: LocaleService.t('codbex-products:codbex-products-model.t.CAMPAIGN'),
+							message: LocaleService.t('codbex-products:codbex-products-model.messages.error.unableToDelete', { name: '$t(codbex-products:codbex-products-model.t.CAMPAIGN)', message: message }),
 							type: AlertTypes.Error
 						});
 						console.error('EntityService:', error);
