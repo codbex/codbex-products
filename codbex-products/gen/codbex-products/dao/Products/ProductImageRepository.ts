@@ -1,4 +1,4 @@
-import { query } from "sdk/db";
+import { sql, query } from "sdk/db";
 import { producer } from "sdk/messaging";
 import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
@@ -71,6 +71,7 @@ export interface ProductImageEntityOptions {
     $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
+    $language?: string
 }
 
 export interface ProductImageEntityEvent {
@@ -125,13 +126,14 @@ export class ProductImageRepository {
     }
 
     public findAll(options: ProductImageEntityOptions = {}): ProductImageEntity[] {
-        return this.dao.list(options).map((e: ProductImageEntity) => {
+        let list = this.dao.list(options).map((e: ProductImageEntity) => {
             EntityUtils.setBoolean(e, "IsFeature");
             return e;
         });
+        return list;
     }
 
-    public findById(id: number): ProductImageEntity | undefined {
+    public findById(id: number, options: ProductImageEntityOptions = {}): ProductImageEntity | undefined {
         const entity = this.dao.find(id);
         EntityUtils.setBoolean(entity, "IsFeature");
         return entity ?? undefined;

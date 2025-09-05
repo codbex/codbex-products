@@ -88,11 +88,13 @@
                     {
                         "type": "VARCHAR",
                         "length": 200,
+                        "nullable": true,
                         "name": "PRODUCT_MODEL"
                     },
                     {
                         "type": "VARCHAR",
                         "length": 50,
+                        "nullable": true,
                         "name": "PRODUCT_BATCH"
                     },
                     {

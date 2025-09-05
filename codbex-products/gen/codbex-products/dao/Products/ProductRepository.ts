@@ -1,4 +1,4 @@
-import { query } from "sdk/db";
+import { sql, query } from "sdk/db";
 import { producer } from "sdk/messaging";
 import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
@@ -11,8 +11,8 @@ export interface ProductEntity {
     Description?: string;
     ShortDescription?: string;
     Image?: string;
-    Model: string;
-    Batch: string;
+    Model?: string;
+    Batch?: string;
     Price?: number;
     Currency?: number;
     BaseUnit?: number;
@@ -39,8 +39,8 @@ export interface ProductCreateEntity {
     readonly Description?: string;
     readonly ShortDescription?: string;
     readonly Image?: string;
-    readonly Model: string;
-    readonly Batch: string;
+    readonly Model?: string;
+    readonly Batch?: string;
     readonly Price?: number;
     readonly Currency?: number;
     readonly BaseUnit?: number;
@@ -268,6 +268,7 @@ export interface ProductEntityOptions {
     $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
+    $language?: string
 }
 
 export interface ProductEntityEvent {
@@ -327,13 +328,11 @@ export class ProductRepository {
                 name: "Model",
                 column: "PRODUCT_MODEL",
                 type: "VARCHAR",
-                required: true
             },
             {
                 name: "Batch",
                 column: "PRODUCT_BATCH",
                 type: "VARCHAR",
-                required: true
             },
             {
                 name: "Price",
@@ -436,13 +435,14 @@ export class ProductRepository {
     }
 
     public findAll(options: ProductEntityOptions = {}): ProductEntity[] {
-        return this.dao.list(options).map((e: ProductEntity) => {
+        let list = this.dao.list(options).map((e: ProductEntity) => {
             EntityUtils.setBoolean(e, "Enabled");
             return e;
         });
+        return list;
     }
 
-    public findById(id: number): ProductEntity | undefined {
+    public findById(id: number, options: ProductEntityOptions = {}): ProductEntity | undefined {
         const entity = this.dao.find(id);
         EntityUtils.setBoolean(entity, "Enabled");
         return entity ?? undefined;
