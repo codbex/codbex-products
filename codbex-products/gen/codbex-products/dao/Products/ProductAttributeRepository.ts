@@ -1,4 +1,4 @@
-import { query } from "sdk/db";
+import { sql, query } from "sdk/db";
 import { producer } from "sdk/messaging";
 import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
@@ -79,6 +79,7 @@ export interface ProductAttributeEntityOptions {
     $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
+    $language?: string
 }
 
 export interface ProductAttributeEntityEvent {
@@ -138,10 +139,11 @@ export class ProductAttributeRepository {
     }
 
     public findAll(options: ProductAttributeEntityOptions = {}): ProductAttributeEntity[] {
-        return this.dao.list(options);
+        let list = this.dao.list(options);
+        return list;
     }
 
-    public findById(id: number): ProductAttributeEntity | undefined {
+    public findById(id: number, options: ProductAttributeEntityOptions = {}): ProductAttributeEntity | undefined {
         const entity = this.dao.find(id);
         return entity ?? undefined;
     }

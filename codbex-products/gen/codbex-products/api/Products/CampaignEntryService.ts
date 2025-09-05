@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
+import { Controller, Get, Post, Put, Delete, request, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
 import { CampaignEntryRepository, CampaignEntryEntityOptions } from "../../dao/Products/CampaignEntryRepository";
 import { ValidationError } from "../utils/ValidationError";
@@ -16,7 +16,8 @@ class CampaignEntryService {
         try {
             const options: CampaignEntryEntityOptions = {
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
-                $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
+                $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined,
+                $language: request.getLocale().slice(0, 2)
             };
 
             let Product = parseInt(ctx.queryParameters.Product);
@@ -80,7 +81,10 @@ class CampaignEntryService {
     public getById(_: any, ctx: any) {
         try {
             const id = parseInt(ctx.pathParameters.id);
-            const entity = this.repository.findById(id);
+            const options: CampaignEntryEntityOptions = {
+                $language: request.getLocale().slice(0, 2)
+            };
+            const entity = this.repository.findById(id, options);
             if (entity) {
                 return entity;
             } else {

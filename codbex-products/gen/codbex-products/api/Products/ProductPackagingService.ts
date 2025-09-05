@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
+import { Controller, Get, Post, Put, Delete, request, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
 import { ProductPackagingRepository, ProductPackagingEntityOptions } from "../../dao/Products/ProductPackagingRepository";
 import { user } from "sdk/security"
@@ -19,7 +19,8 @@ class ProductPackagingService {
             this.checkPermissions("read");
             const options: ProductPackagingEntityOptions = {
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
-                $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
+                $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined,
+                $language: request.getLocale().slice(0, 2)
             };
 
             let Product = parseInt(ctx.queryParameters.Product);
@@ -88,7 +89,10 @@ class ProductPackagingService {
         try {
             this.checkPermissions("read");
             const id = parseInt(ctx.pathParameters.id);
-            const entity = this.repository.findById(id);
+            const options: ProductPackagingEntityOptions = {
+                $language: request.getLocale().slice(0, 2)
+            };
+            const entity = this.repository.findById(id, options);
             if (entity) {
                 return entity;
             } else {

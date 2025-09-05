@@ -1,4 +1,4 @@
-import { query } from "sdk/db";
+import { sql, query } from "sdk/db";
 import { producer } from "sdk/messaging";
 import { extensions } from "sdk/extensions";
 import { dao as daoApi } from "sdk/db";
@@ -71,6 +71,7 @@ export interface CampaignEntityOptions {
     $order?: 'ASC' | 'DESC',
     $offset?: number,
     $limit?: number,
+    $language?: string
 }
 
 export interface CampaignEntityEvent {
@@ -125,14 +126,15 @@ export class CampaignRepository {
     }
 
     public findAll(options: CampaignEntityOptions = {}): CampaignEntity[] {
-        return this.dao.list(options).map((e: CampaignEntity) => {
+        let list = this.dao.list(options).map((e: CampaignEntity) => {
             EntityUtils.setDate(e, "StartDate");
             EntityUtils.setDate(e, "EndDate");
             return e;
         });
+        return list;
     }
 
-    public findById(id: number): CampaignEntity | undefined {
+    public findById(id: number, options: CampaignEntityOptions = {}): CampaignEntity | undefined {
         const entity = this.dao.find(id);
         EntityUtils.setDate(entity, "StartDate");
         EntityUtils.setDate(entity, "EndDate");

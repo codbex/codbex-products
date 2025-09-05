@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
+import { Controller, Get, Post, Put, Delete, request, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
 import { ProductAttributeGroupRepository, ProductAttributeGroupEntityOptions } from "../../dao/Settings/ProductAttributeGroupRepository";
 import { ValidationError } from "../utils/ValidationError";
@@ -16,7 +16,8 @@ class ProductAttributeGroupService {
         try {
             const options: ProductAttributeGroupEntityOptions = {
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
-                $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined
+                $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined,
+                $language: request.getLocale().slice(0, 2)
             };
 
             return this.repository.findAll(options);
@@ -69,7 +70,10 @@ class ProductAttributeGroupService {
     public getById(_: any, ctx: any) {
         try {
             const id = parseInt(ctx.pathParameters.id);
-            const entity = this.repository.findById(id);
+            const options: ProductAttributeGroupEntityOptions = {
+                $language: request.getLocale().slice(0, 2)
+            };
+            const entity = this.repository.findById(id, options);
             if (entity) {
                 return entity;
             } else {
