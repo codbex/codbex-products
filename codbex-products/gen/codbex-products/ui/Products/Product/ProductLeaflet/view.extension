@@ -1,0 +1,5 @@
+{
+    "module": "codbex-products/gen/codbex-products/ui/Products/Product/ProductLeaflet/view.js",
+    "extensionPoint": "application-views",
+    "description": "codbex-products - Application View - Details"
+}
