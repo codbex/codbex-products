@@ -4,15 +4,15 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: 'ProductLeaflet',
-    label: 'ProductLeaflet',
+    id: 'ProductDocument',
+    label: 'ProductDocument',
     translation: {
-        key: 'codbex-products:codbex-products-model.t.PRODUCTLEAFLET',
+        key: 'codbex-products:codbex-products-model.t.PRODUCTDOCUMENT',
     },
     region: 'bottom',
     lazyLoad: false,
 	autoFocusTab: true,
-    path: '/services/web/codbex-products/gen/codbex-products/ui/Products/Product/ProductLeaflet/index.html',
+    path: '/services/web/codbex-products/gen/codbex-products/ui/Products/Product/ProductDocument/index.html',
     perspectiveName: 'Products'
 };
 if (typeof exports !== 'undefined') {

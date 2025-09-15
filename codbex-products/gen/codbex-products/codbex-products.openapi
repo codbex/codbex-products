@@ -3676,9 +3676,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/Products/ProductLeafletService.ts:
+  /codbex-products/gen/codbex-products/api/Products/ProductDocumentService.ts:
     get:
-      summary: List ProductLeaflet
+      summary: List ProductDocument
       parameters:
         - in: query
           name: $limit
@@ -3706,7 +3706,7 @@ paths:
               schema:
                 type: array
                 items:
-                    $ref: '#/components/schemas/ProductLeaflet'
+                    $ref: '#/components/schemas/ProductDocument'
         400:
           description: Bad Request Error
           content:
@@ -3726,14 +3726,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     post:
-      summary: Create ProductLeaflet
+      summary: Create ProductDocument
       tags:
         - Products
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ProductLeaflet'
+              $ref: '#/components/schemas/ProductDocument'
         required: true
       responses:
         201:
@@ -3741,7 +3741,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProductLeaflet'
+                $ref: '#/components/schemas/ProductDocument'
         400:
           description: Bad Request Error
           content:
@@ -3760,9 +3760,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/Products/ProductLeafletService.ts/{id}:
+  /codbex-products/gen/codbex-products/api/Products/ProductDocumentService.ts/{id}:
     get:
-      summary: Get ProductLeaflet by Id
+      summary: Get ProductDocument by Id
       parameters:
         - in: path
           name: id
@@ -3780,7 +3780,7 @@ paths:
               schema:
                 type: array
                 items:
-                    $ref: '#/components/schemas/ProductLeaflet'
+                    $ref: '#/components/schemas/ProductDocument'
         404:
           description: Entity Not Found
           content:
@@ -3800,7 +3800,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     put:
-      summary: Update ProductLeaflet by Id
+      summary: Update ProductDocument by Id
       parameters:
         - in: path
           name: id
@@ -3814,7 +3814,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ProductLeaflet'
+              $ref: '#/components/schemas/ProductDocument'
         required: true
       responses:
         200:
@@ -3822,7 +3822,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProductLeaflet'
+                $ref: '#/components/schemas/ProductDocument'
         400:
           description: Bad Request Error
           content:
@@ -3848,7 +3848,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     delete:
-      summary: Delete ProductLeaflet by Id
+      summary: Delete ProductDocument by Id
       parameters:
         - in: path
           name: id
@@ -3879,9 +3879,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/Products/ProductLeafletService.ts/count:
+  /codbex-products/gen/codbex-products/api/Products/ProductDocumentService.ts/count:
     get:
-      summary: Count the number of ProductLeaflet
+      summary: Count the number of ProductDocument
       tags:
         - Products
       responses:
@@ -3905,14 +3905,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
     post:
-      summary: Count the number of ProductLeaflet by ProductLeafletFilterOptions
+      summary: Count the number of ProductDocument by ProductDocumentFilterOptions
       tags:
         - Products
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ProductLeafletFilterOptions'
+              $ref: '#/components/schemas/ProductDocumentFilterOptions'
             examples:
               countWithMultipleCriteria:
                 summary: Count with multiple criteria
@@ -3921,7 +3921,7 @@ paths:
                     notEquals:
                       Id: 33
                     contains:
-                      LeafletLink: "abcd"
+                      Link: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -3943,7 +3943,7 @@ paths:
                 value:
                   $filter:
                     contains:
-                      LeafletLink: "abcd"
+                      Link: "abcd"
               countWithGreaterThan:
                 summary: Count with Greater Than
                 value:
@@ -3989,16 +3989,16 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-  /codbex-products/gen/codbex-products/api/Products/ProductLeafletService.ts/search:
+  /codbex-products/gen/codbex-products/api/Products/ProductDocumentService.ts/search:
     post:
-      summary: Search ProductLeaflet by ProductLeafletFilterOptions
+      summary: Search ProductDocument by ProductDocumentFilterOptions
       tags:
         - Products
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ProductLeafletFilterOptions'
+              $ref: '#/components/schemas/ProductDocumentFilterOptions'
             examples:
               searchWithMultipleCriteria:
                 summary: Search with multiple criteria
@@ -4007,7 +4007,7 @@ paths:
                     notEquals:
                       Id: 33
                     contains:
-                      LeafletLink: "abcd"
+                      Link: "abcd"
                     greaterThan:
                       Id: 0
                     lessThanOrEqual:
@@ -4029,7 +4029,7 @@ paths:
                 value:
                   $filter:
                     contains:
-                      LeafletLink: "abcd"
+                      Link: "abcd"
               searchWithGreaterThan:
                 summary: Search with Greater Than
                 value:
@@ -4063,7 +4063,7 @@ paths:
               schema:
                 type: array
                 items:
-                    $ref: '#/components/schemas/ProductLeaflet'
+                    $ref: '#/components/schemas/ProductDocument'
         403:
           description: Forbidden Error
           content:
@@ -6742,21 +6742,22 @@ components:
         $limit:
           type: integer
           example: 10
-    ProductLeaflet:
+    ProductDocument:
       type: object
       required:
+        - Link
       properties:
         Id:
           type: integer
           format: int32
-        Title:
+        Product:
           type: integer
           format: int32
-        LeafletLink:
+        Link:
           type: string
           minLength: 0
-          maxLength: 500
-    ProductLeafletFilterOptions:
+          maxLength: 300
+    ProductDocumentFilterOptions:
       type: object
       properties:
         $filter:
@@ -6773,7 +6774,7 @@ components:
                       items:
                         type: integer
                         format: int32
-                Title:
+                Product:
                   oneOf:
                     - type: integer
                       format: int32
@@ -6781,17 +6782,17 @@ components:
                       items:
                         type: integer
                         format: int32
-                LeafletLink:
+                Link:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 500
+                      maxLength: 300
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 500
+                        maxLength: 300
             notEquals:
               type: object
               properties:
@@ -6803,7 +6804,7 @@ components:
                       items:
                         type: integer
                         format: int32
-                Title:
+                Product:
                   oneOf:
                     - type: integer
                       format: int32
@@ -6811,86 +6812,86 @@ components:
                       items:
                         type: integer
                         format: int32
-                LeafletLink:
+                Link:
                   oneOf:
                     - type: string
                       minLength: 0
-                      maxLength: 500
+                      maxLength: 300
                     - type: array
                       items:
                         type: string
                         format: double
                         minLength: 0
-                        maxLength: 500
+                        maxLength: 300
             contains:
               type: object
               properties:
                 Id:
-                Title:
-                LeafletLink:
+                Product:
+                Link:
                   type: string
                   minLength: 0
-                  maxLength: 500
+                  maxLength: 300
             greaterThan:
               type: object
               properties:
                 Id:
                   type: integer
                   format: int32
-                Title:
+                Product:
                   type: integer
                   format: int32
-                LeafletLink:
+                Link:
                   type: string
                   minLength: 0
-                  maxLength: 500
+                  maxLength: 300
             greaterThanOrEqual:
               type: object
               properties:
                 Id:
                   type: integer
                   format: int32
-                Title:
+                Product:
                   type: integer
                   format: int32
-                LeafletLink:
+                Link:
                   type: string
                   minLength: 0
-                  maxLength: 500
+                  maxLength: 300
             lessThan:
               type: object
               properties:
                 Id:
                   type: integer
                   format: int32
-                Title:
+                Product:
                   type: integer
                   format: int32
-                LeafletLink:
+                Link:
                   type: string
                   minLength: 0
-                  maxLength: 500
+                  maxLength: 300
             lessThanOrEqual:
               type: object
               properties:
                 Id:
                   type: integer
                   format: int32
-                Title:
+                Product:
                   type: integer
                   format: int32
-                LeafletLink:
+                Link:
                   type: string
                   minLength: 0
-                  maxLength: 500
+                  maxLength: 300
         $select:
           type: array
-          example: ["Id", "Title", "LeafletLink"]
+          example: ["Id", "Product", "Link"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Title,LeafletLink"
+            example: "Id,Product,Link"
         $order:
           type: string
           enum: ["asc", "desc"]

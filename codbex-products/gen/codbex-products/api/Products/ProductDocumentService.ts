@@ -1,32 +1,32 @@
 import { Controller, Get, Post, Put, Delete, request, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { ProductLeafletRepository, ProductLeafletEntityOptions } from "../../dao/Products/ProductLeafletRepository";
+import { ProductDocumentRepository, ProductDocumentEntityOptions } from "../../dao/Products/ProductDocumentRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-products-Products-ProductLeaflet", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-products-Products-ProductDocument", ["validate"]);
 
 @Controller
-class ProductLeafletService {
+class ProductDocumentService {
 
-    private readonly repository = new ProductLeafletRepository();
+    private readonly repository = new ProductDocumentRepository();
 
     @Get("/")
     public getAll(_: any, ctx: any) {
         try {
-            const options: ProductLeafletEntityOptions = {
+            const options: ProductDocumentEntityOptions = {
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined,
                 $language: request.getLocale().slice(0, 2)
             };
 
-            let Title = parseInt(ctx.queryParameters.Title);
-            Title = isNaN(Title) ? ctx.queryParameters.Title : Title;
+            let Product = parseInt(ctx.queryParameters.Product);
+            Product = isNaN(Product) ? ctx.queryParameters.Product : Product;
 
-            if (Title !== undefined) {
+            if (Product !== undefined) {
                 options.$filter = {
                     equals: {
-                        Title: Title
+                        Product: Product
                     }
                 };
             }
@@ -42,7 +42,7 @@ class ProductLeafletService {
         try {
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-products/gen/codbex-products/api/Products/ProductLeafletService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-products/gen/codbex-products/api/Products/ProductDocumentService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
@@ -81,14 +81,14 @@ class ProductLeafletService {
     public getById(_: any, ctx: any) {
         try {
             const id = parseInt(ctx.pathParameters.id);
-            const options: ProductLeafletEntityOptions = {
+            const options: ProductDocumentEntityOptions = {
                 $language: request.getLocale().slice(0, 2)
             };
             const entity = this.repository.findById(id, options);
             if (entity) {
                 return entity;
             } else {
-                HttpUtils.sendResponseNotFound("ProductLeaflet not found");
+                HttpUtils.sendResponseNotFound("ProductDocument not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -116,7 +116,7 @@ class ProductLeafletService {
                 this.repository.deleteById(id);
                 HttpUtils.sendResponseNoContent();
             } else {
-                HttpUtils.sendResponseNotFound("ProductLeaflet not found");
+                HttpUtils.sendResponseNotFound("ProductDocument not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -134,8 +134,11 @@ class ProductLeafletService {
     }
 
     private validateEntity(entity: any): void {
-        if (entity.LeafletLink?.length > 500) {
-            throw new ValidationError(`The 'LeafletLink' exceeds the maximum length of [500] characters`);
+        if (entity.Link === null || entity.Link === undefined) {
+            throw new ValidationError(`The 'Link' property is required, provide a valid value`);
+        }
+        if (entity.Link?.length > 300) {
+            throw new ValidationError(`The 'Link' exceeds the maximum length of [300] characters`);
         }
         for (const next of validationModules) {
             next.validate(entity);

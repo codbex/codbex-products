@@ -403,7 +403,7 @@
                 ]
             },
             {
-                "name": "CODBEX_PRODUCTLEAFLET",
+                "name": "CODBEX_PRODUCTDOCUMENT",
                 "type": "TABLE",
                 "columns": [
                     {
@@ -411,18 +411,18 @@
                         "primaryKey": true,
                         "identity": true,
                         "nullable": true,
-                        "name": "PRODUCTLEAFLET_ID"
+                        "name": "PRODUCTDOCUMENT_ID"
                     },
                     {
                         "type": "INTEGER",
                         "nullable": true,
-                        "name": "PRODUCTLEAFLET_TITLE"
+                        "name": "PRODUCTDOCUMENT_PRODUCT"
                     },
                     {
                         "type": "VARCHAR",
-                        "length": 500,
+                        "length": 300,
                         "nullable": true,
-                        "name": "PRODUCTLEAFLET_LEAFLETLINK"
+                        "name": "PRODUCTDOCUMENT_LINK"
                     }
                 ]
             },
@@ -526,11 +526,11 @@
                 "referencedColumns": "CAMPAIGN_ID"
             },
             {
-                "name": "ProductLeaflet_Product",
+                "name": "ProductDocument_Product",
                 "type": "foreignKey",
-                "table": "CODBEX_PRODUCTLEAFLET",
-                "constraintName": "ProductLeaflet_Product",
-                "columns": "PRODUCTLEAFLET_TITLE",
+                "table": "CODBEX_PRODUCTDOCUMENT",
+                "constraintName": "ProductDocument_Product",
+                "columns": "PRODUCTDOCUMENT_PRODUCT",
                 "referencedTable": "CODBEX_PRODUCT",
                 "referencedColumns": "PRODUCT_ID"
             }
