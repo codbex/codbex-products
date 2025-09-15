@@ -1,35 +1,32 @@
 import { Controller, Get, Post, Put, Delete, request, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
-import { ProductAttributeRepository, ProductAttributeEntityOptions } from "../../dao/Products/ProductAttributeRepository";
-import { user } from "sdk/security"
-import { ForbiddenError } from "../utils/ForbiddenError";
+import { ProductLeafletRepository, ProductLeafletEntityOptions } from "../../dao/Products/ProductLeafletRepository";
 import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
-const validationModules = await Extensions.loadExtensionModules("codbex-products-Products-ProductAttribute", ["validate"]);
+const validationModules = await Extensions.loadExtensionModules("codbex-products-Products-ProductLeaflet", ["validate"]);
 
 @Controller
-class ProductAttributeService {
+class ProductLeafletService {
 
-    private readonly repository = new ProductAttributeRepository();
+    private readonly repository = new ProductLeafletRepository();
 
     @Get("/")
     public getAll(_: any, ctx: any) {
         try {
-            this.checkPermissions("read");
-            const options: ProductAttributeEntityOptions = {
+            const options: ProductLeafletEntityOptions = {
                 $limit: ctx.queryParameters["$limit"] ? parseInt(ctx.queryParameters["$limit"]) : undefined,
                 $offset: ctx.queryParameters["$offset"] ? parseInt(ctx.queryParameters["$offset"]) : undefined,
                 $language: request.getLocale().slice(0, 2)
             };
 
-            let Product = parseInt(ctx.queryParameters.Product);
-            Product = isNaN(Product) ? ctx.queryParameters.Product : Product;
+            let Title = parseInt(ctx.queryParameters.Title);
+            Title = isNaN(Title) ? ctx.queryParameters.Title : Title;
 
-            if (Product !== undefined) {
+            if (Title !== undefined) {
                 options.$filter = {
                     equals: {
-                        Product: Product
+                        Title: Title
                     }
                 };
             }
@@ -43,10 +40,9 @@ class ProductAttributeService {
     @Post("/")
     public create(entity: any) {
         try {
-            this.checkPermissions("write");
             this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
-            response.setHeader("Content-Location", "/services/ts/codbex-products/gen/codbex-products/api/Products/ProductAttributeService.ts/" + entity.Id);
+            response.setHeader("Content-Location", "/services/ts/codbex-products/gen/codbex-products/api/Products/ProductLeafletService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
             return entity;
         } catch (error: any) {
@@ -57,7 +53,6 @@ class ProductAttributeService {
     @Get("/count")
     public count() {
         try {
-            this.checkPermissions("read");
             return { count: this.repository.count() };
         } catch (error: any) {
             this.handleError(error);
@@ -67,7 +62,6 @@ class ProductAttributeService {
     @Post("/count")
     public countWithFilter(filter: any) {
         try {
-            this.checkPermissions("read");
             return { count: this.repository.count(filter) };
         } catch (error: any) {
             this.handleError(error);
@@ -77,7 +71,6 @@ class ProductAttributeService {
     @Post("/search")
     public search(filter: any) {
         try {
-            this.checkPermissions("read");
             return this.repository.findAll(filter);
         } catch (error: any) {
             this.handleError(error);
@@ -87,16 +80,15 @@ class ProductAttributeService {
     @Get("/:id")
     public getById(_: any, ctx: any) {
         try {
-            this.checkPermissions("read");
             const id = parseInt(ctx.pathParameters.id);
-            const options: ProductAttributeEntityOptions = {
+            const options: ProductLeafletEntityOptions = {
                 $language: request.getLocale().slice(0, 2)
             };
             const entity = this.repository.findById(id, options);
             if (entity) {
                 return entity;
             } else {
-                HttpUtils.sendResponseNotFound("ProductAttribute not found");
+                HttpUtils.sendResponseNotFound("ProductLeaflet not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -106,7 +98,6 @@ class ProductAttributeService {
     @Put("/:id")
     public update(entity: any, ctx: any) {
         try {
-            this.checkPermissions("write");
             entity.Id = ctx.pathParameters.id;
             this.validateEntity(entity);
             this.repository.update(entity);
@@ -119,14 +110,13 @@ class ProductAttributeService {
     @Delete("/:id")
     public deleteById(_: any, ctx: any) {
         try {
-            this.checkPermissions("write");
             const id = ctx.pathParameters.id;
             const entity = this.repository.findById(id);
             if (entity) {
                 this.repository.deleteById(id);
                 HttpUtils.sendResponseNoContent();
             } else {
-                HttpUtils.sendResponseNotFound("ProductAttribute not found");
+                HttpUtils.sendResponseNotFound("ProductLeaflet not found");
             }
         } catch (error: any) {
             this.handleError(error);
@@ -143,21 +133,9 @@ class ProductAttributeService {
         }
     }
 
-    private checkPermissions(operationType: string) {
-        if (operationType === "read" && !(user.isInRole("codbex-products.Products.ProductAttributeReadOnly") || user.isInRole("codbex-products.Products.ProductAttributeFullAccess"))) {
-            throw new ForbiddenError();
-        }
-        if (operationType === "write" && !user.isInRole("codbex-products.Products.ProductAttributeFullAccess")) {
-            throw new ForbiddenError();
-        }
-    }
-
     private validateEntity(entity: any): void {
-        if (entity.Name?.length > 200) {
-            throw new ValidationError(`The 'Name' exceeds the maximum length of [200] characters`);
-        }
-        if (entity.Value?.length > 3000) {
-            throw new ValidationError(`The 'Value' exceeds the maximum length of [3000] characters`);
+        if (entity.LeafletLink?.length > 500) {
+            throw new ValidationError(`The 'LeafletLink' exceeds the maximum length of [500] characters`);
         }
         for (const next of validationModules) {
             next.validate(entity);
