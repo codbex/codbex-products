@@ -134,6 +134,12 @@ class ProductDocumentService {
     }
 
     private validateEntity(entity: any): void {
+        if (entity.Name === null || entity.Name === undefined) {
+            throw new ValidationError(`The 'Name' property is required, provide a valid value`);
+        }
+        if (entity.Name?.length > 100) {
+            throw new ValidationError(`The 'Name' exceeds the maximum length of [100] characters`);
+        }
         if (entity.Link === null || entity.Link === undefined) {
             throw new ValidationError(`The 'Link' property is required, provide a valid value`);
         }

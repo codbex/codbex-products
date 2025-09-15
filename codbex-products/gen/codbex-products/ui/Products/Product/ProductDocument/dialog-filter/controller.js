@@ -38,6 +38,9 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 		if (entity.Product !== undefined) {
 			filter.$filter.equals.Product = entity.Product;
 		}
+		if (entity.Name) {
+			filter.$filter.contains.Name = entity.Name;
+		}
 		if (entity.Link) {
 			filter.$filter.contains.Link = entity.Link;
 		}

@@ -420,6 +420,12 @@
                     },
                     {
                         "type": "VARCHAR",
+                        "length": 100,
+                        "nullable": true,
+                        "name": "PRODUCTDOCUMENT_NAME"
+                    },
+                    {
+                        "type": "VARCHAR",
                         "length": 300,
                         "nullable": true,
                         "name": "PRODUCTDOCUMENT_LINK"

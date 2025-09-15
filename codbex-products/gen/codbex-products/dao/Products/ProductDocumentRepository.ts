@@ -6,11 +6,13 @@ import { dao as daoApi } from "sdk/db";
 export interface ProductDocumentEntity {
     readonly Id: number;
     Product?: number;
+    Name?: string;
     Link?: string;
 }
 
 export interface ProductDocumentCreateEntity {
     readonly Product?: number;
+    readonly Name?: string;
     readonly Link?: string;
 }
 
@@ -23,36 +25,43 @@ export interface ProductDocumentEntityOptions {
         equals?: {
             Id?: number | number[];
             Product?: number | number[];
+            Name?: string | string[];
             Link?: string | string[];
         };
         notEquals?: {
             Id?: number | number[];
             Product?: number | number[];
+            Name?: string | string[];
             Link?: string | string[];
         };
         contains?: {
             Id?: number;
             Product?: number;
+            Name?: string;
             Link?: string;
         };
         greaterThan?: {
             Id?: number;
             Product?: number;
+            Name?: string;
             Link?: string;
         };
         greaterThanOrEqual?: {
             Id?: number;
             Product?: number;
+            Name?: string;
             Link?: string;
         };
         lessThan?: {
             Id?: number;
             Product?: number;
+            Name?: string;
             Link?: string;
         };
         lessThanOrEqual?: {
             Id?: number;
             Product?: number;
+            Name?: string;
             Link?: string;
         };
     },
@@ -95,6 +104,11 @@ export class ProductDocumentRepository {
                 name: "Product",
                 column: "PRODUCTDOCUMENT_PRODUCT",
                 type: "INTEGER",
+            },
+            {
+                name: "Name",
+                column: "PRODUCTDOCUMENT_NAME",
+                type: "VARCHAR",
             },
             {
                 name: "Link",

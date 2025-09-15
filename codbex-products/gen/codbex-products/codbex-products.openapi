@@ -3921,6 +3921,7 @@ paths:
                     notEquals:
                       Id: 33
                     contains:
+                      Name: "abcd"
                       Link: "abcd"
                     greaterThan:
                       Id: 0
@@ -3943,6 +3944,7 @@ paths:
                 value:
                   $filter:
                     contains:
+                      Name: "abcd"
                       Link: "abcd"
               countWithGreaterThan:
                 summary: Count with Greater Than
@@ -4007,6 +4009,7 @@ paths:
                     notEquals:
                       Id: 33
                     contains:
+                      Name: "abcd"
                       Link: "abcd"
                     greaterThan:
                       Id: 0
@@ -4029,6 +4032,7 @@ paths:
                 value:
                   $filter:
                     contains:
+                      Name: "abcd"
                       Link: "abcd"
               searchWithGreaterThan:
                 summary: Search with Greater Than
@@ -6745,6 +6749,7 @@ components:
     ProductDocument:
       type: object
       required:
+        - Name
         - Link
       properties:
         Id:
@@ -6753,6 +6758,10 @@ components:
         Product:
           type: integer
           format: int32
+        Name:
+          type: string
+          minLength: 0
+          maxLength: 100
         Link:
           type: string
           minLength: 0
@@ -6782,6 +6791,17 @@ components:
                       items:
                         type: integer
                         format: int32
+                Name:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 100
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 100
                 Link:
                   oneOf:
                     - type: string
@@ -6812,6 +6832,17 @@ components:
                       items:
                         type: integer
                         format: int32
+                Name:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 100
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 100
                 Link:
                   oneOf:
                     - type: string
@@ -6828,6 +6859,10 @@ components:
               properties:
                 Id:
                 Product:
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
                 Link:
                   type: string
                   minLength: 0
@@ -6841,6 +6876,10 @@ components:
                 Product:
                   type: integer
                   format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
                 Link:
                   type: string
                   minLength: 0
@@ -6854,6 +6893,10 @@ components:
                 Product:
                   type: integer
                   format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
                 Link:
                   type: string
                   minLength: 0
@@ -6867,6 +6910,10 @@ components:
                 Product:
                   type: integer
                   format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
                 Link:
                   type: string
                   minLength: 0
@@ -6880,18 +6927,22 @@ components:
                 Product:
                   type: integer
                   format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
                 Link:
                   type: string
                   minLength: 0
                   maxLength: 300
         $select:
           type: array
-          example: ["Id", "Product", "Link"]
+          example: ["Id", "Product", "Name", "Link"]
           items:
             type: string
         $sort:
           - type: string
-            example: "Id,Product,Link"
+            example: "Id,Product,Name,Link"
         $order:
           type: string
           enum: ["asc", "desc"]

@@ -159,6 +159,7 @@
       "PRODUCTDOCUMENT": "ProductDocument",
       "PRODUCTDOCUMENT_ID": "Id",
       "PRODUCTDOCUMENT_PRODUCT": "Product",
+      "PRODUCTDOCUMENT_NAME": "Name",
       "PRODUCTDOCUMENT_LINK": "Link",
       "Products": "Products",
       "Categories": "Categories",

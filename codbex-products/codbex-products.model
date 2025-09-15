@@ -1552,6 +1552,20 @@
                         "relationshipEntityPerspectiveLabel": "Entities"
                     },
                     {
+                        "dataLength": "100",
+                        "dataName": "PRODUCTDOCUMENT_NAME",
+                        "dataNullable": "true",
+                        "dataType": "VARCHAR",
+                        "description": "",
+                        "isRequiredProperty": "true",
+                        "name": "Name",
+                        "tooltip": "",
+                        "widgetIsMajor": "true",
+                        "widgetLength": "100",
+                        "widgetSize": "",
+                        "widgetType": "TEXTBOX"
+                    },
+                    {
                         "dataLength": "300",
                         "dataName": "PRODUCTDOCUMENT_LINK",
                         "dataNullable": "true",
