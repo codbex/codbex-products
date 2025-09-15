@@ -10,7 +10,6 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 		$scope.entity = params.entity ?? {};
 		$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 		$scope.selectedMainEntityId = params.selectedMainEntityId;
-		$scope.optionsTitle = params.optionsTitle;
 	}
 
 	$scope.filter = () => {
@@ -36,13 +35,16 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 		if (entity.Id !== undefined) {
 			filter.$filter.equals.Id = entity.Id;
 		}
-		if (entity.Title !== undefined) {
-			filter.$filter.equals.Title = entity.Title;
+		if (entity.Product !== undefined) {
+			filter.$filter.equals.Product = entity.Product;
 		}
-		if (entity.LeafletLink) {
-			filter.$filter.contains.LeafletLink = entity.LeafletLink;
+		if (entity.Name) {
+			filter.$filter.contains.Name = entity.Name;
 		}
-		Dialogs.postMessage({ topic: 'codbex-products.Products.ProductLeaflet.entitySearch', data: {
+		if (entity.Link) {
+			filter.$filter.contains.Link = entity.Link;
+		}
+		Dialogs.postMessage({ topic: 'codbex-products.Products.ProductDocument.entitySearch', data: {
 			entity: entity,
 			filter: filter
 		}});
@@ -55,7 +57,7 @@ angular.module('page', ['blimpKit', 'platformView', 'platformLocale']).controlle
 	};
 
 	$scope.cancel = () => {
-		Dialogs.closeWindow({ id: 'ProductLeaflet-filter' });
+		Dialogs.closeWindow({ id: 'ProductDocument-filter' });
 	};
 
 	$scope.clearErrorMessage = () => {

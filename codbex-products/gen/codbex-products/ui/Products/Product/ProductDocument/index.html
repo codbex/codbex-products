@@ -29,7 +29,8 @@
 			<table bk-table display-mode="compact" inner-borders="top" outer-borders="none">
 				<thead bk-table-header sticky="true">
 					<tr bk-table-row>
-						<th bk-table-header-cell>{{ 'codbex-products:codbex-products-model.t.PRODUCTLEAFLET_LEAFLETLINK' | t:'LeafletLink' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-products:codbex-products-model.t.PRODUCTDOCUMENT_NAME' | t:'Name' }}</th>
+						<th bk-table-header-cell>{{ 'codbex-products:codbex-products-model.t.PRODUCTDOCUMENT_LINK' | t:'Link' }}</th>
 						<th bk-table-header-cell></th>
 					</tr>
 				</thead>
@@ -38,8 +39,9 @@
 						<td bk-table-cell no-data="true">{{'codbex-products:codbex-products-model.messages.noData' | t}}</td>
 					</tr>
 					<tr bk-table-row hoverable="true" ng-repeat="next in data track by $index" selected="next.Id === selectedEntity.Id" ng-click="selectEntity(next)">
+						<td bk-table-cell ng-click="openDetails(next)" hoverable="true" activable="true">{{next.Name}}</td>
 						<td bk-table-cell>
-							<bk-link href="{{next.LeafletLink}}" target="_blank">{{next.LeafletLink}}</bk-link>
+							<bk-link href="{{next.Link}}" target="_blank">{{next.Link}}</bk-link>
 						</td>
 						<td bk-table-cell fit-content="true">
 							<bk-popover>

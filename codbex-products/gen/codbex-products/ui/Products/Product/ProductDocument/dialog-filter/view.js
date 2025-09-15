@@ -4,15 +4,15 @@
  * Do not modify the content as it may be re-generated again.
  */
 const viewData = {
-    id: 'ProductLeaflet-filter',
-    label: 'ProductLeaflet Filter',
+    id: 'ProductDocument-filter',
+    label: 'ProductDocument Filter',
     translation: {
         key: 'codbex-products:codbex-products-model.extName',
         options: {
-            content: '$t(codbex-products:codbex-products-model.t.PRODUCTLEAFLET) $t(codbex-products:codbex-products-model.defaults.filter)',
+            content: '$t(codbex-products:codbex-products-model.t.PRODUCTDOCUMENT) $t(codbex-products:codbex-products-model.defaults.filter)',
         }
     },
-    path: '/services/web/codbex-products/gen/codbex-products/ui/Products/Product/ProductLeaflet/dialog-filter/index.html',
+    path: '/services/web/codbex-products/gen/codbex-products/ui/Products/Product/ProductDocument/dialog-filter/index.html',
     perspectiveName: 'Products'
 };
 if (typeof exports !== 'undefined') {
