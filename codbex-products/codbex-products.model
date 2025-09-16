@@ -182,7 +182,7 @@
                         "widgetIsMajor": "true",
                         "widgetLength": "2000",
                         "widgetSize": "",
-                        "widgetType": "TEXTBOX"
+                        "widgetType": "TEXTAREA"
                     },
                     {
                         "dataLength": "200",
@@ -586,7 +586,7 @@
                         "widgetIsMajor": "true",
                         "widgetLength": "2000",
                         "widgetSize": "",
-                        "widgetType": "TEXTBOX"
+                        "widgetType": "TEXTAREA"
                     },
                     {
                         "dataName": "PRODUCTATTRIBUTE_GROUP",
